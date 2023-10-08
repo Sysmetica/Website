@@ -1,0 +1,151 @@
+.root {
+  .items {
+    // margin: 45px 0 0;
+    display: flex;
+    gap: 24px;
+
+    @media (max-width: 800px) {
+      padding: 0 0 10px;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+    }
+
+    @media (min-width: 800px) {
+      flex-wrap: wrap;
+    }
+
+    .item {
+      position: relative;
+      overflow: hidden;
+
+      @media (max-width: 800px) {
+        flex: 0 0 80%;
+        scroll-snap-align: start;
+      }
+
+      @media (min-width: 800px) {
+        width: calc(33.33334% - 16px);
+      }
+
+      &:hover {
+        .back {
+          opacity: 1;
+
+          .ico,
+          h3,
+          p,
+          .tag {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      }
+
+      .content {
+        padding: 32px;
+        border-radius: 6px;
+        background: #ECECEE;
+        color: #1D1D1F;
+
+        &.back {
+          background: #584997;
+          color: #fff;
+        }
+      }
+
+      .back {
+        opacity: 0;
+        transition: opacity .3s 0s ease;
+
+        .ico,
+        h3,
+        p,
+        .tag {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+
+        .ico {
+          transition: all .3s .1s ease;
+        }
+
+        h3 {
+          transition: all .3s 0.15s ease;
+        }
+
+        p {
+          transition: all .3s 0.2s ease;
+        }
+
+        .tags {
+          border-top-color: rgba(255, 255, 255, 0.20);
+        }
+
+        .tag {
+          transition: all .3s 0.25s ease;
+        }
+      }
+
+      .link {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .ico {
+        max-width: 48px;
+        max-height: 48px;
+        object-fit: contain;
+      }
+
+      h3 {
+        margin: 18px 0 8px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .tags {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 15px 0 0;
+        padding: 14px 0 0;
+        border-top: 1px solid rgba(29, 29, 31, 0.20);
+
+        .tag {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          img {
+            max-width: 18px;
+            max-height: 18px;
+            object-fit: contain;
+          }
+
+          span {
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+      }
+
+      .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: blue;
+      }
+    }
+  }
+}

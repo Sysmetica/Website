@@ -1,0 +1,65 @@
+.root {
+  &.mob {
+    display: none;
+  }
+
+  .pointerActions {
+    z-index: 999;
+    pointer-events: none;
+    position: relative;
+
+    .action {
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity .3s 0s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 128%;
+
+      &.visible {
+        opacity: 1;
+      }
+    }
+
+    .circle {
+      margin: -17px 0 0 -17px;
+      width: 35px;
+      height: 35px;
+      border: 1px solid #fff;
+    }
+
+    .point {
+      margin: -3px 0 0 -3px;
+      width: 7px;
+      height: 7px;
+      background: #fff;
+    }
+
+    .open {
+      margin: -34px 0 0 -34px;
+      width: 68px;
+      height: 68px;
+      background: green;
+    }
+
+    .drag {
+      margin: -52px 0 0 -52px;
+      width: 104px;
+      height: 104px;
+      background: #6856B5;
+      box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .blendedMode {
+    mix-blend-mode: difference;
+  }
+}

@@ -1,0 +1,61 @@
+@import '@/styles/variables.scss';
+
+.root {
+  padding: 115px 0;
+  background: #fff;
+  color: #1D1D1F;
+
+  .rootWrap {
+    display: flex;
+  }
+
+  .itemsWrap {
+    width: calc(100% - 364px);
+    padding: 0 60px 0 0;
+
+    h2 {
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 116%;
+      letter-spacing: -1px;
+      text-transform: capitalize;
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 46px 60px;
+      margin: 56px 0 0;
+
+      .item {
+        &:nth-child(2n+1) {
+          width: calc(52% - 30px);
+        }
+
+        &:nth-child(2n+2) {
+          width: calc(48% - 30px);
+        }
+
+        h4 {
+          margin: 16px 0 8px;
+          font-size: 24px;
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  .image {
+    width: 364px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

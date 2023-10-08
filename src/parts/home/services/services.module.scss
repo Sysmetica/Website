@@ -1,0 +1,151 @@
+@import '@/styles/variables.scss';
+
+.root {
+  background: $bgBlack;
+  padding: 130px 0;
+  color: #fff;
+
+  .rootWrap {
+    @media (min-width: 800px) {
+      display: grid;
+      grid-template-areas:
+        "text text button"
+        "items items items";
+    }
+  }
+
+  .text {
+    grid-area: text;
+    max-width: 460px;
+
+    @media (min-width: 800px) {
+      max-width: 660px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 116%;
+      letter-spacing: -1px;
+
+      @media (min-width: 800px) {
+        margin: 0 0 16px;
+        font-size: 48px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: normal;
+
+      @media (min-width: 800px) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .buttonWrap {
+    grid-area: button;
+
+    @media (min-width: 800px) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+  }
+
+  .items {
+    grid-area: items;
+    margin: 45px 0 0;
+
+    @media (max-width: 800px) {
+      margin-left: -15px;
+      width: calc(100% + 30px);
+      display: flex;
+      gap: 16px;
+      padding: 0 0 10px;
+      margin: 32px 0 24px;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+    }
+
+    @media (min-width: 800px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 24px;
+      grid-template-areas:
+        "mobile backend qa"
+        "mobile design design";
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 6px;
+      background: #1D1D1F;
+      padding: 32px;
+
+      @media (max-width: 800px) {
+        flex: 0 0 80%;
+        scroll-snap-align: start;
+        padding: 16px;
+      }
+
+      &.mob {
+        grid-area: mobile;
+        background: #584997;
+
+        @media (min-width: 800px) {
+          h3 {
+            font-size: 36px;
+            line-height: 107%;
+          }
+
+          .tags {
+            margin: 18px 0 0;
+          }
+        }
+      }
+
+      &.backend {
+        grid-area: backend;
+      }
+
+      &.qa {
+        grid-area: qa;
+      }
+
+      &.design {
+        grid-area: design;
+      }
+
+      h3 {
+        color: #FFF;
+        font-size: 24px;
+        line-height: 133%;
+        font-weight: 600;
+      }
+
+      .tags {
+        margin: 10px 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+
+        .tag {
+          display: inline-block;
+          padding: 6px 8px;
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.06);
+          color: #FFF;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 142%;
+        }
+      }
+    }
+  }
+}

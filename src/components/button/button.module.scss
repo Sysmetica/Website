@@ -1,0 +1,53 @@
+.root {
+  cursor: pointer;
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 100px;
+  border: 1px solid #FFF;
+  padding: 15px 22px;
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
+  text-decoration: none;
+  text-align: center;
+
+  @media (min-width: 800px) {
+    padding: 16px 24px;
+  }
+
+  &.fill {
+    border: none;
+    background-color: #584997;
+  }
+
+  &.submit {
+    padding-left: 40px;
+    background-image: url('/img/icons/attach-w.svg');
+    background-repeat: no-repeat;
+    background-position: 17px center;
+
+    @media (min-width: 800px) {
+      padding-left: 48px;
+      background-position: 22px center;
+    }
+  }
+
+  &.black {
+    color: #1D1D1F;
+    border-color: #1D1D1F;
+    background-image: url('/img/icons/attach.svg');
+  }
+
+  &.close {
+    padding-left: 40px;
+    background-image: url('/img/icons/close.svg');
+    background-repeat: no-repeat;
+    background-position: 17px center;
+
+    @media (min-width: 800px) {
+      padding-left: 48px;
+      background-position: 22px center;
+    }
+  }
+}

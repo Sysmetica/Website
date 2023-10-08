@@ -1,0 +1,46 @@
+@import '@/styles/variables.scss';
+
+.root {
+  background: #fff;
+
+  p,
+  ol,
+  ul {
+    margin: 20px 0;
+  }
+
+  ol,
+  ul {
+    margin-top: 10px;
+    padding: 0 0 0 24px;
+  }
+
+  p {
+    font-size: 16px;
+
+    @media (min-width: 800px) {
+      font-size: 18px;
+    }
+  }
+
+  p,
+  li {
+    line-height: 150%;
+    font-weight: 400;
+    font-size: 14px;
+
+    @media (min-width: 800px) {
+      font-size: 16px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: var(--font-IBMPlexSans);
+
+    @media (min-width: 800px) {
+      font-size: 24px;
+    }
+  }
+}

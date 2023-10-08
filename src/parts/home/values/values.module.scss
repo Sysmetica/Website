@@ -1,0 +1,75 @@
+@import '@/styles/variables.scss';
+
+.root {
+  background: $bgWhite;
+  padding: 130px 0;
+  color: #1D1D1F;
+
+  .textWrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    .text {
+      max-width: 230px;
+
+      @media (min-width: 800px) {
+        max-width: 400px;
+      }
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 116%;
+      letter-spacing: -1px;
+
+      @media (min-width: 800px) {
+        font-size: 48px;
+      }
+    }
+  }
+
+  .items {
+    margin: 16px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px 40px;
+
+    @media (min-width: 800px) {
+      margin: 40px 0 0;
+      gap: 58px;
+    }
+
+    .item {
+      width: calc(50% - 20px);
+
+      @media (min-width: 800px) {
+        width: calc(33.33334% - 39px);
+      }
+
+      img {
+        max-width: 48px;
+        max-height: 48px;
+        object-fit: contain;
+      }
+
+      h3 {
+        margin: 6px 0 7px;
+        font-size: 20px;
+        font-weight: 600;
+
+        @media (min-width: 800px) {
+          margin: 14px 0 7px;
+          font-size: 24px;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@import '@/styles/variables.scss';
+
+.root {
+  background: $bgWhite;
+  padding: 70px 0 125px;
+  color: #1D1D1F;
+
+  @media (min-width: 800px) {
+    padding: 154px 0 125px;
+  }
+
+  .progress {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 800px) {
+      max-width: 360px;
+      gap: 30px;
+      margin: 0 auto;
+    }
+  }
+
+  .item {
+    text-align: center;
+
+    .num {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 110%;
+
+      @media (min-width: 800px) {
+        font-size: 36px;
+      }
+
+      span {
+        color: #6856B5;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 157%;
+
+      @media (min-width: 800px) {
+        font-size: 18px;
+      }
+    }
+  }
+}

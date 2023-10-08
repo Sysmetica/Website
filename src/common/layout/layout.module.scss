@@ -1,0 +1,21 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &.home {
+    .content {
+      padding: 0;
+    }
+  }
+
+  .content {
+    background: #000;
+    padding: 85px 0 0 0;
+    flex-grow: 1;
+
+    @media (min-width: 800px) {
+      padding: 165px 0 0 0;
+    }
+  }
+}
