@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import s from './cv.module.scss';
+import g from '@/components/form/form.module.scss';
 import { CREATE_CV } from '@/graphql/queries';
 import { useMutation } from '@apollo/client';
 import { Row } from '@/common/row/row';
@@ -20,14 +21,33 @@ const defaultData = {
 }
 
 const SUCCESS = 'Thank you! Your application has been received. We will contact you in the next 24 hours.';
+const ERROR = 'please, fill all required fields';
+const ERROR_FORM = 'hmmmmmmm form NOT working...';
 
-const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
+const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?: CareersProps['data'][0]['attributes']['slug'] }) => {
   const setModal = useSetAtom(csModal);
   const [createCv, { data, loading, error }] = useMutation(CREATE_CV);
-  const [form, setForm] = useState(defaultData);
-  const [sendStatus, setSendStatus] = useState('');
+  const [form, setForm] = useState({
+    ...defaultData,
+    vacancy: activeCv || ''
+  });
+  console.log('form ', form)
+  const [sendStatus, setSendStatus] = useState<{
+    status: 'success' | 'error',
+    message: string,
+  }>({
+    status: 'error',
+    message: ''
+  });
 
   const addCv = async ({ name, email, number, vacancy, file }: any) => {
+    if (!name && !email && !file) {
+      setSendStatus({
+        status: 'error',
+        message: ERROR,
+      })
+      return
+    }
     await createCv({
       variables: {
         name: name,
@@ -38,7 +58,22 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
       },
     }).then(({ data }: any) => {
       setForm(defaultData);
-      setSendStatus(SUCCESS);
+      setSendStatus({
+        status: 'success',
+        message: SUCCESS,
+      });
+
+      setTimeout(() => {
+        setSendStatus({
+          status: 'error',
+          message: '',
+        });
+      }, 3000);
+    }).catch((err) => {
+      setSendStatus({
+        status: 'error',
+        message: ERROR_FORM,
+      })
     });
   };
 
@@ -58,7 +93,6 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
     e.preventDefault();
     setModal(false);
     document.body.style.overflow = '';
-    setSendStatus('');
   };
 
   const [selectStat, setSelectState] = useState(false);
@@ -74,28 +108,28 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
   // if (loading) return 'Submitting...';
   // if (error) return `Submission error! ${error.message}`;
 
-  console.log('form ', form)
+  console.log('form ', form);
 
   return (
-    <div className={s.root}>
+    <div className={clsx(g.root, s.root)}>
       <Row>
-        <div className={s.rootWrap}>
+        <div className={g.rootWrap}>
 
           <div className={s.head}>
             <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
             <Button type={['close']} onClick={closeModal}>Close</Button>
           </div>
 
-          <div className={s.text}>
+          <div className={g.text}>
             <h3 className={IBMPlexSans.className}>{`Submit Your CV`}</h3>
             <p>{`Step into your next career opportunity! We will contact you very soon. For any additional questions, reach out by email`}</p>
             <span>hello@sysmetica.io</span>
           </div>
 
-          <div className={s.form}>
+          <div className={g.form}>
             <form onSubmit={handleSubmit}>
-              <div className={s.fields}>
-                <div className={s.wrap}>
+              <div className={g.fields}>
+                <div className={g.wrap}>
                   <label htmlFor="name">{`Full Name *`}</label>
                   <input
                     id="name"
@@ -104,11 +138,11 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
                     onChange={handleInput}
                     placeholder='Your full name'
                     className={clsx({
-                      [s.disabled]: !form.name
+                      [g.disabled]: !form.name
                     })}
                   />
                 </div>
-                <div className={s.wrap}>
+                <div className={g.wrap}>
                   <label htmlFor="email">{`Your Email *`}</label>
                   <input
                     id="email"
@@ -117,11 +151,11 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
                     onChange={handleInput}
                     placeholder='Your email'
                     className={clsx({
-                      [s.disabled]: !isValidEmail(form.email)
+                      [g.disabled]: !isValidEmail(form.email)
                     })}
                   />
                 </div>
-                <div className={s.wrap}>
+                <div className={g.wrap}>
                   <label htmlFor="number">{`Phone Number`}</label>
                   <input
                     id="number"
@@ -130,15 +164,15 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
                     onChange={handleInput}
                     placeholder='Phone number'
                     className={clsx({
-                      [s.disabled]: !!form.number && !isValidNumber(form.number)
+                      [g.disabled]: !!form.number && !isValidNumber(form.number)
                     })}
                   />
                 </div>
-                <div className={s.wrap}>
+                <div className={g.wrap}>
                   <label htmlFor="vacancy">{`Vacancy you're applying to`}</label>
                   <div
-                    className={clsx(s.vacancyWrap, {
-                      [s.active]: selectStat
+                    className={clsx(g.vacancyWrap, {
+                      [g.active]: selectStat
                     })}
                     onClick={() => setSelectState(!selectStat)}
                   >
@@ -148,10 +182,10 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
                       value={form.vacancy}
                       onChange={handleInput}
                       placeholder='Select vacancy'
-                      className={s.vacancy}
+                      className={g.vacancy}
                     />
                   </div>
-                  <div className={s.list}>
+                  <div className={g.list}>
                     {svList.map(({ attributes: { title } }) => {
                       return (
                         <span
@@ -166,7 +200,7 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
                             }
                           }
                           className={clsx({
-                            [s.active]: title === form.vacancy
+                            [g.active]: title === form.vacancy
                           })}
                         >{title}</span>
                       )
@@ -175,9 +209,9 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
                 </div>
 
                 {/* file */}
-                <div className={s.wrap}>
-                  <div className={clsx(s.drop, {
-                    [s.disabled]: !form.file
+                <div className={g.wrap}>
+                  <div className={clsx(g.drop, {
+                    [g.disabled]: !form.file
                   })}>
                     <input
                       id="file"
@@ -185,25 +219,25 @@ const CvForm = ({ svList }: { svList: CareersProps['data'] }) => {
                       value={form.file}
                       onChange={handleInput}
                     />
-                    <div className="note">
+                    <div className={g.note}>
                       <MyImage src="/img/icons/file.svg" alt="file icon" width={40} height={40} />
                       <p>{`* Drag & Drop CV here or Browse`}</p>
                       <span>{`Accepted formats: .pdf, .doc, .docx, .txt, .odt, .rtf, and .html (30 MB max)`}</span>
                     </div>
                   </div>
-                  {form.file && <div className={s.attach}>{form.file}</div>}
+                  {form.file && <div className={g.attach}>{form.file}</div>}
                 </div>
 
               </div>
-              <div className={s.buttonWrap}>
-                {loading && 'loading...'}
-                {!!sendStatus && <p className={s.success}>{sendStatus}</p>}
-                {!!sendStatus ? (
-                  <div className={s.done} />
+              <div className={g.buttonWrap}>
+                {!!sendStatus.message && <p className={g.success}>{sendStatus.message}</p>}
+                {sendStatus.status === 'success' ? (
+                  <div className={g.done} />
                 ) : (
                   <Button stat={true} type={['fill']}>Submit</Button>
                 )}
               </div>
+              {loading && <div className={g.loading}>loading...</div>}
             </form>
           </div>
 

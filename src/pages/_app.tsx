@@ -4,7 +4,7 @@ import '../styles/common.scss';
 import { Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import { ApolloProvider } from "@apollo/client";
-import client from '@/graphql/client'
+import client from '@/graphql/client';
 
 export const poppinsFont = Poppins({
   weight: ['400', '500', '600'],

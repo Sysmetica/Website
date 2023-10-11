@@ -9,13 +9,14 @@ export const Offer = ({ offer }: { offer: CareerPageFields['attributes']['offer'
     <div className={s.root}>
       <Row>
         <div className={s.rootWrap}>
+
           <div className={s.itemsWrap}>
             <h2 className={IBMPlexSans.className}>We Offer</h2>
             <div className={s.items}>
-              {offer.map(({ text, title }) => {
+              {offer.map(({ text, title }, index) => {
                 return (
                   <div className={s.item} key={text}>
-                    <MyImage src="/img/icons/value1.svg" alt={text} width={48} height={48} />
+                    <MyImage src={`/img/icons/offer/${index + 1}.svg`} alt={text} width={48} height={48} />
                     <h4 className={IBMPlexSans.className}>{title}</h4>
                     <p>{text}</p>
                   </div>
@@ -23,9 +24,11 @@ export const Offer = ({ offer }: { offer: CareerPageFields['attributes']['offer'
               })}
             </div>
           </div>
+
           <div className={s.image}>
             <MyImage src="/img/offer.jpg" alt="Offer image" width={364} height={500} retina={2} />
           </div>
+
         </div>
       </Row>
     </div>

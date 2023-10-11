@@ -2,9 +2,12 @@
 
 .root {
   background: $bgBlack;
-  padding: 130px 0;
+  padding: 60px 0;
   color: #fff;
 
+  @media (min-width: 800px) {
+    padding: 130px 0;
+  }
 
   .rootWrap {
     @media (min-width: 800px) {

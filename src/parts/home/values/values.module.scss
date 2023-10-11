@@ -2,8 +2,12 @@
 
 .root {
   background: $bgWhite;
-  padding: 130px 0;
+  padding: 60px 0;
   color: #1D1D1F;
+
+  @media (min-width: 800px) {
+    padding: 130px 0;
+  }
 
   .textWrap {
     display: flex;
@@ -50,9 +54,14 @@
       }
 
       img {
-        max-width: 48px;
-        max-height: 48px;
+        max-width: 32px;
+        max-height: 32px;
         object-fit: contain;
+
+        @media (min-width: 800px) {
+          max-width: 48px;
+          max-height: 48px;
+        }
       }
 
       h3 {

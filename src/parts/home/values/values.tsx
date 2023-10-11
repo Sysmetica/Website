@@ -20,12 +20,12 @@ export const Values = ({ values }: ValuesProps) => {
         </div>
 
         <div className={s.items}>
-          {values.map((value) => {
+          {values.map(({ title, text }, index) => {
             return (
-              <div className={s.item} key={value.title}>
-                <MyImage src="/img/icons/value1.svg" alt="text" width={48} height={48} />
-                <h3 className={IBMPlexSans.className}>{value.title}</h3>
-                <p>{value.text}</p>
+              <div className={s.item} key={title}>
+                <MyImage src={`/img/icons/values/${index+1}.svg`} alt="text" width={48} height={48} />
+                <h3 className={IBMPlexSans.className}>{title}</h3>
+                <p>{text}</p>
               </div>
             )
           })}

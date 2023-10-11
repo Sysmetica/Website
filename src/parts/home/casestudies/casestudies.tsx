@@ -3,32 +3,29 @@ import s from './casestudies.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import MyImage from '@/components/image/image';
 import 'swiper/css';
-import { Pagination } from 'swiper/modules';
 import { IBMPlexSans } from '@/pages/_app';
-import { useSetAtom } from 'jotai';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { CaseStudies } from '@/types/casestudies';
+import { isMobileDevice } from '@/state';
 
 export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
-  const setArea = useSetAtom(mouseActionArea)
+  const setArea = useSetAtom(mouseActionArea);
+  const isMob = useAtomValue(isMobileDevice);
 
   return (
     <div
-      className={s.root}
+      className={clsx(s.root, {
+        [s.mobile]: isMob
+      })}
       onMouseOver={() => setArea({ area: 'drag' })}
       onMouseOut={() => setArea({ area: 'default' })}
     >
       <Swiper
-        modules={[Pagination]}
-        spaceBetween={0}
-        slidesPerView={1.1}
+        slidesPerView={'auto'}
         navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        // onSwiper={(swiper) => console.log(swiper)}
-        // onSlideChange={() => console.log('slide change')}
         className={s.swiper}
         draggable={true}
       >
@@ -39,6 +36,7 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
                 <Row>
                   <div className={s.textWrap}>
                     <div className={s.tags}>
+                      <div className={s.icon} />
                       {tags.map(({ text }) => {
                         return (
                           <span className={s.tag} key={text}>{text}</span>
@@ -65,7 +63,7 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
         <SwiperSlide className={clsx(s.slide, s.static)}>
           <Link href="#" className={s.link}>
             <span className={s.text}>Case Studies</span>
-            <span className={s.icon} />
+            <span className={s.more} />
           </Link>
         </SwiperSlide>
       </Swiper>

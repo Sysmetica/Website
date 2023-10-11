@@ -5,6 +5,16 @@
   background: #ECECEE;
   color: #1D1D1F;
 
+  &.mobile {
+    .swiper .textHolder .tags {
+      padding: 0 60px 0 0;
+    }
+
+    .icon {
+      display: block;
+    }
+  }
+
   .swiper {
     position: relative;
     height: 100%;
@@ -14,10 +24,15 @@
       min-height: 100vh;
       height: auto;
       display: flex;
-      align-items: center;
+      width: 90%;
+
+      &:last-child {
+        max-width: 330px;
+      }
 
       @media (orientation: landscape) {
         padding: 260px 0 120px;
+        align-items: center;
       }
 
       @media (orientation: portrait) {
@@ -38,7 +53,6 @@
         .link {
           height: 100%;
           width: 80%;
-          max-width: 330px;
           padding: 0 15px;
           background: #fff;
           display: flex;
@@ -57,7 +71,7 @@
           color: #1D1D1F;
         }
 
-        .icon {
+        .more {
           display: inline-block;
           width: 40px;
           height: 40px;
@@ -87,6 +101,7 @@
         }
 
         .tags {
+          position: relative;
           display: flex;
           gap: 10px;
           margin: 0 0 15px;
@@ -166,5 +181,16 @@
         }
       }
     }
+  }
+
+  .icon {
+    display: none;
+    position: absolute;
+    top: calc(50% - 20px);
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url('/img/icons/str-small.svg') no-repeat center;
   }
 }

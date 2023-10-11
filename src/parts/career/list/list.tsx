@@ -7,7 +7,7 @@ export const Careers = ({ careers }: { careers: CareerPageFields['attributes']['
   return (
     <div className={s.root}>
       <Row>
-        <CareersList careers={careers} />
+        <CareersList careers={careers} type="buttonPlus" />
       </Row>
     </div>
   )

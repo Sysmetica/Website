@@ -10,12 +10,22 @@
   min-height: 500px;
   color: #fff;
 
-  &.mob {
+  &.mobile {
     .shapes {
       visibility: hidden;
     }
     .textHolder {
       mix-blend-mode: normal;
+
+      h1 {
+        span {
+          color: #8970EF;
+        }
+      }
+
+      .textWrap img {
+        display: inline-block;
+      }
     }
   }
 
@@ -99,6 +109,13 @@
       @media (min-width: 800px) {
         max-width: 760px;
       }
+
+      img {
+        display: none;
+        width: 48px;
+        height: auto;
+        margin: 0 0 8px;
+      }
     }
 
     h1 {
@@ -123,10 +140,15 @@
       }
 
       span {
+        display: inline-block;
         background: #fff;
         color: #000;
         padding: 0 7px;
         border-radius: 8px;
+        border-color: #584997;
+        border-style: solid;
+        border-width: 0 0 3px 3px;
+        line-height: 154%;
       }
     }
   }

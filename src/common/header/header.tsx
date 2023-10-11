@@ -10,8 +10,6 @@ import { menuState } from "@/state";
 export const Header = () => {
   const [menu, setMenu] = useAtom(menuState);
 
-  // console.log('menu ', menu)
-
   return (
     <header className={clsx(s.root, {
       [s.open]: menu
@@ -22,13 +20,13 @@ export const Header = () => {
             <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
           </Link>
           <ul className={s.menu}>
-            <a href="">Services</a>
-            <a href="">Case Studies</a>
-            <a href="">About</a>
-            <a href="">Careers</a>
+            {/* <Link href={'/'}>Services</Link> */}
+            {/* <Link href={'/'}>Case Studies</Link> */}
+            <Link href={'/about'}>About</Link>
+            <Link href={'/career'}>Careers</Link>
           </ul>
           <div className={s.buttonWrap}>
-            <Button type={['fill']}>Contact Us</Button>
+            <Button type={['fill']} link={'/contact'}>Contact Us</Button>
           </div>
           <span className={s.menuIcon} onClick={() => setMenu(!menu)} />
         </div>

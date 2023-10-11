@@ -23,6 +23,7 @@ export type CareerProps = {
     description: string
     slug: string
     level: string,
+    icon: string,
     tags: {
       icon: string,
       text: string

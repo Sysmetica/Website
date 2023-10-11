@@ -1,6 +1,7 @@
 import MyImage from '@/components/image/image';
 import { Row } from '../row/row';
 import s from './footer.module.scss';
+import Link from 'next/link';
 
 export const Footer = () => {
   return (
@@ -12,10 +13,10 @@ export const Footer = () => {
             <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
           </div>
           <div className={s.menu}>
-            <a href="">Services</a>
-            <a href="">Case Studies</a>
-            <a href="">About</a>
-            <a href="">Careers</a>
+            {/* <Link href={'/'}>Services</Link> */}
+            {/* <Link href={'/'}>Case Studies</Link> */}
+            <Link href={'/about'}>About</Link>
+            <Link href={'/career'}>Careers</Link>
           </div>
         </div>
 
@@ -23,8 +24,8 @@ export const Footer = () => {
           <p className={s.copy}>© 2023 Sysmetica</p>
           <div className={s.links}>
             <div className={s.menu}>
-              <a href="">Terms of Service</a>
-              <a href="">Privacy Policy</a>
+              <Link href={'/terms-of-service'}>Terms of Service</Link>
+              <Link href={'/privacy-policy'}>Privacy Policy</Link>
             </div>
             <div className={s.social}>
               <a href="" target='_black'>

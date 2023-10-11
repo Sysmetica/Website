@@ -1,5 +1,23 @@
 import { gql } from "@apollo/client"
 
+const CAREERS = `
+  careers {
+    data {
+      attributes {
+        title,
+        description,
+        slug,
+        level,
+        icon,
+        tags {
+          icon,
+          text
+        }
+      }
+    }
+  }
+`
+
 export const HOME_PAGE = gql`
   query {
     homePage {
@@ -11,20 +29,7 @@ export const HOME_PAGE = gql`
             title,
             text
           }
-          careers {
-            data {
-              attributes {
-                title,
-                description,
-                slug,
-                level,
-                tags {
-                  icon,
-                  text
-                }
-              }
-            }
-          }
+          ${CAREERS}
           casestudies {
             data {
               attributes {
@@ -106,20 +111,7 @@ export const CAREER_PAGE = gql`
             title,
             subtitle
           }
-          careers {
-            data {
-              attributes {
-                title,
-                description,
-                slug,
-                level,
-                tags {
-                  icon,
-                  text
-                }
-              }
-            }
-          }
+          ${CAREERS}
           offer {
             id,
             title,
@@ -163,13 +155,90 @@ export const GET_SINGLE_CAREER = gql`
 `
 
 export const CREATE_CV = gql`
-  mutation createCv($name: String!, $email: String!, $number: String!) {
-    createCv(data: { name: $name, email: $email, number: $number}) {
+  mutation createCv($name: String!, $email: String!, $number: String!, $url: Upload!) {
+    createCv(data: { name: $name, email: $email, number: $number, url: $url}) {
       data {
+        id,
         attributes {
           name,
           email,
           number,
+          file {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export const CONTACT_PAGE = gql`
+  query {
+    contactPage {
+      data {
+        attributes {
+          title
+        }
+      }
+    }
+  }
+`
+
+export const CREATE_TALK = gql`
+  mutation createTalk($name: String!, $email: String!, $subject: String!, $message: String!) {
+    createTalk(data: { name: $name, email: $email, subject: $subject, message: $message}) {
+      data {
+        id,
+        attributes {
+          name,
+          email,
+          subject,
+          message
+        }
+      }
+    }
+  }
+`
+
+export const PRIVACY_PAGE = gql`
+  query {
+    privacyPolicy {
+      data {
+        attributes {
+          title,
+          subtitle,
+          editor
+        }
+      }
+    }
+  }
+`
+
+export const TERMS_PAGE = gql`
+  query {
+    termsOfService {
+      data {
+        attributes {
+          title,
+          subtitle,
+          editor
+        }
+      }
+    }
+  }
+`
+
+export const SERVICE_PAGE = gql`
+  query {
+    servicePage {
+      data {
+        attributes {
+          title,
+          subtitle
         }
       }
     }

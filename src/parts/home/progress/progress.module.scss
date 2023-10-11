@@ -2,7 +2,7 @@
 
 .root {
   background: $bgWhite;
-  padding: 70px 0 125px;
+  padding: 70px 0;
   color: #1D1D1F;
 
   @media (min-width: 800px) {
@@ -11,6 +11,7 @@
 
   .progress {
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     @media (max-width: 800px) {
@@ -22,6 +23,12 @@
 
   .item {
     text-align: center;
+
+    @media (max-width: 800px) {
+      &.icon {
+        display: none;
+      }
+    }
 
     .num {
       margin: 0 0 8px;

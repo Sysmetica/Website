@@ -7,7 +7,7 @@ import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from "@/state";
 
 type mouseActionAreaProp = {
-  area: 'hidden' | 'open' | 'default' | 'none' | 'drag'
+  area: 'hidden' | 'open' | 'default' | 'none' | 'drag' | 'submit'
 }
 
 export const mouseActionArea = atom<mouseActionAreaProp>({
@@ -22,6 +22,7 @@ export const Action = () => {
   const pointRef = useRef<any>()
   const openRef = useRef<any>()
   const dragRef = useRef<any>()
+  const submitRef = useRef<any>()
 
   useEffect(() => {
     const mouseAction = (evt: any) => {
@@ -45,6 +46,12 @@ export const Action = () => {
       })
 
       gsap.to(openRef.current, {
+        x: mouseX,
+        y: mouseY,
+        delay: 0,
+      })
+
+      gsap.to(submitRef.current, {
         x: mouseX,
         y: mouseY,
         delay: 0,
@@ -75,6 +82,9 @@ export const Action = () => {
         <div ref={dragRef} className={clsx(s.drag, s.action, {
           [s.visible]: area === 'drag'
         })}>Drag</div>
+        <div ref={submitRef} className={clsx(s.submit, s.action, {
+          [s.visible]: area === 'submit'
+        })} />
       </div>
       <div className={clsx(s.pointerActions, s.blendedMode)}>
         <div ref={circleRef} className={clsx(s.circle, s.action, {

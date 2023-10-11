@@ -4,4 +4,4 @@ export const menuState = atom<boolean>(false)
 
 export const isMobileDevice = atom<boolean>(false)
 
-export const csModal = atom<boolean>(true)
+export const csModal = atom<boolean>(false)

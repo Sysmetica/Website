@@ -1,5 +1,5 @@
-import React, { FC, useCallback, useState } from 'react'
-import { GET_ALL_CAREERS_URL, GET_SINGLE_CAREER, HOME_PAGE } from '@/graphql/queries'
+import React, { FC } from 'react'
+import { GET_ALL_CAREERS_URL, GET_SINGLE_CAREER } from '@/graphql/queries'
 import { GetStaticPaths, GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
@@ -11,8 +11,8 @@ import { Button } from '@/components/button/button';
 import Link from 'next/link';
 import { Editor } from '@/common/editor/editor';
 import dynamic from 'next/dynamic';
-import { atom, useAtom } from 'jotai';
-import { csModal } from '@/state'
+import { useAtom } from 'jotai';
+import { csModal } from '@/state';
 
 const CvForm = dynamic(() => import('@/components/cv/cv'));
 
@@ -70,7 +70,7 @@ const Career: FC<Props> = ({ pageData, list }) => {
           </Row>
         </Editor>
 
-        {modal && <CvForm svList={list} />}
+        {modal && <CvForm svList={list} activeCv={title} />}
       </div>
     </Layout>
   )

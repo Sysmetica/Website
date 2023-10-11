@@ -20,7 +20,7 @@ export const Contacts = ({
           <MyImage src="/img/icons/loading.svg" alt="loading icon" width={100} height={100} />
           <h3 className={IBMPlexSans.className}>{title}</h3>
           <p>{text}</p>
-          <Button type={['fill']}>Contact Us</Button>
+          <Button type={['fill']} link={'/contact'}>Contact Us</Button>
         </div>
       </Row>
     </div>

@@ -8,6 +8,7 @@ import { useAtomValue, useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from '@/state';
+import MyImage from '@/components/image/image';
 
 export const HomeStep = () => {
   const setArea = useSetAtom(mouseActionArea);
@@ -48,7 +49,7 @@ export const HomeStep = () => {
   return (
     <div
       className={clsx(s.root, {
-        [s.mob]: isMob
+        [s.mobile]: isMob
       })}
       onMouseOver={() => setArea({ area: 'hidden' })}
       onMouseOut={() => setArea({ area: 'default' })}
@@ -65,7 +66,8 @@ export const HomeStep = () => {
         <div className={s.container}>
           <Row>
             <div className={s.textWrap}>
-              <h1 className={IBMPlexSans.className}>Mobile Development<br />& Design Agency</h1>
+              <MyImage src="/img/icons/home.svg" alt="icon" width={48} height={24} />
+              <h1 className={IBMPlexSans.className}>Mobile Development<br /><span>& Design Agency</span></h1>
               <h2>Delivering <span>full-cycle mobile solutions</span> for startups and tech companies. Trusted for over 5 years, we turn your ideas into reality.</h2>
             </div>
           </Row>
@@ -76,7 +78,8 @@ export const HomeStep = () => {
         <div className={s.container}>
           <Row>
             <div className={s.textWrap}>
-              <h1 className={IBMPlexSans.className}>Mobile Development<br />& Design Agency</h1>
+              <MyImage src="/img/icons/home.svg" alt="icon" width={48} height={24} />
+              <h1 className={IBMPlexSans.className}>Mobile Development<br /><span>& Design Agency</span></h1>
               <h2>Delivering <span>full-cycle mobile solutions</span> for startups and tech companies. Trusted for over 5 years, we turn your ideas into reality.</h2>
             </div>
           </Row>
