@@ -244,3 +244,16 @@ export const SERVICE_PAGE = gql`
     }
   }
 `
+
+export const CASE_STUDIES_PAGE = gql`
+  query {
+    caseStudiesPage {
+      data {
+        attributes {
+          title,
+          subtitle
+        }
+      }
+    }
+  }
+`

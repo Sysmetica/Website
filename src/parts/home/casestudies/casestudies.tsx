@@ -61,7 +61,7 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
         })}
 
         <SwiperSlide className={clsx(s.slide, s.static)}>
-          <Link href="#" className={s.link}>
+          <Link href={'/case-studies'} className={s.link}>
             <span className={s.text}>Case Studies</span>
             <span className={s.more} />
           </Link>
