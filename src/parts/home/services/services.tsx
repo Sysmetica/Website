@@ -84,7 +84,7 @@ export const Services = () => {
           </div>
 
           <div className={s.buttonWrap}>
-            <Button link={'/service'}>Our Services</Button>
+            <Button link={'/services'}>Our Services</Button>
           </div>
 
         </div>

@@ -24,7 +24,7 @@ const defaultData = {
 
 const SUCCESS = 'Thank you! Your application has been received. We will contact you in the next 24 hours.';
 const ERROR = 'please, fill all required fields';
-const ERROR_FORM = 'hmmmmmmm form NOT working...'
+const ERROR_FORM = 'hmmmmmmm form NOT working...';
 
 const Career: FC<Props> = ({ pageData }) => {
   const [form, setForm] = useState(defaultData);

@@ -20,8 +20,8 @@ export const Header = () => {
             <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
           </Link>
           <ul className={s.menu}>
-            {/* <Link href={'/'}>Services</Link> */}
-            {/* <Link href={'/'}>Case Studies</Link> */}
+            <Link href={'/services'}>Services</Link>
+            <Link href={'/case-studies'}>Case Studies</Link>
             <Link href={'/about'}>About</Link>
             <Link href={'/career'}>Careers</Link>
           </ul>

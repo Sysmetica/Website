@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import s from './cv.module.scss';
 import g from '@/components/form/form.module.scss';
 import { CREATE_CV } from '@/graphql/queries';
@@ -11,6 +11,8 @@ import { useSetAtom } from 'jotai';
 import { CareersProps } from '@/types/career';
 import clsx from 'clsx';
 import { csModal } from '@/state';
+import { isValidEmail, isValidNumber } from '@/utils';
+import axios from 'axios';
 
 const defaultData = {
   name: '',
@@ -20,41 +22,40 @@ const defaultData = {
   file: '',
 }
 
+const sendStatusDefault = {
+  status: 'error',
+  message: ''
+}
+
 const SUCCESS = 'Thank you! Your application has been received. We will contact you in the next 24 hours.';
 const ERROR = 'please, fill all required fields';
 const ERROR_FORM = 'hmmmmmmm form NOT working...';
 
 const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?: CareersProps['data'][0]['attributes']['slug'] }) => {
   const setModal = useSetAtom(csModal);
-  const [createCv, { data, loading, error }] = useMutation(CREATE_CV);
+  const [sendStatus, setSendStatus] = useState(sendStatusDefault);
+  const [selectStat, setSelectState] = useState(false);
+  const [files, setFiles] = useState<FileList | null>();
   const [form, setForm] = useState({
     ...defaultData,
     vacancy: activeCv || ''
   });
-  console.log('form ', form)
-  const [sendStatus, setSendStatus] = useState<{
-    status: 'success' | 'error',
-    message: string,
-  }>({
-    status: 'error',
-    message: ''
-  });
+  const [createCv, { data, loading, error }] = useMutation(CREATE_CV);
+
+  const closeModal = (e: any) => {
+    e.preventDefault();
+    setModal(false);
+    document.body.style.overflow = '';
+  };
 
   const addCv = async ({ name, email, number, vacancy, file }: any) => {
-    if (!name && !email && !file) {
-      setSendStatus({
-        status: 'error',
-        message: ERROR,
-      })
-      return
-    }
     await createCv({
       variables: {
         name: name,
         email: email,
         number: number,
         vacancy: vacancy,
-        file: file,
+        file: '',
       },
     }).then(({ data }: any) => {
       setForm(defaultData);
@@ -64,51 +65,60 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
       });
 
       setTimeout(() => {
-        setSendStatus({
-          status: 'error',
-          message: '',
-        });
+        setSendStatus(sendStatusDefault);
       }, 3000);
     }).catch((err) => {
       setSendStatus({
         status: 'error',
         message: ERROR_FORM,
       })
+      console.log('err ', err);
     });
   };
 
-  const handleInput = (event: any) => {
+  const handleInput = (e: any) => {
     setForm({
       ...form,
-      [event.target.id]: event.target.value,
+      [e.target.id]: e.target.value,
     });
   };
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    addCv(form);
-  };
+  console.log('files ', files?.[0].name)
 
-  const closeModal = (e: any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    setModal(false);
-    document.body.style.overflow = '';
+
+    const formData = new FormData();
+
+    if (!files || !form.name || !form.email) {
+      setSendStatus({
+        status: 'error',
+        message: ERROR,
+      })
+      return
+    }
+
+    formData.append('files', files[0]);
+
+    // first, we need to upload the file
+    axios.post(`${process.env.NEXT_PUBLIC_STRAPI_API_UPLOAD}`, formData)
+      .then((response) => {
+        // if file upload is success,add file ID to the form state
+        setForm({
+          ...form,
+          file: response.data[0].id,
+        });
+        addCv(form);
+      }).catch((error) => {
+        setSendStatus({
+          status: 'error',
+          message: String(error),
+        })
+      })
   };
-
-  const [selectStat, setSelectState] = useState(false);
-
-  const isValidEmail = (email: string) => {
-    return /\S+@\S+\.\S+/.test(email);
-  }
-
-  const isValidNumber = (email: string) => {
-    return /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(email);
-  }
 
   // if (loading) return 'Submitting...';
   // if (error) return `Submission error! ${error.message}`;
-
-  console.log('form ', form);
 
   return (
     <div className={clsx(g.root, s.root)}>
@@ -211,13 +221,12 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                 {/* file */}
                 <div className={g.wrap}>
                   <div className={clsx(g.drop, {
-                    [g.disabled]: !form.file
+                    [g.disabled]: !files?.[0].name
                   })}>
                     <input
                       id="file"
                       type="file"
-                      value={form.file}
-                      onChange={handleInput}
+                      onChange={(e) => setFiles(e.target.files)}
                     />
                     <div className={g.note}>
                       <MyImage src="/img/icons/file.svg" alt="file icon" width={40} height={40} />
@@ -225,7 +234,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                       <span>{`Accepted formats: .pdf, .doc, .docx, .txt, .odt, .rtf, and .html (30 MB max)`}</span>
                     </div>
                   </div>
-                  {form.file && <div className={g.attach}>{form.file}</div>}
+                  {files?.[0].name && <div className={g.attach}>{files?.[0].name}</div>}
                 </div>
 
               </div>

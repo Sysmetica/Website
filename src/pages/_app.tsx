@@ -5,6 +5,8 @@ import { Poppins } from 'next/font/google';
 import localFont from 'next/font/local';
 import { ApolloProvider } from "@apollo/client";
 import client from '@/graphql/client';
+import Head from 'next/head';
+// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 export const poppinsFont = Poppins({
   weight: ['400', '500', '600'],
@@ -26,8 +28,25 @@ export const IBMPlexSans = localFont({
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
+
+      <Head>
+        <title>{`Sysmetica – Mobile Development and Design Agency`}</title>
+      </Head>
+
       <main className={poppinsFont.className}>
+
+        {/* <GoogleReCaptchaProvider
+          reCaptchaKey="your_site_key"
+          scriptProps={{
+            async: false,
+            defer: false,
+            appendTo: "head",
+            nonce: undefined,
+          }}
+        > */}
         <Component {...pageProps} />
+        {/* </GoogleReCaptchaProvider> */}
+
         <style jsx global>{
           `
           :root {
@@ -35,11 +54,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           }
         `
         }</style>
+
       </main>
     </ApolloProvider>
   )
-}
-
-function createApolloClient() {
-  throw new Error('Function not implemented.');
 }
