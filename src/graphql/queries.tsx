@@ -155,14 +155,19 @@ export const GET_SINGLE_CAREER = gql`
 `
 
 export const CREATE_CV = gql`
-  mutation createCv($name: String!, $email: String!, $number: String!) {
-    createCv(data: { name: $name, email: $email, number: $number}) {
+  mutation createCv($name: String!, $email: String!, $number: String!, $file: ID) {
+    createCv(data: { name: $name, email: $email, number: $number, file: $file}) {
       data {
         id,
         attributes {
           name,
           email,
           number,
+          file {
+            data {
+              id
+            }
+          }
         }
       }
     }

@@ -14,12 +14,12 @@ import { csModal } from '@/state';
 import { isValidEmail, isValidNumber } from '@/utils';
 import axios from 'axios';
 
-const defaultData = {
+const defaultFormData = {
   name: '',
   email: '',
   number: '',
   vacancy: '',
-  file: '',
+  file: -1,
 }
 
 const sendStatusDefault = {
@@ -28,7 +28,7 @@ const sendStatusDefault = {
 }
 
 const SUCCESS = 'Thank you! Your application has been received. We will contact you in the next 24 hours.';
-const ERROR = 'please, fill all required fields';
+const ERROR_VALIDATION = 'please, fill all required fields';
 const ERROR_FORM = 'hmmmmmmm form NOT working...';
 
 const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?: CareersProps['data'][0]['attributes']['slug'] }) => {
@@ -37,7 +37,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
   const [selectStat, setSelectState] = useState(false);
   const [files, setFiles] = useState<FileList | null>();
   const [form, setForm] = useState({
-    ...defaultData,
+    ...defaultFormData,
     vacancy: activeCv || ''
   });
   const [createCv, { data, loading, error }] = useMutation(CREATE_CV);
@@ -48,21 +48,22 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
     document.body.style.overflow = '';
   };
 
-  const addCv = async ({ name, email, number, vacancy, file }: any) => {
+  const addCv = async ({ name, email, number, vacancy, file }: typeof defaultFormData) => {
     await createCv({
       variables: {
         name: name,
         email: email,
         number: number,
         vacancy: vacancy,
-        file: '',
+        file: file,
       },
     }).then(({ data }: any) => {
-      setForm(defaultData);
+      setForm(defaultFormData);
       setSendStatus({
         status: 'success',
         message: SUCCESS,
       });
+      console.log('success ', data);
 
       setTimeout(() => {
         setSendStatus(sendStatusDefault);
@@ -83,8 +84,6 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
     });
   };
 
-  console.log('files ', files?.[0].name)
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -93,7 +92,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
     if (!files || !form.name || !form.email) {
       setSendStatus({
         status: 'error',
-        message: ERROR,
+        message: ERROR_VALIDATION,
       })
       return
     }
@@ -103,12 +102,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
     // first, we need to upload the file
     axios.post(`${process.env.NEXT_PUBLIC_STRAPI_API_UPLOAD}`, formData)
       .then((response) => {
-        // if file upload is success,add file ID to the form state
-        setForm({
-          ...form,
-          file: response.data[0].id,
-        });
-        addCv(form);
+        addCv({ ...form, file: response.data[0].id });
       }).catch((error) => {
         setSendStatus({
           status: 'error',
