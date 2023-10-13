@@ -23,14 +23,14 @@ module.exports = {
         port: '1337',
         pathname: '/uploads/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'efficient-wonder-d953beb8f4.media.strapiapp.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'sysmetica-40mo23sea-oleksiis-projects-dd473a8e.vercel.app',
-      },
+      // {
+      //   protocol: 'https',
+      //   hostname: 'efficient-wonder-d953beb8f4.media.strapiapp.com',
+      // },
+      // {
+      //   protocol: 'https',
+      //   hostname: 'sysmetica-40mo23sea-oleksiis-projects-dd473a8e.vercel.app',
+      // },
       {
         protocol: 'https',
         hostname: 'sysmetica.vercel.app',
