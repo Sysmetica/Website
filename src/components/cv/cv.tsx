@@ -102,6 +102,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
     // first, we need to upload the file
     axios.post(`${process.env.NEXT_PUBLIC_STRAPI_API_UPLOAD}`, formData)
       .then((response) => {
+        console.log('response ', response)
         addCv({ ...form, file: response.data[0].id });
       }).catch((error) => {
         setSendStatus({
