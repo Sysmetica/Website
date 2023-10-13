@@ -15,6 +15,7 @@ module.exports = {
     appDir: true,
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'http',
@@ -22,10 +23,10 @@ module.exports = {
         port: '1337',
         pathname: '/uploads/**',
       },
-      // {
-      //   protocol: 'https',
-      //   hostname: 'images.pexels.com',
-      // }
+      {
+        protocol: 'https',
+        hostname: 'efficient-wonder-d953beb8f4.media.strapiapp.com',
+      }
     ],
   },
 }

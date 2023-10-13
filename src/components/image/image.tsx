@@ -10,7 +10,6 @@ type MyImageProps = {
   refVal?: any
   blurImage?: string
   retina?: number
-  upload?: boolean
 }
 
 const MyImage = ({
@@ -23,20 +22,11 @@ const MyImage = ({
   refVal,
   blurImage,
   retina = 1,
-  upload,
 }: MyImageProps) => {
-
-  const getUrl = (src: string) => {
-    if (upload) {
-      return `http://localhost:1337${src}`
-    }
-    return src
-  }
-
   return (
     <Image
       ref={refVal}
-      src={getUrl(src)}
+      src={src}
       alt={alt}
       width={width * retina}
       height={height * retina}

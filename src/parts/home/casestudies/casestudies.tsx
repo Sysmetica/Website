@@ -53,8 +53,8 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
                 </Row>
               </div>
               <div className={s.imageWrap}>
-                <MyImage src={landscape.data.attributes.url} alt='slide image' width={1920} height={931} retina={2} imgClass={s.land} upload={true} />
-                <MyImage src={portrait.data.attributes.url} alt='slide image' width={931} height={1441} retina={2} imgClass={s.port} upload={true} />
+                <MyImage src={landscape.data.attributes.url} alt='slide image' width={1920} height={931} retina={2} imgClass={s.land} />
+                <MyImage src={portrait.data.attributes.url} alt='slide image' width={931} height={1441} retina={2} imgClass={s.port} />
               </div>
             </SwiperSlide>
           )

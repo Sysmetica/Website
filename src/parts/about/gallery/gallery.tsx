@@ -73,7 +73,6 @@ export const Gallery = ({ gallery }: { gallery: AboutPageFields['attributes']['g
                   alt="team photo"
                   width={sizes[index].width}
                   height={sizes[index].height}
-                  upload={true}
                 />
               </div>
             </div>
@@ -97,7 +96,6 @@ export const Gallery = ({ gallery }: { gallery: AboutPageFields['attributes']['g
                   alt="team photo"
                   width={sizes[index].width}
                   height={sizes[index].height}
-                  upload={true}
                 />
               </div>
             </div>

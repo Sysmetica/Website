@@ -14,7 +14,7 @@ export const Team = ({ teams }: { teams: AboutPageFields['attributes']['teams'] 
             return (
               <div className={s.item} key={name}>
                 <div className={s.image}>
-                  <MyImage src={photo.data.attributes.url} alt={name} width={364} height={418} upload={true} />
+                  <MyImage src={photo.data.attributes.url} alt={name} width={364} height={418} />
                   <Link href={linkedin} className={s.linkedin} target="_blank">
                     <MyImage src="/img/icons/linkedin.svg" alt="linkedin icon" width={24} height={32} />
                   </Link>
