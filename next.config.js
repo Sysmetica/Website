@@ -31,6 +31,10 @@ module.exports = {
         protocol: 'https',
         hostname: 'sysmetica-40mo23sea-oleksiis-projects-dd473a8e.vercel.app',
       },
+      {
+        protocol: 'https',
+        hostname: 'sysmetica.vercel.app',
+      },
     ],
   },
 }
