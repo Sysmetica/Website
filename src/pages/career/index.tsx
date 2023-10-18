@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps<any> = async () => {
   return {
     props: {
       pageData
-    }
+    },
+    revalidate: 10,
   }
 }

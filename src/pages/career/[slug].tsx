@@ -111,6 +111,7 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }: any) => {
     props: {
       pageData,
       list: cvList.data.careers.data
-    }
+    },
+    revalidate: 10,
   }
 }
