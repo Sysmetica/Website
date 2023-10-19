@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { isMobileDevice, menuState } from '@/state';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
+import MyImage from '@/components/image/image';
 
 export const Layout = ({ children, type = '' }: any) => {
   const router = useRouter();
@@ -34,6 +35,7 @@ export const Layout = ({ children, type = '' }: any) => {
 
   return (
     <div className={clsx(s.root, s[type])}>
+      {/* <MyImage src="/img/bg.png" alt="" width={881} height={600} imgClass={s.bg} /> */}
       <Header />
       <div className={s.content}>
         {children}
