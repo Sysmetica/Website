@@ -4,7 +4,6 @@ import { GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { HomeStep } from '@/parts/home/home/home'
 import { Contacts } from '@/components/contacts/contacts'
-import { Services } from '@/parts/home/services/services'
 import { InfoStep } from '@/parts/home/info/info'
 import { Progress } from '@/parts/home/progress/progress'
 import { Casestudies } from '@/parts/home/casestudies/casestudies'
@@ -12,6 +11,7 @@ import { Values } from '@/parts/home/values/values'
 import { Career } from '@/parts/home/career/career'
 import { Layout } from '@/common/layout/layout'
 import { HomePageFields } from '@/types/home'
+import { Services } from '@/parts/home/services/services'
 
 interface Props {
   pageData: HomePageFields

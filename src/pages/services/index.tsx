@@ -1,12 +1,13 @@
 import React, { FC } from 'react'
-import { CAREER_PAGE, SERVICE_PAGE } from '@/graphql/queries'
+import { SERVICE_PAGE } from '@/graphql/queries'
 import { GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
 import { CareerPageFields } from '@/types/career'
-import { Offer } from '@/parts/career/offer/offer'
 import { Title } from '@/components/title/title'
-import { Careers } from '@/parts/career/list/list'
+import { Process } from '@/parts/services/process/process'
+import { List } from '@/parts/services/list/list'
+import { Contacts } from '@/components/contacts/contacts'
 
 interface Props {
   pageData: {
@@ -29,6 +30,12 @@ const Service: FC<Props> = ({ pageData }) => {
   return (
     <Layout>
       <Title title={title} subtitle={subtitle} type='center' />
+      <Process />
+      <List />
+      <Contacts
+        title={`Guiding your business evolution from any stage, we deliver the crucial pieces to propel your growth and success`}
+        text={`Ready to collaborate on your next project?`}
+      />
     </Layout>
   )
 }
