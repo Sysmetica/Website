@@ -15,7 +15,7 @@ export const Process = () => {
       </div>
 
       <div className={s.items}>
-        <MyImage src="/img/icons/services/diamond-bg-1.png" alt="" width={500} height={648} imgClass={s.bg} />
+        <MyImage src="/img/icons/services/diamond-bg-1.svg" alt="" width={500} height={648} imgClass={s.bg} />
 
         <div className={s.item}>
           <div className={s.text}>
@@ -56,7 +56,7 @@ export const Process = () => {
       </div>
 
       <div className={s.items}>
-        <MyImage src="/img/icons/services/diamond-bg-2.png" alt="" width={500} height={648} imgClass={s.bg} />
+        <MyImage src="/img/icons/services/diamond-bg-2.svg" alt="" width={500} height={648} imgClass={s.bg} />
 
         <div className={s.item}>
           <div className={s.text}>

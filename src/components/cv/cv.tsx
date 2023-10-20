@@ -13,6 +13,7 @@ import clsx from 'clsx';
 import { csModal } from '@/state';
 import { isValidEmail, isValidNumber } from '@/utils';
 import axios from 'axios';
+import Link from 'next/link';
 
 const defaultFormData = {
   name: '',
@@ -121,7 +122,9 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
         <div className={g.rootWrap}>
 
           <div className={s.head}>
-            <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
+            <Link href={'/'}>
+              <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
+            </Link>
             <Button type={['close']} onClick={closeModal}>Close</Button>
           </div>
 
