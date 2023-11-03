@@ -35,6 +35,7 @@ const ERROR_FORM = 'hmmmmmmm form NOT working...';
 const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?: CareersProps['data'][0]['attributes']['slug'] }) => {
   const setModal = useSetAtom(csModal);
   const [sendStatus, setSendStatus] = useState(sendStatusDefault);
+  const [touch, setTouch] = useState(false);
   const [selectStat, setSelectState] = useState(false);
   const [files, setFiles] = useState<FileList | null>();
   const [form, setForm] = useState({
@@ -45,7 +46,9 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
 
   const closeModal = (e: any) => {
     e.preventDefault();
+    setTouch(false);
     setModal(false);
+    setFiles(null);
     document.body.style.overflow = '';
   };
 
@@ -60,6 +63,8 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
       },
     }).then(({ data }: any) => {
       setForm(defaultFormData);
+      setTouch(false);
+      setFiles(null);
       setSendStatus({
         status: 'success',
         message: SUCCESS,
@@ -87,6 +92,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setTouch(true);
 
     const formData = new FormData();
 
@@ -146,7 +152,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                     onChange={handleInput}
                     placeholder='Your full name'
                     className={clsx({
-                      [g.disabled]: !form.name
+                      [g.disabled]: touch && !form.name
                     })}
                   />
                 </div>
@@ -159,7 +165,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                     onChange={handleInput}
                     placeholder='Your email'
                     className={clsx({
-                      [g.disabled]: !isValidEmail(form.email)
+                      [g.disabled]: touch && !isValidEmail(form.email)
                     })}
                   />
                 </div>
@@ -172,7 +178,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                     onChange={handleInput}
                     placeholder='Phone number'
                     className={clsx({
-                      [g.disabled]: !!form.number && !isValidNumber(form.number)
+                      [g.disabled]: touch && (!!form.number && !isValidNumber(form.number))
                     })}
                   />
                 </div>
@@ -219,7 +225,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                 {/* file */}
                 <div className={g.wrap}>
                   <div className={clsx(g.drop, {
-                    [g.disabled]: !files?.[0].name
+                    [g.disabled]: touch && !files?.[0].name
                   })}>
                     <input
                       id="file"

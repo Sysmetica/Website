@@ -18,13 +18,13 @@ interface Props {
 }
 
 const Home: FC<Props> = ({ pageData }) => {
-  const { attributes: { title, subtitle, values, careers, casestudies } } = pageData
-  // console.log('pageData ', pageData)
+  const { attributes: { title, subtitle, values, careers, casestudies, teams } } = pageData
+  console.log('pageData ', pageData)
 
   return (
     <Layout type="home">
       <HomeStep />
-      <InfoStep />
+      <InfoStep team={teams} />
       <Progress />
       <Casestudies casestudies={casestudies} />
       <Services />

@@ -28,6 +28,7 @@ const ERROR_FORM = 'hmmmmmmm form NOT working...';
 
 const Career: FC<Props> = ({ pageData }) => {
   const [form, setForm] = useState(defaultData);
+  const [touch, setTouch] = useState(false);
   const [createTalk, { data, loading, error }] = useMutation(CREATE_TALK);
   const [sendStatus, setSendStatus] = useState<{
     status: 'success' | 'error',
@@ -39,6 +40,7 @@ const Career: FC<Props> = ({ pageData }) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+    setTouch(true);
     addTalk(form);
   };
 
@@ -59,6 +61,7 @@ const Career: FC<Props> = ({ pageData }) => {
       },
     }).then(({ data }: any) => {
       setForm(defaultData);
+      setTouch(false);
       setSendStatus({
         status: 'success',
         message: SUCCESS,
@@ -114,7 +117,7 @@ const Career: FC<Props> = ({ pageData }) => {
                       onChange={handleInput}
                       placeholder='Your full name'
                       className={clsx({
-                        [g.disabled]: !form.name
+                        [g.disabled]: touch && !form.name
                       })}
                     />
                   </div>
@@ -128,7 +131,7 @@ const Career: FC<Props> = ({ pageData }) => {
                       onChange={handleInput}
                       placeholder='Your email'
                       className={clsx({
-                        [g.disabled]: !form.email || !isValidEmail(form.email)
+                        [g.disabled]: touch && (!form.email || !isValidEmail(form.email))
                       })}
                     />
                   </div>
@@ -152,7 +155,7 @@ const Career: FC<Props> = ({ pageData }) => {
                       onChange={handleInput}
                       placeholder='Brief description of your idea'
                       className={clsx({
-                        [g.disabled]: !form.message
+                        [g.disabled]: touch && !form.message
                       })}
                     />
                   </div>

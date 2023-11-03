@@ -5,8 +5,10 @@ import clsx from 'clsx';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import { isMobileDevice } from '@/state';
+import Link from 'next/link';
+import { InfoTeam } from '@/types/home';
 
-export const InfoStep = () => {
+export const InfoStep = ({ team }: { team: InfoTeam }) => {
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
 
@@ -22,6 +24,7 @@ export const InfoStep = () => {
             onMouseOver={() => setArea({ area: 'open' })}
             onMouseOut={() => setArea({ area: 'default' })}
           >
+            <Link href={'https://www.upwork.com/agencies/1013061354596433920/'} target='_black' className={s.link} />
             <div className={s.tags}>
               <span className={s.tag}>
                 <MyImage src="/img/icons/tag1.svg" alt="tag icon" width={20} height={20} />
@@ -44,11 +47,13 @@ export const InfoStep = () => {
             onMouseOver={() => setArea({ area: 'open' })}
             onMouseOut={() => setArea({ area: 'default' })}
           >
+            <Link href={'/about#team'} className={s.link} />
             <div className={s.photos}>
-              <MyImage src="/img/test1.png" alt="team member photo" width={48} height={48} />
-              <MyImage src="/img/test1.png" alt="team member photo" width={48} height={48} />
-              <MyImage src="/img/test1.png" alt="team member photo" width={48} height={48} />
-              <MyImage src="/img/test1.png" alt="team member photo" width={48} height={48} />
+              {team.data.map(({ attributes: { preview } }) => {
+                return (
+                  <MyImage src={preview.data.attributes.url} alt="" width={48} height={48} key={preview.data.attributes.url} retina={2} />
+                )
+              })}
               <div className={s.icon} />
             </div>
             <div className={s.text}>

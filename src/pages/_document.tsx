@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" style={{ scrollBehavior: 'smooth' }}>
       <Head>
         <meta name="description" content="Delivering full-cycle mobile solutions for startups and tech companies from ideation to finished products. Elevate your tech journey with our comprehensive, innovative, and business-centric mobile development services" />
         <meta name="keywords" content="Full-Cycle Mobile Solutions, Startups, Tech Companies, Mobile Development, Ideation, Finished Products, Testing, Design" />

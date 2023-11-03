@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 import { csModal, isMobileDevice, menuState } from '@/state';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import MyImage from '@/components/image/image';
 
 export const Layout = ({ children, type = '' }: any) => {
   const router = useRouter();

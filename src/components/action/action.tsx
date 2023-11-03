@@ -36,31 +36,31 @@ export const Action = () => {
       gsap.to(circleRef.current, {
         x: mouseX,
         y: mouseY,
-        delay: .07,
+        duration: 0.3,
       })
 
       gsap.to(pointRef.current, {
         x: mouseX,
         y: mouseY,
-        delay: .01,
+        duration: 0.1,
       })
 
       gsap.to(openRef.current, {
         x: mouseX,
         y: mouseY,
-        delay: 0,
+        duration: 0.3,
       })
 
       gsap.to(submitRef.current, {
         x: mouseX,
         y: mouseY,
-        delay: 0,
+        duration: 0.3,
       })
 
       gsap.to(dragRef.current, {
         x: mouseX,
         y: mouseY,
-        delay: .05,
+        duration: 0.3,
       })
     }
 

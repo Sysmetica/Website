@@ -59,6 +59,19 @@ export const HOME_PAGE = gql`
               }
             }
           }
+          teams {
+            data {
+              attributes {
+                preview {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

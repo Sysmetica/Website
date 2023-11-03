@@ -2,6 +2,7 @@ import MyImage from '@/components/image/image';
 import { Row } from '../row/row';
 import s from './footer.module.scss';
 import Link from 'next/link';
+import { SocialLinks } from '../socialLinks/socialLinks';
 
 export const Footer = () => {
   return (
@@ -28,15 +29,7 @@ export const Footer = () => {
               <Link href={'/privacy-policy'}>Privacy Policy</Link>
             </div>
             <div className={s.social}>
-              <Link href={'https://www.upwork.com/agencies/1013061354596433920/'} target='_black'>
-                <MyImage src="/img/upwork.svg" alt='upwork logo' width={86} height={24} />
-              </Link>
-              <Link href={'https://www.linkedin.com/company/sysmetica/'} target='_blank'>
-                <MyImage src="/img//icons/linkedin.svg" alt='linkedin icon' width={24} height={24} />
-              </Link>
-              <Link href={'https://www.instagram.com/sysmetica'} target='_black'>
-                <MyImage src="/img//icons/instagram.svg" alt='instagram icon' width={24} height={24} />
-              </Link>
+              <SocialLinks />
             </div>
           </div>
         </div>

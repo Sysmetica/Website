@@ -1,4 +1,4 @@
-import { Image } from './common';
+import { ImageProps } from './common';
 
 export interface AboutPageFields {
   attributes: {
@@ -15,7 +15,7 @@ export interface AboutPageFields {
       data: {
         attributes: {
           name: string,
-          photo: Image
+          photo: ImageProps
           role: string
           description: string
           linkedin: string

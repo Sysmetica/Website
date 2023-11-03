@@ -7,14 +7,14 @@ import { IBMPlexSans } from "@/pages/_app";
 
 export const Team = ({ teams }: { teams: AboutPageFields['attributes']['teams'] }) => {
   return (
-    <div className={s.root}>
+    <div className={s.root} id="team">
       <Row>
         <div className={s.teams}>
           {teams.data.map(({ attributes: { name, photo, role, description, linkedin } }) => {
             return (
               <div className={s.item} key={name}>
                 <div className={s.image}>
-                  <MyImage src={photo.data.attributes.url} alt={name} width={364} height={418} />
+                  <MyImage src={photo.data.attributes.url} alt={name} width={364} height={418} retina={2} />
                   <Link href={linkedin} className={s.linkedin} target="_blank">
                     <MyImage src="/img/icons/linkedin.svg" alt="linkedin icon" width={24} height={32} />
                   </Link>

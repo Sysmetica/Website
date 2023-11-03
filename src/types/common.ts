@@ -1,4 +1,4 @@
-export interface Image {
+export interface ImageProps {
   data: {
     attributes: {
       url: string

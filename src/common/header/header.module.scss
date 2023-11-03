@@ -12,6 +12,7 @@
       height: 100%;
 
       .menu {
+        overflow: auto;
         z-index: 10;
         position: fixed;
         top: 0;
@@ -25,24 +26,48 @@
         padding: 40px 15px 20px;
         text-align: center;
 
-        a {
+        >a {
           border-bottom: 1px solid rgba(255, 255, 255, .20);
-          padding: 7vh 0;
+          padding: 6vh 0;
+        }
+      }
+
+      .mobileButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5vh;
+        margin: 10vh 0 20px;
+
+        >a {
+          width: 385px;
+          max-width: 100%;
+        }
+
+        .social {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
         }
       }
 
       .menuIcon {
         &:before {
-          top: 4px;
+          top: 9px;
           transform: rotate(45deg);
         }
 
         &:after {
-          top: 4px;
+          top: 9px;
           transform: rotate(-45deg);
         }
       }
     }
+  }
+
+  .mobileButtons {
+    display: none;
   }
 
   .headerWrap {
@@ -74,7 +99,7 @@
       display: none;
     }
 
-    a {
+    >a {
       color: #FFF;
       font-size: 16px;
       font-weight: 400;
@@ -92,7 +117,7 @@
     z-index: 11;
     position: relative;
     width: 20px;
-    height: 10px;
+    height: 20px;
 
     @media (min-width: 800px) {
       display: none;
@@ -109,11 +134,11 @@
     }
 
     &:before {
-      top: 0;
+      top: 5px;
     }
 
     &:after {
-      top: 8px;
+      top: 13px;
     }
   }
 }
