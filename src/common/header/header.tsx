@@ -8,15 +8,19 @@ import { useAtom } from "jotai";
 import { menuState } from "@/state";
 import { useRouter } from "next/router";
 import { SocialLinks } from "../socialLinks/socialLinks";
+import { EScrollDirection, useGetScrollPosition } from "@/hooks";
+import { MenuLink } from "../menuLink/menuLink";
 
 export const Header = () => {
   const [menu, setMenu] = useAtom(menuState);
   const { pathname } = useRouter();
+  const scrollDirection = useGetScrollPosition();
   const isContactPage = pathname === '/contact';
 
   return (
     <header className={clsx(s.root, {
-      [s.open]: menu
+      [s.open]: menu,
+      [s.hide]: scrollDirection === EScrollDirection.DOWN
     })}>
       <Row>
         <div className={s.headerWrap}>
@@ -24,10 +28,11 @@ export const Header = () => {
             <MyImage src="/img/logo.svg" alt="Sysmetica logo" width={165} height={32} />
           </Link>
           <ul className={s.menu}>
-            <Link href={'/services'}>Services</Link>
-            <Link href={'/case-studies'}>Case Studies</Link>
-            <Link href={'/about'}>About</Link>
-            <Link href={'/career'}>Careers</Link>
+            <MenuLink href="/services">Services</MenuLink>
+            <MenuLink href="/case-studies">Case Studies</MenuLink>
+            <MenuLink href="/about">About</MenuLink>
+            <MenuLink href="/career">Careers</MenuLink>
+
             <div className={s.mobileButtons}>
               <Button type={['fill']} link={'/contact'}>Contact Us</Button>
               <div className={s.social}>

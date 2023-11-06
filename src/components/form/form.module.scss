@@ -220,16 +220,27 @@
     }
 
     .attach {
+      position: relative;
       margin: 8px 0 0;
-      padding: 14px 16px 14px 51px;
+      padding: 15px 54px 13px 51px;
       border-radius: 6px;
       overflow: hidden;
-      background: #1D1D1F url('/img/icons/pdf.svg') no-repeat 16px center;
+      background: #1D1D1F url('/img/icons/pdf.svg') no-repeat 16px 12px;
       font-size: 14px;
       font-weight: 400;
       line-height: 150%;
       text-overflow: ellipsis;
       text-wrap: nowrap;
+
+      .remove {
+        cursor: pointer;
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        width: 24px;
+        height: 24px;
+        background: url('/img/icons/trash.svg') no-repeat center;
+      }
     }
 
     .buttonWrap {
@@ -237,13 +248,44 @@
       align-items: center;
       justify-content: space-between;
 
+      &.loading {
+        button {
+          display: none;
+        }
+
+        .loading {
+          display: block;
+        }
+      }
+
+      &.done {
+        button {
+          display: none;
+        }
+
+        .done {
+          display: block;
+        }
+
+        .success {
+          border-color: green;
+        }
+      }
+
+      &.error {
+        .success {
+          border-color: #EB4B62;
+        }
+      }
+
       .success {
-        padding: 14px 16px;
+        border-left: 4px solid #1D1D1F;
+        padding: 13px 24px 12px;
         border-radius: 6px;
         background: #1D1D1F;
         width: calc(100% - 130px);
-        font-size: 12px;
-        font-weight: 500;
+        font-size: 14px;
+        font-weight: 400;
         line-height: 166%;
       }
 
@@ -251,17 +293,25 @@
         margin: 0 0 0 auto;
       }
 
-      .done {
+      .done,
+      .loading {
+        display: none;
+        margin: 0 0 0 auto;
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background: #6856B5 url('/img/icons/done.svg') no-repeat center;
+        background-color: #6856B5;
+        background-repeat: no-repeat;
+        background-position: center;
       }
-    }
 
-    .loading {
-      margin: 10px 0 0;
-      font-size: 12px;
+      .done {
+        background-image: url('/img/icons/done.svg');
+      }
+
+      .loading {
+        background-image: url('/img/icons/loading-btn.svg');
+      }
     }
   }
 }

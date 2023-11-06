@@ -2,12 +2,29 @@ import clsx from 'clsx';
 import MyImage from '@/components/image/image';
 import { IBMPlexSans } from '@/pages/_app';
 import s from './services.module.scss';
+import { useSetAtom } from 'jotai';
+import { mouseActionArea } from '../action/action';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export const ServicesItems = () => {
+  const { pathname } = useRouter();
+  const setArea = useSetAtom(mouseActionArea);
+  const isNotServices = pathname !== '/services';
+
   return (
-    <div className={s.items}>
+    <div
+      className={s.items}
+      onMouseOver={() => {
+        isNotServices && setArea({ area: 'open' })
+      }}
+      onMouseOut={() => {
+        isNotServices && setArea({ area: 'default' })
+      }}
+    >
 
       <div className={clsx(s.item, s.mob)}>
+        {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <MyImage src="/img/icons/services/mobile.svg" alt="test icon" width={146} height={146} />
         </div>
@@ -24,6 +41,7 @@ export const ServicesItems = () => {
       </div>
 
       <div className={clsx(s.item, s.backend)}>
+        {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <MyImage src="/img/icons/services/be.svg" alt="test icon" width={48} height={48} />
         </div>
@@ -41,6 +59,7 @@ export const ServicesItems = () => {
       </div>
 
       <div className={clsx(s.item, s.qa)}>
+        {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <MyImage src="/img/icons/services/qa.svg" alt="test icon" width={48} height={48} />
         </div>
@@ -58,6 +77,7 @@ export const ServicesItems = () => {
       </div>
 
       <div className={clsx(s.item, s.design)}>
+        {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <MyImage src="/img/icons/services/design.svg" alt="test icon" width={48} height={48} />
         </div>

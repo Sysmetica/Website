@@ -1,10 +1,16 @@
 .root {
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  padding: 20px 0 0;
+  padding: 15px 0;
   width: 100%;
+  background: #000;
+  transition: transform .3s 0s ease;
+
+  &.hide {
+    transform: translateY(-100%);
+  }
 
   &.open {
     @media (max-width: 800px) {
@@ -29,6 +35,10 @@
         >a {
           border-bottom: 1px solid rgba(255, 255, 255, .20);
           padding: 6vh 0;
+
+          &:after {
+            display: none;
+          }
         }
       }
 

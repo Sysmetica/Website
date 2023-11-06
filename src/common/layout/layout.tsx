@@ -43,7 +43,7 @@ export const Layout = ({ children, type = '' }: any) => {
         {children}
       </div>
       <Footer />
-      <Action />
+      {/* <Action /> */}
     </div>
   )
 }

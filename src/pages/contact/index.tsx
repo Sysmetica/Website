@@ -10,6 +10,7 @@ import clsx from 'clsx'
 import { Button } from '@/components/button/button'
 import { useMutation } from '@apollo/client'
 import g from '@/components/form/form.module.scss';
+import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '@/components/form/const'
 
 interface Props {
   pageData: CareerPageFields
@@ -21,10 +22,6 @@ const defaultData = {
   subject: '',
   message: '',
 }
-
-const SUCCESS = 'Thank you! Your application has been received. We will contact you in the next 24 hours.';
-const ERROR = 'please, fill all required fields';
-const ERROR_FORM = 'hmmmmmmm form NOT working...';
 
 const Career: FC<Props> = ({ pageData }) => {
   const [form, setForm] = useState(defaultData);
@@ -45,10 +42,10 @@ const Career: FC<Props> = ({ pageData }) => {
   };
 
   const addTalk = async ({ name, email, subject, message }: any) => {
-    if (!name && !email && !message) {
+    if (!name || !email || !message) {
       setSendStatus({
         status: 'error',
-        message: ERROR,
+        message: FORM_ERROR,
       })
       return
     }
@@ -64,19 +61,12 @@ const Career: FC<Props> = ({ pageData }) => {
       setTouch(false);
       setSendStatus({
         status: 'success',
-        message: SUCCESS,
+        message: FORM_SUCCESS,
       });
-
-      setTimeout(() => {
-        setSendStatus({
-          status: 'error',
-          message: '',
-        });
-      }, 3000);
     }).catch((err) => {
       setSendStatus({
         status: 'error',
-        message: ERROR_FORM,
+        message: FORM_ERROR_VALIDATION,
       })
     });
   };
@@ -161,15 +151,19 @@ const Career: FC<Props> = ({ pageData }) => {
                   </div>
 
                 </div>
-                <div className={g.buttonWrap}>
+                <div className={clsx(g.buttonWrap, {
+                  [g.loading]: loading,
+                  [g.done]: sendStatus.status === 'success',
+                  [g.error]: sendStatus.status === 'error',
+                })}>
+
                   {!!sendStatus.message && <p className={g.success}>{sendStatus.message}</p>}
-                  {sendStatus.status === 'success' ? (
-                    <div className={g.done} />
-                  ) : (
-                    <Button stat={true} type={['fill']}>Submit</Button>
-                  )}
+
+                  <div className={g.done} />
+                  <div className={g.loading} />
+                  <Button stat={true} type={['fill']}>Submit</Button>
+
                 </div>
-                {loading && <div className={g.loading}>loading...</div>}
               </form>
             </div>
 

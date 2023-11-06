@@ -14,13 +14,14 @@ import { csModal } from '@/state';
 import { isValidEmail, isValidNumber } from '@/utils';
 import axios from 'axios';
 import Link from 'next/link';
+import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '../form/const';
 
 const defaultFormData = {
   name: '',
   email: '',
   number: '',
   vacancy: '',
-  file: -1,
+  file: '',
 }
 
 const sendStatusDefault = {
@@ -28,13 +29,10 @@ const sendStatusDefault = {
   message: ''
 }
 
-const SUCCESS = 'Thank you! Your application has been received. We will contact you in the next 24 hours.';
-const ERROR_VALIDATION = 'please, fill all required fields';
-const ERROR_FORM = 'hmmmmmmm form NOT working...';
-
 const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?: CareersProps['data'][0]['attributes']['slug'] }) => {
   const setModal = useSetAtom(csModal);
   const [sendStatus, setSendStatus] = useState(sendStatusDefault);
+  const [myLoading, setMyLoading] = useState(false);
   const [touch, setTouch] = useState(false);
   const [selectStat, setSelectState] = useState(false);
   const [files, setFiles] = useState<FileList | null>();
@@ -65,21 +63,16 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
       setForm(defaultFormData);
       setTouch(false);
       setFiles(null);
+      setMyLoading(false);
       setSendStatus({
         status: 'success',
-        message: SUCCESS,
+        message: FORM_SUCCESS,
       });
-      console.log('success ', data);
-
-      setTimeout(() => {
-        setSendStatus(sendStatusDefault);
-      }, 3000);
     }).catch((err) => {
       setSendStatus({
         status: 'error',
-        message: ERROR_FORM,
+        message: FORM_ERROR,
       })
-      console.log('err ', err);
     });
   };
 
@@ -99,28 +92,27 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
     if (!files || !form.name || !form.email) {
       setSendStatus({
         status: 'error',
-        message: ERROR_VALIDATION,
+        message: FORM_ERROR_VALIDATION,
       })
       return
     }
+
+    setMyLoading(true);
 
     formData.append('files', files[0]);
 
     // first, we need to upload the file
     axios.post(`${process.env.NEXT_PUBLIC_STRAPI_API_UPLOAD}`, formData)
       .then((response) => {
-        console.log('response ', response)
         addCv({ ...form, file: response.data[0].id });
       }).catch((error) => {
         setSendStatus({
           status: 'error',
           message: String(error),
         })
+        setMyLoading(false);
       })
   };
-
-  // if (loading) return 'Submitting...';
-  // if (error) return `Submission error! ${error.message}`;
 
   return (
     <div className={clsx(g.root, s.root)}>
@@ -225,7 +217,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                 {/* file */}
                 <div className={g.wrap}>
                   <div className={clsx(g.drop, {
-                    [g.disabled]: touch && !files?.[0].name
+                    [g.disabled]: touch && !files?.[0]?.name
                   })}>
                     <input
                       id="file"
@@ -238,19 +230,23 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                       <span>{`Accepted formats: .pdf, .doc, .docx, .txt, .odt, .rtf, and .html (30 MB max)`}</span>
                     </div>
                   </div>
-                  {files?.[0].name && <div className={g.attach}>{files?.[0].name}</div>}
+                  {files?.[0]?.name && <div className={g.attach}>{files?.[0]?.name}<span className={g.remove} onClick={() => setFiles(null)}></span></div>}
                 </div>
 
               </div>
-              <div className={g.buttonWrap}>
+              <div className={clsx(g.buttonWrap, {
+                [g.loading]: myLoading,
+                [g.done]: sendStatus.status === 'success',
+                [g.error]: sendStatus.status === 'error',
+              })}>
+
                 {!!sendStatus.message && <p className={g.success}>{sendStatus.message}</p>}
-                {sendStatus.status === 'success' ? (
-                  <div className={g.done} />
-                ) : (
-                  <Button stat={true} type={['fill']}>Submit</Button>
-                )}
+
+                <div className={g.done} />
+                <div className={g.loading} />
+                <Button stat={true} type={['fill']}>Submit</Button>
+
               </div>
-              {loading && <div className={g.loading}>loading...</div>}
             </form>
           </div>
 

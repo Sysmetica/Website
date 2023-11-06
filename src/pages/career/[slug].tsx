@@ -13,6 +13,7 @@ import { Editor } from '@/common/editor/editor';
 import dynamic from 'next/dynamic';
 import { useAtom } from 'jotai';
 import { csModal } from '@/state';
+import { useRouter } from 'next/router'
 
 const CvForm = dynamic(() => import('@/components/cv/cv'));
 
@@ -22,8 +23,9 @@ interface Props {
 }
 
 const Career: FC<Props> = ({ pageData, list }) => {
-  const [modal, setModal] = useAtom(csModal);
   const { attributes: { title, level, tags, description } } = pageData
+  const [modal, setModal] = useAtom(csModal);
+  const router = useRouter();
 
   const modalHandler = (e: any) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ const Career: FC<Props> = ({ pageData, list }) => {
         <div className={s.head}>
           <Row>
             <div className={s.wrap}>
-              <Link href={'/career'} className={s.back}>back</Link>
+              <span className={s.back} onClick={() => router.back()}>back</span>
               <div className={s.info}>
                 <div className={s.buttonWrap}>
                   <MyImage src="/img/icons/career1.svg" alt="text" width={48} height={48} imgClass={s.ico} />

@@ -29,8 +29,6 @@ const sizes = [
     width: 208,
     height: 244,
   },
-
-  // repeat
   {
     width: 364,
     height: 580,
@@ -47,6 +45,7 @@ const sizes = [
 
 export const Gallery = ({ gallery }: { gallery: AboutPageFields['attributes']['gallery'] }) => {
   const [pause, setPause] = useState(false);
+  const galleryItems = gallery.data.slice(0, 9);
 
   return (
     <div
@@ -58,7 +57,7 @@ export const Gallery = ({ gallery }: { gallery: AboutPageFields['attributes']['g
       onMouseOut={() => setPause(false)}
     >
       <div className={s.images}>
-        {gallery.data.map(({ attributes: { url } }, index) => {
+        {galleryItems.map(({ attributes: { url } }, index) => {
           return (
             <div
               className={s.img}
@@ -81,7 +80,7 @@ export const Gallery = ({ gallery }: { gallery: AboutPageFields['attributes']['g
       </div>
 
       <div className={clsx(s.images, s.close)}>
-        {gallery.data.map(({ attributes: { url } }, index) => {
+        {galleryItems.map(({ attributes: { url } }, index) => {
           return (
             <div
               className={s.img}

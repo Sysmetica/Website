@@ -57,6 +57,10 @@ $transitionBack: .3s .1s ease;
       scroll-padding: 0 15px;
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .block {

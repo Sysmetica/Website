@@ -16,6 +16,10 @@
       scroll-padding: 0 15px;
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     @media (min-width: 800px) {
