@@ -45,7 +45,7 @@ const Career: FC<Props> = ({ pageData }) => {
     if (!name || !email || !message) {
       setSendStatus({
         status: 'error',
-        message: FORM_ERROR,
+        message: FORM_ERROR_VALIDATION,
       })
       return
     }
@@ -66,7 +66,7 @@ const Career: FC<Props> = ({ pageData }) => {
     }).catch((err) => {
       setSendStatus({
         status: 'error',
-        message: FORM_ERROR_VALIDATION,
+        message: FORM_ERROR,
       })
     });
   };
