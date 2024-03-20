@@ -6,15 +6,19 @@ import { useSetAtom } from 'jotai';
 import { mouseActionArea } from '../action/action';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import MobileIcon from '../../../public/img/icons/services/mobile.svg';
+import BeIcon from '../../../public/img/icons/services/be.svg';
+import QaIcon from '../../../public/img/icons/services/qa.svg';
+import DesignIcon from '../../../public/img/icons/services/design.svg';
 
-export const ServicesItems = () => {
+export const ServicesItems = ({ type = '' }: { type?: string }) => {
   const { pathname } = useRouter();
   const setArea = useSetAtom(mouseActionArea);
   const isNotServices = pathname !== '/services';
 
   return (
     <div
-      className={s.items}
+      className={clsx(s.items, s[type])}
       onMouseOver={() => {
         isNotServices && setArea({ area: 'open' })
       }}
@@ -26,7 +30,7 @@ export const ServicesItems = () => {
       <div className={clsx(s.item, s.mob)}>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
-          <MyImage src="/img/icons/services/mobile.svg" alt="test icon" width={146} height={146} />
+          <MobileIcon />
         </div>
         <div className={s.text}>
           <h3 className={clsx(s.title, IBMPlexSans.className)}>Mobile Development</h3>
@@ -43,7 +47,7 @@ export const ServicesItems = () => {
       <div className={clsx(s.item, s.backend)}>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
-          <MyImage src="/img/icons/services/be.svg" alt="test icon" width={48} height={48} />
+          <BeIcon />
         </div>
         <div className={s.text}>
           <h3 className={clsx(s.title, IBMPlexSans.className)}>Back-End</h3>
@@ -61,7 +65,7 @@ export const ServicesItems = () => {
       <div className={clsx(s.item, s.qa)}>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
-          <MyImage src="/img/icons/services/qa.svg" alt="test icon" width={48} height={48} />
+          <QaIcon />
         </div>
         <div className={s.text}>
           <h3 className={clsx(s.title, IBMPlexSans.className)}>Manual QA</h3>
@@ -79,7 +83,7 @@ export const ServicesItems = () => {
       <div className={clsx(s.item, s.design)}>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
-          <MyImage src="/img/icons/services/design.svg" alt="test icon" width={48} height={48} />
+          <DesignIcon />
         </div>
         <div className={s.text}>
           <h3 className={clsx(s.title, IBMPlexSans.className)}>Design</h3>

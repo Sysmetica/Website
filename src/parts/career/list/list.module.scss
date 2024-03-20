@@ -1,6 +1,8 @@
-@import '@/styles/variables.scss';
-
 .root {
   background: #000;
   padding: 50px 0 100px;
+
+  [data-theme="light"] & {
+    background: #EFEDEA;
+  }
 }

@@ -51,7 +51,7 @@ export const InfoStep = ({ team }: { team: InfoTeam }) => {
             <div className={s.photos}>
               {team.data.map(({ attributes: { preview } }, index) => {
                 return (
-                  <MyImage src={preview.data?.attributes.url || '/img/team-placeholder.svg'} alt="" width={48} height={48} key={index} retina={2} />
+                  <MyImage src={preview.data?.attributes.url || '/img/team-placeholder.svg'} alt="" width={48} height={48} key={index} retina={2} upload={true} />
                 )
               })}
               <div className={s.icon} />

@@ -70,6 +70,10 @@
           margin: 0 0 6px;
           font-size: 24px;
           font-weight: 600;
+
+          [data-theme="light"] & {
+            color: #1D1D1F;
+          }
         }
 
         span {
@@ -120,6 +124,10 @@
         background: #584997;
         opacity: 0;
         transition: opacity .3s 0s ease;
+
+        [data-theme="light"] & {
+          background: #ED6B55;
+        }
 
         .text {
           height: calc(100% - 8% - 24px - 15px);

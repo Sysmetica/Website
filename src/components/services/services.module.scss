@@ -3,6 +3,11 @@
   padding: 60px 0;
   color: #fff;
 
+  [data-theme="light"] & {
+    background: #EFEDEA;
+    color: #1D1D1F;
+  }
+
   @media (min-width: 800px) {
     padding: 130px 0;
   }
@@ -87,6 +92,12 @@
       "mobile design design";
   }
 
+  &.services {
+    .item {
+      border: 1px solid #E0E0E1;
+    }
+  }
+
   .item {
     position: relative;
     display: flex;
@@ -95,6 +106,10 @@
     border-radius: 6px;
     background: #1D1D1F;
     padding: 32px;
+
+    [data-theme="light"] & {
+      background: #fff;
+    }
 
     @media (max-width: 800px) {
       flex: 0 0 80%;
@@ -105,6 +120,10 @@
     &.mob {
       grid-area: mobile;
       background: #584997;
+
+      [data-theme="light"] & {
+        background: #ED6B55;
+      }
 
       @media (min-width: 800px) {
         h3 {
@@ -120,6 +139,20 @@
       img {
         width: 146px;
         height: auto;
+      }
+
+      h3 {
+        [data-theme="light"] & {
+          color: #fff;
+        }
+      }
+
+      .icon {
+        svg path {
+          [data-theme="light"] & {
+            stroke: #fff;
+          }
+        }
       }
     }
 
@@ -158,6 +191,10 @@
       font-size: 24px;
       line-height: 133%;
       font-weight: 600;
+
+      [data-theme="light"] & {
+        color: #1D1D1F;
+      }
     }
 
     .tags {
@@ -175,6 +212,21 @@
         font-size: 14px;
         font-weight: 500;
         line-height: 142%;
+
+        [data-theme="light"] & {
+          background: #F4F3F1;
+          color: #1D1D1F;
+        }
+      }
+    }
+
+    .icon {
+      svg path {
+        stroke: #fff;
+
+        [data-theme="light"] & {
+          stroke: #1D1D1F;
+        }
       }
     }
   }

@@ -1,9 +1,11 @@
-@import '@/styles/variables.scss';
-
 .root {
-  background: $bgWhite;
+  background: #fff;
   padding: 70px 0;
   color: #1D1D1F;
+
+  [data-theme="light"] & {
+    background: #EFEDEA;
+  }
 
   @media (min-width: 800px) {
     padding: 154px 0 125px;
@@ -30,6 +32,16 @@
       }
     }
 
+    &.icon {
+      svg path {
+        stroke: #584997;
+
+        [data-theme="light"] & {
+          stroke: #ED6B55;
+        }
+      }
+    }
+
     .num {
       margin: 0 0 8px;
       font-size: 28px;
@@ -42,6 +54,10 @@
 
       span {
         color: #6856B5;
+
+        [data-theme="light"] & {
+          color: #ED6B55;
+        }
       }
     }
 

@@ -4,8 +4,18 @@ import { IBMPlexSans } from '@/pages/_app';
 import { Button } from '@/components/button/button';
 import { CareersList } from '@/components/careers/careers';
 import { CareerPageFields } from '@/types/career';
+import { OptionsProps } from '@/types/options';
 
-export const Career = ({ careers }: { careers: CareerPageFields['attributes']['careers'] }) => {
+type CareerProps = {
+  careers: CareerPageFields['attributes']['careers']
+  theme: OptionsProps['attributes']['theme']
+}
+
+export const Career = ({ careers, theme }: CareerProps) => {
+  if (!careers.data.length) {
+    return null;
+  }
+
   return (
     <div className={s.root}>
       <Row>
@@ -17,7 +27,7 @@ export const Career = ({ careers }: { careers: CareerPageFields['attributes']['c
           </div>
 
           <div className={s.items}>
-            <CareersList careers={careers} />
+            <CareersList careers={careers} theme={theme} />
           </div>
 
           <div className={s.buttonWrap}>

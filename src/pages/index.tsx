@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { HOME_PAGE } from '@/graphql/queries'
+import { HOME_PAGE, OPTIONS } from '@/graphql/queries'
 import { GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { HomeStep } from '@/parts/home/home/home'
@@ -12,17 +12,27 @@ import { Career } from '@/parts/home/career/career'
 import { Layout } from '@/common/layout/layout'
 import { HomePageFields } from '@/types/home'
 import { Services } from '@/parts/home/services/services'
+import { OptionsProps } from '@/types/options'
 
 interface Props {
   pageData: HomePageFields
+  options: OptionsProps
 }
 
-const Home: FC<Props> = ({ pageData }) => {
-  const { attributes: { values, careers, casestudies, teams } } = pageData
-  console.log('pageData ', pageData)
+const Home: FC<Props> = ({ pageData, options }) => {
+  const {
+    attributes: {
+      values,
+      careers,
+      casestudies,
+      teams
+    }
+  } = pageData
+  // console.log('pageData ', pageData)
+  // console.log('options ', options);
 
   return (
-    <Layout type="home">
+    <Layout type="home" theme={options.attributes.theme}>
       <HomeStep />
       <div className="white">
         <InfoStep team={teams} />
@@ -31,7 +41,7 @@ const Home: FC<Props> = ({ pageData }) => {
       </div>
       <Services />
       <Values values={values} />
-      <Career careers={careers} />
+      <Career careers={careers} theme={options.attributes.theme} />
       <Contacts />
     </Layout>
   )
@@ -43,9 +53,14 @@ export const getStaticProps: GetStaticProps<any> = async () => {
   const { data } = await client.query({ query: HOME_PAGE })
   const pageData: HomePageFields = data.homePage.data;
 
+  // options
+  const optionsData = await client.query({ query: OPTIONS });
+  const options = optionsData.data.option.data;
+
   return {
     props: {
-      pageData
+      pageData,
+      options,
     },
     revalidate: 10,
   }

@@ -21,6 +21,10 @@
       border-radius: 6px;
       background: #ECECEE;
 
+      [data-theme="light"] & {
+        background: #E0E0E1;
+      }
+
       @media (min-width: 800px) {
         padding: 32px 40px;
       }
@@ -35,6 +39,11 @@
       font-weight: 500;
       line-height: 100%;
       text-decoration: none;
+
+      [data-theme="light"] & {
+        background: url('/img/icons/back-b.svg') no-repeat left center;
+        color: #1D1D1F;
+      }
     }
 
     .buttonWrap {

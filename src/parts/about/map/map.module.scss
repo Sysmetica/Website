@@ -1,8 +1,10 @@
-@import '@/styles/variables.scss';
-
 .root {
   padding: 35px 0 0;
-  color: #FFF;
+  color: #fff;
+
+  [data-theme="light"] & {
+    color: #1D1D1F;
+  }
 
   @media (min-width: 800px) {
     padding: 120px 0 0;

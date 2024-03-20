@@ -7,6 +7,22 @@ module.exports = {
         test: /\.md$/,
         loader: 'frontmatter-markdown-loader',
         options: { mode: ['react-component'] }
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+        use: [
+          {
+            loader: "@svgr/webpack",
+            options: {
+              // icon: true,
+              svgo: {
+                plugins: [{ removeViewBox: false }],
+              },
+            },
+          },
+        ],
       }
     )
     return cfg;
@@ -19,7 +35,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'localhost',
+        hostname: '127.0.0.1',
         port: '1337',
         pathname: '/uploads/**',
       },

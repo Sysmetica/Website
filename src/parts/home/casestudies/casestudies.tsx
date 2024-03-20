@@ -15,6 +15,10 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
 
+  if (!casestudies.data.length) {
+    return null;
+  }
+
   return (
     <div
       className={clsx(s.root, {
@@ -53,8 +57,8 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
                 </Row>
               </div>
               <div className={s.imageWrap}>
-                <MyImage src={landscape.data.attributes.url} alt='slide image' width={1920} height={931} retina={2} imgClass={s.land} />
-                <MyImage src={portrait.data.attributes.url} alt='slide image' width={931} height={1441} retina={2} imgClass={s.port} />
+                <MyImage src={landscape.data.attributes.url} alt='slide image' width={1920} height={931} retina={2} imgClass={s.land} upload={true} />
+                <MyImage src={portrait.data.attributes.url} alt='slide image' width={931} height={1441} retina={2} imgClass={s.port} upload={true} />
               </div>
             </SwiperSlide>
           )

@@ -20,6 +20,10 @@
     border-width: 1px 0 1px 1px;
     border-radius: 10px;
 
+    [data-theme="light"] & {
+      border-color: #ED6B55;
+    }
+
     @media (min-width: 800px) {
       left: calc(50% - 240px);
     }
@@ -59,6 +63,10 @@
     max-width: 300px;
     width: 100%;
     text-align: center;
+
+    [data-theme="light"] & {
+      background: #fff;
+    }
 
     @media (min-width: 800px) {
       max-width: 340px;
@@ -108,9 +116,13 @@
 
     h3 {
       margin: 4px 0;
-      color: #FFF;
+      color: #fff;
       font-size: 18px;
       font-weight: 500;
+
+      [data-theme="light"] & {
+        color: #1D1D1F;
+      }
 
       @media (min-width: 800px) {
         font-size: 20px;
@@ -122,6 +134,10 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 142%;
+
+      [data-theme="light"] & {
+        color: #1D1D1F;
+      }
     }
   }
 
@@ -147,6 +163,10 @@
       border-style: dashed;
       border-color: #fff;
       border-width: 0 0 0 1px;
+
+      [data-theme="light"] & {
+        border-color: #ED6B55;
+      }
     }
 
     .bg {
@@ -188,6 +208,10 @@
             border-style: solid;
             border-width: 0 0 3px 3px;
             color: #1D1D1F;
+
+            [data-theme="light"] & {
+              border-color: #ED6B55;
+            }
           }
         }
       }
@@ -207,6 +231,10 @@
         border-color: #584997;
         border-style: solid;
         border-width: 0 0 3px 3px;
+
+        [data-theme="light"] & {
+          border-color: #ED6B55;
+        }
       }
 
       span {
@@ -214,6 +242,10 @@
         font-size: 14px;
         font-weight: 600;
         text-transform: uppercase;
+
+        [data-theme="light"] & {
+          color: #ED6B55;
+        }
 
         @media (min-width: 800px) {
           font-size: 16px;
@@ -289,6 +321,10 @@
           border-color: #fff;
           border-width: 0 0 1px 0;
 
+          [data-theme="light"] & {
+            border-color: #ED6B55;
+          }
+
           @media (min-width: 800px) {
             display: block;
           }
@@ -302,6 +338,11 @@
           color: #FFF;
           font-size: 14px;
           font-weight: 500;
+
+          [data-theme="light"] & {
+            background: #fff;
+            color: #1D1D1F;
+          }
         }
       }
     }

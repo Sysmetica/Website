@@ -8,8 +8,15 @@ import { mouseActionArea } from '../action/action';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { csModal, isMobileDevice } from '@/state';
 import CvForm from '@/components/cv/cv';
+import { OptionsProps } from '@/types/options';
 
-export const CareersList = ({ careers, type }: { careers: CareerPageFields['attributes']['careers'], type?: 'buttonPlus' }) => {
+type CareersListProps = {
+  careers: CareerPageFields['attributes']['careers']
+  theme: OptionsProps['attributes']['theme']
+  type?: 'buttonPlus'
+}
+
+export const CareersList = ({ careers, type, theme }: CareersListProps) => {
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
   const [modal, setModal] = useAtom(csModal);
@@ -77,7 +84,7 @@ export const CareersList = ({ careers, type }: { careers: CareerPageFields['attr
 
         </div>
       </div>
-      {modal && <CvForm svList={careers.data} />}
+      {modal && <CvForm svList={careers.data} theme={theme} />}
     </>
   )
 }

@@ -268,3 +268,15 @@ export const CASE_STUDIES_PAGE = gql`
     }
   }
 `
+
+export const OPTIONS = gql`
+query {
+  option {
+    data {
+      attributes {
+        theme
+      }
+    }
+  }
+}
+`

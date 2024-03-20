@@ -1,5 +1,9 @@
 .root {
-  color: #FFF;
+  color: #fff;
+
+  [data-theme="light"] & {
+    color: #1D1D1F;
+  }
 
   .wrap {
     max-width: 400px;

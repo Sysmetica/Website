@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { CONTACT_PAGE, CREATE_TALK } from '@/graphql/queries'
+import { CONTACT_PAGE, CREATE_TALK, OPTIONS } from '@/graphql/queries'
 import { GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
@@ -11,9 +11,11 @@ import { Button } from '@/components/button/button'
 import { useMutation } from '@apollo/client'
 import g from '@/components/form/form.module.scss';
 import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '@/components/form/const'
+import { OptionsProps } from '@/types/options'
 
 interface Props {
   pageData: CareerPageFields
+  options: OptionsProps
 }
 
 const defaultData = {
@@ -23,7 +25,7 @@ const defaultData = {
   message: '',
 }
 
-const Career: FC<Props> = ({ pageData }) => {
+const Career: FC<Props> = ({ pageData, options }) => {
   const [form, setForm] = useState(defaultData);
   const [touch, setTouch] = useState(false);
   const [createTalk, { data, loading, error }] = useMutation(CREATE_TALK);
@@ -83,7 +85,7 @@ const Career: FC<Props> = ({ pageData }) => {
   }
 
   return (
-    <Layout>
+    <Layout theme={options.attributes.theme}>
       <div className={g.root}>
         <Row>
           <div className={g.rootWrap}>
@@ -180,9 +182,14 @@ export const getStaticProps: GetStaticProps<any> = async () => {
   const { data } = await client.query({ query: CONTACT_PAGE })
   const pageData: CareerPageFields = data.contactPage.data;
 
+  // options
+  const optionsData = await client.query({ query: OPTIONS });
+  const options = optionsData.data.option.data;
+
   return {
     props: {
-      pageData
+      pageData,
+      options,
     },
     revalidate: 10,
   }

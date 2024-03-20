@@ -48,6 +48,10 @@
         background: #ECECEE;
         color: #1D1D1F;
 
+        [data-theme="light"] & {
+          background: #fff;
+        }
+
         @media (min-width: 800px) {
           padding: 32px;
         }
@@ -55,6 +59,10 @@
         &.button {
           background: #584997;
           color: #fff;
+
+          [data-theme="light"] & {
+            background: #ED6B55;
+          }
         }
       }
 
@@ -133,7 +141,14 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #584997 url('/img/icons/str-small-w.svg') no-repeat center;
+    background-color: #584997;
+    background-image: url('/img/icons/str-small-w.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    [data-theme="light"] & {
+      background-color: #ED6B55;
+    }
 
     @media (min-width: 800px) {
       margin: 32px 32px 0 0;

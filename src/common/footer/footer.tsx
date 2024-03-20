@@ -4,15 +4,20 @@ import s from './footer.module.scss';
 import Link from 'next/link';
 import { SocialLinks } from '../socialLinks/socialLinks';
 import { MenuLink } from '../menuLink/menuLink';
+import { OptionsProps } from '@/types/options';
 
-export const Footer = () => {
+export const Footer = ({ theme }: { theme: OptionsProps['attributes']['theme'] }) => {
   return (
     <footer className={s.root}>
       <Row>
 
         <div className={s.top}>
           <div className={s.logo}>
-            <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
+            {theme === 'dark' ? (
+              <MyImage src="/img/logo.svg" alt="Sysmetica logo" width={165} height={32} />
+            ) : (
+              <MyImage src="/img/logo2.svg" alt="Sysmetica logo" width={165} height={32} />
+            )}
           </div>
           <div className={s.menu}>
             <MenuLink href="/services">Services</MenuLink>

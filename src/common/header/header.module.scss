@@ -8,6 +8,10 @@
   background: #000;
   transition: transform .3s 0s ease;
 
+  [data-theme="light"] & {
+    background: #fff;
+  }
+
   &.hide {
     transform: translateY(-100%);
   }
@@ -114,6 +118,10 @@
       font-size: 16px;
       font-weight: 400;
       text-decoration: none;
+
+      [data-theme="light"] & {
+        color: #1D1D1F;
+      }
     }
   }
 

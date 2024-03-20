@@ -1,8 +1,9 @@
 import Image from 'next/image';
 
 type MyImageProps = {
-  src: string
-  alt: string
+  src: string | undefined
+  alt?: string | undefined
+  title?: string
   width: number
   height: number
   imgClass?: string
@@ -10,11 +11,14 @@ type MyImageProps = {
   refVal?: any
   blurImage?: string
   retina?: number
+  upload?: boolean
+  quality?: number
 }
 
 const MyImage = ({
   src,
   alt,
+  title,
   width,
   height,
   imgClass,
@@ -22,12 +26,25 @@ const MyImage = ({
   refVal,
   blurImage,
   retina = 1,
+  upload,
+  quality = 75,
+  ...rest
 }: MyImageProps) => {
+
+  const getUrl = (src: string) => {
+    if (upload) {
+      return `${process.env.NEXT_PUBLIC_SITE_URL}${src}`
+    }
+
+    return src
+  }
+
   return (
     <Image
       ref={refVal}
-      src={src}
-      alt={alt}
+      src={src ? getUrl(src) : '/img/placeholder.jpg'}
+      alt={!alt ? 'klickkonzept' : alt}
+      title={title}
       width={width * retina}
       height={height * retina}
       // loading='lazy'
@@ -35,6 +52,8 @@ const MyImage = ({
       onClick={onClick}
       placeholder={blurImage ? 'blur' : undefined}
       blurDataURL={blurImage}
+      quality={quality}
+      {...rest}
     />
   )
 }

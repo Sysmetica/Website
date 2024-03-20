@@ -14,7 +14,7 @@ export const List = () => {
             <h2 className={IBMPlexSans.className}>Comprehensive Services Tailored to Your Unique Needs</h2>
           </div>
 
-          <ServicesItems />
+          <ServicesItems type="services" />
 
         </div>
       </Row>

@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
-import { CASE_STUDIES_PAGE } from '@/graphql/queries'
+import { CASE_STUDIES_PAGE, OPTIONS } from '@/graphql/queries'
 import { GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
 import { CareerPageFields } from '@/types/career'
 import { Title } from '@/components/title/title'
+import { OptionsProps } from '@/types/options'
 
 interface Props {
   pageData: {
@@ -13,9 +14,10 @@ interface Props {
       subtitle: string
     }
   }
+  options: OptionsProps
 }
 
-const CaseStudies: FC<Props> = ({ pageData }) => {
+const CaseStudies: FC<Props> = ({ pageData, options }) => {
   const {
     attributes:
     {
@@ -25,7 +27,7 @@ const CaseStudies: FC<Props> = ({ pageData }) => {
   } = pageData
 
   return (
-    <Layout>
+    <Layout theme={options.attributes.theme}>
       <Title
         title={title}
         subtitle={subtitle}
@@ -40,9 +42,14 @@ export const getStaticProps: GetStaticProps<any> = async () => {
   const { data } = await client.query({ query: CASE_STUDIES_PAGE })
   const pageData: CareerPageFields = data.caseStudiesPage.data;
 
+  // options
+  const optionsData = await client.query({ query: OPTIONS });
+  const options = optionsData.data.option.data;
+
   return {
     props: {
-      pageData
+      pageData,
+      options,
     },
     revalidate: 10,
   }

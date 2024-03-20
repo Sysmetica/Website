@@ -10,8 +10,9 @@ import { useRouter } from "next/router";
 import { SocialLinks } from "../socialLinks/socialLinks";
 import { EScrollDirection, useGetScrollPosition } from "@/hooks";
 import { MenuLink } from "../menuLink/menuLink";
+import { OptionsProps } from "@/types/options";
 
-export const Header = () => {
+export const Header = ({ theme }: { theme: OptionsProps['attributes']['theme'] }) => {
   const [menu, setMenu] = useAtom(menuState);
   const { pathname } = useRouter();
   const scrollDirection = useGetScrollPosition();
@@ -25,7 +26,11 @@ export const Header = () => {
       <Row>
         <div className={s.headerWrap}>
           <Link className={s.logo} href={'/'}>
-            <MyImage src="/img/logo.svg" alt="Sysmetica logo" width={165} height={32} />
+            {theme === 'dark' ? (
+              <MyImage src="/img/logo.svg" alt="Sysmetica logo" width={165} height={32} />
+            ) : (
+              <MyImage src="/img/logo2.svg" alt="Sysmetica logo" width={165} height={32} />
+            )}
           </Link>
           <ul className={s.menu}>
             <MenuLink href="/services">Services</MenuLink>

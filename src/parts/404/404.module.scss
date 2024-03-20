@@ -4,6 +4,10 @@
   color: #fff;
   text-align: center;
 
+  [data-theme="light"] & {
+    color: #1D1D1F;
+  }
+
   img {
     width: 146px;
     height: auto;

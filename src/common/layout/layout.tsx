@@ -8,8 +8,15 @@ import { useEffect } from 'react';
 import { csModal, isMobileDevice, menuState } from '@/state';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
+import { OptionsProps } from '@/types/options';
 
-export const Layout = ({ children, type = '' }: any) => {
+type LayoutProps = {
+  children: any
+  type?: string
+  theme: OptionsProps['attributes']['theme']
+}
+
+export const Layout = ({ children, type = '', theme }: LayoutProps) => {
   const router = useRouter();
   const setDevice = useSetAtom(isMobileDevice);
   const setArea = useSetAtom(mouseActionArea);
@@ -36,13 +43,13 @@ export const Layout = ({ children, type = '' }: any) => {
   }, [])
 
   return (
-    <div className={clsx(s.root, s[type])}>
+    <div className={clsx(s.root, s[type])} data-theme={theme}>
       {/* <MyImage src="/img/bg.svg" alt="" width={881} height={600} imgClass={s.bg} /> */}
-      <Header />
+      <Header theme={theme} />
       <div className={s.content}>
         {children}
       </div>
-      <Footer />
+      <Footer theme={theme} />
       <Action />
     </div>
   )

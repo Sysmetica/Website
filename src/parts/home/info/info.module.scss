@@ -1,8 +1,11 @@
-@import '@/styles/variables.scss';
 $transitionBack: .3s .1s ease;
 
 .root {
-  background: $bgWhite;
+  background: #fff;
+
+  [data-theme="light"] & {
+    background: #EFEDEA;
+  }
 
   &.mobile {
 
@@ -86,6 +89,10 @@ $transitionBack: .3s .1s ease;
         background: #584997;
         border-radius: 6px;
         transition: transform $transitionBack;
+
+        [data-theme="light"] & {
+          background: #ED6B55;
+        }
       }
     }
 
@@ -109,6 +116,10 @@ $transitionBack: .3s .1s ease;
 
       &:after {
         background: #584997;
+
+        [data-theme="light"] & {
+          background: #ED6B55;
+        }
       }
 
       .tags {
@@ -156,6 +167,10 @@ $transitionBack: .3s .1s ease;
 
       &:after {
         background: #ECECEE;
+
+        [data-theme="light"] & {
+          background: #E0E0E1;
+        }
       }
 
       .photos {
@@ -212,7 +227,14 @@ $transitionBack: .3s .1s ease;
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: #6856B5 url('/img/icons/str-small-w.svg') no-repeat center;
+      background-color: #6856B5;
+      background-image: url('/img/icons/str-small-w.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      [data-theme="light"] & {
+        background-color: #1D1D1F;
+      }
     }
   }
 }

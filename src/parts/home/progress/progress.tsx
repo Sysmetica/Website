@@ -2,7 +2,7 @@ import { Row } from '@/common/row/row';
 import s from './progress.module.scss';
 import { IBMPlexSans } from '@/pages/_app';
 import clsx from 'clsx';
-import MyImage from '@/components/image/image';
+import LineIcon from '../../../../public/img/str-line.svg';
 
 export const Progress = () => {
   return (
@@ -10,7 +10,7 @@ export const Progress = () => {
       <Row>
         <div className={s.progress}>
           <div className={clsx(s.item, s.icon)}>
-            <MyImage src="/img/str-line.svg" alt="icon" width={100} height={36} />
+            <LineIcon />
           </div>
           <div className={s.item}>
             <div className={clsx(IBMPlexSans.className, s.num)}>100<span>%</span></div>

@@ -4,6 +4,10 @@
   color: #1D1D1F;
   text-align: center;
 
+  [data-theme="light"] & {
+    background: #fff;
+  }
+
   @media (min-width: 800px) {
     padding: 80px 0;
   }

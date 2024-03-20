@@ -15,6 +15,8 @@ import { isValidEmail, isValidNumber } from '@/utils';
 import axios from 'axios';
 import Link from 'next/link';
 import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '../form/const';
+import { OptionsProps } from '@/types/options';
+import FileIcon from '../../../public/img/icons/file.svg';
 
 const defaultFormData = {
   name: '',
@@ -29,7 +31,13 @@ const sendStatusDefault = {
   message: ''
 }
 
-const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?: CareersProps['data'][0]['attributes']['slug'] }) => {
+type CvFormProps = {
+  svList: CareersProps['data']
+  activeCv?: CareersProps['data'][0]['attributes']['slug']
+  theme: OptionsProps['attributes']['theme']
+}
+
+const CvForm = ({ svList, activeCv, theme }: CvFormProps) => {
   const setModal = useSetAtom(csModal);
   const [sendStatus, setSendStatus] = useState(sendStatusDefault);
   const [myLoading, setMyLoading] = useState(false);
@@ -121,7 +129,11 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
 
           <div className={s.head}>
             <Link href={'/'}>
-              <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
+              {theme === 'dark' ? (
+                <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
+              ) : (
+                <MyImage src="/img/logo2.svg" alt="sysmetica logo" width={165} height={32} />
+              )}
             </Link>
             <Button type={['close']} onClick={closeModal}>Close</Button>
           </div>
@@ -225,7 +237,7 @@ const CvForm = ({ svList, activeCv }: { svList: CareersProps['data'], activeCv?:
                       onChange={(e) => setFiles(e.target.files)}
                     />
                     <div className={g.note}>
-                      <MyImage src="/img/icons/file.svg" alt="file icon" width={40} height={40} />
+                      <FileIcon />
                       <p>{`* Drag & Drop CV here or Browse`}</p>
                       <span>{`Accepted formats: .pdf, .doc, .docx, .txt, .odt, .rtf, and .html (30 MB max)`}</span>
                     </div>

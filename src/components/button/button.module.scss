@@ -12,6 +12,11 @@
   text-decoration: none;
   text-align: center;
 
+  [data-theme="light"] & {
+    border: 1px solid #ED6B55;
+    color: #ED6B55;
+  }
+
   @media (min-width: 800px) {
     padding: 16px 24px;
   }
@@ -19,6 +24,11 @@
   &.fill {
     border: none;
     background-color: #584997;
+    color: #fff;
+
+    [data-theme="light"] & {
+      background-color: #ED6B55;
+    }
   }
 
   &.submit {
@@ -44,6 +54,10 @@
     background-image: url('/img/icons/close.svg');
     background-repeat: no-repeat;
     background-position: 17px center;
+
+    [data-theme="light"] & {
+      background-image: url('/img/icons/close-p.svg');
+    }
 
     @media (min-width: 800px) {
       padding-left: 48px;

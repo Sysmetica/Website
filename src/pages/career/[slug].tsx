@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { GET_ALL_CAREERS_URL, GET_SINGLE_CAREER } from '@/graphql/queries'
+import { GET_ALL_CAREERS_URL, GET_SINGLE_CAREER, OPTIONS } from '@/graphql/queries'
 import { GetStaticPaths, GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
@@ -14,15 +14,17 @@ import dynamic from 'next/dynamic';
 import { useAtom } from 'jotai';
 import { csModal } from '@/state';
 import { useRouter } from 'next/router'
+import { OptionsProps } from '@/types/options'
 
 const CvForm = dynamic(() => import('@/components/cv/cv'));
 
 interface Props {
   pageData: CareerProps
   list: CareersProps['data']
+  options: OptionsProps
 }
 
-const Career: FC<Props> = ({ pageData, list }) => {
+const Career: FC<Props> = ({ pageData, list, options }) => {
   const { attributes: { title, level, tags, description } } = pageData
   const [modal, setModal] = useAtom(csModal);
   const router = useRouter();
@@ -34,7 +36,7 @@ const Career: FC<Props> = ({ pageData, list }) => {
   }
 
   return (
-    <Layout>
+    <Layout theme={options.attributes.theme}>
       <div className={s.root}>
         <div className={s.head}>
           <Row>
@@ -72,7 +74,7 @@ const Career: FC<Props> = ({ pageData, list }) => {
           </Row>
         </Editor>
 
-        {modal && <CvForm svList={list} activeCv={title} />}
+        {modal && <CvForm svList={list} activeCv={title} theme={options.attributes.theme} />}
       </div>
     </Layout>
   )
@@ -106,13 +108,17 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }: any) => {
   })
 
   const cvList = await client.query({ query: GET_ALL_CAREERS_URL })
-
   const pageData = data.careers.data[0]
+
+  // options
+  const optionsData = await client.query({ query: OPTIONS });
+  const options = optionsData.data.option.data;
 
   return {
     props: {
       pageData,
-      list: cvList.data.careers.data
+      list: cvList.data.careers.data,
+      options,
     },
     revalidate: 10,
   }

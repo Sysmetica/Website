@@ -1,9 +1,12 @@
-@import '@/styles/variables.scss';
-
 .root {
-  background: $bgBlack;
+  background: #000;
   padding: 60px 0;
   color: #fff;
+
+  [data-theme="light"] & {
+    background: #EFEDEA;
+    color: #1D1D1F;
+  }
 
   @media (min-width: 800px) {
     padding: 130px 0;

@@ -2,20 +2,23 @@ import MyImage from '@/components/image/image';
 import s from './process.module.scss';
 import clsx from 'clsx';
 import { IBMPlexSans } from '@/pages/_app';
+import { OptionsProps } from '@/types/options';
 
-export const Process = () => {
+export const Process = ({ theme }: { theme: OptionsProps['attributes']['theme'] }) => {
+  const imgPath = theme === 'light' ? 'p/' : '';
+
   return (
     <div className={s.root}>
 
       <div className={s.line} />
 
       <div className={clsx(s.step, s.step1)}>
-        <MyImage src="/img/icons/services/eye.svg" alt="" width={48} height={48} />
+        <MyImage src={`/img/icons/services/${imgPath}eye.svg`} alt="" width={48} height={48} />
         <h3>{`Initializing the Problem Vision`}</h3>
       </div>
 
       <div className={s.items}>
-        <MyImage src="/img/icons/services/diamond-bg-1.svg" alt="" width={500} height={648} imgClass={s.bg} />
+        <MyImage src={`/img/icons/services/${imgPath}diamond-bg-1.svg`} alt="" width={500} height={648} imgClass={s.bg} />
 
         <div className={s.item}>
           <div className={s.text}>
@@ -50,13 +53,13 @@ export const Process = () => {
       </div>
 
       <div className={clsx(s.step, s.step2)}>
-        <MyImage src="/img/icons/services/lightbulb.svg" alt="" width={48} height={48} />
+        <MyImage src={`/img/icons/services/${imgPath}lightbulb.svg`} alt="" width={48} height={48} />
         <h3>{`Problem Definition & Planning`}</h3>
         <p>{`Roadmap & Map of Product Evolution`}</p>
       </div>
 
       <div className={s.items}>
-        <MyImage src="/img/icons/services/diamond-bg-2.svg" alt="" width={500} height={648} imgClass={s.bg} />
+        <MyImage src={`/img/icons/services/${imgPath}diamond-bg-2.svg`} alt="" width={500} height={648} imgClass={s.bg} />
 
         <div className={s.item}>
           <div className={s.text}>
@@ -91,17 +94,17 @@ export const Process = () => {
       </div>
 
       <div className={clsx(s.step, s.step3)}>
-        <MyImage src="/img/icons/services/rocket.svg" alt="" width={48} height={48} />
+        <MyImage src={`/img/icons/services/${imgPath}rocket.svg`} alt="" width={48} height={48} />
         <h3>{`Launching the Solution`}</h3>
       </div>
 
       <div className={s.space}>
-        <MyImage src="/img/icons/services/diamond.png" alt="" width={124} height={160} />
-        <MyImage src="/img/icons/services/diamond.png" alt="" width={124} height={160} />
+        <MyImage src={`/img/icons/services/${imgPath}diamond.png`} alt="" width={124} height={160} />
+        <MyImage src={`/img/icons/services/${imgPath}diamond.png`} alt="" width={124} height={160} />
       </div>
 
       <div className={clsx(s.step, s.step4)}>
-        <MyImage src="/img/icons/services/refresh-cw.svg" alt="" width={48} height={48} />
+        <MyImage src={`/img/icons/services/${imgPath}refresh-cw.svg`} alt="" width={48} height={48} />
         <h3>{`Iteration & Support`}</h3>
         <p>{`We continuously refine the products to meet the evolving demands of users and businesses`}</p>
       </div>
