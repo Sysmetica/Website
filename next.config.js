@@ -39,9 +39,17 @@ module.exports = {
         port: '1337',
         pathname: '/uploads/**',
       },
+      // {
+      //   protocol: 'https',
+      //   hostname: 'efficient-wonder-d953beb8f4.media.strapiapp.com',
+      // },
       {
         protocol: 'https',
-        hostname: 'efficient-wonder-d953beb8f4.media.strapiapp.com',
+        hostname: 'strapi.intech-solutions.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'strapi.sysmetica.io',
       }
     ],
   },
