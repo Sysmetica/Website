@@ -17,6 +17,7 @@ export const Header = ({ theme }: { theme: OptionsProps['attributes']['theme'] }
   const { pathname } = useRouter();
   const scrollDirection = useGetScrollPosition();
   const isContactPage = pathname === '/contact';
+  const logoType = theme === 'light' ? '-p' : '';
 
   return (
     <header className={clsx(s.root, {
@@ -26,11 +27,7 @@ export const Header = ({ theme }: { theme: OptionsProps['attributes']['theme'] }
       <Row>
         <div className={s.headerWrap}>
           <Link className={s.logo} href={'/'}>
-            {theme === 'dark' ? (
-              <MyImage src="/img/logo.svg" alt="Sysmetica logo" width={165} height={32} />
-            ) : (
-              <MyImage src="/img/logo2.svg" alt="Sysmetica logo" width={165} height={32} />
-            )}
+            <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </Link>
           <ul className={s.menu}>
             <MenuLink href="/services">Services</MenuLink>

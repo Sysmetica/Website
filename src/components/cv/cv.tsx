@@ -49,6 +49,7 @@ const CvForm = ({ svList, activeCv, theme }: CvFormProps) => {
     vacancy: activeCv || ''
   });
   const [createCv, { data, loading, error }] = useMutation(CREATE_CV);
+  const logoType = theme === 'light' ? '-p' : '';
 
   const closeModal = (e: any) => {
     e.preventDefault();
@@ -129,11 +130,7 @@ const CvForm = ({ svList, activeCv, theme }: CvFormProps) => {
 
           <div className={s.head}>
             <Link href={'/'}>
-              {theme === 'dark' ? (
-                <MyImage src="/img/logo.svg" alt="sysmetica logo" width={165} height={32} />
-              ) : (
-                <MyImage src="/img/logo2.svg" alt="sysmetica logo" width={165} height={32} />
-              )}
+              <MyImage src={`/img/logo${logoType}.svg`} alt="sysmetica logo" width={165} height={32} />
             </Link>
             <Button type={['close']} onClick={closeModal}>Close</Button>
           </div>

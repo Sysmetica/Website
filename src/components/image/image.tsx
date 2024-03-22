@@ -43,7 +43,7 @@ const MyImage = ({
     <Image
       ref={refVal}
       src={src ? getUrl(src) : '/img/placeholder.jpg'}
-      alt={!alt ? 'klickkonzept' : alt}
+      alt={alt || ''}
       title={title}
       width={width * retina}
       height={height * retina}
