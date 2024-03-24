@@ -1,17 +1,14 @@
 import { CareersProps } from "./career"
-import { CaseStudies } from "./casestudies"
 import { ImageProps } from "./common"
 
-export interface HomePageFields {
-  attributes: {
-    title: string,
-    subtitle: string,
-    values: HomeValues[]
-    careers: CareersProps
-    casestudies: CaseStudies
-    teams: InfoTeam
-  }
-}
+export type InfoProps = {
+  sectionOneTitle: string
+  sectionOneText: string
+  sectionOneLink: string
+  sectionTwoTitle: string
+  sectionTwoText: string
+  sectionTwoLink: string
+} | null
 
 export type InfoTeam = {
   data: {
@@ -22,7 +19,8 @@ export type InfoTeam = {
 }
 
 export type HomeValues = {
-  title: string,
+  title: string
   text: string
+  icon: string | null
 }
 

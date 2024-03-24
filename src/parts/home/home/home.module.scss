@@ -22,7 +22,7 @@
         }
       }
 
-      .textWrap img {
+      .textWrap svg {
         display: inline-block;
       }
     }
@@ -90,13 +90,20 @@
     height: 100%;
     min-height: 500px;
     margin: 0 auto;
-    background: #000;
     text-align: center;
-    mix-blend-mode: darken;
+
+    [data-theme="dark"] & {
+      @media (hover: hover) {
+        background: #000;
+        mix-blend-mode: darken;
+      }
+    }
 
     [data-theme="light"] & {
-      background: #fff;
-      mix-blend-mode: screen;
+      @media (hover: hover) {
+        background: #fff;
+        mix-blend-mode: screen;
+      }
     }
 
     &.textHolder1 {
@@ -132,11 +139,19 @@
         max-width: 760px;
       }
 
-      img {
+      svg {
         display: none;
         width: 48px;
         height: auto;
         margin: 0 0 8px;
+
+        path {
+          stroke: #fff;
+
+          [data-theme="light"] & {
+            stroke: #1D1D1F;
+          }
+        }
       }
     }
 

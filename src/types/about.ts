@@ -1,26 +1,26 @@
-import { ImageProps } from './common';
+import { ImageProps } from "./common"
 
-export interface AboutPageFields {
-  attributes: {
-    title: string,
-    subtitle: string,
-    gallery: {
-      data: {
-        attributes: {
-          url: string,
-        }
-      }[]
+export type MapProps = {
+  title: string | null
+  text: string | null
+}
+
+export type GalleryProps = {
+  data: {
+    attributes: {
+      url: string,
     }
-    teams: {
-      data: {
-        attributes: {
-          name: string,
-          photo: ImageProps
-          role: string
-          description: string
-          linkedin: string
-        }
-      }[]
+  }[]
+}
+
+export type TeamsProps = {
+  data: {
+    attributes: {
+      name: string,
+      photo: ImageProps
+      role: string
+      description: string
+      linkedin: string
     }
-  }
+  }[]
 }

@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client"
 
+const VALUES = `
+values {
+  title
+  text
+  icon
+}
+`
+
 const CAREERS = `
   careers {
     data {
@@ -23,20 +31,26 @@ export const HOME_PAGE = gql`
     homePage {
       data {
         attributes {
-          title,
-          subtitle,
-          values {
-            title,
-            text
+          title
+          subtitle
+          subtitleSelected
+          info {
+            sectionOneTitle
+            sectionOneText
+            sectionOneLink
+            sectionTwoTitle
+            sectionTwoText
+            sectionTwoLink
           }
+          ${VALUES}
           ${CAREERS}
           casestudies {
             data {
               attributes {
                 title,
-                description,
-                site,
-                href,
+                description
+                site
+                href
                 tags {
                   text
                 }
@@ -85,6 +99,11 @@ export const ABOUT_PAGE = gql`
         attributes {
           title,
           subtitle,
+          ${VALUES}
+          map {
+            title
+            text
+          }
           gallery {
             data {
               attributes {
@@ -261,7 +280,7 @@ export const CASE_STUDIES_PAGE = gql`
     caseStudiesPage {
       data {
         attributes {
-          title,
+          title
           subtitle
         }
       }
@@ -275,6 +294,53 @@ query {
     data {
       attributes {
         theme
+        copy
+        linkedin
+        upwork
+        instagram
+        menu {
+          slug
+          name
+        }
+      }
+    }
+  }
+}
+`
+
+export const META = gql`
+query {
+  meta {
+    data {
+      attributes {
+        title
+        description
+      }
+    }
+  }
+}
+`
+
+export const SP_ALL_SLUGS = gql`
+query {
+  singlePages(pagination:{limit: -1}) {
+    data {
+      attributes {
+        slug
+      }
+    }
+  }
+}
+`
+
+export const SP_SINGLE = gql`
+query($slug: String!) {
+  singlePages(filters: { slug: { eq: $slug } }) {
+    data {
+      attributes {
+        title
+        subtitle
+        content
       }
     }
   }

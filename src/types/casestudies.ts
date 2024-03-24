@@ -1,4 +1,4 @@
-export type CaseStudies = {
+export type CaseStudiesProps = {
   data: {
     attributes: {
       title: string

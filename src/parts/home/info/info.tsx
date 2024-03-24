@@ -6,11 +6,24 @@ import { useAtomValue, useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import { isMobileDevice } from '@/state';
 import Link from 'next/link';
-import { InfoTeam } from '@/types/home';
+import { InfoProps, InfoTeam } from '@/types/home';
+import { useContext } from 'react';
+import { OptionsContext } from '@/common/layout/layout';
 
-export const InfoStep = ({ team }: { team: InfoTeam }) => {
+type InfoStepProps = {
+  team: InfoTeam
+  info: InfoProps
+}
+
+export const InfoStep = ({ team, info }: InfoStepProps) => {
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
+
+  const { attributes: { theme } } = useContext(OptionsContext);
+
+  if (!info) {
+    return null;
+  }
 
   return (
     <div className={clsx(s.root, {
@@ -24,21 +37,21 @@ export const InfoStep = ({ team }: { team: InfoTeam }) => {
             onMouseOver={() => setArea({ area: 'open' })}
             onMouseOut={() => setArea({ area: 'default' })}
           >
-            <Link href={'https://www.upwork.com/agencies/1013061354596433920/'} target='_black' className={s.link} />
+            <Link href={info.sectionOneLink} target='_black' className={s.link} />
             <div className={s.tags}>
               <span className={s.tag}>
-                <MyImage src="/img/icons/tag1.svg" alt="tag icon" width={20} height={20} />
-                100% Job Success
+                <MyImage src="/img/icons/tag1.svg" alt="100% Job Success" width={20} height={20} />
+                {`100% Job Success`}
               </span>
               <span className={s.tag}>
-                <MyImage src="/img/icons/tag2.svg" alt="tag icon" width={20} height={20} />
-                Top rated plus
+                <MyImage src="/img/icons/tag2.svg" alt="Top rated plus" width={20} height={20} />
+                {`Top rated plus`}
               </span>
               <div className={s.icon} />
             </div>
             <div className={s.text}>
-              <h3>{`Upwork top rated plus agency`}</h3>
-              <p>{`Our combination of experience, dedication, and a solid track record guarantees that your project is handled by experts.`}</p>
+              <h3>{info.sectionOneTitle}</h3>
+              <p>{info.sectionOneText}</p>
             </div>
           </div>
 
@@ -47,18 +60,28 @@ export const InfoStep = ({ team }: { team: InfoTeam }) => {
             onMouseOver={() => setArea({ area: 'open' })}
             onMouseOut={() => setArea({ area: 'default' })}
           >
-            <Link href={'/about#team'} className={s.link} />
-            <div className={s.photos}>
-              {team.data.map(({ attributes: { preview } }, index) => {
-                return (
-                  <MyImage src={preview.data?.attributes.url} alt="" width={48} height={48} key={index} retina={2} upload={true} />
-                )
-              })}
-              <div className={s.icon} />
-            </div>
+            <Link href={info.sectionTwoLink} className={s.link} />
+            {theme === 'dark' ? (
+              <div className={s.photos}>
+                {team.data.map(({ attributes: { preview } }, index) => {
+                  return (
+                    <MyImage src={preview.data?.attributes.url} alt="" width={48} height={48} key={index} retina={2} upload={true} />
+                  )
+                })}
+                <div className={s.icon} />
+              </div>
+            ) : (
+              <div className={s.tags}>
+                <span className={s.tag}>
+                  {`We enhance business success`}
+                </span>
+                <div className={s.icon} />
+              </div>
+            )}
+
             <div className={s.text}>
-              <h3>Meet our leadership team</h3>
-              <p>Together, we work towards success, inspired by the vision and dedication of those steering</p>
+              <h3>{info.sectionTwoTitle}</h3>
+              <p>{info.sectionTwoText}</p>
             </div>
           </div>
 

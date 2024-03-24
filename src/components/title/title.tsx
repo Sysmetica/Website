@@ -10,6 +10,10 @@ type TitleProps = {
 }
 
 export const Title = ({ title, subtitle, type = '' }: TitleProps) => {
+  if (!title && !subtitle) {
+    return null;
+  }
+
   return (
     <div className={s.root}>
       <Row>

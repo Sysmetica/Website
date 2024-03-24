@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useState } from 'react';
 import s from './cv.module.scss';
 import g from '@/components/form/form.module.scss';
 import { CREATE_CV } from '@/graphql/queries';
@@ -15,8 +15,8 @@ import { isValidEmail, isValidNumber } from '@/utils';
 import axios from 'axios';
 import Link from 'next/link';
 import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '../form/const';
-import { OptionsProps } from '@/types/options';
 import FileIcon from '../../../public/img/icons/file.svg';
+import { OptionsContext } from '@/common/layout/layout';
 
 const defaultFormData = {
   name: '',
@@ -34,10 +34,9 @@ const sendStatusDefault = {
 type CvFormProps = {
   svList: CareersProps['data']
   activeCv?: CareersProps['data'][0]['attributes']['slug']
-  theme: OptionsProps['attributes']['theme']
 }
 
-const CvForm = ({ svList, activeCv, theme }: CvFormProps) => {
+const CvForm = ({ svList, activeCv }: CvFormProps) => {
   const setModal = useSetAtom(csModal);
   const [sendStatus, setSendStatus] = useState(sendStatusDefault);
   const [myLoading, setMyLoading] = useState(false);
@@ -49,6 +48,8 @@ const CvForm = ({ svList, activeCv, theme }: CvFormProps) => {
     vacancy: activeCv || ''
   });
   const [createCv, { data, loading, error }] = useMutation(CREATE_CV);
+  const { attributes: { theme } } = useContext(OptionsContext);
+
   const logoType = theme === 'light' ? '-p' : '';
 
   const closeModal = (e: any) => {

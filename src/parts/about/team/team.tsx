@@ -1,11 +1,19 @@
 import MyImage from "@/components/image/image";
 import s from './team.module.scss';
-import { AboutPageFields } from "@/types/about";
 import { Row } from "@/common/row/row";
 import Link from "next/link";
 import { IBMPlexSans } from "@/pages/_app";
+import { TeamsProps } from "@/types/about";
 
-export const Team = ({ teams }: { teams: AboutPageFields['attributes']['teams'] }) => {
+type TeamProps = {
+  teams: TeamsProps
+}
+
+export const Team = ({ teams }: TeamProps) => {
+  if (!teams.data.length) {
+    return null;
+  }
+
   return (
     <div className={s.root} id="team">
       <Row>

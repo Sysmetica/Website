@@ -1,6 +1,6 @@
 import s from './gallery.module.scss';
 import MyImage from "@/components/image/image";
-import { AboutPageFields } from "@/types/about";
+import { GalleryProps } from "@/types/about";
 import clsx from 'clsx';
 import { useState } from 'react';
 
@@ -43,8 +43,13 @@ const sizes = [
   },
 ]
 
-export const Gallery = ({ gallery }: { gallery: AboutPageFields['attributes']['gallery'] }) => {
+export const Gallery = ({ gallery }: { gallery: GalleryProps }) => {
   const [pause, setPause] = useState(false);
+
+  if (!gallery.data.length) {
+    return null;
+  }
+
   const galleryItems = gallery.data.slice(0, 9);
 
   return (

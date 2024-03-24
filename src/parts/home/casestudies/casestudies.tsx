@@ -8,10 +8,10 @@ import { useAtomValue, useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { CaseStudies } from '@/types/casestudies';
 import { isMobileDevice } from '@/state';
+import { CaseStudiesProps } from '@/types/casestudies';
 
-export const Casestudies = ({ casestudies }: { casestudies: CaseStudies }) => {
+export const Casestudies = ({ casestudies }: { casestudies: CaseStudiesProps }) => {
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
 

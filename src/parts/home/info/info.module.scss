@@ -9,7 +9,7 @@ $transitionBack: .3s .1s ease;
 
   &.mobile {
 
-    .info .tags,
+    .tags,
     .team .photos {
       position: relative;
       padding: 0 60px 0 0;
@@ -121,37 +121,39 @@ $transitionBack: .3s .1s ease;
           background: #ED6B55;
         }
       }
+    }
 
-      .tags {
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 12px;
+      margin: 0 0 22px;
+      padding: 0 60px 0 0;
+      transition: transform $transitionBack;
+
+      .tag {
         display: flex;
-        flex-wrap: wrap;
-        gap: 6px 12px;
-        margin: 0 0 22px;
-        transition: transform $transitionBack;
+        padding: 4px 12px;
+        align-items: center;
+        gap: 8px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.10);
+        min-height: 28px;
+        color: #FFF;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 100%;
+        letter-spacing: 0.12px;
+        text-transform: uppercase;
 
-        .tag {
-          display: flex;
-          padding: 4px 12px;
-          align-items: center;
-          gap: 8px;
-          border-radius: 6px;
-          background: rgba(255, 255, 255, 0.10);
-          color: #FFF;
-          font-size: 10px;
-          font-weight: 600;
-          line-height: 100%;
-          letter-spacing: 0.12px;
-          text-transform: uppercase;
+        @media (min-width: 800px) {
+          font-size: 12px;
+        }
 
-          @media (min-width: 800px) {
-            font-size: 12px;
-          }
-
-          img {
-            max-width: 20px;
-            max-height: 20px;
-            object-fit: contain;
-          }
+        img {
+          max-width: 20px;
+          max-height: 20px;
+          object-fit: contain;
         }
       }
     }
@@ -162,7 +164,7 @@ $transitionBack: .3s .1s ease;
       color: #1D1D1F;
 
       @media (min-width: 800px) {
-        padding: 19px 40px;
+        padding: 40px;
       }
 
       &:after {
@@ -173,13 +175,18 @@ $transitionBack: .3s .1s ease;
         }
       }
 
+      .tags .tag {
+        background: #fff;
+        color: #1D1D1F;
+      }
+
       .photos {
         display: flex;
         margin: 0 0 18px;
         transition: transform $transitionBack;
 
         @media (min-width: 800px) {
-          margin: 0 0 20px;
+          margin: -18px 0 20px;
         }
 
         img {

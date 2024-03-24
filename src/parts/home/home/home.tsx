@@ -8,9 +8,16 @@ import { useAtomValue, useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from '@/state';
-import MyImage from '@/components/image/image';
+import { makeSelectedString } from '@/utils';
+import HomeIcon from '../../../../public/img/icons/home.svg';
 
-export const HomeStep = () => {
+type HomeStepProps = {
+  title: string
+  subtitle: string
+  selectedString: string
+}
+
+export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => {
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
 
@@ -66,9 +73,9 @@ export const HomeStep = () => {
         <div className={s.container}>
           <Row>
             <div className={s.textWrap}>
-              <MyImage src="/img/icons/home.svg" alt="icon" width={48} height={24} />
-              <h1 className={IBMPlexSans.className}>Mobile Development<br /><span>& Design Agency</span></h1>
-              <h2>Delivering <span>full-cycle mobile solutions</span> for startups and tech companies. Trusted for over 5 years, we turn your ideas into reality.</h2>
+              <HomeIcon />
+              <h1 className={IBMPlexSans.className}>{title}</h1>
+              <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} />
             </div>
           </Row>
         </div>
@@ -78,9 +85,9 @@ export const HomeStep = () => {
         <div className={s.container}>
           <Row>
             <div className={s.textWrap}>
-              <MyImage src="/img/icons/home.svg" alt="icon" width={48} height={24} />
-              <h1 className={IBMPlexSans.className}>Mobile Development<br /><span>& Design Agency</span></h1>
-              <h2>Delivering <span>full-cycle mobile solutions</span> for startups and tech companies. Trusted for over 5 years, we turn your ideas into reality.</h2>
+              <HomeIcon />
+              <h1 className={IBMPlexSans.className}>{title}</h1>
+              <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} />
             </div>
           </Row>
         </div>

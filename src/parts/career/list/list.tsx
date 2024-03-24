@@ -6,14 +6,13 @@ import { OptionsProps } from "@/types/options";
 
 type CareersProps = {
   careers: CareerPageFields['attributes']['careers']
-  theme: OptionsProps['attributes']['theme']
 }
 
-export const Careers = ({ careers, theme }: CareersProps) => {
+export const Careers = ({ careers }: CareersProps) => {
   return (
     <div className={s.root}>
       <Row>
-        <CareersList careers={careers} type="buttonPlus" theme={theme} />
+        <CareersList careers={careers} type="buttonPlus" />
       </Row>
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { GET_ALL_CAREERS_URL, GET_SINGLE_CAREER, OPTIONS } from '@/graphql/queries'
+import { GET_ALL_CAREERS_URL, GET_SINGLE_CAREER, META, OPTIONS } from '@/graphql/queries'
 import { GetStaticPaths, GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
@@ -15,6 +15,8 @@ import { useAtom } from 'jotai';
 import { csModal } from '@/state';
 import { useRouter } from 'next/router'
 import { OptionsProps } from '@/types/options'
+import { GlobalProps } from '@/components/seo/types'
+import { SeoContext } from '@/components/seo/seoContext'
 
 const CvForm = dynamic(() => import('@/components/cv/cv'));
 
@@ -22,9 +24,10 @@ interface Props {
   pageData: CareerProps
   list: CareersProps['data']
   options: OptionsProps
+  globalMeta: GlobalProps
 }
 
-const Career: FC<Props> = ({ pageData, list, options }) => {
+const Career: FC<Props> = ({ pageData, list, options, globalMeta }) => {
   const { attributes: { title, level, tags, description } } = pageData
   const [modal, setModal] = useAtom(csModal);
   const router = useRouter();
@@ -36,46 +39,48 @@ const Career: FC<Props> = ({ pageData, list, options }) => {
   }
 
   return (
-    <Layout theme={options.attributes.theme}>
-      <div className={s.root}>
-        <div className={s.head}>
-          <Row>
-            <div className={s.wrap}>
-              <span className={s.back} onClick={() => router.back()}>back</span>
-              <div className={s.info}>
-                <div className={s.buttonWrap}>
-                  <MyImage src="/img/icons/career1.svg" alt="text" width={48} height={48} imgClass={s.ico} />
-                  <Button type={['submit', 'black']} onClick={modalHandler}>Submit Your CV</Button>
-                </div>
-                <h1>{title}</h1>
-                <p>{level.replace('_', ' ')}</p>
-                <div className={s.tags}>
-                  {tags.map(({ text, icon }, index) => {
-                    return (
-                      <div className={s.tag} key={`${text}${index}`}>
-                        <MyImage src={`/img/icons/${icon}.svg`} alt="text" width={24} height={24} />
-                        <span>{text}</span>
-                      </div>
-                    )
-                  })}
+    <Layout options={options}>
+      <SeoContext globalMeta={globalMeta}>
+        <div className={s.root}>
+          <div className={s.head}>
+            <Row>
+              <div className={s.wrap}>
+                <span className={s.back} onClick={() => router.back()}>back</span>
+                <div className={s.info}>
+                  <div className={s.buttonWrap}>
+                    <MyImage src="/img/icons/career1.svg" alt="text" width={48} height={48} imgClass={s.ico} />
+                    <Button type={['submit', 'black']} onClick={modalHandler}>Submit Your CV</Button>
+                  </div>
+                  <h1>{title}</h1>
+                  <p>{level.replace('_', ' ')}</p>
+                  <div className={s.tags}>
+                    {tags.map(({ text, icon }, index) => {
+                      return (
+                        <div className={s.tag} key={`${text}${index}`}>
+                          <MyImage src={`/img/icons/${icon}.svg`} alt="text" width={24} height={24} />
+                          <span>{text}</span>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Row>
-        </div>
-        <Editor>
-          <Row>
-            <div className={s.editorWrap}>
-              <div dangerouslySetInnerHTML={{ __html: description }} />
-              <div className={s.button}>
-                <Button type={['submit', 'fill']} onClick={modalHandler}>Submit Your CV</Button>
+            </Row>
+          </div>
+          <Editor>
+            <Row>
+              <div className={s.editorWrap}>
+                <div dangerouslySetInnerHTML={{ __html: description }} />
+                <div className={s.button}>
+                  <Button type={['submit', 'fill']} onClick={modalHandler}>Submit Your CV</Button>
+                </div>
               </div>
-            </div>
-          </Row>
-        </Editor>
+            </Row>
+          </Editor>
 
-        {modal && <CvForm svList={list} activeCv={title} theme={options.attributes.theme} />}
-      </div>
+          {modal && <CvForm svList={list} activeCv={title} />}
+        </div>
+      </SeoContext>
     </Layout>
   )
 }
@@ -114,11 +119,16 @@ export const getStaticProps: GetStaticProps<any> = async ({ params }: any) => {
   const optionsData = await client.query({ query: OPTIONS });
   const options = optionsData.data.option.data;
 
+  // meta
+  const globalMetaData = await client.query({ query: META });
+  const globalMeta = globalMetaData.data.meta.data;
+
   return {
     props: {
       pageData,
       list: cvList.data.careers.data,
       options,
+      globalMeta,
     },
     revalidate: 10,
   }

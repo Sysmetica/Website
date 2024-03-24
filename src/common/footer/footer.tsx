@@ -1,13 +1,13 @@
 import MyImage from '@/components/image/image';
 import { Row } from '../row/row';
 import s from './footer.module.scss';
-import Link from 'next/link';
 import { SocialLinks } from '../socialLinks/socialLinks';
 import { MenuLink } from '../menuLink/menuLink';
 import { OptionsProps } from '@/types/options';
 
-export const Footer = ({ theme }: { theme: OptionsProps['attributes']['theme'] }) => {
-  const logoType = theme === 'light' ? '-p' : '';
+export const Footer = ({ options }: { options: OptionsProps }) => {
+  const logoType = options.attributes.theme === 'light' ? '-p' : '';
+  const copyText = options.attributes.copy;
 
   return (
     <footer className={s.root}>
@@ -18,19 +18,22 @@ export const Footer = ({ theme }: { theme: OptionsProps['attributes']['theme'] }
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </div>
           <div className={s.menu}>
-            <MenuLink href="/services">Services</MenuLink>
-            <MenuLink href="/case-studies">Case Studies</MenuLink>
-            <MenuLink href="/about">About</MenuLink>
-            <MenuLink href="/career">Careers</MenuLink>
+            {options.attributes.menu
+              .filter((i) => i.name !== null)
+              .map(({ name, slug }) => {
+                return (
+                  <MenuLink href={slug as string} key={slug}>{name as string}</MenuLink>
+                )
+              })}
           </div>
         </div>
 
         <div className={s.bottom}>
-          <p className={s.copy}>© 2023 Sysmetica</p>
+          <p className={s.copy}>{copyText}</p>
           <div className={s.links}>
             <div className={s.menu}>
-              <MenuLink href="/terms-of-service">Terms of Service</MenuLink>
-              <MenuLink href="/privacy-policy">Privacy Policy</MenuLink>
+              <MenuLink href="/terms-of-service">{`Terms of Service`}</MenuLink>
+              <MenuLink href="/privacy-policy">{`Privacy Policy`}</MenuLink>
             </div>
             <div className={s.social}>
               <SocialLinks />

@@ -12,12 +12,12 @@ import { EScrollDirection, useGetScrollPosition } from "@/hooks";
 import { MenuLink } from "../menuLink/menuLink";
 import { OptionsProps } from "@/types/options";
 
-export const Header = ({ theme }: { theme: OptionsProps['attributes']['theme'] }) => {
+export const Header = ({ options }: { options: OptionsProps }) => {
   const [menu, setMenu] = useAtom(menuState);
   const { pathname } = useRouter();
   const scrollDirection = useGetScrollPosition();
   const isContactPage = pathname === '/contact';
-  const logoType = theme === 'light' ? '-p' : '';
+  const logoType = options.attributes.theme === 'light' ? '-p' : '';
 
   return (
     <header className={clsx(s.root, {
@@ -30,11 +30,13 @@ export const Header = ({ theme }: { theme: OptionsProps['attributes']['theme'] }
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </Link>
           <ul className={s.menu}>
-            <MenuLink href="/services">Services</MenuLink>
-            <MenuLink href="/case-studies">Case Studies</MenuLink>
-            <MenuLink href="/about">About</MenuLink>
-            <MenuLink href="/career">Careers</MenuLink>
-
+            {options.attributes.menu
+              .filter((i) => i.name !== null)
+              .map(({ name, slug }) => {
+                return (
+                  <MenuLink href={slug as string} key={slug}>{name as string}</MenuLink>
+                )
+              })}
             <div className={s.mobileButtons}>
               <Button type={['fill']} link={'/contact'}>Contact Us</Button>
               <div className={s.social}>

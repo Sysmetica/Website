@@ -2,9 +2,11 @@ import MyImage from '@/components/image/image';
 import s from './process.module.scss';
 import clsx from 'clsx';
 import { IBMPlexSans } from '@/pages/_app';
-import { OptionsProps } from '@/types/options';
+import { OptionsContext } from '@/common/layout/layout';
+import { useContext } from 'react';
 
-export const Process = ({ theme }: { theme: OptionsProps['attributes']['theme'] }) => {
+export const Process = () => {
+  const { attributes: { theme } } = useContext(OptionsContext);
   const imgPath = theme === 'light' ? 'p/' : '';
 
   return (
