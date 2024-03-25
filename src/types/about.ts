@@ -3,7 +3,7 @@ import { ImageProps } from "./common"
 export type MapProps = {
   title: string | null
   text: string | null
-}
+} | null
 
 export type GalleryProps = {
   data: {

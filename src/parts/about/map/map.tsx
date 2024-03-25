@@ -10,7 +10,7 @@ export const Map = ({ data }: { data: MapProps }) => {
   const { attributes: { theme } } = useContext(OptionsContext);
   const imgPath = theme === 'light' ? '-p' : '';
 
-  if (!data.title && !data.text) {
+  if (!data?.title && !data?.text) {
     return null;
   }
 
