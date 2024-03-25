@@ -1,12 +1,6 @@
 $transitionBack: .3s .1s ease;
 
 .root {
-  background: #fff;
-
-  [data-theme="light"] & {
-    background: #EFEDEA;
-  }
-
   &.mobile {
 
     .tags,
