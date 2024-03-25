@@ -14,10 +14,10 @@ import { HomeValues, InfoProps, InfoTeam } from '@/types/home'
 import { Services } from '@/parts/home/services/services'
 import { OptionsProps } from '@/types/options'
 import { CareersProps } from '@/types/career'
-import CaseStudies from './case-studies'
 import { CaseStudiesProps } from '@/types/casestudies'
 import { SeoContext } from '@/components/seo/seoContext'
 import { GlobalProps } from '@/components/seo/types'
+import gl from '@/styles/global.module.scss'
 
 interface Props {
   pageData: {
@@ -57,7 +57,7 @@ const Home: FC<Props> = ({ pageData, options, globalMeta }) => {
     <Layout type="home" options={options}>
       <SeoContext globalMeta={globalMeta}>
         <HomeStep title={title} subtitle={subtitle} selectedString={subtitleSelected} />
-        <div className="white">
+        <div className={gl.white}>
           <InfoStep team={teams} info={info} />
           <Progress />
           <Casestudies casestudies={casestudies} />

@@ -1,0 +1,7 @@
+.white {
+  background: #fff;
+
+  [data-theme="light"] & {
+    background: #EFEDEA;
+  }
+}
