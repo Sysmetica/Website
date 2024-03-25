@@ -1,5 +1,7 @@
 .white {
   background: #fff;
+  // negative margin fix
+  padding-top: 1px;
 
   [data-theme="light"] & {
     background: #EFEDEA;
