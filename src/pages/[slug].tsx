@@ -34,8 +34,6 @@ const Lp: FC<Props> = ({ pageData, options, globalMeta }) => {
   } = pageData
   // console.log('pageData ', pageData)
 
-  const theme = options.attributes.theme;
-
   return (
     <Layout options={options}>
       <SeoContext globalMeta={globalMeta}>

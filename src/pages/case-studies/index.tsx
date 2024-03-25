@@ -22,14 +22,11 @@ interface Props {
 
 const CaseStudies: FC<Props> = ({ pageData, options, globalMeta }) => {
   const {
-    attributes:
-    {
+    attributes: {
       title,
       subtitle,
     }
   } = pageData
-
-  const theme = options.attributes.theme;
 
   return (
     <Layout options={options}>

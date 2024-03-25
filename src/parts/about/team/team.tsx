@@ -26,12 +26,14 @@ export const Team = ({ teams }: TeamProps) => {
                   <Link href={linkedin} className={s.linkedin} target="_blank">
                     <MyImage src="/img/icons/linkedin.svg" alt="linkedin icon" width={24} height={32} />
                   </Link>
-                  <div className={s.description}>
-                    <div className={s.text}>
-                      <MyImage src="/img/icons/quote.svg" alt="quote icon" width={32} height={32} />
-                      <p>{description}</p>
+                  {description && (
+                    <div className={s.description}>
+                      <div className={s.text}>
+                        <MyImage src="/img/icons/quote.svg" alt="quote icon" width={32} height={32} />
+                        <p>{description}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <div className={s.name}>
                   <p className={IBMPlexSans.className}>{name}</p>
