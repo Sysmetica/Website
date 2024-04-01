@@ -344,6 +344,10 @@
         background-color: #6856B5;
         background-repeat: no-repeat;
         background-position: center;
+
+        [data-theme="light"] & {
+          background-color: #ED6B55;
+        }
       }
 
       .done {
