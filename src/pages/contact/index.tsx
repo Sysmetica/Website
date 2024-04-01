@@ -16,7 +16,13 @@ import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
 
 interface Props {
-  pageData: CareerPageFields
+  pageData: {
+    attributes: {
+      title: string
+      text: string
+      email: string
+    }
+  }
   options: OptionsProps
   globalMeta: GlobalProps
 }
@@ -29,6 +35,15 @@ const defaultData = {
 }
 
 const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
+  const {
+    attributes: {
+      title,
+      text,
+      email,
+    }
+  } = pageData
+  // console.log('pageData ', pageData);
+
   const [form, setForm] = useState(defaultData);
   const [touch, setTouch] = useState(false);
   const [createTalk, { data, loading, error }] = useMutation(CREATE_TALK);
@@ -95,9 +110,9 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
             <div className={g.rootWrap}>
 
               <div className={g.text}>
-                <h3 className={IBMPlexSans.className}>{`Got an Idea? Let's Talk!`}</h3>
-                <p>{`If you have any additional questions, reach out by email`}</p>
-                <span>{`hello@sysmetica.io`}</span>
+                {title && <h3 className={IBMPlexSans.className}>{title}</h3>}
+                {text && <p>{text}</p>}
+                {email && <span>{email}</span>}
               </div>
 
               <div className={g.form}>
