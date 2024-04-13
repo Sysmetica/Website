@@ -8,6 +8,7 @@ import { Title } from '@/components/title/title'
 import { OptionsProps } from '@/types/options'
 import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
+import { PageCases } from '@/components/cases/cases'
 
 interface Props {
   pageData: {
@@ -29,12 +30,9 @@ const CaseStudies: FC<Props> = ({ pageData, options, globalMeta }) => {
   } = pageData
 
   return (
-    <Layout options={options}>
+    <Layout type='cases' options={options}>
       <SeoContext globalMeta={globalMeta}>
-        <Title
-          title={title}
-          subtitle={subtitle}
-        />
+        <PageCases />
       </SeoContext>
     </Layout>
   )

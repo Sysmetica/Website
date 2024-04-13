@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
 import 'normalize.css/normalize.css';
 import '../styles/common.scss';
-import { Poppins } from 'next/font/google';
+import { Poppins, Caveat } from 'next/font/google';
 import localFont from 'next/font/local';
 import { ApolloProvider } from "@apollo/client";
 import client from '@/graphql/client';
@@ -10,6 +10,12 @@ import Head from 'next/head';
 
 export const poppinsFont = Poppins({
   weight: ['400', '500', '600'],
+  style: ['normal'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+export const cavetFont = Caveat({
+  weight: ['400'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',

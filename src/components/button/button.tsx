@@ -3,7 +3,7 @@ import s from './button.module.scss';
 import Link from 'next/link';
 
 type ButtonProps = {
-  children: string
+  children: string | any
   link?: string
   refVal?: any
   type?: string[]
