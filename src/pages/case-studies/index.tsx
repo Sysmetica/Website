@@ -32,7 +32,7 @@ const CaseStudies: FC<Props> = ({ pageData, options, globalMeta }) => {
   return (
     <Layout type='cases' options={options}>
       <SeoContext globalMeta={globalMeta}>
-        <PageCases />
+        <PageCases type="medium" />
       </SeoContext>
     </Layout>
   )

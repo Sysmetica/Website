@@ -1,7 +1,8 @@
+import { TemplateMedium } from './templates/medium/TemplateMedium';
 import { TemplateSmall } from './templates/small/TemplateSmall';
 
 type Cases = {
-  type?: string
+  type?: "medium" | "large" | undefined
 }
 
 export const PageCases = ({ type }: Cases) => {
@@ -9,8 +10,8 @@ export const PageCases = ({ type }: Cases) => {
 
 
   switch (type) {
-    case "value":
-      break;
+    case "medium":
+      return <TemplateMedium />
     default:
       return <TemplateSmall />
   }
