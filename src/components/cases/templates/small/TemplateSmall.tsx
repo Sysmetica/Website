@@ -11,38 +11,45 @@ export const TemplateSmall = () => {
 
   return (
     <>
-      <Row>
-        <div className={css.intro}>
-          <div className={css.title}>
-            <div>
-              <h1 className={IBMPlexSans.className}>Explore our Case Studies</h1>
-              <p className={css.subtitle}>Our work spans from enhancing healthcare with accurate monitoring tools to advancing entertainment through innovative streaming services</p>
-            </div>
-
-            <div className={css.description}>
-              <div className={css.icon}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-                  <path d="M92.1657 12.3389C70.492 11.2972 47.6107 13.939 31.6748 30.4509C23.1657 39.2676 20.3797 53.5648 34.0358 58.7071C43.3368 62.2094 59.7805 62.6276 64.8697 52.1285C70.4896 40.5346 43.0172 51.3612 40.2917 53.0638C27.5348 61.0326 19.4201 70.8766 11.5949 83.3902C8.6636 88.0778 8.29121 84.8336 8.94833 81.2114C9.51846 78.0686 10.25 74.509 11.6319 71.6297C12.0533 70.7516 10.5451 76.8443 10.2605 77.7937C9.04057 81.8649 7.79227 86.6131 13.4193 87.0792C14.3233 87.154 22.7904 87.1222 23.1022 85.8726C23.2644 85.2224 18.0786 82.1621 17.4618 81.5815C13.4562 77.8106 12.2357 74.6893 12.9293 69.3695" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+      <div className={css.intro}>
+        <Row>
+          <div className={css.wrapp}>
+            <div className={css.title}>
+              <div>
+                <h1 className={IBMPlexSans.className}>Explore our Case Studies</h1>
+                <p className={css.subtitle}>Our work spans from enhancing healthcare with accurate monitoring tools to advancing entertainment through innovative streaming services</p>
               </div>
-              <p className={cavetFont.className}>Our experience encompasses the following domains:</p>
+
+              <div className={css.description}>
+                <div className={css.icon}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+                    <path d="M92.1657 12.3389C70.492 11.2972 47.6107 13.939 31.6748 30.4509C23.1657 39.2676 20.3797 53.5648 34.0358 58.7071C43.3368 62.2094 59.7805 62.6276 64.8697 52.1285C70.4896 40.5346 43.0172 51.3612 40.2917 53.0638C27.5348 61.0326 19.4201 70.8766 11.5949 83.3902C8.6636 88.0778 8.29121 84.8336 8.94833 81.2114C9.51846 78.0686 10.25 74.509 11.6319 71.6297C12.0533 70.7516 10.5451 76.8443 10.2605 77.7937C9.04057 81.8649 7.79227 86.6131 13.4193 87.0792C14.3233 87.154 22.7904 87.1222 23.1022 85.8726C23.2644 85.2224 18.0786 82.1621 17.4618 81.5815C13.4562 77.8106 12.2357 74.6893 12.9293 69.3695" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </div>
+                <p className={cavetFont.className}>Our experience encompasses the following domains:</p>
+              </div>
+            </div>
+
+            <div className={css.tags}>
+              {tags.map(t => <p key={t}>{t}</p>)}
             </div>
           </div>
+        </Row>
+        <div className={css.back}></div>
 
-          <div className={css.tags}>
-            {tags.map(t => <p key={t}>{t}</p>)}
-          </div>
-        </div>
-      </Row>
+      </div>
 
       <div className={`${css.health} ${css.top}`}>
         <Row>
           <div className={css.wrapp}>
             <div className={css.image}>
-              <MyImage src={`/img/iphone.png`} alt="Phone" width={381} height={772} />
+              <MyImage src={`/img/iphone.png`} alt="Phone" width={381} height={772} imgClass={css.desk} />
+              <MyImage src={`/img/iphone-mobile.png`} alt="Phone" width={270} height={545} imgClass={css.mobile} />
             </div>
             <div className={css.content}>
-              <p className={css.tag}> HEALTHCARE</p>
+              <div className={css.tag}>
+                <p>HEALTHCARE</p>
+              </div>
 
               <h2>Huma, a remote patient monitoring platform </h2>
               <p className={css.subtitle}>An application that advances connected care for patients and accelerates research and therapies.</p>
@@ -78,7 +85,9 @@ export const TemplateSmall = () => {
           <div className={css.wrapp}>
 
             <div className={css.content}>
-              <p className={css.tag}> HEALTHCARE</p>
+              <div className={css.tag}>
+                <p>HEALTHCARE</p>
+              </div>
 
               <h2>Beat Metric, a heart rate measurement app </h2>
               <p className={css.subtitle}>We designed and developed a precise, user-friendly heart rate monitoring tool, integrating seamlessly with health devices for fitness, medical, or wellness tracking.</p>
@@ -99,7 +108,9 @@ export const TemplateSmall = () => {
             </div>
 
             <div className={css.image}>
-              <MyImage src={`/img/iphone-red.png`} alt="Phone" width={381} height={772} />
+              <MyImage src={`/img/iphone-red.png`} alt="Phone" width={381} height={772} imgClass={css.desk} />
+              <MyImage src={`/img/iphone-mobile.png`} alt="Phone" width={270} height={545} imgClass={css.mobile} />
+
             </div>
           </div>
 
