@@ -7,7 +7,8 @@ import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from "@/state";
 
 type mouseActionAreaProp = {
-  area: 'hidden' | 'open' | 'default' | 'none' | 'drag' | 'submit'
+  area: 'hidden' | 'open' | 'default' | 'none' | 'drag' | 'submit',
+  title?: string
 }
 
 export const mouseActionArea = atom<mouseActionAreaProp>({
@@ -15,7 +16,7 @@ export const mouseActionArea = atom<mouseActionAreaProp>({
 })
 
 export const Action = () => {
-  const { area } = useAtomValue(mouseActionArea);
+  const { area, title } = useAtomValue(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
 
   const circleRef = useRef<any>()
@@ -81,7 +82,7 @@ export const Action = () => {
         })} />
         <div ref={dragRef} className={clsx(s.drag, s.action, {
           [s.visible]: area === 'drag'
-        })}>Drag</div>
+        })}>{title || "Drag"}</div>
         <div ref={submitRef} className={clsx(s.submit, s.action, {
           [s.visible]: area === 'submit'
         })} />

@@ -3,9 +3,13 @@ import css from "./tmp.module.scss"
 import { Row } from '@/common/row/row';
 import { Button } from '@/components/button/button';
 import MyImage from '@/components/image/image';
+import { useSetAtom } from 'jotai';
+import { mouseActionArea } from '@/components/action/action';
 
 
 export const TemplateMedium = () => {
+  const setArea = useSetAtom(mouseActionArea);
+
   const tools = [
     {
       title: "Timeline of Tasks",
@@ -172,7 +176,9 @@ export const TemplateMedium = () => {
         </Row>
       </div>
 
-      <div className={`${css.health}`}>
+      <div className={`${css.health}`}
+        onMouseOver={() => setArea({ area: 'drag', title: "About Project" })}
+        onMouseOut={() => setArea({ area: 'default', title: "About Project" })}>
         <Row>
           <div className={css.wrapp}>
 
