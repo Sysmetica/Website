@@ -1,14 +1,14 @@
 import React, { FC } from 'react'
-import { CASE_STUDIES_PAGE, META, OPTIONS } from '@/graphql/queries'
+import { CASE_STUDIES_PAGE, GET_ALL_CAREERS_URL, GET_SINGLE_CAREER, META, OPTIONS } from '@/graphql/queries'
 import { GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
-import { CareerPageFields } from '@/types/career'
+import { CareerPageFields, CareerProps, CareersProps } from '@/types/career';
 import { OptionsProps } from '@/types/options'
 import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
-import { Intro } from '@/parts/cases/intro/Intro'
-import { Cases } from '@/parts/cases/cases/Cases'
+import { ArchiveCase } from '@/parts/cases/archive/page'
+
 
 interface Props {
   pageData: {
@@ -21,20 +21,28 @@ interface Props {
   globalMeta: GlobalProps
 }
 
-const CaseStudies: FC<Props> = ({ pageData, options, globalMeta }) => {
-  const { attributes: { title, subtitle, } } = pageData;
+const Case: FC<Props> = ({ pageData, options, globalMeta }) => {
+  // const { attributes: { title, level, tags, description } } = pageData
 
   return (
     <Layout type='cases' options={options}>
       <SeoContext globalMeta={globalMeta}>
-        <Intro />
-        <Cases />
+        <ArchiveCase />
       </SeoContext>
     </Layout>
   )
 }
 
-export default CaseStudies
+export default Case
+
+export const getStaticPaths = async () => {
+
+  // JUST TEST
+  return {
+    paths: [], //indicates that no page needs be created at build time
+    fallback: 'blocking' //indicates the type of fallback
+}
+}
 
 export const getStaticProps: GetStaticProps<any> = async () => {
   const { data } = await client.query({ query: CASE_STUDIES_PAGE })
