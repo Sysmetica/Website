@@ -9,7 +9,6 @@ import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
 import { ArchiveCase } from '@/parts/cases/archive/page'
 
-
 interface Props {
   pageData: {
     attributes: {
@@ -41,7 +40,7 @@ export const getStaticPaths = async () => {
   return {
     paths: [], //indicates that no page needs be created at build time
     fallback: 'blocking' //indicates the type of fallback
-}
+  }
 }
 
 export const getStaticProps: GetStaticProps<any> = async () => {

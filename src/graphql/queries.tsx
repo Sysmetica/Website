@@ -8,6 +8,36 @@ values {
 }
 `
 
+const CASES = `
+data {
+  attributes {
+    title,
+    description
+    site
+    href
+    tags {
+      text
+    }
+    landscape {
+      data {
+        attributes {
+          previewUrl
+          url
+        }
+      }
+    }
+    portrait {
+      data {
+        attributes {
+          previewUrl
+          url
+        }
+      }
+    }
+  }
+}
+`
+
 const CAREERS = `
   careers {
     data {
@@ -45,33 +75,7 @@ export const HOME_PAGE = gql`
           ${VALUES}
           ${CAREERS}
           casestudies {
-            data {
-              attributes {
-                title,
-                description
-                site
-                href
-                tags {
-                  text
-                }
-                landscape {
-                  data {
-                    attributes {
-                      previewUrl
-                      url
-                    }
-                  }
-                }
-                portrait {
-                  data {
-                    attributes {
-                      previewUrl
-                      url
-                    }
-                  }
-                }
-              }
-            }
+            ${CASES}
           }
           teams {
             data {
@@ -285,6 +289,12 @@ export const CASE_STUDIES_PAGE = gql`
         attributes {
           title
           subtitle
+          tags {
+            tag
+          }
+          casestudies {
+            ${CASES}
+          }
         }
       }
     }

@@ -6,9 +6,6 @@ type Cases = {
 }
 
 export const ArchiveCase = ({ type }: Cases) => {
-
-
-
   switch (type) {
     case "large":
       return <TemplateLarge />
