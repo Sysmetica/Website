@@ -50,7 +50,7 @@ export const Tools = () => {
 
           <div className={css.column}>
             <div className={css.diamond}>
-              <MyImage src={`/img/icons/services/diamond-bg-2.svg`} alt="" width={500} height={648} />
+              <div className={css.d}></div>
             </div>
             <div className={css.stroke}></div>
 

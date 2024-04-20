@@ -10,6 +10,7 @@ export const ArchiveCase = ({ type }: Cases) => {
     case "large":
       return <TemplateLarge />
     default:
-      return <TemplateSmall />
+      // return <TemplateSmall />
+      return <TemplateLarge />
   }
 }

@@ -2,6 +2,10 @@
   color: white;
   padding: 150px 0 0;
 
+  @media (max-width: 799px) {
+    padding: 40px 0;
+  }
+
   .wrapp {
     display: flex;
     flex-direction: column;
@@ -36,40 +40,87 @@
       justify-content: center;
       width: 100%;
       position: relative;
-      margin-top: -5em;
+      margin-top: 90px;
+      padding-left: 25px;
+
+      @media (min-width: 800px) {
+        margin-top: -5em;
+        padding: 0;
+      }
 
       .diamond {
         display: flex;
-        width: 590px;
         position: relative;
-        img {
-          width: 100%;
-          height: auto;
-          opacity: 0.6;
-        }
+        width: 430px;
+        aspect-ratio: 500/648;
+        pointer-events: none;
 
-        &::after {
-          content: "";
+        .d {
           position: absolute;
           top: 0;
           left: 0;
           bottom: 0;
           right: 0;
-          z-index: 1;
-          background: url("/img/film.png");
-          opacity: 0.15;
-          mix-blend-mode: overlay;
+          background: url("/img/icons/services/diamond-bg-1.svg") center/cover no-repeat;
+
+          @media (min-width: 800px) {
+            background: url("/img/icons/services/diamond-bg-2.svg") center/cover no-repeat;
+            opacity: 0.6;
+          }
+        }
+
+        @media (max-width: 799px) {
+          width: 590px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform: translate(-40%, -50%);
+        }
+
+        @media (min-width: 1200px) {
+          width: 560px;
+        }
+
+        @media (min-width: 800px) {
+          width: 560px;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 1;
+            background: url("/img/film.png");
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+          }
         }
       }
 
       .stroke {
         display: flex;
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: url("/img/cases_stroke.svg");
-        width: 442px;
-        aspect-ratio: 442/320;
+        width: 48px;
+        aspect-ratio: 1;
+        top: 0;
+        left: 5px;
+        z-index: 222;
+        transform: translateY(-49%);
+
+        @media (min-width: 800px) {
+          transform: translateY(-50%);
+          background: url("/img/cases_stroke.svg") center/cover no-repeat;
+          aspect-ratio: 442/320;
+          width: 320px;
+          top: 50%;
+          left: auto;
+        }
+
+        @media (min-width: 1200px) {
+          width: 442px;
+        }
 
         &::after {
           content: "";
@@ -85,19 +136,29 @@
 
       .grid {
         display: flex;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 442px;
-        aspect-ratio: 442/320;
+        flex-direction: column;
+        gap: 24px;
         z-index: 2;
+        padding-top: 24px;
+        padding-left: 24px;
+        overflow: hidden;
+
+        @media (min-width: 800px) {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          aspect-ratio: 442/320;
+          z-index: 2;
+          width: 330px;
+          padding: 0;
+          overflow: visible;
+        }
+
+        @media (min-width: 1200px) {
+          width: 442px;
+        }
 
         .row {
-          position: absolute;
-          width: 398px;
-          text-align: right;
-          transform: translateY(-14px);
-
           .t {
             font-size: 18px;
             font-weight: 500;
@@ -107,36 +168,89 @@
             font-size: 14px;
             margin-top: 4px;
             color: #c7c7c7;
+
+            @media (min-width: 800px) {
+              font-size: 12px;
+            }
+
+            @media (min-width: 1200px) {
+              font-size: 14px;
+            }
           }
 
-          &:nth-child(1) {
-            right: calc(100% - 45px);
-            top: 0;
+          @media (min-width: 800px) {
+            position: absolute;
+            text-align: right;
+            transform: translateY(-14px);
+            width: 280px;
+
+            &:nth-child(1) {
+              right: calc(100% - 45px);
+              top: 0;
+            }
+            &:nth-child(2) {
+              text-align: left;
+              left: calc(100% - 45px);
+              top: 0;
+            }
+            &:nth-child(3) {
+              right: calc(100% + 15px);
+              top: 50%;
+              width: 220px;
+
+              @media (min-width: 1200px) {
+                width: 336px;
+              }
+            }
+            &:nth-child(4) {
+              text-align: left;
+              left: calc(100% + 15px);
+              top: 50%;
+              width: 220px;
+
+              @media (min-width: 1200px) {
+                width: 336px;
+              }
+            }
+            &:nth-child(5) {
+              right: calc(100% - 45px);
+              top: 100%;
+            }
+            &:nth-child(6) {
+              text-align: left;
+              left: calc(100% - 45px);
+              top: 100%;
+            }
           }
-          &:nth-child(2) {
-            text-align: left;
-            left: calc(100% - 45px);
-            top: 0;
+
+          @media (min-width: 1200px) {
+            width: 398px;
           }
-          &:nth-child(3) {
-            right: calc(100% + 15px);
-            top: 50%;
-            width: 336px;
-          }
-          &:nth-child(4) {
-            text-align: left;
-            left: calc(100% + 15px);
-            top: 50%;
-            width: 336px;
-          }
-          &:nth-child(5) {
-            right: calc(100% - 45px);
-            top: 100%;
-          }
-          &:nth-child(6) {
-            text-align: left;
-            left: calc(100% - 45px);
-            top: 100%;
+
+          @media (max-width: 799px) {
+            &:last-child {
+              position: relative;
+              &::before {
+                content: "";
+                position: absolute;
+                left: -20px;
+                height: 1000vh;
+                border-left: 1px dashed rgb(128 128 128);
+                bottom: calc(100% - 13px);
+                pointer-events: none;
+              }
+
+              &::after {
+                content: "";
+                position: absolute;
+                top: 13px;
+                left: -22px;
+                width: 5px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                background-color: rgb(128 128 128);
+              }
+            }
           }
         }
       }

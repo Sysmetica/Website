@@ -44,6 +44,8 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps<any> = async () => {
+
+   // JUST TEST   
   const { data } = await client.query({ query: CASE_STUDIES_PAGE })
   const pageData: CareerPageFields = data.caseStudiesPage.data;
 

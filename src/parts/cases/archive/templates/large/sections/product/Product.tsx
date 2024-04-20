@@ -6,6 +6,24 @@ import MyImage from '@/components/image/image';
 
 export const Product = () => {
 
+  const rows = [
+    {
+      title: "Apple Watch Integration",
+      subtitle: "This feature allows users to receive heartbeat notifications directly on their wrist, view a comprehensive history of their measurements, and collect statistics aggregated from both the Beat Metric app and Apple Watch.",
+      image: "/img/product_4.svg"
+    },
+    {
+      title: "Data History and Statistics",
+      subtitle: "Enhances user engagement with detailed health analytics and personalized insights based on their heart rate data.",
+      image: "/img/product_5.svg"
+    },
+    {
+      title: "Connectivity & Synchronization",
+      subtitle: "Streamlining integration and data sharing with other health tracking applications for a unified health management experience",
+      image: "/img/product_6.svg"
+    },
+  ]
+
 
   return (
 
@@ -15,39 +33,29 @@ export const Product = () => {
 
           <div className={css.title}>
             <h2 className={IBMPlexSans.className}>Product Summary</h2>
-            <p>Revolutionizing healthcare, this app bridges the gap between patients and clinicians. It provides personalized care plans, tailored to meet individual needs, with a broad range of features. Through real-time monitoring and data visualization, the platform ensures continuous observation and immediate care for patients. It also delivers targeted educational content, empowering patients to manage their health proactively.</p>
+            <p>
+              Beat Metric is a revolutionary tool designed for individuals who require consistent and accurate heart rate monitoring. It offers a user-friendly interface, precise heartbeat tracking, and seamless integration with health devices. This app caters to anyone looking to stay informed about their cardiac health, whether for fitness tracking, medical reasons, or personal wellness goals.
+            </p>
           </div>
 
 
 
           <div className={css.column}>
-            <div className={css.row}>
-              <div className={css.icon}>
-                <MyImage src={`/img/product_1.svg`} alt="Product" width={42} height={42} />
+
+            {rows.map(row => (
+              <div className={css.row} key={row.title}>
+                <div className={css.icon}>
+                  <MyImage src={row.image} alt={row.title} width={42} height={42} />
+                </div>
+                <div>
+                  <h3>{row.title}</h3>
+                  <p>{row.subtitle}</p>
+                </div>
               </div>
-              <div>
-                <h3>Empowering Patients with Knowledge</h3>
-                <p>Provides targeted educational content, enabling proactive and effective health management.</p>
-              </div>
-            </div>
-            <div className={css.row}>
-              <div className={css.icon}>
-                <MyImage src={`/img/product_2.svg`} alt="Product" width={42} height={42} />
-              </div>
-              <div>
-                <h3>Real-Time Patient Monitoring</h3>
-                <p>Ensures timely care with real-time monitoring and advanced data visualization, elevating patient care standards.</p>
-              </div>
-            </div>
-            <div className={css.row}>
-              <div className={css.icon}>
-                <MyImage src={`/img/product_3.svg`} alt="Product" width={42} height={42} />
-              </div>
-              <div>
-                <h3>Healthcare Without Borders</h3>
-                <p>Offers healthcare access anywhere, overcoming geographical barriers and ensuring constant connection with care teams.</p>
-              </div>
-            </div>
+
+            ))}
+
+
           </div>
         </div>
       </Row>
