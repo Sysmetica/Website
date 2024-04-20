@@ -1,5 +1,5 @@
 .product {
-  padding: 150px 0;
+  padding: clamp(56px, 11vw, 150px) 0;
   color: #616162;
   background-color: white;
 
@@ -7,10 +7,18 @@
     display: flex;
     justify-content: space-between;
     gap: 24px;
+    flex-direction: column;
+
+    @media (min-width: 800px) {
+      flex-direction: row;
+    }
 
     .title {
-      width: 50%;
-      max-width: 560px;
+      flex: 1;
+
+      @media (min-width: 800px) {
+        max-width: 560px;
+      }
 
       h2 {
         font-size: 28px;
@@ -31,16 +39,26 @@
       }
     }
     .column {
-      width: 43%;
-      max-width: 460px;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
+
+      @media (min-width: 800px) {
+        gap: 32px;
+        max-width: 460px;
+      }
 
       .row {
         display: flex;
         align-items: flex-start;
-        gap: 16px;
+        gap: 10px;
+        flex-direction: column;
+
+        @media (min-width: 800px) {
+          flex-direction: row;
+          gap: 16px;
+        }
 
         .icon {
           display: flex;

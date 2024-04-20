@@ -27,8 +27,6 @@ export const Layout = ({ children, type = '', options }: LayoutProps) => {
 
   const [theme] = useState(options);
 
-  console.log(theme)
-
   useEffect(() => {
     const handleRouteChange = () => {
       setArea({ area: 'default' });

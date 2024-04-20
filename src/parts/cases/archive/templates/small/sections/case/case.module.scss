@@ -17,8 +17,8 @@
     align-items: center;
     gap: 40px;
 
-    @media (max-width: 800px) {
-      flex-direction: column-reverse;
+    @media (max-width: 799px) {
+      flex-direction: column;
     }
 
     .content {
