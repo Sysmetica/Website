@@ -1,0 +1,108 @@
+.modes {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  .wrapp {
+    color: white;
+    padding: 50px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 800px) {
+      padding: 165px 0 0;
+    }
+
+    .mod {
+      display: flex;
+      margin-bottom: 15px;
+      gap: 15px;
+
+      @media (min-width: 800px) {
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      div {
+        width: 60px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: flex;
+
+        @media (min-width: 800px) {
+          width: 84px;
+        }
+
+        &.sun {
+          background: rgba(243, 235, 160, 1);
+        }
+        &.moon {
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84' fill='none'%3E%3Cpath d='M60.254 79.4668C54.7422 82.1568 48.5487 83.6663 42.0026 83.6663C18.9907 83.6663 0.335938 65.0115 0.335938 41.9997C0.335938 18.9878 18.9907 0.333008 42.0026 0.333008C48.5487 0.333008 54.7422 1.84256 60.254 4.53255C59.7285 4.51071 59.2001 4.49967 58.6693 4.49967C37.9586 4.49967 21.1693 21.289 21.1693 41.9997C21.1693 62.7104 37.9586 79.4997 58.6693 79.4997C59.2001 79.4997 59.7285 79.4886 60.254 79.4668Z' fill='%23F3EBA0'/%3E%3C/svg%3E")
+            center/cover no-repeat;
+        }
+      }
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      @media (min-width: 800px) {
+        max-width: 680px;
+      }
+
+      h2 {
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 120%;
+        letter-spacing: -1px;
+        margin: 0;
+
+        @media (min-width: 800px) {
+          font-size: 48px;
+          width: 90%;
+        }
+      }
+
+      .subtitle {
+        font-size: 14px;
+        margin: 14px 0;
+
+        @media (min-width: 1441px) {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .icon {
+      display: flex;
+      margin-bottom: -150px;
+      margin-top: 50px;
+      width: 85%;
+      max-width: 580px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .back {
+    position: absolute;
+
+    @media (min-width: 800px) {
+      aspect-ratio: 81/70;
+      background: url("/img/cases_bg.svg") center/cover no-repeat;
+      z-index: -1;
+      opacity: 0.2;
+      pointer-events: none;
+      top: -155px;
+      right: -75px;
+      width: clamp(600px, 56%, 810px);
+    }
+  }
+}

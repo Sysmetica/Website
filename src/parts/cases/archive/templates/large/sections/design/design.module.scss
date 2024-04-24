@@ -22,12 +22,20 @@
     position: absolute;
     aspect-ratio: 105/72;
     background: url("/img/cases_bg-2.svg") center/cover no-repeat;
-    width: 1050px;
+    opacity: 0.2;
+    width: 110%;
+    opacity: 0.2;
+    transform: translate(-40%, -15%);
+    top: 0;
+    left: 0;
+    max-width: 600px;
 
     @media (min-width: 800px) {
+      transform: none;
       top: -105px;
       left: -85px;
-      opacity: 0.2;
+      width: 1050px;
+      max-width: none;
     }
   }
 
@@ -60,9 +68,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 270px;
     position: relative;
     width: 100%;
+    margin-top: 30px;
+
+    @media (min-width: 800px) {
+      margin-top: 270px;
+    }
 
     @media (min-width: 1600px) {
       width: 1500px;
@@ -70,15 +82,24 @@
     }
 
     .grid {
-      width: 81%;
+      width: 100%;
+      max-width: 1140px;
       display: flex;
-      justify-content: flex-end;
-      gap: clamp(60px, 6.25vw, 100px);
-      position: absolute;
-      z-index: 2;
-      top: -100px;
-      height: 100%;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 15px;
+
+      @media (min-width: 800px) {
+        padding: 0;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-end;
+        position: absolute;
+        z-index: 2;
+        top: -100px;
+        height: 100%;
+        gap: clamp(60px, 6.25vw, 100px);
+      }
 
       .row {
         display: flex;
@@ -87,6 +108,11 @@
         min-width: 21%;
         border-left: 1px dashed rgba(white, 0.7);
         position: relative;
+
+        @media (max-width: 799px) {
+          margin-left: 20px;
+          padding-left: 24px;
+        }
 
         &::before {
           content: "";
@@ -121,7 +147,7 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          margin-top: 80px;
+          margin-top: clamp(32px, 6vw, 80px);
           gap: 8px;
 
           .tag {
@@ -138,6 +164,12 @@
       display: flex;
       width: 100%;
       mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 25%);
+      justify-content: flex-end;
+
+      @media (max-width: 799px) {
+        justify-content: center;
+        margin-top: -60px;
+      }
 
       @media (min-width: 1600px) {
         mask-image: radial-gradient(
@@ -154,6 +186,7 @@
       img {
         width: 100%;
         height: auto;
+        min-width: 900px;
       }
     }
   }

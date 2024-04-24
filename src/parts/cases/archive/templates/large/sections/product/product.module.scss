@@ -6,7 +6,8 @@
   .wrapp {
     display: flex;
     justify-content: space-between;
-    gap: 24px;
+    gap: 32px;
+
     flex-direction: column;
 
     @media (min-width: 800px) {

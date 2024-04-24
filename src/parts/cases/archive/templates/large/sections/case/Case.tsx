@@ -10,7 +10,6 @@ export const Case = () => {
 
 
   return (
-
     <div className={`${css.health}`}
       onMouseOver={() => setArea({ area: 'drag', title: "About Project" })}
       onMouseOut={() => setArea({ area: 'default', title: "About Project" })}>
@@ -36,17 +35,13 @@ export const Case = () => {
             </div>
 
           </div>
-
           <div className={css.image}>
-            <MyImage src={`/img/iphone-big.png`} alt="Phone" width={1440} height={1000} imgClass={css.desk} />
+            <MyImage src={`/img/iphone.png`} alt="Phone" width={1440} height={1000} imgClass={css.desk} />
             <MyImage src={`/img/iphone-mobile.png`} alt="Phone" width={270} height={545} imgClass={css.mobile} />
-
           </div>
         </div>
 
       </Row>
     </div>
-
-
   )
 }

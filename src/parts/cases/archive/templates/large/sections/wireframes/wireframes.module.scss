@@ -1,0 +1,140 @@
+.wireframes {
+  padding: 150px 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 799px) {
+    padding: 40px 0;
+  }
+
+  .title {
+    color: white;
+    text-align: center;
+    @media (min-width: 800px) {
+      max-width: 655px;
+      text-align: left;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 120%;
+      letter-spacing: -1px;
+      margin: 0;
+
+      @media (min-width: 800px) {
+        font-size: 48px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      margin: 14px 0;
+
+      @media (min-width: 1441px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .map {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .swiper {
+      width: 100%;
+      padding: 0 15px;
+      @media (min-width: 800px) {
+        width: 90%;
+        max-width: 1920px;
+        padding: 0;
+      }
+    }
+
+    .icon {
+      display: flex;
+      min-width: 800px;
+      & > * {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .grid {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin-top: 50px;
+
+    @media (min-width: 1025px) {
+      flex-direction: row;
+      margin-top: 150px;
+      align-items: flex-start;
+    }
+
+    .discription {
+      flex: none;
+      color: #8970ef;
+      display: flex;
+
+      @media (min-width: 1025px) {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      p {
+        font-size: 20px;
+        line-height: 18px;
+        // width: 327px;
+        max-width: 500px;
+
+        @media (min-width: 1025px) {
+          font-size: 24px;
+          line-height: 20px;
+          width: clamp(25px, 23vw, 328px);
+        }
+      }
+
+      .icon {
+        width: clamp(100px, 10vw, 137px);
+        display: flex;
+        transform: rotate(-60deg);
+        flex: none;
+
+        @media (min-width: 1025px) {
+          transform: rotate(-95deg);
+        }
+
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .swiper {
+      margin: 0;
+      flex: 1;
+      overflow: visible;
+
+      .slide {
+        display: flex;
+        gap: 16px;
+        // width: auto;
+        // min-width: 100%;
+        min-width: 600px;
+
+        .icon {
+          display: flex;
+          flex: 1;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
