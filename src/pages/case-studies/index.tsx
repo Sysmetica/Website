@@ -7,9 +7,9 @@ import { CareerPageFields } from '@/types/career'
 import { OptionsProps } from '@/types/options'
 import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
-import { Intro, IntroProps } from '@/parts/cases/intro/Intro'
-import { Cases } from '@/parts/cases/cases/Cases'
 import { CaseStudiesProps } from '@/types/casestudies'
+import { CasesPage } from '@/parts/cases/page'
+import { IntroProps } from '@/parts/cases/intro/Intro'
 
 interface Props {
   pageData: {
@@ -25,28 +25,13 @@ interface Props {
 }
 
 const CaseStudies: FC<Props> = ({ pageData, options, globalMeta }) => {
-  const {
-    attributes:
-    {
-      title,
-      subtitle,
-      tags,
-      casestudies,
-    }
-  } = pageData;
+  const { attributes } = pageData;
   // console.log('pageData ', pageData);
 
   return (
     <Layout type='cases' options={options}>
       <SeoContext globalMeta={globalMeta}>
-        <Intro
-          title={title}
-          subtitle={subtitle}
-          tags={tags}
-        />
-        <Cases
-          cases={casestudies}
-        />
+        <CasesPage {...attributes} />
       </SeoContext>
     </Layout>
   )

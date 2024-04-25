@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.1",
+    "@gsap/react": "^2.1.1",
     "@strapi/blocks-react-renderer": "^1.0.1",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "20.4.9",
