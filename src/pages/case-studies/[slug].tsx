@@ -1,9 +1,8 @@
 import React, { FC } from 'react'
-import { CASE_STUDIES_PAGE, GET_ALL_CAREERS_URL, GET_SINGLE_CAREER, META, OPTIONS } from '@/graphql/queries'
-import { GetStaticProps } from 'next/types'
+import { GET_ALL_CASE_STUDIES_URL, GET_SINGLE_CASE_STUDIE, META, OPTIONS } from '@/graphql/queries'
+import { GetStaticPaths, GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { Layout } from '@/common/layout/layout'
-import { CareerPageFields, CareerProps, CareersProps } from '@/types/career';
 import { OptionsProps } from '@/types/options'
 import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
@@ -12,8 +11,7 @@ import { ArchiveCase } from '@/parts/cases/archive/page'
 interface Props {
   pageData: {
     attributes: {
-      title: string
-      subtitle: string
+      slug: string
     }
   }
   options: OptionsProps
@@ -21,12 +19,17 @@ interface Props {
 }
 
 const Case: FC<Props> = ({ pageData, options, globalMeta }) => {
-  // const { attributes: { title, level, tags, description } } = pageData
+  const {
+    attributes: {
+      slug,
+    }
+  } = pageData
+  // console.log('pageData ', pageData);
 
   return (
     <Layout type='cases' options={options}>
       <SeoContext globalMeta={globalMeta}>
-        <ArchiveCase />
+        <ArchiveCase template={slug} />
       </SeoContext>
     </Layout>
   )
@@ -34,20 +37,32 @@ const Case: FC<Props> = ({ pageData, options, globalMeta }) => {
 
 export default Case
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<any> = async () => {
+  const { data } = await client.query({ query: GET_ALL_CASE_STUDIES_URL })
 
-  // JUST TEST
+  const paths = data.caseStudies.data.map((post: any) => {
+    return {
+      params: {
+        slug: post.attributes.slug,
+      }
+    }
+  })
+
   return {
-    paths: [], //indicates that no page needs be created at build time
-    fallback: 'blocking' //indicates the type of fallback
+    paths,
+    fallback: false
   }
 }
 
-export const getStaticProps: GetStaticProps<any> = async () => {
+export const getStaticProps: GetStaticProps<any> = async ({ params }: any) => {
+  const { data } = await client.query({
+    query: GET_SINGLE_CASE_STUDIE,
+    variables: {
+      slug: `${params.slug}`
+    }
+  })
 
-   // JUST TEST   
-  const { data } = await client.query({ query: CASE_STUDIES_PAGE })
-  const pageData: CareerPageFields = data.caseStudiesPage.data;
+  const pageData = data.caseStudies.data[0]
 
   // options
   const optionsData = await client.query({ query: OPTIONS });

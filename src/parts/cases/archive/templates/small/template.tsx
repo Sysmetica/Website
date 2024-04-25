@@ -4,9 +4,7 @@ import { Product } from './sections/product/Product';
 import { Tools } from './sections/tools/Tools';
 import { Case } from './sections/case/Case';
 
-
 export const TemplateSmall = () => {
-
   return (
     <>
       <Intro />
@@ -15,6 +13,5 @@ export const TemplateSmall = () => {
       <Tools />
       <Case />
     </>
-
   )
 }

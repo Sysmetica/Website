@@ -8,7 +8,19 @@ import Link from 'next/link';
 export const Cases = ({ cases }: { cases: CaseStudiesProps }) => {
   return (
     <div className={css.cases}>
-      {cases.data.map(({ attributes: { title, portrait, landscape, href, description, site, tags } }) => {
+      {cases.data.map(({
+        attributes: {
+          title,
+          portrait,
+          landscape,
+          href,
+          description,
+          site,
+          tags,
+          template,
+          slug,
+        }
+      }) => {
         return (
           <div className={`${css.health}`} key={title}>
             <Row>
@@ -39,16 +51,18 @@ export const Cases = ({ cases }: { cases: CaseStudiesProps }) => {
                   <h2>{title}</h2>
                   <p className={css.subtitle}>{description}</p>
                   <div className={css.buttons}>
-                    <Button type={['fill']} link={href}>
-                      <>
-                        {`View Case Studie`}
-                        <div className={css.ico}>
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 13L13 3M13 3H3M13 3V13" stroke="white" strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </div>
-                      </>
-                    </Button>
+                    {template && (
+                      <Button type={['fill']} link={`/case-studies/${slug}`}>
+                        <>
+                          {`View Case Studie`}
+                          <div className={css.ico}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                              <path d="M3 13L13 3M13 3H3M13 3V13" stroke="white" strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                        </>
+                      </Button>
+                    )}
                     {site && <a className={css.site} href={href}>
                       {site}
                       <div className={css.ico}>

@@ -2,6 +2,8 @@ export type CaseStudiesProps = {
   data: {
     attributes: {
       title: string
+      slug: string
+      template: string
       description: string
       site: string
       href: string

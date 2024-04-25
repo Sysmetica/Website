@@ -1,16 +1,13 @@
 import { TemplateLarge } from './templates/large/template';
 import { TemplateSmall } from './templates/small/template';
 
-type Cases = {
-  type?: "large" | undefined
+type ArchiveCaseProps = {
+  template: string
 }
 
-export const ArchiveCase = ({ type }: Cases) => {
-  switch (type) {
-    case "large":
-      return <TemplateLarge />
-    default:
-      // return <TemplateSmall />
+export const ArchiveCase = ({ template }: ArchiveCaseProps) => {
+  switch (template) {
+    case 'huma':
       return <TemplateLarge />
   }
 }

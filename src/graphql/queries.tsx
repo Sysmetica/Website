@@ -11,7 +11,9 @@ values {
 const CASES = `
 data {
   attributes {
-    title,
+    title
+    slug
+    template
     description
     site
     href
@@ -276,6 +278,31 @@ export const SERVICE_PAGE = gql`
         attributes {
           title,
           subtitle
+        }
+      }
+    }
+  }
+`
+
+
+export const GET_ALL_CASE_STUDIES_URL = gql`
+  query {
+    caseStudies {
+      data {
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
+
+export const GET_SINGLE_CASE_STUDIE = gql`
+  query($slug: String!) {
+    caseStudies(filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          slug,
         }
       }
     }

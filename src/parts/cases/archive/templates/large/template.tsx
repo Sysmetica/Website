@@ -8,9 +8,7 @@ import { Wireframes } from './sections/wireframes/wireframes';
 import { Modes } from './sections/modes/modes';
 import { Users } from './sections/users/users';
 
-
 export const TemplateLarge = () => {
-
   return (
     <>
       <Intro />
@@ -23,6 +21,5 @@ export const TemplateLarge = () => {
       <Modes />
       <Case />
     </>
-
   )
 }
