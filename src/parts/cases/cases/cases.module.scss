@@ -12,7 +12,7 @@
     &:nth-child(1) {
       background-color: #ececee;
 
-      .image {
+      .image_wrapp {
         @media (min-width: 800px) {
           transform: translateY(-95px);
         }
@@ -27,9 +27,8 @@
         flex-direction: row-reverse;
       }
 
-      .image {
+      .image_wrapp {
         order: -1;
-
         @media (min-width: 800px) {
           order: unset;
           transform: translateY(80px);
@@ -116,7 +115,7 @@
 
           p {
             border-radius: 6px;
-            background: rgba(29, 29, 31, 0.10);
+            background: rgba(29, 29, 31, 0.1);
             padding: 8px;
             font-size: 10px;
             font-weight: 600;

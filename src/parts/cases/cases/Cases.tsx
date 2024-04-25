@@ -12,33 +12,36 @@ export const Cases = ({ cases }: { cases: CaseStudiesProps }) => {
         return (
           <div className={`${css.health}`} key={title}>
             <Row>
-              <div className={css.wrapp}>
-                <div className={css.image}>
-                  <MyImage
-                    src={landscape.data.attributes.url}
-                    alt={title}
-                    width={381}
-                    height={772}
-                    imgClass={css.desk}
-                    upload={true}
-                  />
-                  <MyImage
-                    src={portrait.data.attributes.url}
-                    alt={title}
-                    width={270}
-                    height={545}
-                    imgClass={css.mobile}
-                    upload={true}
-                  />
+              <div className={css.wrapp} >
+                <div  className={css.image_wrapp} >
+                  <div className={css.image} data-parallax data-fade data-child >
+                    <MyImage
+                      src={landscape.data.attributes.url}
+                      alt={title}
+                      width={381}
+                      height={772}
+                      imgClass={css.desk}
+                      upload={true}
+                    />
+                    <MyImage
+                      src={portrait.data.attributes.url}
+                      alt={title}
+                      width={270}
+                      height={545}
+                      imgClass={css.mobile}
+                      upload={true}
+                    />
+                  </div>
                 </div>
+
                 <div className={css.content}>
-                  <Link href={href} className={css.mobile_link} title={title} />
-                  <div className={css.tags}>
+                  <Link href={href} className={css.mobile_link} title={title} data-fade />
+                  <div className={css.tags} data-fade data-child>
                     {tags.map(tag => <p key={tag.text}>{tag.text}</p>)}
                   </div>
-                  <h2>{title}</h2>
-                  <p className={css.subtitle}>{description}</p>
-                  <div className={css.buttons}>
+                  <h2 data-fade>{title}</h2>
+                  <p className={css.subtitle} data-fade>{description}</p>
+                  <div className={css.buttons} data-fade data-child>
                     <Button type={['fill']} link={href}>
                       <>
                         {`View Case Studie`}
