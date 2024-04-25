@@ -6,13 +6,11 @@ import { Layout } from '@/common/layout/layout'
 import { OptionsProps } from '@/types/options'
 import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
-import { ArchiveCase } from '@/parts/cases/archive/page'
+import { ArchiveCase, ArchiveCaseProps } from '@/parts/cases/archive/page'
 
 interface Props {
   pageData: {
-    attributes: {
-      slug: string
-    }
+    attributes: ArchiveCaseProps
   }
   options: OptionsProps
   globalMeta: GlobalProps
@@ -22,6 +20,7 @@ const Case: FC<Props> = ({ pageData, options, globalMeta }) => {
   const {
     attributes: {
       slug,
+      template,
     }
   } = pageData
   // console.log('pageData ', pageData);
@@ -29,7 +28,7 @@ const Case: FC<Props> = ({ pageData, options, globalMeta }) => {
   return (
     <Layout type='cases' options={options}>
       <SeoContext globalMeta={globalMeta}>
-        <ArchiveCase template={slug} />
+        <ArchiveCase slug={slug} template={template} />
       </SeoContext>
     </Layout>
   )

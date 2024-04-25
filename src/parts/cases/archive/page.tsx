@@ -1,13 +1,28 @@
-import { TemplateLarge } from './templates/large/template';
-import { TemplateSmall } from './templates/small/template';
+import { HumaLarge } from './huma/large/template';
+import { HumaSmall } from './huma/small/template';
 
-type ArchiveCaseProps = {
-  template: string
+enum TEMPLATE {
+  SHORT = 'short',
+  LARGE = 'large',
 }
 
-export const ArchiveCase = ({ template }: ArchiveCaseProps) => {
-  switch (template) {
+export type ArchiveCaseProps = {
+  slug: string
+  template: TEMPLATE
+}
+
+export const ArchiveCase = ({ slug, template }: ArchiveCaseProps) => {
+  switch (slug) {
     case 'huma':
-      return <TemplateLarge />
+
+      switch (template) {
+        case TEMPLATE.LARGE:
+          return <HumaLarge />
+        default:
+          return <HumaSmall />
+      }
+
+    // case 'beat-metric':
+    //   return <HumaSmall />
   }
 }

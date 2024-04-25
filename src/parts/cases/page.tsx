@@ -3,8 +3,7 @@ import { Cases } from "./cases/Cases"
 import { Intro } from "./intro/Intro"
 import { CaseStudiesProps } from "@/types/casestudies";
 
-
-export type Props = {
+export type CasesPageProps = {
   casestudies: CaseStudiesProps,
   title: string
   subtitle: string
@@ -13,9 +12,8 @@ export type Props = {
   }[]
 }
 
-export const CasesPage = ({ casestudies, ...props }: Props) => {
+export const CasesPage = ({ casestudies, ...props }: CasesPageProps) => {
   useAnimation();
-
 
   return (
     <>
@@ -24,6 +22,5 @@ export const CasesPage = ({ casestudies, ...props }: Props) => {
         cases={casestudies}
       />
     </>
-
   )
 }

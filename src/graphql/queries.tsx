@@ -302,7 +302,8 @@ export const GET_SINGLE_CASE_STUDIE = gql`
     caseStudies(filters: { slug: { eq: $slug } }) {
       data {
         attributes {
-          slug,
+          slug
+          template
         }
       }
     }

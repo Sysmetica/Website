@@ -9,9 +9,19 @@
       overflow: hidden;
     }
 
-    &:nth-child(1) {
-      background-color: #ececee;
+    &:not(:first-child) {
+      overflow: hidden;
+    }
 
+    &:nth-child(2n+1) {
+      background-color: #ececee;
+    }
+
+    &:nth-child(2n+2) {
+      background-color: #e2e2e2;
+    }
+
+    &:nth-child(1) {
       .image_wrapp {
         @media (min-width: 800px) {
           transform: translateY(-95px);
@@ -20,15 +30,13 @@
     }
 
     &:nth-child(2) {
-      background-color: #e2e2e2;
-      overflow: hidden;
-
       .wrapp {
         flex-direction: row-reverse;
       }
 
       .image_wrapp {
         order: -1;
+
         @media (min-width: 800px) {
           order: unset;
           transform: translateY(80px);

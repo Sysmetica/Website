@@ -1,3 +1,5 @@
+import { ImageProps } from "./common"
+
 export type CaseStudiesProps = {
   data: {
     attributes: {
@@ -5,27 +7,13 @@ export type CaseStudiesProps = {
       slug: string
       template: string
       description: string
-      site: string
-      href: string
+      site: string | null
+      href: string | null
       tags: {
         text: string
       }[]
-      landscape: {
-        data: {
-          attributes: {
-            previewUrl: string
-            url: string
-          }
-        }
-      }
-      portrait: {
-        data: {
-          attributes: {
-            previewUrl: string
-            url: string
-          }
-        }
-      }
+      landscape: ImageProps
+      portrait: ImageProps
     }
   }[]
 }

@@ -3,5 +3,5 @@ export interface ImageProps {
     attributes: {
       url: string
     }
-  }
+  } | null
 }
