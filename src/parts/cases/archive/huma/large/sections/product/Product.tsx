@@ -31,9 +31,9 @@ export const Product = () => {
       <Row>
         <div className={css.wrapp}>
 
-          <div className={css.title}>
-            <h2 className={IBMPlexSans.className}>Product Summary</h2>
-            <p>
+          <div className={css.title} >
+            <h2 className={IBMPlexSans.className} data-fade>Product Summary</h2>
+            <p data-fade>
               Beat Metric is a revolutionary tool designed for individuals who require consistent and accurate heart rate monitoring. It offers a user-friendly interface, precise heartbeat tracking, and seamless integration with health devices. This app caters to anyone looking to stay informed about their cardiac health, whether for fitness tracking, medical reasons, or personal wellness goals.
             </p>
           </div>
@@ -43,7 +43,7 @@ export const Product = () => {
           <div className={css.column}>
 
             {rows.map(row => (
-              <div className={css.row} key={row.title}>
+              <div className={css.row} key={row.title} data-fade>
                 <div className={css.icon}>
                   <MyImage src={row.image} alt={row.title} width={42} height={42} />
                 </div>

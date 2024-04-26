@@ -10,11 +10,11 @@ export const BeatMetric = () => {
     <div className={css.beat} >
       <div className={css.wrapp}>
         <div className={css.image}>
-          <div className={css.key}>
-            <MyImage src={`/img/beat-metric.png`} alt="Phone" width={1767} height={1082} />
+          <div className={css.key} data-parallax data-per="10">
+            <MyImage src={`/img/beat-metric.png`} alt="Phone" width={1767} height={1082} data-fade />
           </div>
         </div>
-        <div className={css.logo}></div>
+        <div className={css.logo} data-fade ></div>
       </div>
     </div >
 

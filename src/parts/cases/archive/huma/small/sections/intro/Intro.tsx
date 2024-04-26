@@ -10,7 +10,7 @@ export const Intro = () => {
     <div className={css.intro}>
       <Row>
         <div className={css.wrapp}>
-          <div className={css.title}>
+          <div className={css.title} data-fade data-child>
             <p className={css.tag}>HEALTHCARE</p>
             <h1 className={IBMPlexSans.className}>Huma, a remote patient monitoring platform </h1>
             <p className={css.subtitle}>An application that advances connected care for patients and accelerates research and therapies</p>
@@ -28,7 +28,7 @@ export const Intro = () => {
           </div>
         </div>
       </Row>
-      <div className={css.back}></div>
+      <div className={css.back} data-parallax></div>
 
     </div>
 

@@ -14,14 +14,14 @@ export const Product = () => {
         <div className={css.wrapp}>
 
           <div className={css.title}>
-            <h2 className={IBMPlexSans.className}>Product Summary</h2>
-            <p>Revolutionizing healthcare, this app bridges the gap between patients and clinicians. It provides personalized care plans, tailored to meet individual needs, with a broad range of features. Through real-time monitoring and data visualization, the platform ensures continuous observation and immediate care for patients. It also delivers targeted educational content, empowering patients to manage their health proactively.</p>
+            <h2 className={IBMPlexSans.className} data-fade>Product Summary</h2>
+            <p data-fade >Revolutionizing healthcare, this app bridges the gap between patients and clinicians. It provides personalized care plans, tailored to meet individual needs, with a broad range of features. Through real-time monitoring and data visualization, the platform ensures continuous observation and immediate care for patients. It also delivers targeted educational content, empowering patients to manage their health proactively.</p>
           </div>
 
 
 
           <div className={css.column}>
-            <div className={css.row}>
+            <div className={css.row} data-fade>
               <div className={css.icon}>
                 <MyImage src={`/img/product_1.svg`} alt="Product" width={42} height={42} />
               </div>
@@ -30,7 +30,7 @@ export const Product = () => {
                 <p>Provides targeted educational content, enabling proactive and effective health management.</p>
               </div>
             </div>
-            <div className={css.row}>
+            <div className={css.row} data-fade>
               <div className={css.icon}>
                 <MyImage src={`/img/product_2.svg`} alt="Product" width={42} height={42} />
               </div>
@@ -39,7 +39,7 @@ export const Product = () => {
                 <p>Ensures timely care with real-time monitoring and advanced data visualization, elevating patient care standards.</p>
               </div>
             </div>
-            <div className={css.row}>
+            <div className={css.row} data-fade>
               <div className={css.icon}>
                 <MyImage src={`/img/product_3.svg`} alt="Product" width={42} height={42} />
               </div>

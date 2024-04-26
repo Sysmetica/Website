@@ -63,6 +63,7 @@
     align-items: flex-end;
     z-index: 2;
     padding-top: 40px;
+    overflow: hidden;
 
     @media (min-width: 800px) {
       position: absolute;

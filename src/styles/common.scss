@@ -88,3 +88,9 @@ p {
   }
   // transform: translateY(2vw);
 }
+
+[data-paths] {
+  opacity: 0;
+  stroke-dashoffset: 273.983px;
+  stroke-dasharray: 273.983;
+}

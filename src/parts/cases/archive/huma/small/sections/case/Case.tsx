@@ -18,13 +18,13 @@ export const Case = () => {
         <div className={css.wrapp}>
 
           <div className={css.content}>
-            <div className={css.tag}>
+            <div className={css.tag} data-fade>
               <p>HEALTHCARE</p>
             </div>
 
-            <h2>Beat Metric, a heart rate measurement app </h2>
-            <p className={css.subtitle}>We designed and developed a precise, user-friendly heart rate monitoring tool, integrating seamlessly with health devices for fitness, medical, or wellness tracking.</p>
-            <div className={css.buttons}>
+            <h2 data-fade>Beat Metric, a heart rate measurement app </h2>
+            <p className={css.subtitle} data-fade>We designed and developed a precise, user-friendly heart rate monitoring tool, integrating seamlessly with health devices for fitness, medical, or wellness tracking.</p>
+            <div className={css.buttons} data-fade>
               <a href="/" className={css.huma} target='_blank'>
                 appstorelink.here
                 <div className={css.ico}>
@@ -37,7 +37,7 @@ export const Case = () => {
 
           </div>
 
-          <div className={css.image}>
+          <div className={css.image} data-parallax>
             <MyImage src={`/img/iphone-big.png`} alt="Phone" width={1440} height={1000} imgClass={css.desk} />
             <MyImage src={`/img/iphone-mobile.png`} alt="Phone" width={270} height={545} imgClass={css.mobile} />
 

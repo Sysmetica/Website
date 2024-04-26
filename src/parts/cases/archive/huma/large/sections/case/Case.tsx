@@ -17,14 +17,14 @@ export const Case = () => {
         <div className={css.wrapp}>
 
           <div className={css.content}>
-            <div className={css.tag}>
+            <div className={css.tag} data-fade>
               <p>HEALTHCARE</p>
             </div>
 
-            <h2>Beat Metric, a heart rate measurement app </h2>
-            <p className={css.subtitle}>We designed and developed a precise, user-friendly heart rate monitoring tool, integrating seamlessly with health devices for fitness, medical, or wellness tracking.</p>
+            <h2 data-fade>Beat Metric, a heart rate measurement app </h2>
+            <p className={css.subtitle} data-fade>We designed and developed a precise, user-friendly heart rate monitoring tool, integrating seamlessly with health devices for fitness, medical, or wellness tracking.</p>
             <div className={css.buttons}>
-              <a href="/" className={css.huma} target='_blank'>
+              <a href="/" className={css.huma} target='_blank' data-fade>
                 appstorelink.here
                 <div className={css.ico}>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
@@ -35,9 +35,9 @@ export const Case = () => {
             </div>
 
           </div>
-          <div className={css.image}>
-            <MyImage src={`/img/iphone.png`} alt="Phone" width={1440} height={1000} imgClass={css.desk} />
-            <MyImage src={`/img/iphone-mobile.png`} alt="Phone" width={270} height={545} imgClass={css.mobile} />
+          <div className={css.image} data-parallax >
+            <MyImage src={`/img/iphone.png`} alt="Phone" width={1440} height={1000} imgClass={css.desk} data-fade />
+            <MyImage src={`/img/iphone-mobile.png`} alt="Phone" width={270} height={545} imgClass={css.mobile} data-fade />
           </div>
         </div>
 

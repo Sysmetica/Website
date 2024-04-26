@@ -42,8 +42,8 @@ export const Tools = () => {
         <div className={css.wrapp}>
 
           <div className={css.title}>
-            <h2 className={IBMPlexSans.className}>Patient Engagement Tools</h2>
-            <p>
+            <h2 className={IBMPlexSans.className} data-fade >Patient Engagement Tools</h2>
+            <p data-fade >
               Explore a mobile app designed to enhance patient engagement through task management, questionnaires, device integration, remote monitoring, educational resources, and telemedicine consultations for comprehensive health management.
             </p>
           </div>
@@ -56,7 +56,7 @@ export const Tools = () => {
 
             <div className={css.grid}>
               {tools.map(tool =>
-                <div className={css.row} key={tool.title}>
+                <div className={css.row} key={tool.title} data-fade>
                   <p className={css.t}>{tool.title}</p>
                   <p className={css.s}>{tool.subtitle}</p>
                 </div>

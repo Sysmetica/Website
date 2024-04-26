@@ -1,3 +1,4 @@
+import { useAnimation } from '@/hooks/useAnimation';
 import { HumaLarge } from './huma/large/template';
 import { HumaSmall } from './huma/small/template';
 
@@ -12,6 +13,8 @@ export type ArchiveCaseProps = {
 }
 
 export const ArchiveCase = ({ slug, template }: ArchiveCaseProps) => {
+  useAnimation();
+
   switch (slug) {
     case 'huma':
 
