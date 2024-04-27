@@ -52,7 +52,7 @@ export const DesignProcess = () => {
           ))}
         </div>
 
-        <div className={css.image} data-parallax data-per="20" >
+        <div className={css.image}  >
           <MyImage src={`/img/pesign-process.jpg`} alt="Design Process" width={1440} height={1080}/>
         </div>
 
