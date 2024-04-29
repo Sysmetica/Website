@@ -8,8 +8,8 @@ export const HumaSmall = () => {
   return (
     <>
       <Intro />
-      <Role />
-      <Product />
+      {/* <Role /> */}
+      {/* <Product /> */}
       <Tools />
       <Case />
     </>

@@ -64,6 +64,11 @@
         .icon {
           display: flex;
           padding: 3px;
+
+          img {
+            background-color: var(--color_th_dark);
+            border-radius: 7px;
+          }
         }
 
         h3 {
