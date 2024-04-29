@@ -2,17 +2,17 @@ import { Intro } from './sections/intro/Intro';
 import { Role } from './sections/role/Role';
 import { Product } from './sections/product/Product';
 import { Tools } from './sections/tools/Tools';
-import { Case } from './sections/case/Case';
 import { CaseItemRelation } from '@/types/casestudies';
+import { CaseItem } from '@/parts/home/casestudies/caseItem';
 
 export const HumaSmall = ({ relation }: { relation: CaseItemRelation }) => {
   return (
     <>
       <Intro />
-      {/* <Role /> */}
-      {/* <Product /> */}
+      <Role />
+      <Product />
       <Tools />
-      {relation.data && <Case />}
+      {relation.data && <CaseItem caseItem={relation.data.attributes} />}
     </>
   )
 }

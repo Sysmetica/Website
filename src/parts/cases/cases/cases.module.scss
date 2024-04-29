@@ -1,18 +1,17 @@
 .root {
   &:nth-child(2n+1) {
-    background-color: #ececee;
-
     >div {
+      background: #ececee;
+    }
+
+    >div>div {
       flex-direction: row-reverse;
     }
   }
 
   &:nth-child(2n+2) {
-    background-color: #e2e2e2;
-  }
-
-  >div {
-    max-width: 1170px;
-    margin: 0 auto;
+    >div {
+      background: #e2e2e2;
+    }
   }
 }

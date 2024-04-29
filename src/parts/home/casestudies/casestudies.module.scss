@@ -11,10 +11,10 @@
 
   .slide {
     height: auto;
-    width: calc(100% - 150px);
+    width: calc(100% - 10vw);
 
     >div {
-      max-width: calc(1170px - 150px - 15px);
+      max-width: calc(1170px - 10vw);
       margin: 0 auto;
     }
 
