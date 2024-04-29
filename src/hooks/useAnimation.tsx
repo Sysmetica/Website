@@ -62,7 +62,7 @@ export function useAnimation() {
         const posStart = top > innerHeight ? "bottom" : top;
         gsap
           .timeline({
-            scrollTrigger: { trigger, scrub: .5, start: `top ${posStart}`, end: "bottom top", },
+            scrollTrigger: { trigger, scrub: true, start: `top ${posStart}`, end: "bottom top", },
           })
           .to(trigger, {
             ...(!per ? { y: 100 } : { yPercent: per })

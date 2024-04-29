@@ -186,7 +186,7 @@
   }
 
   .discription {
-    color: rgba(137, 112, 239, 1);
+    color: var(--color_th_dark);
 
     @media (max-width: 1025px) {
       display: flex;
@@ -195,27 +195,43 @@
 
     .icon_left {
       width: 120px;
-      aspect-ratio: 120/133;
-      background: url("/img/user_line_3_mob.svg") center/cover no-repeat;
+      // aspect-ratio: 120/133;
+      // background: url("/img/user_line_3_mob.svg") center/cover no-repeat;
       margin: 0 auto;
+      display: flex;
+
+      svg {
+        width: 100%;
+        height: auto;
+
+        path {
+          stroke: var(--color_th_dark);
+        }
+      }
 
       @media (min-width: 1025px) {
         width: 180px;
-        aspect-ratio: 180/164;
-        background: url("/img/user_line_1.svg") center/cover no-repeat;
+        // aspect-ratio: 180/164;
+        // background: url("/img/user_line_1.svg") center/cover no-repeat;
         margin: 0;
       }
     }
     .icon_right {
       width: 120px;
-      aspect-ratio: 40/7;
-      background: url("/img/user_line_1_mob.svg") center/cover no-repeat;
       margin: 40px 0 20px;
+      display: flex;
+
+      svg {
+        width: 100%;
+        height: auto;
+
+        path {
+          stroke: var(--color_th_dark);
+        }
+      }
 
       @media (min-width: 1025px) {
         width: 220px;
-        aspect-ratio: 220/133;
-        background: url("/img/user_line_2.svg") center/cover no-repeat;
         margin: 0;
       }
     }
@@ -249,18 +265,32 @@
   .phone {
     position: absolute;
     width: clamp(50px, 7vw, 96px);
-    aspect-ratio: 2/1;
-    background: url("/img/user_line_3.svg") center/cover no-repeat;
     left: 72%;
     top: 18%;
+    display: flex;
+
+    svg {
+      width: 100%;
+      height: auto;
+
+      [data-stroke] {
+        stroke: var(--color_th_dark);
+      }
+    }
   }
 
   .star {
-    width: clamp(13px, 2vw, 23px);
+    width: 23px;
     aspect-ratio: 1;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='23' height='23' viewBox='0 0 23 23' fill='none'%3E%3Cpath d='M11.5 0L11.6857 6.72534C11.7549 9.23051 13.7695 11.2451 16.2747 11.3143L23 11.5L16.2747 11.6856C13.7695 11.7549 11.7549 13.7694 11.6857 16.2746L11.5 23L11.3143 16.2746C11.2451 13.7694 9.23059 11.7549 6.72533 11.6856L0 11.5L6.72533 11.3143C9.23059 11.2451 11.2451 9.23051 11.3143 6.72534L11.5 0Z' fill='%238970EF'/%3E%3C/svg%3E")
-      center/cover no-repeat;
+    background-color: var(--color_th_dark);
+    clip-path: path(
+      "M11.5 0L11.6857 6.72534C11.7549 9.23051 13.7695 11.2451 16.2747 11.3143L23 11.5L16.2747 11.6856C13.7695 11.7549 11.7549 13.7694 11.6857 16.2746L11.5 23L11.3143 16.2746C11.2451 13.7694 9.23059 11.7549 6.72533 11.6856L0 11.5L6.72533 11.3143C9.23059 11.2451 11.2451 9.23051 11.3143 6.72534L11.5 0Z"
+    );
     position: absolute;
+
+    @media (max-width: 799px) {
+      transform: scale(0.8);
+    }
 
     &:nth-child(1) {
       left: 0%;

@@ -1,3 +1,11 @@
+:root {
+  --color_th_dark: #8970ef;
+
+  [data-theme="light"] {
+    --color_th_dark: #ed6b55;
+  }
+}
+
 body {
   // background: #000;
   color: red;

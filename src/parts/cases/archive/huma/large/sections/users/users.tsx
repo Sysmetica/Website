@@ -3,10 +3,10 @@ import css from "./users.module.scss"
 import MyImage from '@/components/image/image';
 import { cavetFont, IBMPlexSans } from "@/pages/_app";
 // import Map from '../../../public/img/icons/linkedin.svg'
-import Map from '../../../../../../../../public/img/wireframes-map.svg'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { FreeMode } from "swiper/modules";
+import Phone from '../../../../../../../../public/img/user_line_3.svg'
+import Line1 from '../../../../../../../../public/img/user_line_1.svg'
+import Line2 from '../../../../../../../../public/img/user_line_2.svg'
+
 
 
 export const Users = () => {
@@ -34,12 +34,16 @@ export const Users = () => {
         <div className={css.wrapper}>
           <div className={css.discription}>
             <div className={css.col}  >
-              <div className={css.icon_left} data-fade></div>
+              <div className={css.icon_left} data-fade>
+                <Line1 viewBox="0 0 188 179" />
+              </div>
               <p className={cavetFont.className} data-fade>
                 Persona 1: Jordan, vigilant about cardiac health due to a family history, prefers an easy-to-use app that provides consistent heart monitoring and integrates well with health devices for a comprehensive health overview.              </p>
             </div>
             <div className={css.col}>
-              <div className={css.icon_right} data-fade></div>
+              <div className={css.icon_right} data-fade>
+                <Line2 viewBox="0 0 220 133" />
+              </div>
               <p className={cavetFont.className} data-fade>
                 Persona 2:  Sarah is a tech-savvy fitness coach focused on optimizing workouts with accurate heart rate data, seeking a tool that offers deep analytics and seamless device integration
               </p>
@@ -52,13 +56,15 @@ export const Users = () => {
               <div className={css.star} data-fade></div>
               <div className={css.star} data-fade></div>
               <div className={css.star} data-fade></div>
-              <div className={css.phone} data-fade></div>
+              <div className={css.phone} data-fade>
+                <Phone viewBox="0 0 96 48" />
+              </div>
             </div>
 
 
             <div>
               {sliderIcons.map(icon => (
-                <div className={css.item} key={icon} data-fade > 
+                <div className={css.item} key={icon} data-fade >
                   <div className={css.icon} >
                     <div className={css.photo}>
                       <MyImage src={`${icon}`} alt="User Flow & Wireframes" width={153} height={208} />

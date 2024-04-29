@@ -9,8 +9,8 @@ export const HumaSmall = ({ relation }: { relation: CaseItemRelation }) => {
   return (
     <>
       <Intro />
-      <Role />
-      <Product />
+      {/* <Role /> */}
+      {/* <Product /> */}
       <Tools />
       {relation.data && <Case />}
     </>

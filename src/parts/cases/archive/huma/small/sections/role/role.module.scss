@@ -27,7 +27,7 @@
         background-color: white;
         border-width: 0 0 3px 3px;
         border-style: solid;
-        border-color: #8970ef;
+        border-color: var(--color_th_dark);
         border-radius: 8px;
         margin-left: -3px;
 
@@ -58,7 +58,7 @@
   }
 
   .hand {
-    background-color: rgba(104, 86, 181, 1);
+    background-color: var(--color_th_dark);
     display: flex;
     align-items: flex-end;
     z-index: 2;

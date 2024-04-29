@@ -12,12 +12,14 @@ export const UIKit = () => {
 
   useEffect(() => {
     const trigger = wrapRef.current as HTMLDivElement;
-    const child = trigger?.children[0] as HTMLDivElement;
+    const child = trigger.querySelector("img") as HTMLDivElement;
+    let ww = window.innerWidth;
+    ww < 1600 && (ww = ww * 1.2)
     let tl: any = null;
     setTimeout(() => {
       tl = gsap
-        .timeline({ scrollTrigger: { trigger, scrub: .8, start: `top 110%`, end: "bottom top" }, })
-        .to(child, { x: child.clientWidth - window.innerWidth * 0.9, ease: "none" });
+        .timeline({ scrollTrigger: { trigger, scrub: true, start: `top bottom`, end: "bottom -10%" }, })
+        .to(child, { x: child.clientWidth - ww, ease: "none" });
     }, 500)
 
     return () => {
@@ -29,7 +31,7 @@ export const UIKit = () => {
 
   return (
 
-    <div className={css.ui} >
+    <div className={css.ui} ref={wrapRef} >
       <div className={css.title}>
         <h2 className={IBMPlexSans.className} data-fade>
           UI Kit & Designs
@@ -39,8 +41,10 @@ export const UIKit = () => {
         </p>
       </div>
 
-      <div className={css.image} ref={wrapRef}>
-        <MyImage src={`/img/aukit.png`} alt="UI Kit & Designs" width={2710} height={2077} />
+      <div className={css.image} data-img-wrapp >
+        <div className={css.aukit}>
+          <MyImage src={`/img/aukit.png`} alt="UI Kit & Designs" width={2710} height={2077} />
+        </div>
       </div>
 
     </div >

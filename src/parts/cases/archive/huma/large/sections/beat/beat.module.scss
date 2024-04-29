@@ -26,24 +26,29 @@
         justify-content: center;
         align-items: center;
         aspect-ratio: 416/216;
-        // overflow: hidden;
         min-height: 216px;
-
-        @media (min-width: 800px) {
-          height: clamp(500px, 45vw, 722px);
-          max-width: 1217px;
-          overflow: visible;
-
-          img {
-            transform: translate(2%, 2%);
-          }
-        }
+        transform: rotate(45deg) translateY(30px);
 
         img {
-          width: 132%;
+          width: 80%;
           height: auto;
           flex: none;
           pointer-events: none;
+        }
+
+        @media (min-width: 800px) {
+          height: clamp(500px, 45vw, 722px);
+          max-width: 959px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .metric {
+          display: flex;
+          justify-content: center;
+          width: 100%;
         }
       }
     }

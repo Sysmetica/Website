@@ -3,6 +3,10 @@
   padding: 150px 0 0;
   overflow: hidden;
 
+  [data-theme="light"] & {
+    color: #1d1d1f;
+  }
+
   @media (max-width: 799px) {
     padding: 40px 0;
   }
@@ -64,9 +68,17 @@
           right: 0;
           background: url("/img/icons/services/diamond-bg-1.svg") center/cover no-repeat;
 
+          [data-theme="light"] & {
+            background: url("/img/icons/services/p/diamond-bg-1.svg") center/cover no-repeat;
+          }
+
           @media (min-width: 800px) {
             background: url("/img/icons/services/diamond-bg-2.svg") center/cover no-repeat;
             opacity: 0.6;
+
+            [data-theme="light"] & {
+              background: url("/img/icons/services/p/diamond-bg-2.svg") center/cover no-repeat;
+            }
           }
         }
 
@@ -117,6 +129,10 @@
           width: 320px;
           top: 50%;
           left: auto;
+
+          [data-theme="light"] & {
+            background: url("/img/icons/services/p/cases_stroke.svg") center/cover no-repeat;
+          }
         }
 
         @media (min-width: 1200px) {
@@ -169,6 +185,10 @@
             font-size: 14px;
             margin-top: 4px;
             color: #c7c7c7;
+
+            [data-theme="light"] & {
+              color: #1d1d1f;
+            }
 
             @media (min-width: 800px) {
               font-size: 12px;

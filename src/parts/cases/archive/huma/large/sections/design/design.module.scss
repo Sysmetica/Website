@@ -13,6 +13,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background-color: #000;
 
   @media (max-width: 799px) {
     padding: 40px 0 0;
@@ -137,7 +138,7 @@
           color: #b7b6bb;
         }
         .name {
-          color: #8970ef;
+          color: var(--color_th_dark);
           font-size: 24px;
           line-height: 130%;
           margin-top: 4px;
