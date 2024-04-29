@@ -7,8 +7,9 @@ import { UIKit } from './sections/uikit/ui';
 import { Wireframes } from './sections/wireframes/wireframes';
 import { Modes } from './sections/modes/modes';
 import { Users } from './sections/users/users';
+import { CaseItemRelation } from '@/types/casestudies';
 
-export const HumaLarge = () => {
+export const HumaLarge = ({ relation }: { relation: CaseItemRelation }) => {
   return (
     <>
       <Intro />
@@ -19,7 +20,7 @@ export const HumaLarge = () => {
       <Wireframes />
       <UIKit />
       <Modes />
-      <Case />
+      {relation.data && <Case />}
     </>
   )
 }

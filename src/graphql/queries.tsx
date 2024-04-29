@@ -1,5 +1,13 @@
 import { gql } from "@apollo/client"
 
+const IMAGE = `
+data {
+  attributes {
+    url
+  }
+}
+`
+
 const VALUES = `
 values {
   title
@@ -20,21 +28,8 @@ data {
     tags {
       text
     }
-    landscape {
-      data {
-        attributes {
-          previewUrl
-          url
-        }
-      }
-    }
-    portrait {
-      data {
-        attributes {
-          previewUrl
-          url
-        }
-      }
+    image {
+      ${IMAGE}
     }
   }
 }
@@ -83,11 +78,7 @@ export const HOME_PAGE = gql`
             data {
               attributes {
                 preview {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
+                  ${IMAGE}
                 }
               }
             }
@@ -111,11 +102,7 @@ export const ABOUT_PAGE = gql`
             text
           }
           gallery {
-            data {
-              attributes {
-                url,
-              }
-            }
+            ${IMAGE}
           }
           teams {
             data {
@@ -125,11 +112,7 @@ export const ABOUT_PAGE = gql`
                 description,
                 linkedin,
                 photo {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
+                  ${IMAGE}
                 }
               }
             }
@@ -304,6 +287,9 @@ export const GET_SINGLE_CASE_STUDIE = gql`
         attributes {
           slug
           template
+          caseStudie {
+            ${CASES}
+          }
         }
       }
     }

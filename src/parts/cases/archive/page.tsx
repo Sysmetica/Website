@@ -1,6 +1,7 @@
 import { useAnimation } from '@/hooks/useAnimation';
 import { HumaLarge } from './huma/large/template';
 import { HumaSmall } from './huma/small/template';
+import { CaseItemProps, CaseItemRelation } from '@/types/casestudies';
 
 enum TEMPLATE {
   SHORT = 'short',
@@ -10,9 +11,10 @@ enum TEMPLATE {
 export type ArchiveCaseProps = {
   slug: string
   template: TEMPLATE
+  caseStudie: CaseItemRelation
 }
 
-export const ArchiveCase = ({ slug, template }: ArchiveCaseProps) => {
+export const ArchiveCase = ({ slug, template, caseStudie }: ArchiveCaseProps) => {
   useAnimation();
 
   switch (slug) {
@@ -20,9 +22,9 @@ export const ArchiveCase = ({ slug, template }: ArchiveCaseProps) => {
 
       switch (template) {
         case TEMPLATE.LARGE:
-          return <HumaLarge />
+          return <HumaLarge relation={caseStudie} />
         default:
-          return <HumaSmall />
+          return <HumaSmall relation={caseStudie} />
       }
 
     // case 'beat-metric':

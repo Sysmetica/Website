@@ -21,6 +21,7 @@ const Case: FC<Props> = ({ pageData, options, globalMeta }) => {
     attributes: {
       slug,
       template,
+      caseStudie,
     }
   } = pageData
   // console.log('pageData ', pageData);
@@ -28,7 +29,7 @@ const Case: FC<Props> = ({ pageData, options, globalMeta }) => {
   return (
     <Layout type='cases' options={options}>
       <SeoContext globalMeta={globalMeta}>
-        <ArchiveCase slug={slug} template={template} />
+        <ArchiveCase slug={slug} template={template} caseStudie={caseStudie} />
       </SeoContext>
     </Layout>
   )

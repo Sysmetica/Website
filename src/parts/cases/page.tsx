@@ -18,9 +18,7 @@ export const CasesPage = ({ casestudies, ...props }: CasesPageProps) => {
   return (
     <>
       <Intro {...props} />
-      <Cases
-        cases={casestudies}
-      />
+      <Cases cases={casestudies} />
     </>
   )
 }
