@@ -22,18 +22,16 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
             <h2 className={IBMPlexSans.className} data-fade_>{caseItem.title}</h2>
             <p data-fade_>{caseItem.description}</p>
             <div className={s.buttons} data-fade_ data-child_>
-              {caseItem.template && (
-                <Button type={['fill']} link={`/case-studies/${caseItem.slug}`}>
-                  <>
-                    {`View Case Studie`}
-                    <div className={s.ico}>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 13L13 3M13 3H3M13 3V13" stroke="white" strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </>
-                </Button>
-              )}
+              <Button type={['fill']} link={`/case-studies/${caseItem.slug}`}>
+                <>
+                  {`View Case Studie`}
+                  <div className={s.ico}>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 13L13 3M13 3H3M13 3V13" stroke="white" strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </>
+              </Button>
               {caseItem.href && (
                 <a href={caseItem.href} target='_blank' className={s.link}>
                   {caseItem.site}
