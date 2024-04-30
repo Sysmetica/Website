@@ -10,7 +10,7 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
   return (
     <div className={s.root}>
       <div className={s.wrap}>
-        <div className={s.textHolder} data-textHolder>
+        <div className={s.textHolder} data-textholder>
           <div className={s.textWrap}>
             <div className={s.tags} data-fade_ data-child_>
               {caseItem.tags.map(({ text }) => {
