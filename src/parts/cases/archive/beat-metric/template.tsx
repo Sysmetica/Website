@@ -9,7 +9,7 @@ import { Users } from './sections/users/users';
 import { CaseItemRelation } from '@/types/casestudies';
 import { CaseItem } from '@/parts/home/casestudies/caseItem';
 
-export const HumaLarge = ({ relation }: { relation: CaseItemRelation }) => {
+export const BeatMetricTemplate = ({ relation }: { relation: CaseItemRelation }) => {
   return (
     <>
       <Intro />

@@ -1,12 +1,14 @@
 import { useAnimation } from '@/hooks/useAnimation';
-import { HumaLarge } from './huma/large/template';
-import { HumaSmall } from './huma/small/template';
-import { CaseItemProps, CaseItemRelation } from '@/types/casestudies';
+import { CaseItemRelation } from '@/types/casestudies';
+import { BeatMetricTemplate } from './beat-metric/template';
+import { HumaTemplate } from './huma/template';
 
+// NOT USED TEMPORARY - layouts are full and large by default
 enum TEMPLATE {
   SHORT = 'short',
   LARGE = 'large',
 }
+// 
 
 export type ArchiveCaseProps = {
   slug: string
@@ -19,15 +21,9 @@ export const ArchiveCase = ({ slug, template, caseStudie }: ArchiveCaseProps) =>
 
   switch (slug) {
     case 'huma':
+      return <HumaTemplate relation={caseStudie} />
 
-      switch (template) {
-        case TEMPLATE.LARGE:
-          return <HumaLarge relation={caseStudie} />
-        default:
-          return <HumaSmall relation={caseStudie} />
-      }
-
-    // case 'beat-metric':
-    //   return <HumaSmall />
+    case 'beat-metric':
+      return <BeatMetricTemplate relation={caseStudie} />
   }
 }

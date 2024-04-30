@@ -5,7 +5,7 @@ import { Tools } from './sections/tools/Tools';
 import { CaseItemRelation } from '@/types/casestudies';
 import { CaseItem } from '@/parts/home/casestudies/caseItem';
 
-export const HumaSmall = ({ relation }: { relation: CaseItemRelation }) => {
+export const HumaTemplate = ({ relation }: { relation: CaseItemRelation }) => {
   return (
     <>
       <Intro />
