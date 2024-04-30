@@ -2,22 +2,15 @@ import { Row } from "@/common/row/row";
 import css from "./users.module.scss"
 import MyImage from '@/components/image/image';
 import { cavetFont, IBMPlexSans } from "@/pages/_app";
-// import Map from '../../../public/img/icons/linkedin.svg'
-import Phone from '../../../../../../../../public/img/user_line_3.svg'
-import Line1 from '../../../../../../../../public/img/user_line_1.svg'
-import Line2 from '../../../../../../../../public/img/user_line_2.svg'
-
-
+import Phone from '../../../../../../../public/img/user_line_3.svg'
+import Line1 from '../../../../../../../public/img/user_line_1.svg'
+import Line2 from '../../../../../../../public/img/user_line_2.svg'
 
 export const Users = () => {
-
   const sliderIcons = ["/img/user_5.png", "/img/user_2.png", "/img/user_3.png", "/img/user_4.png", "/img/user_1.png",]
 
-
   return (
-
-    <div className={css.users} >
-
+    <div className={css.users}>
       <Row>
         <div className={css.title}>
           <h2 className={IBMPlexSans.className} data-fade>
@@ -28,8 +21,6 @@ export const Users = () => {
             Beat Metric serves a wide range of users, from fitness enthusiasts and athletes to individuals with health conditions that necessitate regular heartbeat monitoring. By combining a clear summary of heart rate data with an easy-to-navigate interface, it supports anyone looking to enhance their health monitoring practices.          </p>
         </div>
       </Row>
-
-
       <Row>
         <div className={css.wrapper}>
           <div className={css.discription}>
@@ -51,7 +42,6 @@ export const Users = () => {
 
           </div>
           <div className={css.grid}>
-
             <div>
               <div className={css.star} data-fade></div>
               <div className={css.star} data-fade></div>
@@ -60,8 +50,6 @@ export const Users = () => {
                 <Phone viewBox="0 0 96 48" />
               </div>
             </div>
-
-
             <div>
               {sliderIcons.map(icon => (
                 <div className={css.item} key={icon} data-fade >
@@ -73,15 +61,9 @@ export const Users = () => {
                 </div>
               ))}
             </div>
-
           </div>
         </div>
-
       </Row>
-
-
-    </div >
-
-
+    </div>
   )
 }
