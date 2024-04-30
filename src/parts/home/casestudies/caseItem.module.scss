@@ -14,8 +14,8 @@
     align-items: center;
     max-width: 1170px;
     height: 100%;
-    margin: 0 auto;
     padding: 0 15px;
+    margin: 0 auto;
 
     @include phone {
       flex-direction: column !important;
