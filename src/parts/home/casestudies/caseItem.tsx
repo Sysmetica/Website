@@ -10,7 +10,7 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
   return (
     <div className={s.root}>
       <div className={s.wrap}>
-        <div className={s.textHolder}>
+        <div className={s.textHolder} data-textHolder>
           <div className={s.textWrap}>
             <div className={s.tags} data-fade_ data-child_>
               {caseItem.tags.map(({ text }) => {
@@ -45,12 +45,21 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
         </div>
         <div className={s.imageWrap} data-fade_ data-child_ data-image>
           <MyImage
-            src={caseItem.image.data?.attributes.url}
+            src={caseItem.desktop.data?.attributes.url}
             alt={caseItem.title}
             width={1920}
             height={931}
             retina={2}
-            imgClass={s.land}
+            imgClass={s.desktop}
+            upload={true}
+          />
+          <MyImage
+            src={caseItem.mobile.data?.attributes.url}
+            alt={caseItem.title}
+            width={1920}
+            height={931}
+            retina={2}
+            imgClass={s.mobile}
             upload={true}
           />
         </div>

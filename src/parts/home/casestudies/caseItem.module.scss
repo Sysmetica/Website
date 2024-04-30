@@ -7,10 +7,13 @@
 .root {
   position: relative;
   background: #ececee;
+  height: 100%;
 
   .wrap {
     display: flex;
+    align-items: center;
     max-width: 1170px;
+    height: 100%;
     margin: 0 auto;
     padding: 0 15px;
 
@@ -26,18 +29,14 @@
     display: flex;
     align-items: center;
     width: 65%;
+    padding: 40px 6vw 40px 0;
 
     @include phone {
       width: 100%;
+      padding: 40px 0 10px !important;
     }
 
     .textWrap {
-      padding: 40px 0;
-
-      @include phone {
-        padding: 0;
-      }
-
       @media (min-width: 800px) {
         max-width: 520px;
       }
@@ -87,9 +86,11 @@
     }
 
     .ico {
+      position: relative;
+      top: 2px;
       width: 16px;
       display: inline-flex;
-      margin-left: 8px;
+      margin: 0 0 0 10px;
 
       svg {
         width: 100%;
@@ -129,6 +130,20 @@
       height: 100%;
       object-fit: contain;
       object-position: top center;
+    }
+
+    .mobile {
+      display: none;
+    }
+
+    @include phone {
+      .desktop {
+        display: none;
+      }
+
+      .mobile {
+        display: block;
+      }
     }
   }
 }

@@ -14,23 +14,27 @@
     width: calc(100% - 10vw);
 
     >div {
-      max-width: calc(1170px - 10vw);
-      margin: 0 auto;
+      // max-width: calc(1170px - 10vw);
+      // margin: 0 auto;
     }
 
     &:nth-child(2n+1) {
-      background: #ECECEE;
+      >div {
+        background: #ECECEE;
 
-      [data-theme="light"] & {
-        background: #fff;
+        [data-theme="light"] & {
+          background: #fff;
+        }
       }
     }
 
     &:nth-child(2n+2) {
-      background: #E2E2E2;
+      >div {
+        background: #E2E2E2;
 
-      [data-theme="light"] & {
-        background: #f5f5f5;
+        [data-theme="light"] & {
+          background: #f5f5f5;
+        }
       }
     }
 

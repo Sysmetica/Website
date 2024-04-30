@@ -28,7 +28,10 @@ data {
     tags {
       text
     }
-    image {
+    desktop {
+      ${IMAGE}
+    }
+    mobile {
       ${IMAGE}
     }
   }
