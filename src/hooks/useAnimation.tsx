@@ -7,78 +7,83 @@ export function useAnimation() {
 
   useGSAP(
     (context, contextSafe: any) => {
-      const section = document.body;
-
-      const fades = section.querySelectorAll("[data-fade]") as NodeListOf<HTMLDivElement>;
-      const parallaxes = section.querySelectorAll("[data-parallax]") as NodeListOf<HTMLDivElement>;
-      const paths = section.querySelectorAll("[data-paths]") as NodeListOf<SVGPathElement>;
-
-      paths.forEach(path => {
-
-      });
-
-      // Fade elements
-      const animateSVGPath = (path: SVGPathElement) => {
-        // const { length } = path.dataset;
-
-        let tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: path,
-            start: () => "top 90%",
-            toggleActions: "play none none reverse",
-
-          },
-        });
-        // gsap.set(path, { opacity: 1 });
-        tl.to(path, { duration: 1.5, opacity: 1, strokeDashoffset: 0 })
-      };
+      let resize: any;
 
 
-      // Fade elements
-      const animateFades = (trigger: HTMLDivElement) => {
-        const { y, child } = trigger.dataset;
-        let tl = gsap.timeline({
-          defaults: { ease: "power2.out", },
+      const initAnimaton = () => {
+        const section = document.body;
+        const fades = section.querySelectorAll("[data-fade]") as NodeListOf<HTMLDivElement>;
+        const parallaxes = section.querySelectorAll("[data-parallax]") as NodeListOf<HTMLDivElement>;
+        const paths = section.querySelectorAll("[data-paths]") as NodeListOf<SVGPathElement>;
+        resize = new ResizeObserver(() => ScrollTrigger.refresh());
 
-          scrollTrigger: {
-            trigger,
-            start: () => "top 95%",
-            toggleActions: "play none none reverse",
-          },
-        });
 
-        tl.fromTo(child ? trigger.children : trigger,
-          { ...(y ? { y } : { y: "50px" }), opacity: 0, },
-          { duration: 1, y: 0, opacity: 1, stagger: 0.05,  }
-        );
-      };
+        // Fade svg stroke length
+        const animateSVGPath = (path: SVGPathElement) => {
+          // const { length } = path.dataset;
 
-      // Parallax elememnts
-      const animateParallaxes = (trigger: HTMLDivElement) => {
-        const { top } = trigger.getBoundingClientRect()
-        const { per } = trigger.dataset;
+          let tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: path,
+              start: () => "top 90%",
+              toggleActions: "play none none reverse",
+            },
 
-        const { innerHeight } = window;
-        const posStart = top > innerHeight ? "bottom" : top;
-        gsap
-          .timeline({
-            scrollTrigger: { trigger, scrub: true, start: `top ${posStart}`, end: "bottom top", },
-          })
-          .to(trigger, {
-            ...(!per ? { y: 100 } : { yPercent: per })
-            , ease: "none"
+          }
+          );
+          // gsap.set(path, { opacity: 1 });
+          tl.to(path, { duration: 1.5, opacity: 1, strokeDashoffset: 0 })
+
+        };
+
+
+        // Fade elements
+        const animateFades = (trigger: HTMLDivElement) => {
+          const { y, child } = trigger.dataset;
+          let tl = gsap.timeline({
+            defaults: { ease: "power2.out", },
+            scrollTrigger: {
+              trigger,
+              start: () => "top 95%",
+              toggleActions: "play none none reverse",
+            },
           });
-      };
 
-      parallaxes.forEach(animateParallaxes)
-      fades.forEach(animateFades)
-      paths.forEach(animateSVGPath);
-      const resize = new ResizeObserver(() => ScrollTrigger.refresh());
-      resize.observe(section);
+          tl.fromTo(child ? trigger.children : trigger,
+            { ...(y ? { y } : { y: "50px" }), opacity: 0, },
+            { duration: 1, y: 0, opacity: 1, stagger: 0.05, }
+          );
+        };
 
+        // Parallax elememnts
+        const animateParallaxes = (trigger: HTMLDivElement) => {
+          const { top } = trigger.getBoundingClientRect()
+          const { per } = trigger.dataset;
+
+          const { innerHeight } = window;
+          const posStart = top > innerHeight ? "bottom" : top;
+          gsap
+            .timeline({
+              scrollTrigger: { trigger, scrub: true, start: `top ${posStart}`, end: "bottom top", },
+            })
+            .to(trigger, {
+              ...(!per ? { y: 100 } : { yPercent: per })
+              , ease: "none"
+            });
+        };
+
+        parallaxes.forEach(animateParallaxes)
+        fades.forEach(animateFades)
+        paths.forEach(animateSVGPath);
+        resize.observe(section);
+
+      }
+      const st = setTimeout(initAnimaton, 200);
+      
       return () => {
-        resize.disconnect()
-        ScrollTrigger.killAll()
+        clearTimeout(st);
+        resize?.disconnect()
+        ScrollTrigger.killAll();
       };
     },
     { dependencies: [], revertOnUpdate: true, }

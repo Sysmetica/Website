@@ -12,16 +12,16 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
       <div className={s.wrap}>
         <div className={s.textHolder} data-textholder>
           <div className={s.textWrap}>
-            <div className={s.tags} data-fade_ data-child_>
+            <div className={s.tags} data-fade data-child>
               {caseItem.tags.map(({ text }) => {
                 return (
                   <span className={s.tag} key={text}>{text}</span>
                 )
               })}
             </div>
-            <h2 className={IBMPlexSans.className} data-fade_>{caseItem.title}</h2>
-            <p data-fade_>{caseItem.description}</p>
-            <div className={s.buttons} data-fade_ data-child_>
+            <h2 className={IBMPlexSans.className} data-fade>{caseItem.title}</h2>
+            <p data-fade>{caseItem.description}</p>
+            <div className={s.buttons} data-fade data-child>
               <Button type={['fill']} link={`/case-studies/${caseItem.slug}`}>
                 <>
                   {`View Case Studie`}
@@ -41,7 +41,7 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
             </div>
           </div>
         </div>
-        <div className={s.imageWrap} data-fade_ data-child_ data-image>
+        <div className={s.imageWrap} data-fade data-child data-image>
           <MyImage
             src={caseItem.desktop.data?.attributes.url}
             alt={caseItem.title}

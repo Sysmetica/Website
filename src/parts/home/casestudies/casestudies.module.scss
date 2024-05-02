@@ -91,4 +91,16 @@
       }
     }
   }
+
+  [data-fade] {
+    opacity: 1;
+  
+    &[data-child] {
+      opacity: 1;
+  
+      & > * {
+        opacity: 1;
+      }
+    }
+  }
 }
