@@ -11,13 +11,13 @@ export const Services = () => {
         <div className={s.rootWrap}>
 
           <div className={s.text}>
-            <h2 className={IBMPlexSans.className}>Turning ideas into reality</h2>
-            <p>Crafting outstanding digital products is a sophisticated process. We are here to navigate you through this complex journey. Trust in our expertise to transform your most ambitious ideas into tangible success</p>
+            <h2 className={IBMPlexSans.className} data-fade>Turning ideas into reality</h2>
+            <p data-fade>Crafting outstanding digital products is a sophisticated process. We are here to navigate you through this complex journey. Trust in our expertise to transform your most ambitious ideas into tangible success</p>
           </div>
 
           <ServicesItems />
 
-          <div className={s.buttonWrap}>
+          <div className={s.buttonWrap} data-fade> 
             <Button link={'/services'}>Our Services</Button>
           </div>
 

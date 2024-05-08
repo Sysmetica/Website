@@ -27,7 +27,7 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
       }}
     >
 
-      <div className={clsx(s.item, s.mob)}>
+      <div className={clsx(s.item, s.mob)} data-fade>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <MobileIcon />
@@ -44,7 +44,7 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
         </div>
       </div>
 
-      <div className={clsx(s.item, s.backend)}>
+      <div className={clsx(s.item, s.backend)} data-fade>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <BeIcon />
@@ -62,7 +62,7 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
         </div>
       </div>
 
-      <div className={clsx(s.item, s.qa)}>
+      <div className={clsx(s.item, s.qa)} data-fade>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <QaIcon />
@@ -80,7 +80,7 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
         </div>
       </div>
 
-      <div className={clsx(s.item, s.design)}>
+      <div className={clsx(s.item, s.design)} data-fade>
         {isNotServices && <Link href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <DesignIcon />

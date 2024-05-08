@@ -19,11 +19,11 @@ export const Map = ({ data }: { data: MapProps }) => {
       <Row>
         <div className={s.wrap}>
           <div className={s.action}>
-            <MyImage src={`/img/map${imgPath}.svg`} alt="map image" width={555} height={337} />
+            <MyImage src={`/img/map${imgPath}.svg`} alt="map image" width={555} height={337} data-fade="in"/>
           </div>
-          <div className={s.text}>
-            <h2 className={IBMPlexSans.className}>{data.title}</h2>
-            <p>{data.text}</p>
+          <div className={s.text} >
+            <h2 className={IBMPlexSans.className} data-fade>{data.title}</h2>
+            <p data-fade>{data.text}</p>
           </div>
         </div>
       </Row>

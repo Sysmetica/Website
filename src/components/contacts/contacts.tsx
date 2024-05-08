@@ -17,10 +17,12 @@ export const Contacts = ({
     <div className={s.root}>
       <Row>
         <div className={s.wrap}>
-          <MyImage src="/img/icons/loading.svg" alt="loading icon" width={100} height={100} />
-          <h3 className={IBMPlexSans.className}>{title}</h3>
-          <p>{text}</p>
-          <Button type={['fill']} link={'/contact'}>Contact Us</Button>
+          <MyImage src="/img/icons/loading.svg" alt="loading icon" width={100} height={100} data-fade />
+          <h3 className={IBMPlexSans.className} data-fade>{title}</h3>
+          <p data-fade>{text}</p>
+          <div data-fade>
+            <Button type={['fill']} link={'/contact'} >Contact Us</Button>
+          </div>
         </div>
       </Row>
     </div>

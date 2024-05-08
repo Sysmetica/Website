@@ -13,12 +13,12 @@
     position: absolute;
     top: 55px;
     left: calc(50% - 160px);
-    width: 100px;
+    width: 70px;
     height: calc(100% - 140px);
     border-style: solid;
     border-color: #fff;
     border-width: 1px 0 1px 1px;
-    border-radius: 10px;
+    border-radius: 10px 0px 0px 10px;
 
     [data-theme="light"] & {
       border-color: #ED6B55;
@@ -161,8 +161,7 @@
       gap: 60px;
     }
 
-    &:after {
-      content: '';
+    .line_vert {
       position: absolute;
       top: 0;
       left: 50%;

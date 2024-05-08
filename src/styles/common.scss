@@ -102,3 +102,21 @@ p {
   stroke-dashoffset: 273.983px;
   stroke-dasharray: 273.983;
 }
+
+[data-split] {
+  opacity: 0;
+}
+
+.word {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.word .wc {
+  overflow: hidden;
+}
+
+.word .c {
+  display: inline-block;
+  position: relative;
+}

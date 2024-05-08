@@ -8,7 +8,7 @@ export const Progress = () => {
   return (
     <div className={s.root}>
       <Row>
-        <div className={s.progress}>
+        <div className={s.progress} data-fade data-child>
           <div className={clsx(s.item, s.icon)}>
             <LineIcon />
           </div>

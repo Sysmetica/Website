@@ -109,15 +109,15 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
           <Row>
             <div className={g.rootWrap}>
 
-              <div className={g.text}>
-                {title && <h3 className={IBMPlexSans.className}>{title}</h3>}
+              <div className={g.text} data-fade data-child>
+                {title && <h3 className={IBMPlexSans.className} >{title}</h3>}
                 {text && <p>{text}</p>}
                 {email && <span>{email}</span>}
               </div>
 
               <div className={g.form}>
                 <form onSubmit={handleSubmit}>
-                  <div className={g.fields}>
+                  <div className={g.fields} data-fade data-child >
 
                     <div className={g.wrap}>
                       <label htmlFor="name">{`Full Name *`}</label>
@@ -182,7 +182,10 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
 
                     <div className={g.done} />
                     <div className={g.loading} />
-                    <Button stat={true} type={['fill']}>Submit</Button>
+                    <div data-fade style={{ flex: 1, display: "flex" }}>
+
+                      <Button stat={true} type={['fill']}>Submit</Button>
+                    </div>
 
                   </div>
                 </form>

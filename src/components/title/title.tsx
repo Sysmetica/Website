@@ -19,7 +19,7 @@ export const Title = ({ title, subtitle, type = '' }: TitleProps) => {
       <Row>
         <div className={clsx(s.wrap, {
           [s.center]: type === 'center',
-        })}>
+        })} data-fade data-child>
           <h1 className={IBMPlexSans.className}>{title}</h1>
           <p>{subtitle}</p>
         </div>

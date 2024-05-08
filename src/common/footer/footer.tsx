@@ -14,10 +14,10 @@ export const Footer = ({ options }: { options: OptionsProps }) => {
       <Row>
 
         <div className={s.top}>
-          <div className={s.logo}>
+          <div className={s.logo} data-fade>
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </div>
-          <div className={s.menu}>
+          <div className={s.menu} data-fade data-child>
             {options.attributes.menu
               .filter((i) => i.name !== null)
               .map(({ name, slug }) => {
@@ -29,8 +29,8 @@ export const Footer = ({ options }: { options: OptionsProps }) => {
         </div>
 
         <div className={s.bottom}>
-          <p className={s.copy}>{copyText}</p>
-          <div className={s.links}>
+          <p className={s.copy} data-fade>{copyText}</p>
+          <div className={s.links} data-fade data-child>
             <div className={s.menu}>
               <MenuLink href="/terms-of-service">{`Terms of Service`}</MenuLink>
               <MenuLink href="/privacy-policy">{`Privacy Policy`}</MenuLink>

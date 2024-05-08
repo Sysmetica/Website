@@ -36,6 +36,7 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
             className={clsx(s.info, s.block)}
             onMouseOver={() => setArea({ area: 'open' })}
             onMouseOut={() => setArea({ area: 'default' })}
+            data-fade
           >
             <Link href={info.sectionOneLink} target='_black' className={s.link} />
             <div className={s.tags}>
@@ -59,6 +60,7 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
             className={clsx(s.team, s.block)}
             onMouseOver={() => setArea({ area: 'open' })}
             onMouseOut={() => setArea({ area: 'default' })}
+            data-fade
           >
             <Link href={info.sectionTwoLink} className={s.link} />
             {theme === 'dark' ? (

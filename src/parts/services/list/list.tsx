@@ -11,7 +11,7 @@ export const List = () => {
         <div className={g.rootWrap}>
 
           <div className={g.text}>
-            <h2 className={IBMPlexSans.className}>Comprehensive Services Tailored to Your Unique Needs</h2>
+            <h2 className={IBMPlexSans.className} data-fade>Comprehensive Services Tailored to Your Unique Needs</h2>
           </div>
 
           <ServicesItems type="services" />

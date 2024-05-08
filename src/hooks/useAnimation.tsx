@@ -3,12 +3,11 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export function useAnimation() {
+export function useAnimation(props: any) {
 
   useGSAP(
     (context, contextSafe: any) => {
       let resize: any;
-
 
       const initAnimaton = () => {
         const section = document.body;
@@ -39,20 +38,40 @@ export function useAnimation() {
 
         // Fade elements
         const animateFades = (trigger: HTMLDivElement) => {
-          const { y, child } = trigger.dataset;
+          const { y, x, child, fade } = trigger.dataset;
           let tl = gsap.timeline({
             defaults: { ease: "power2.out", },
             scrollTrigger: {
               trigger,
-              start: () => "top 95%",
+              start: () => fade == "in" ? "top 98%" : "top 95%",
               toggleActions: "play none none reverse",
             },
           });
 
-          tl.fromTo(child ? trigger.children : trigger,
-            { ...(y ? { y } : { y: "50px" }), opacity: 0, },
-            { duration: 1, y: 0, opacity: 1, stagger: 0.05, }
-          );
+          switch (fade) {
+            case "in":
+              tl.fromTo(child ? trigger.children : trigger,
+                { opacity: 0, },
+                { duration: 1, opacity: 1, stagger: 0.05, }
+              );
+              break;
+            default:
+
+              if (x) {
+                tl.fromTo(child ? trigger.children : trigger,
+                  { x, opacity: 0, },
+                  { duration: 1, x: 0, opacity: 1, stagger: 0.05, }
+                );
+              } else {
+                tl.fromTo(child ? trigger.children : trigger,
+                  { ...(y ? { y } : { y: "50px" }), opacity: 0, },
+                  { duration: 1, y: 0, opacity: 1, stagger: 0.05, }
+                );
+              }
+              break;
+          }
+
+
         };
 
         // Parallax elememnts
@@ -79,14 +98,14 @@ export function useAnimation() {
 
       }
       const st = setTimeout(initAnimaton, 200);
-      
+
       return () => {
         clearTimeout(st);
         resize?.disconnect()
         ScrollTrigger.killAll();
       };
     },
-    { dependencies: [], revertOnUpdate: true, }
+    { dependencies: [props?.depend], revertOnUpdate: true, }
   );
 
 }

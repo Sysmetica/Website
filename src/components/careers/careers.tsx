@@ -30,7 +30,7 @@ export const CareersList = ({ careers, type }: CareersListProps) => {
       <div className={clsx(s.root, s.career, {
         [s.mobile]: isMob
       })}>
-        <div className={s.items}>
+        <div className={s.items} data-fade data-child>
 
           {careers.data.map(({ attributes: { title, slug, level, tags, icon } }) => {
             const firstTag = tags[0];

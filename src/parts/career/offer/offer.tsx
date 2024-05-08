@@ -11,8 +11,8 @@ export const Offer = ({ offer }: { offer: CareerPageFields['attributes']['offer'
         <div className={s.rootWrap}>
 
           <div className={s.itemsWrap}>
-            <h2 className={IBMPlexSans.className}>We Offer</h2>
-            <div className={s.items}>
+            <h2 className={IBMPlexSans.className} data-fade>We Offer</h2>
+            <div className={s.items} data-fade data-child>
               {offer.map(({ text, title }, index) => {
                 return (
                   <div className={s.item} key={text}>
@@ -25,7 +25,7 @@ export const Offer = ({ offer }: { offer: CareerPageFields['attributes']['offer'
             </div>
           </div>
 
-          <div className={s.image}>
+          <div className={s.image} data-fade>
             <MyImage src="/img/offer.jpg" alt="Offer image" width={364} height={500} retina={2} />
           </div>
 

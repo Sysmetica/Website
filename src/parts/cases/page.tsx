@@ -13,8 +13,6 @@ export type CasesPageProps = {
 }
 
 export const CasesPage = ({ casestudies, ...props }: CasesPageProps) => {
-  useAnimation();
-
   return (
     <>
       <Intro {...props} />

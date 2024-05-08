@@ -9,6 +9,7 @@ import { csModal, isMobileDevice, menuState } from '@/state';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { OptionsProps } from '@/types/options';
+import { useAnimation } from '@/hooks/useAnimation';
 
 type LayoutProps = {
   children: any
@@ -24,6 +25,7 @@ export const Layout = ({ children, type = '', options }: LayoutProps) => {
   const setArea = useSetAtom(mouseActionArea);
   const setMenuState = useSetAtom(menuState);
   const setModal = useSetAtom(csModal);
+  useAnimation(router)
 
   const [theme] = useState(options);
 

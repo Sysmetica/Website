@@ -17,7 +17,7 @@ export type ArchiveCaseProps = {
 }
 
 export const ArchiveCase = ({ slug, template, caseStudie }: ArchiveCaseProps) => {
-  useAnimation();
+
 
   switch (slug) {
     case 'huma':

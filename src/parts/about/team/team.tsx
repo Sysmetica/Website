@@ -20,7 +20,7 @@ export const Team = ({ teams }: TeamProps) => {
         <div className={s.teams}>
           {teams.data.map(({ attributes: { name, photo, role, description, linkedin } }) => {
             return (
-              <div className={s.item} key={name}>
+              <div className={s.item} key={name} data-fade data-child>
                 <div className={s.image}>
                   <MyImage src={photo.data?.attributes.url} alt={name} width={364} height={418} retina={2} upload={true} />
                   <Link href={linkedin} className={s.linkedin} target="_blank">

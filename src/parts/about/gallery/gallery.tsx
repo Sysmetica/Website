@@ -61,7 +61,7 @@ export const Gallery = ({ gallery }: { gallery: GalleryProps }) => {
       onMouseUp={() => setPause(false)}
       onMouseOut={() => setPause(false)}
     >
-      <div className={s.images}>
+      <div className={s.images} data-fade="in">
         {galleryItems.map(({ attributes: { url } }, index) => {
           return (
             <div
