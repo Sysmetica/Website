@@ -3,14 +3,14 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-export function useAnimation(props: any) {
+export function useAnimation(props: any, scope: any = null) {
 
   useGSAP(
     (context, contextSafe: any) => {
-      let resize: any;
+      let resize: any, tls: any = [];
 
       const initAnimaton = () => {
-        const section = document.body;
+        const section = scope ? scope : document.body;
         const fades = section.querySelectorAll("[data-fade]") as NodeListOf<HTMLDivElement>;
         const parallaxes = section.querySelectorAll("[data-parallax]") as NodeListOf<HTMLDivElement>;
         const paths = section.querySelectorAll("[data-paths]") as NodeListOf<SVGPathElement>;
@@ -70,7 +70,7 @@ export function useAnimation(props: any) {
               }
               break;
           }
-
+          tls.push(tl);
 
         };
 
@@ -100,12 +100,13 @@ export function useAnimation(props: any) {
       const st = setTimeout(initAnimaton, 200);
 
       return () => {
+        tls.length && tls.forEach((tl: any) => tl.revert())
         clearTimeout(st);
         resize?.disconnect()
         ScrollTrigger.killAll();
       };
     },
-    { dependencies: [props?.depend], revertOnUpdate: true, }
+    { dependencies: [props], revertOnUpdate: true, scope }
   );
 
 }

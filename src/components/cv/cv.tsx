@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import s from './cv.module.scss';
 import g from '@/components/form/form.module.scss';
 import { CREATE_CV } from '@/graphql/queries';
@@ -17,6 +17,8 @@ import Link from 'next/link';
 import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '../form/const';
 import FileIcon from '../../../public/img/icons/file.svg';
 import { OptionsContext } from '@/common/layout/layout';
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const defaultFormData = {
   name: '',
@@ -43,21 +45,30 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
   const [touch, setTouch] = useState(false);
   const [selectStat, setSelectState] = useState(false);
   const [files, setFiles] = useState<FileList | null>();
-  const [form, setForm] = useState({
-    ...defaultFormData,
-    vacancy: activeCv || ''
-  });
+  const [form, setForm] = useState({ ...defaultFormData, vacancy: activeCv || '' });
   const [createCv, { data, loading, error }] = useMutation(CREATE_CV);
   const { attributes: { theme } } = useContext(OptionsContext);
-
+  const formRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<any>(null)
   const logoType = theme === 'light' ? '-p' : '';
 
   const closeModal = (e: any) => {
     e.preventDefault();
-    setTouch(false);
-    setModal(false);
-    setFiles(null);
-    document.body.style.overflow = '';
+
+    const { tls, open } = animationRef.current;
+
+    const close = () => {
+      setTouch(false);
+      setModal(false);
+      setFiles(null);
+      document.body.style.overflow = '';
+      open && open.kill()
+    }
+
+    tls.length && open ? tls.forEach((tl: any, i: number) => {
+      tl && tl.timeScale(2).reverse()
+      !i && tl.then(() => open.reverse().then(close))
+    }) : close()
   };
 
   const addCv = async ({ name, email, number, vacancy, file }: typeof defaultFormData) => {
@@ -124,19 +135,63 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
       })
   };
 
+  useGSAP(
+    () => {
+      let tls: any = [];
+
+      const initAnimaton = (section: any) => {
+        const fades = section.querySelectorAll("[data-fade]") as NodeListOf<HTMLDivElement>;
+
+        // Fade elements
+        const animateFades = (trigger: HTMLDivElement) => {
+          const { child, fade } = trigger.dataset;
+          let tl = gsap.timeline({
+            defaults: { ease: "power2.out", },
+          });
+          tl.fromTo(child ? trigger.children : trigger,
+            { y: "50px", opacity: 0, },
+            { duration: 1, y: 0, opacity: 1, stagger: 0.05, }
+          );
+          tls.push(tl);
+        };
+        animationRef.current = { ...animationRef.current, tls }
+
+
+        fades.forEach(animateFades)
+      }
+      const st = setTimeout(e => {
+        const section = formRef.current as HTMLDivElement;
+
+        const open = gsap.timeline({
+          onComplete: e => initAnimaton(section)
+        });
+        animationRef.current = { open }
+
+        open.to(formRef.current, { opacity: 1, duration: .3, })
+
+      }, 200);
+
+      return () => {
+        tls.length && tls.forEach((tl: any) => tl.revert())
+        clearTimeout(st);
+      };
+    },
+    { dependencies: [], revertOnUpdate: true }
+  );
+
   return (
-    <div className={clsx(g.root, s.root)}>
+    <div className={clsx(g.root, s.root)} ref={formRef}>
       <Row>
         <div className={g.rootWrap}>
 
-          <div className={s.head}>
+          <div className={s.head} data-fade data-child>
             <Link href={'/'}>
               <MyImage src={`/img/logo${logoType}.svg`} alt="sysmetica logo" width={165} height={32} />
             </Link>
             <Button type={['close']} onClick={closeModal}>Close</Button>
           </div>
 
-          <div className={g.text}>
+          <div className={g.text} data-fade>
             <h3 className={IBMPlexSans.className}>{`Submit Your CV`}</h3>
             <p>{`Step into your next career opportunity! We will contact you very soon. For any additional questions, reach out by email`}</p>
             <span>hello@sysmetica.io</span>
@@ -144,7 +199,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
 
           <div className={g.form}>
             <form onSubmit={handleSubmit}>
-              <div className={g.fields}>
+              <div className={g.fields} data-fade data-child>
                 <div className={g.wrap}>
                   <label htmlFor="name">{`Full Name *`}</label>
                   <input
@@ -243,20 +298,21 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                   {files?.[0]?.name && <div className={g.attach}>{files?.[0]?.name}<span className={g.remove} onClick={() => setFiles(null)}></span></div>}
                 </div>
 
+                <div className={clsx(g.buttonWrap, {
+                  [g.loading]: myLoading,
+                  [g.done]: sendStatus.status === 'success',
+                  [g.error]: sendStatus.status === 'error',
+                })}>
+
+                  {!!sendStatus.message && <p className={g.success}>{sendStatus.message}</p>}
+
+                  <div className={g.done} />
+                  <div className={g.loading} />
+                  <Button stat={true} type={['fill']}>Submit</Button>
+                </div>
+
               </div>
-              <div className={clsx(g.buttonWrap, {
-                [g.loading]: myLoading,
-                [g.done]: sendStatus.status === 'success',
-                [g.error]: sendStatus.status === 'error',
-              })}>
 
-                {!!sendStatus.message && <p className={g.success}>{sendStatus.message}</p>}
-
-                <div className={g.done} />
-                <div className={g.loading} />
-                <Button stat={true} type={['fill']}>Submit</Button>
-
-              </div>
             </form>
           </div>
 

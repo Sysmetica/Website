@@ -7,7 +7,7 @@ export const EditorParser = ({ content }: { content: BlocksContent }) => {
   }
 
   return (
-    <div className={s.root}>
+    <div className={s.root} data-fade data-child>
       <BlocksRenderer
         content={content}
       />

@@ -41,7 +41,7 @@ const Lp: FC<Props> = ({ pageData, options, globalMeta }) => {
           <div className={s.head}>
             <Row>
               <div className={s.wrap}>
-                <div className={s.info}>
+                <div className={s.info} data-fade>
                   <div className={s.buttonWrap}>
                     <MyImage src="/img/icons/page.svg" alt="text" width={48} height={48} imgClass={s.ico} />
                   </div>
