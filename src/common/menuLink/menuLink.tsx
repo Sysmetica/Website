@@ -1,13 +1,13 @@
 import clsx from "clsx"
-import Link from "next/link"
 import s from './menuLink.module.scss';
 import { useRouter } from "next/router";
+import { MyLink } from "@/components/link/link";
 
 export const MenuLink = ({ children, href, ...rest }: { children: string, href: string }) => {
   const { pathname } = useRouter();
 
   return (
-    <Link
+    <MyLink
       href={href}
       className={clsx(s.root, {
         [s.active]: pathname === href
@@ -15,6 +15,6 @@ export const MenuLink = ({ children, href, ...rest }: { children: string, href: 
       {...rest}
     >
       {children}
-    </Link>
+    </MyLink>
   )
 }

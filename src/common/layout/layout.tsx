@@ -27,21 +27,15 @@ export const Layout = ({ children, type = '', options }: LayoutProps) => {
   const setModal = useSetAtom(csModal);
   useAnimation(router)
 
-  const [theme] = useState(options);
-
   useEffect(() => {
-    const handleRouteChange = () => {
-      setArea({ area: 'default' });
-      setMenuState(false);
-      setModal(false);
-      document.body.style.overflow = '';
-    }
-    router.events.on('routeChangeStart', handleRouteChange)
-    return () => {
-      router.events.off('routeChangeStart', handleRouteChange)
-    }
+    setArea({ area: 'default' });
+    setMenuState(false);
+    setModal(false);
+    document.body.style.overflow = '';
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router])
+  }, [router.pathname])
+
+  const [theme] = useState(options);
 
   useEffect(() => {
     setDevice(isMobile)

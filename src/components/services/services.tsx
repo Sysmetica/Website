@@ -1,34 +1,22 @@
 import clsx from 'clsx';
-import MyImage from '@/components/image/image';
 import { IBMPlexSans } from '@/pages/_app';
 import s from './services.module.scss';
-import { useSetAtom } from 'jotai';
-import { mouseActionArea } from '../action/action';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import MobileIcon from '../../../public/img/icons/services/mobile.svg';
 import BeIcon from '../../../public/img/icons/services/be.svg';
 import QaIcon from '../../../public/img/icons/services/qa.svg';
 import DesignIcon from '../../../public/img/icons/services/design.svg';
+import { MyButton } from '../link/button';
 
 export const ServicesItems = ({ type = '' }: { type?: string }) => {
   const { pathname } = useRouter();
-  const setArea = useSetAtom(mouseActionArea);
   const isNotServices = pathname !== '/services';
 
   return (
-    <div
-      className={clsx(s.items, s[type])}
-      onMouseOver={() => {
-        isNotServices && setArea({ area: 'open' })
-      }}
-      onMouseOut={() => {
-        isNotServices && setArea({ area: 'default' })
-      }}
-    >
+    <div className={clsx(s.items, s[type])}>
 
       <div className={clsx(s.item, s.mob)} data-fade>
-        {isNotServices && <Link href={'/services'} className={s.link} />}
+        {isNotServices && <MyButton href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <MobileIcon />
         </div>
@@ -45,7 +33,7 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
       </div>
 
       <div className={clsx(s.item, s.backend)} data-fade>
-        {isNotServices && <Link href={'/services'} className={s.link} />}
+        {isNotServices && <MyButton href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <BeIcon />
         </div>
@@ -63,7 +51,7 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
       </div>
 
       <div className={clsx(s.item, s.qa)} data-fade>
-        {isNotServices && <Link href={'/services'} className={s.link} />}
+        {isNotServices && <MyButton href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <QaIcon />
         </div>
@@ -81,7 +69,7 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
       </div>
 
       <div className={clsx(s.item, s.design)} data-fade>
-        {isNotServices && <Link href={'/services'} className={s.link} />}
+        {isNotServices && <MyButton href={'/services'} className={s.link} />}
         <div className={s.icon}>
           <DesignIcon />
         </div>

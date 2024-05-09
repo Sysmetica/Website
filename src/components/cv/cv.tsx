@@ -13,12 +13,12 @@ import clsx from 'clsx';
 import { csModal } from '@/state';
 import { isValidEmail, isValidNumber } from '@/utils';
 import axios from 'axios';
-import Link from 'next/link';
 import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '../form/const';
 import FileIcon from '../../../public/img/icons/file.svg';
 import { OptionsContext } from '@/common/layout/layout';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { MyButton } from '../link/button';
 
 const defaultFormData = {
   name: '',
@@ -185,9 +185,9 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
         <div className={g.rootWrap}>
 
           <div className={s.head} data-fade data-child>
-            <Link href={'/'}>
+            <MyButton href={'/'}>
               <MyImage src={`/img/logo${logoType}.svg`} alt="sysmetica logo" width={165} height={32} />
-            </Link>
+            </MyButton>
             <Button type={['close']} onClick={closeModal}>Close</Button>
           </div>
 

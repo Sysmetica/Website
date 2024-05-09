@@ -2,7 +2,6 @@ import MyImage from "@/components/image/image";
 import { Row } from "../row/row";
 import s from './header.module.scss';
 import { Button } from "@/components/button/button";
-import Link from "next/link";
 import clsx from "clsx";
 import { useAtom } from "jotai";
 import { menuState } from "@/state";
@@ -16,6 +15,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useRef } from "react";
+import { MyButton } from "@/components/link/button";
 gsap.registerPlugin(ScrollTrigger);
 
 export const Header = ({ options }: { options: OptionsProps }) => {
@@ -26,10 +26,8 @@ export const Header = ({ options }: { options: OptionsProps }) => {
   const logoType = options.attributes.theme === 'light' ? '-p' : '';
   const headerRef = useRef<HTMLDivElement>(null);
 
-
   useGSAP(
     (context, contextSafe: any) => {
-
       const initAnimaton = () => {
         const section = headerRef.current as HTMLDivElement;
         const fades = section.querySelectorAll("[data-child]") as NodeListOf<HTMLDivElement>;
@@ -61,9 +59,9 @@ export const Header = ({ options }: { options: OptionsProps }) => {
     })} ref={headerRef}>
       <Row>
         <div className={s.headerWrap}>
-          <Link className={s.logo} href={'/'} data-child>
+          <MyButton className={s.logo} href={'/'} data-child>
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
-          </Link>
+          </MyButton>
           <ul className={s.menu}>
             {options.attributes.menu
               .filter((i) => i.name !== null)

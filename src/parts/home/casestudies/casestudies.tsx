@@ -4,9 +4,9 @@ import 'swiper/css';
 import { useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import clsx from 'clsx';
-import Link from 'next/link';
 import { CaseStudiesProps } from '@/types/casestudies';
 import { CaseItem } from './caseItem';
+import { MyButton } from '@/components/link/button';
 
 export const Casestudies = ({ casestudies }: { casestudies: CaseStudiesProps }) => {
   const setArea = useSetAtom(mouseActionArea);
@@ -18,8 +18,8 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudiesProps }) 
   return (
     <div
       className={s.root}
-    // onMouseOver={() => setArea({ area: 'drag' })}
-    // onMouseOut={() => setArea({ area: 'default' })}
+      // onMouseOver={() => setArea({ area: 'drag' })}
+      // onMouseOut={() => setArea({ area: 'default' })}
     >
       <Swiper
         slidesPerView={'auto'}
@@ -36,10 +36,10 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudiesProps }) 
         })}
 
         <SwiperSlide className={clsx(s.slide, s.static)}>
-          <Link href={'/case-studies'} className={s.link}>
+          <MyButton href={'/case-studies'} className={s.link}>
             <span className={s.text}>{`Case Studies`}</span>
             <span className={s.more} />
-          </Link>
+          </MyButton>
         </SwiperSlide>
       </Swiper>
     </div >

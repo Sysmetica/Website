@@ -5,10 +5,10 @@ import clsx from 'clsx';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { mouseActionArea } from '@/components/action/action';
 import { isMobileDevice } from '@/state';
-import Link from 'next/link';
 import { InfoProps, InfoTeam } from '@/types/home';
 import { useContext } from 'react';
 import { OptionsContext } from '@/common/layout/layout';
+import { MyButton } from '@/components/link/button';
 
 type InfoStepProps = {
   team: InfoTeam
@@ -16,7 +16,6 @@ type InfoStepProps = {
 }
 
 export const InfoStep = ({ team, info }: InfoStepProps) => {
-  const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
 
   const { attributes: { theme } } = useContext(OptionsContext);
@@ -32,13 +31,8 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
       <Row>
         <div className={s.blocks}>
 
-          <div
-            className={clsx(s.info, s.block)}
-            onMouseOver={() => setArea({ area: 'open' })}
-            onMouseOut={() => setArea({ area: 'default' })}
-            data-fade
-          >
-            <Link href={info.sectionOneLink} target='_black' className={s.link} />
+          <div className={clsx(s.info, s.block)} data-fade>
+            <MyButton href={info.sectionOneLink} target='_black' className={s.link} />
             <div className={s.tags}>
               <span className={s.tag}>
                 <MyImage src="/img/icons/tag1.svg" alt="100% Job Success" width={20} height={20} />
@@ -56,13 +50,8 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
             </div>
           </div>
 
-          <div
-            className={clsx(s.team, s.block)}
-            onMouseOver={() => setArea({ area: 'open' })}
-            onMouseOut={() => setArea({ area: 'default' })}
-            data-fade
-          >
-            <Link href={info.sectionTwoLink} className={s.link} />
+          <div className={clsx(s.team, s.block)} data-fade>
+            <MyButton href={info.sectionTwoLink} className={s.link} />
             {theme === 'dark' ? (
               <div className={s.photos}>
                 {team.data.map(({ attributes: { preview } }, index) => {

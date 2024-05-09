@@ -1,9 +1,9 @@
 import MyImage from "@/components/image/image";
 import s from './team.module.scss';
 import { Row } from "@/common/row/row";
-import Link from "next/link";
 import { IBMPlexSans } from "@/pages/_app";
 import { TeamsProps } from "@/types/about";
+import { MyLink } from "@/components/link/link";
 
 type TeamProps = {
   teams: TeamsProps
@@ -23,9 +23,9 @@ export const Team = ({ teams }: TeamProps) => {
               <div className={s.item} key={name} data-fade data-child>
                 <div className={s.image}>
                   <MyImage src={photo.data?.attributes.url} alt={name} width={364} height={418} retina={2} upload={true} />
-                  <Link href={linkedin} className={s.linkedin} target="_blank">
+                  <MyLink href={linkedin} className={s.linkedin} target="_blank">
                     <MyImage src="/img/icons/linkedin.svg" alt="linkedin icon" width={24} height={32} />
-                  </Link>
+                  </MyLink>
                   {description && (
                     <div className={s.description}>
                       <div className={s.text}>

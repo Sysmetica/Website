@@ -2,12 +2,12 @@ import { IBMPlexSans } from '@/pages/_app';
 import s from './career.module.scss';
 import MyImage from '@/components/image/image';
 import { CareerPageFields } from '@/types/career';
-import Link from 'next/link';
 import clsx from 'clsx';
 import { mouseActionArea } from '../action/action';
 import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { csModal, isMobileDevice } from '@/state';
 import CvForm from '@/components/cv/cv';
+import { MyButton } from '../link/button';
 
 type CareersListProps = {
   careers: CareerPageFields['attributes']['careers']
@@ -35,13 +35,8 @@ export const CareersList = ({ careers, type }: CareersListProps) => {
           {careers.data.map(({ attributes: { title, slug, level, tags, icon } }) => {
             const firstTag = tags[0];
             return (
-              <div
-                className={s.item}
-                key={title}
-                onMouseOver={() => setArea({ area: 'submit' })}
-                onMouseOut={() => setArea({ area: 'default' })}
-              >
-                <Link href={`career/${slug}`} className={s.link} />
+              <div className={s.item} key={title}>
+                <MyButton href={`career/${slug}`} className={s.link} />
                 <div className={s.content}>
                   <div className={s.icon} />
                   <MyImage src={`/img/icons/careers/${icon}.svg`} alt="text" width={48} height={48} imgClass={s.ico} />
@@ -61,9 +56,9 @@ export const CareersList = ({ careers, type }: CareersListProps) => {
           {type === 'buttonPlus' && (
             <div
               className={s.item}
-              onMouseOver={() => setArea({ area: 'submit' })}
-              onMouseOut={() => setArea({ area: 'default' })}
               onClick={modalHandler}
+              onMouseOver={() => setArea({ area: 'button' })}
+              onMouseOut={() => setArea({ area: 'default' })}
             >
               <div className={clsx(s.content, s.button)}>
                 <div className={s.icon} />

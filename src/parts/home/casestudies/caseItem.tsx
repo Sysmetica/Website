@@ -1,10 +1,10 @@
-import { Row } from '@/common/row/row';
 import s from './caseItem.module.scss';
 import MyImage from '@/components/image/image';
 import 'swiper/css';
 import { IBMPlexSans } from '@/pages/_app';
 import { CaseItemProps } from '@/types/casestudies';
 import { Button } from '@/components/button/button';
+import { MyLink } from '@/components/link/link';
 
 export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
   return (
@@ -33,10 +33,10 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
                 </>
               </Button>
               {caseItem.href && (
-                <a href={caseItem.href} target='_blank' className={s.link}>
+                <MyLink href={caseItem.href} target='_blank' className={s.link}>
                   {caseItem.site}
                   <MyImage src="/img/icons/link.svg" alt="link icon" width={16} height={16} />
-                </a>
+                </MyLink>
               )}
             </div>
           </div>

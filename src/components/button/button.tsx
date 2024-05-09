@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import s from './button.module.scss';
-import Link from 'next/link';
+import { MyButton } from '../link/button';
 
 type ButtonProps = {
   children: string | any
@@ -12,7 +12,6 @@ type ButtonProps = {
 }
 
 export const Button = ({ children, link = "#", refVal, type = [], onClick, stat }: ButtonProps) => {
-
   if (stat) {
     return (
       <button
@@ -26,13 +25,13 @@ export const Button = ({ children, link = "#", refVal, type = [], onClick, stat 
   }
 
   return (
-    <Link
+    <MyButton
       href={link}
       ref={refVal}
       className={clsx(s.root, type.map((k) => s[k]))}
       onClick={onClick}
     >
       {children}
-    </Link>
+    </MyButton>
   )
 }
