@@ -53,6 +53,10 @@
         height: 46px;
         background: #fff;
       }
+
+      &.input div {
+        opacity: 0;
+      }
     }
 
     .point {
@@ -72,6 +76,10 @@
       }
 
       &.button div {
+        opacity: 0;
+      }
+
+      &.input div {
         opacity: 0;
       }
     }

@@ -4,6 +4,7 @@ import s from './footer.module.scss';
 import { SocialLinks } from '../socialLinks/socialLinks';
 import { MenuLink } from '../menuLink/menuLink';
 import { OptionsProps } from '@/types/options';
+import { MyButton } from '@/components/link/button';
 
 export const Footer = ({ options }: { options: OptionsProps }) => {
   const logoType = options.attributes.theme === 'light' ? '-p' : '';
@@ -14,9 +15,9 @@ export const Footer = ({ options }: { options: OptionsProps }) => {
       <Row>
 
         <div className={s.top}>
-          <div className={s.logo} data-fade>
+          <MyButton href={'/'} className={s.logo} data-fade>
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
-          </div>
+          </MyButton>
           <div className={s.menu} data-fade data-child>
             {options.attributes.menu
               .filter((i) => i.name !== null)

@@ -7,7 +7,7 @@ import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from "@/state";
 
 type mouseActionAreaProp = {
-  area: 'hidden' | 'open' | 'default' | 'none' | 'drag' | 'submit' | 'link' | 'button',
+  area: 'hidden' | 'open' | 'default' | 'none' | 'drag' | 'submit' | 'link' | 'button' | 'input',
   title?: string
 }
 
@@ -24,8 +24,6 @@ export const Action = () => {
   const circleRef = useRef<any>()
   const pointRef = useRef<any>()
   const dragRef = useRef<any>()
-  // const openRef = useRef<any>()
-  // const submitRef = useRef<any>()
 
   useEffect(() => {
     const mouseAction = (evt: any) => {
@@ -53,24 +51,6 @@ export const Action = () => {
         y: mouseY,
         duration: 0.4,
       })
-
-      // gsap.to(openRef.current, {
-      //   x: mouseX,
-      //   y: mouseY,
-      //   duration: 0.3,
-      // })
-
-      // gsap.to(submitRef.current, {
-      //   x: mouseX,
-      //   y: mouseY,
-      //   duration: 0.3,
-      // })
-
-      // gsap.to(dragRef.current, {
-      //   x: mouseX,
-      //   y: mouseY,
-      //   duration: 0.3,
-      // })
     }
 
     document.body.addEventListener('mousemove', mouseAction);
@@ -84,22 +64,6 @@ export const Action = () => {
     <div className={clsx(s.root, {
       [s.mob]: isMob
     })}>
-      {/* <div className={s.pointerActions}>
-
-        <div ref={openRef} className={clsx(s.open, s.action, {
-          [s.visible]: area === 'open'
-        })} />
-
-        <div ref={dragRef} className={clsx(s.drag, s.action, {
-          [s.visible]: area === 'drag'
-        })}>{title || "Drag"}</div>
-
-        <div ref={submitRef} className={clsx(s.submit, s.action, {
-          [s.visible]: area === 'submit'
-        })} />
-
-      </div> */}
-
       <div className={clsx(s.pointerActions, s.blendedMode)}>
 
         <div ref={dragRef} className={clsx(s.drag, s.hidden, {
@@ -108,13 +72,15 @@ export const Action = () => {
 
         <div ref={circleRef} className={clsx(s.circle, s.action, {
           [s.link]: area === 'link',
-          [s.button]: area === 'button'
+          [s.button]: area === 'button',
+          [s.input]: area === 'input',
         })}><div /></div>
 
         <div ref={pointRef} className={clsx(s.point, s.action, {
           [s.dragging]: area === 'drag',
           [s.link]: area === 'link',
           [s.button]: area === 'button',
+          [s.input]: area === 'input',
         })}><div /></div>
 
       </div>

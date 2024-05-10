@@ -19,6 +19,8 @@ import { OptionsContext } from '@/common/layout/layout';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { MyButton } from '../link/button';
+import { MyInput } from '../input/input';
+import { mouseActionArea } from '../action/action';
 
 const defaultFormData = {
   name: '',
@@ -39,6 +41,7 @@ type CvFormProps = {
 }
 
 const CvForm = ({ svList, activeCv }: CvFormProps) => {
+  const setArea = useSetAtom(mouseActionArea);
   const setModal = useSetAtom(csModal);
   const [sendStatus, setSendStatus] = useState(sendStatusDefault);
   const [myLoading, setMyLoading] = useState(false);
@@ -202,7 +205,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
               <div className={g.fields} data-fade data-child>
                 <div className={g.wrap}>
                   <label htmlFor="name">{`Full Name *`}</label>
-                  <input
+                  <MyInput
                     id="name"
                     type="text"
                     value={form.name}
@@ -215,7 +218,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                 </div>
                 <div className={g.wrap}>
                   <label htmlFor="email">{`Your Email *`}</label>
-                  <input
+                  <MyInput
                     id="email"
                     type="text"
                     value={form.email}
@@ -228,7 +231,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                 </div>
                 <div className={g.wrap}>
                   <label htmlFor="number">{`Phone Number`}</label>
-                  <input
+                  <MyInput
                     id="number"
                     type="text"
                     value={form.number}
@@ -239,7 +242,11 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                     })}
                   />
                 </div>
-                <div className={g.wrap}>
+                <div
+                  className={g.wrap}
+                  onMouseOver={() => setArea({ area: 'input' })}
+                  onMouseOut={() => setArea({ area: 'default' })}
+                >
                   <label htmlFor="vacancy">{`Vacancy you're applying to`}</label>
                   <div
                     className={clsx(g.vacancyWrap, {
@@ -247,7 +254,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                     })}
                     onClick={() => setSelectState(!selectStat)}
                   >
-                    <input
+                    <MyInput
                       id="vacancy"
                       type="text"
                       value={form.vacancy}
@@ -280,7 +287,11 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                 </div>
 
                 {/* file */}
-                <div className={g.wrap}>
+                <div
+                  className={g.wrap}
+                  onMouseOver={() => setArea({ area: 'link' })}
+                  onMouseOut={() => setArea({ area: 'default' })}
+                >
                   <div className={clsx(g.drop, {
                     [g.disabled]: touch && !files?.[0]?.name
                   })}>
@@ -308,7 +319,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
 
                   <div className={g.done} />
                   <div className={g.loading} />
-                  <Button stat={true} type={['fill']}>Submit</Button>
+                  <Button stat={true} type={['fill']}>{`Submit`}</Button>
                 </div>
 
               </div>

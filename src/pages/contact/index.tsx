@@ -14,6 +14,8 @@ import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '@/components/fo
 import { OptionsProps } from '@/types/options'
 import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
+import { MyInput } from '@/components/input/input'
+import { MyTextarea } from '@/components/input/textarea'
 
 interface Props {
   pageData: {
@@ -121,7 +123,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
 
                     <div className={g.wrap}>
                       <label htmlFor="name">{`Full Name *`}</label>
-                      <input
+                      <MyInput
                         id="name"
                         type="text"
                         value={form.name}
@@ -135,7 +137,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
 
                     <div className={g.wrap}>
                       <label htmlFor="email">{`Your Email *`}</label>
-                      <input
+                      <MyInput
                         id="email"
                         type="text"
                         value={form.email}
@@ -149,7 +151,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
 
                     <div className={g.wrap}>
                       <label htmlFor="subject">{`Subject`}</label>
-                      <input
+                      <MyInput
                         id="subject"
                         type="text"
                         value={form.subject}
@@ -160,7 +162,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
 
                     <div className={g.wrap}>
                       <label htmlFor="message">{`Message`}</label>
-                      <textarea
+                      <MyTextarea
                         id="message"
                         value={form.message}
                         onChange={handleInput}
