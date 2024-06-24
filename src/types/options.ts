@@ -9,5 +9,6 @@ export type OptionsProps = {
       slug: string | null
       name: string | null
     }[]
+    email: string
   }
 }

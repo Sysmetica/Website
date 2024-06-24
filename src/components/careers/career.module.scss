@@ -1,5 +1,5 @@
 .root {
-  &.mobile {
+  @media (hover: none) {
     .icon {
       display: block;
     }

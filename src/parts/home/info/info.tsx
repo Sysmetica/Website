@@ -2,9 +2,6 @@ import { Row } from '@/common/row/row';
 import s from './info.module.scss';
 import MyImage from '@/components/image/image';
 import clsx from 'clsx';
-import { useAtomValue, useSetAtom } from 'jotai';
-import { mouseActionArea } from '@/components/action/action';
-import { isMobileDevice } from '@/state';
 import { InfoProps, InfoTeam } from '@/types/home';
 import { useContext } from 'react';
 import { OptionsContext } from '@/common/layout/layout';
@@ -16,8 +13,6 @@ type InfoStepProps = {
 }
 
 export const InfoStep = ({ team, info }: InfoStepProps) => {
-  const isMob = useAtomValue(isMobileDevice);
-
   const { attributes: { theme } } = useContext(OptionsContext);
 
   if (!info) {
@@ -25,9 +20,7 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
   }
 
   return (
-    <div className={clsx(s.root, {
-      [s.mobile]: isMob
-    })}>
+    <div className={s.root}>
       <Row>
         <div className={s.blocks}>
 

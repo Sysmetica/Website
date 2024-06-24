@@ -104,8 +104,32 @@
     flex-direction: column;
     justify-content: space-between;
     border-radius: 6px;
-    background: #1D1D1F;
+    background-color: #1D1D1F;
+    transition: background-color .3s 0s;
     padding: 32px;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: #28282A;
+
+        .tags .tag {
+          background: #fff;
+          color: #000;
+          border-color: #584997;
+
+          [data-theme="light"] & {
+            background: #f4f3f1;
+            border-color: #ed6b55;
+          }
+        }
+
+        &.mob {
+          .tags .tag {
+            border-color: #28282A;
+          }
+        }
+      }
+    }
 
     [data-theme="light"] & {
       background: #fff;
@@ -153,6 +177,10 @@
             stroke: #fff;
           }
         }
+      }
+
+      .tags .tag {
+        border-color: #584997;
       }
     }
 
@@ -205,6 +233,9 @@
 
       .tag {
         display: inline-block;
+        border-color: #1D1D1F;
+        border-style: solid;
+        border-width: 0 0 3px 3px;
         padding: 6px 8px;
         border-radius: 6px;
         background: rgba(255, 255, 255, 0.06);
@@ -212,6 +243,12 @@
         font-size: 14px;
         font-weight: 500;
         line-height: 142%;
+
+        @for $i from 0 through 10 {
+          &:nth-child(#{$i}) {
+            transition: all .3s $i*0.02s
+          }
+        }
 
         [data-theme="light"] & {
           background: #F4F3F1;

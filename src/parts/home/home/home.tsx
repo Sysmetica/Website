@@ -129,19 +129,14 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
 
   return (
     <div
-      className={clsx(s.root, {
-        [s.mobile]: isMob
-      })}
-      {
-      ...isMob ? {} : {
+      className={s.root}
+      ref={intro}
+      {...isMob && {
         onMouseMove: (e) => action(e),
         onMouseOver: () => setArea({ area: 'hidden' }),
         onMouseOut: () => setArea({ area: 'default' }),
-      }
-      }
-      ref={intro}
+      }}
     >
-
       <div className={s.shapes}>
         <div className={s.bg} />
         <div className={clsx(s.shape, s.shape1)} ref={shapeRef1} />

@@ -29,6 +29,7 @@ module.exports = {
   },
   experimental: {
     appDir: true,
+    scrollRestoration: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],

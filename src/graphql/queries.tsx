@@ -179,8 +179,8 @@ export const GET_SINGLE_CAREER = gql`
 `
 
 export const CREATE_CV = gql`
-  mutation createCv($name: String!, $email: String!, $number: String!, $vacancy: String!, $file: ID) {
-    createCv(data: { name: $name, email: $email, number: $number, vacancy: $vacancy, file: $file}) {
+  mutation createCv($name: String!, $email: String!, $number: String!, $vacancy: String!, $file: ID, $filePath: String!) {
+    createCv(data: { name: $name, email: $email, number: $number, vacancy: $vacancy, file: $file, filePath: $filePath}) {
       data {
         id,
         attributes {
@@ -193,6 +193,7 @@ export const CREATE_CV = gql`
               id
             }
           }
+          filePath
         }
       }
     }
@@ -206,7 +207,6 @@ export const CONTACT_PAGE = gql`
         attributes {
           title
           text
-          email
         }
       }
     }
@@ -215,7 +215,7 @@ export const CONTACT_PAGE = gql`
 
 export const CREATE_TALK = gql`
   mutation createTalk($name: String!, $email: String!, $subject: String!, $message: String!) {
-    createTalk(data: { name: $name, email: $email, subject: $subject, message: $message}) {
+    createTalk(data: {name: $name, email: $email, subject: $subject, message: $message}) {
       data {
         id,
         attributes {
@@ -332,6 +332,7 @@ query {
           slug
           name
         }
+        email
       }
     }
   }

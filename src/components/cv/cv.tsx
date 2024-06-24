@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from 'react';
 import s from './cv.module.scss';
 import g from '@/components/form/form.module.scss';
-import { CREATE_CV } from '@/graphql/queries';
-import { useMutation } from '@apollo/client';
+import { CREATE_CV, OPTIONS } from '@/graphql/queries';
+import { useMutation, useQuery } from '@apollo/client';
 import { Row } from '@/common/row/row';
 import { IBMPlexSans } from '@/pages/_app';
 import { Button } from '../button/button';
@@ -11,7 +11,7 @@ import { useSetAtom } from 'jotai';
 import { CareersProps } from '@/types/career';
 import clsx from 'clsx';
 import { csModal } from '@/state';
-import { isValidEmail, isValidNumber } from '@/utils';
+import { isValidEmail, isValidNumber, maxLengthValidation } from '@/utils';
 import axios from 'axios';
 import { FORM_ERROR, FORM_ERROR_VALIDATION, FORM_SUCCESS } from '../form/const';
 import FileIcon from '../../../public/img/icons/file.svg';
@@ -21,6 +21,8 @@ import { useGSAP } from "@gsap/react";
 import { MyButton } from '../link/button';
 import { MyInput } from '../input/input';
 import { mouseActionArea } from '../action/action';
+import { OptionsProps } from '@/types/options';
+import { MAX_INPUT } from '@/const';
 
 const defaultFormData = {
   name: '',
@@ -28,6 +30,7 @@ const defaultFormData = {
   number: '',
   vacancy: '',
   file: '',
+  filePath: '',
 }
 
 const sendStatusDefault = {
@@ -41,6 +44,7 @@ type CvFormProps = {
 }
 
 const CvForm = ({ svList, activeCv }: CvFormProps) => {
+  const { data: optionsData } = useQuery<{ option: { data: OptionsProps } }>(OPTIONS);
   const setArea = useSetAtom(mouseActionArea);
   const setModal = useSetAtom(csModal);
   const [sendStatus, setSendStatus] = useState(sendStatusDefault);
@@ -74,14 +78,15 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
     }) : close()
   };
 
-  const addCv = async ({ name, email, number, vacancy, file }: typeof defaultFormData) => {
+  const addCv = async ({ name, email, number, vacancy, file, filePath }: typeof defaultFormData) => {
     await createCv({
       variables: {
-        name: name,
-        email: email,
-        number: number,
-        vacancy: vacancy,
-        file: file,
+        name,
+        email,
+        number,
+        vacancy,
+        file,
+        filePath,
       },
     }).then(({ data }: any) => {
       setForm(defaultFormData);
@@ -93,9 +98,10 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
         message: FORM_SUCCESS,
       });
     }).catch((err) => {
+      setMyLoading(false);
       setSendStatus({
         status: 'error',
-        message: FORM_ERROR,
+        message: err.message || FORM_ERROR,
       })
     });
   };
@@ -113,13 +119,29 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
 
     const formData = new FormData();
 
-    if (!files || !form.name || !form.email) {
+    if (!files || !form.name || !form.email || isEmailNotValid || isNumberNotValid) {
       setSendStatus({
         status: 'error',
         message: FORM_ERROR_VALIDATION,
       })
       return
     }
+
+    // QUICK FIX don't load the file if maxLength of any input
+    if (
+      maxLengthValidation(form.name, MAX_INPUT)
+      ||
+      maxLengthValidation(form.email, MAX_INPUT)
+      ||
+      maxLengthValidation(form.number, MAX_INPUT)
+    ) {
+      setSendStatus({
+        status: 'error',
+        message: FORM_ERROR_VALIDATION,
+      })
+      return
+    }
+    // END
 
     setMyLoading(true);
 
@@ -128,7 +150,11 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
     // first, we need to upload the file
     axios.post(`${process.env.NEXT_PUBLIC_STRAPI_API_UPLOAD}`, formData)
       .then((response) => {
-        addCv({ ...form, file: response.data[0].id });
+        addCv({
+          ...form,
+          file: response.data[0].id,
+          filePath: response.data[0].url,
+        });
       }).catch((error) => {
         setSendStatus({
           status: 'error',
@@ -182,6 +208,9 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
     { dependencies: [], revertOnUpdate: true }
   );
 
+  const isEmailNotValid = !form.email || !isValidEmail(form.email);
+  const isNumberNotValid = !isValidNumber(form.number);
+
   return (
     <div className={clsx(g.root, s.root)} ref={formRef}>
       <Row>
@@ -197,7 +226,15 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
           <div className={g.text} data-fade>
             <h3 className={IBMPlexSans.className}>{`Submit Your CV`}</h3>
             <p>{`Step into your next career opportunity! We will contact you very soon. For any additional questions, reach out by email`}</p>
-            <span>hello@sysmetica.io</span>
+            {optionsData?.option.data.attributes.email && (
+              <a
+                href={`mailto:${optionsData.option.data.attributes.email}`}
+                target='_blank'
+                className={g.email}
+              >
+                {optionsData.option.data.attributes.email}
+              </a>
+            )}
           </div>
 
           <div className={g.form}>
@@ -212,7 +249,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                     onChange={handleInput}
                     placeholder='Your full name'
                     className={clsx({
-                      [g.disabled]: touch && !form.name
+                      [g.disabled]: (touch && !form.name) || maxLengthValidation(form.name, MAX_INPUT)
                     })}
                   />
                 </div>
@@ -225,7 +262,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                     onChange={handleInput}
                     placeholder='Your email'
                     className={clsx({
-                      [g.disabled]: touch && !isValidEmail(form.email)
+                      [g.disabled]: (touch && isEmailNotValid) || maxLengthValidation(form.email, MAX_INPUT)
                     })}
                   />
                 </div>
@@ -238,7 +275,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                     onChange={handleInput}
                     placeholder='Phone number'
                     className={clsx({
-                      [g.disabled]: touch && (!!form.number && !isValidNumber(form.number))
+                      [g.disabled]: (touch && isNumberNotValid) || maxLengthValidation(form.number, MAX_INPUT)
                     })}
                   />
                 </div>
@@ -319,7 +356,10 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
 
                   <div className={g.done} />
                   <div className={g.loading} />
-                  <Button stat={true} type={['fill']}>{`Submit`}</Button>
+
+                  <div data-fade className={g.button}>
+                    <Button stat={true} type={['fill']}>{`Submit`}</Button>
+                  </div>
                 </div>
 
               </div>

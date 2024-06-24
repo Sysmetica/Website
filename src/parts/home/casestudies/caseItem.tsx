@@ -24,7 +24,7 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
             <div className={s.buttons} data-fade data-child>
               <Button type={['fill']} link={`/case-studies/${caseItem.slug}`}>
                 <>
-                  {`View Case Studie`}
+                  {`View Case Study`}
                   <div className={s.ico}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
                       <path d="M3 13L13 3M13 3H3M13 3V13" stroke="white" strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />

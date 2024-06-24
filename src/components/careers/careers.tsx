@@ -4,8 +4,8 @@ import MyImage from '@/components/image/image';
 import { CareerPageFields } from '@/types/career';
 import clsx from 'clsx';
 import { mouseActionArea } from '../action/action';
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
-import { csModal, isMobileDevice } from '@/state';
+import { useAtom, useSetAtom } from 'jotai';
+import { csModal } from '@/state';
 import CvForm from '@/components/cv/cv';
 import { MyButton } from '../link/button';
 
@@ -16,7 +16,6 @@ type CareersListProps = {
 
 export const CareersList = ({ careers, type }: CareersListProps) => {
   const setArea = useSetAtom(mouseActionArea);
-  const isMob = useAtomValue(isMobileDevice);
   const [modal, setModal] = useAtom(csModal);
 
   const modalHandler = (e: any) => {
@@ -27,9 +26,7 @@ export const CareersList = ({ careers, type }: CareersListProps) => {
 
   return (
     <>
-      <div className={clsx(s.root, s.career, {
-        [s.mobile]: isMob
-      })}>
+      <div className={s.root}>
         <div className={s.items} data-fade data-child>
 
           {careers.data.map(({ attributes: { title, slug, level, tags, icon } }) => {

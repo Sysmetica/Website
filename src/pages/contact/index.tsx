@@ -16,13 +16,16 @@ import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
 import { MyInput } from '@/components/input/input'
 import { MyTextarea } from '@/components/input/textarea'
+import { mouseActionArea } from '@/components/action/action'
+import { useSetAtom } from 'jotai/react'
+import { isValidEmail, maxLengthValidation } from '@/utils'
+import { MAX_INPUT, MAX_TEXT } from '@/const'
 
 interface Props {
   pageData: {
     attributes: {
       title: string
       text: string
-      email: string
     }
   }
   options: OptionsProps
@@ -36,18 +39,19 @@ const defaultData = {
   message: '',
 }
 
-const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
+const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
   const {
     attributes: {
       title,
       text,
-      email,
     }
   } = pageData
   // console.log('pageData ', pageData);
 
+  const setArea = useSetAtom(mouseActionArea);
   const [form, setForm] = useState(defaultData);
   const [touch, setTouch] = useState(false);
+
   const [createTalk, { data, loading, error }] = useMutation(CREATE_TALK);
   const [sendStatus, setSendStatus] = useState<{
     status: 'success' | 'error',
@@ -64,7 +68,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
   };
 
   const addTalk = async ({ name, email, subject, message }: any) => {
-    if (!name || !email || !message) {
+    if (!name || !email || !message || isEmailNotValid) {
       setSendStatus({
         status: 'error',
         message: FORM_ERROR_VALIDATION,
@@ -88,7 +92,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
     }).catch((err) => {
       setSendStatus({
         status: 'error',
-        message: FORM_ERROR,
+        message: err.message || FORM_ERROR,
       })
     });
   };
@@ -100,9 +104,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
     });
   };
 
-  const isValidEmail = (email: string) => {
-    return /\S+@\S+\.\S+/.test(email);
-  }
+  const isEmailNotValid = !form.email || !isValidEmail(form.email);
 
   return (
     <Layout options={options}>
@@ -114,7 +116,17 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
               <div className={g.text} data-fade data-child>
                 {title && <h3 className={IBMPlexSans.className} >{title}</h3>}
                 {text && <p>{text}</p>}
-                {email && <span>{email}</span>}
+                {options.attributes.email && (
+                  <a
+                    href={`mailto:${options.attributes.email}`}
+                    target='_blank'
+                    className={g.email}
+                    onMouseOver={() => setArea({ area: 'button' })}
+                    onMouseOut={() => setArea({ area: 'default' })}
+                  >
+                    {options.attributes.email}
+                  </a>
+                )}
               </div>
 
               <div className={g.form}>
@@ -130,7 +142,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
                         onChange={handleInput}
                         placeholder='Your full name'
                         className={clsx({
-                          [g.disabled]: touch && !form.name
+                          [g.disabled]: (touch && !form.name) || maxLengthValidation(form.name, MAX_INPUT)
                         })}
                       />
                     </div>
@@ -144,7 +156,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
                         onChange={handleInput}
                         placeholder='Your email'
                         className={clsx({
-                          [g.disabled]: touch && (!form.email || !isValidEmail(form.email))
+                          [g.disabled]: (touch && isEmailNotValid) || maxLengthValidation(form.email, MAX_INPUT)
                         })}
                       />
                     </div>
@@ -157,6 +169,9 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
                         value={form.subject}
                         onChange={handleInput}
                         placeholder='How can we help'
+                        className={clsx({
+                          [g.disabled]: touch && maxLengthValidation(form.subject, MAX_INPUT)
+                        })}
                       />
                     </div>
 
@@ -168,7 +183,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
                         onChange={handleInput}
                         placeholder='Brief description of your idea'
                         className={clsx({
-                          [g.disabled]: touch && !form.message
+                          [g.disabled]: touch && maxLengthValidation(form.message, MAX_TEXT)
                         })}
                       />
                     </div>
@@ -184,9 +199,9 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
 
                     <div className={g.done} />
                     <div className={g.loading} />
-                    <div data-fade style={{ flex: 1, display: "flex" }}>
 
-                      <Button stat={true} type={['fill']}>Submit</Button>
+                    <div data-fade className={g.button}>
+                      <Button stat={true} type={['fill']}>{`Submit`}</Button>
                     </div>
 
                   </div>
@@ -201,7 +216,7 @@ const Career: FC<Props> = ({ pageData, options, globalMeta }) => {
   )
 }
 
-export default Career
+export default Contacts
 
 export const getStaticProps: GetStaticProps<any> = async () => {
   const { data } = await client.query({ query: CONTACT_PAGE })

@@ -4,7 +4,6 @@ import { gsap } from "gsap";
 import { atom, useAtomValue } from "jotai";
 import clsx from "clsx";
 import { isMobile } from 'react-device-detect';
-import { isMobileDevice } from "@/state";
 
 type mouseActionAreaProp = {
   area: 'hidden' | 'open' | 'default' | 'none' | 'drag' | 'submit' | 'link' | 'button' | 'input',
@@ -17,7 +16,6 @@ export const mouseActionArea = atom<mouseActionAreaProp>({
 
 export const Action = () => {
   const { area, title } = useAtomValue(mouseActionArea);
-  const isMob = useAtomValue(isMobileDevice);
 
   // console.log('--- area ', area);
 
@@ -37,19 +35,19 @@ export const Action = () => {
       gsap.to(circleRef.current, {
         x: mouseX,
         y: mouseY,
-        duration: 0.3,
+        duration: 0.1,
       })
 
       gsap.to(pointRef.current, {
         x: mouseX,
         y: mouseY,
-        duration: 0.1,
+        duration: 0.05,
       })
 
       gsap.to(dragRef.current, {
         x: mouseX,
         y: mouseY,
-        duration: 0.4,
+        duration: 0.1,
       })
     }
 
@@ -61,9 +59,7 @@ export const Action = () => {
   }, [])
 
   return (
-    <div className={clsx(s.root, {
-      [s.mob]: isMob
-    })}>
+    <div className={s.root}>
       <div className={clsx(s.pointerActions, s.blendedMode)}>
 
         <div ref={dragRef} className={clsx(s.drag, s.hidden, {

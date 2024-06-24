@@ -1,5 +1,7 @@
+$actionColor: #fff;
+
 .root {
-  &.mob {
+  @media (hover: none) {
     display: none;
   }
 
@@ -33,25 +35,27 @@
     }
 
     .circle {
+      // opacity: 0.5;
+
       div {
         margin: -17px 0 0 -17px;
         width: 35px;
         height: 35px;
-        border: 1px solid #fff;
+        border: 1px solid $actionColor;
       }
 
       &.link div {
         margin: -13px 0 0 -13px;
         width: 26px;
         height: 26px;
-        background: #fff;
+        background: $actionColor;
       }
 
       &.button div {
         margin: -23px 0 0 -23px;
         width: 46px;
         height: 46px;
-        background: #fff;
+        background: $actionColor;
       }
 
       &.input div {
@@ -64,7 +68,7 @@
         margin: -3px 0 0 -3px;
         width: 7px;
         height: 7px;
-        background: #fff;
+        background: $actionColor;
       }
 
       &.dragging div {
@@ -114,39 +118,6 @@
         border-color: #fff #fff transparent transparent;
       }
     }
-
-    // .open {
-    //   margin: -34px 0 0 -34px;
-    //   width: 68px;
-    //   height: 68px;
-    //   background: #000 url('/img/icons/str.svg') no-repeat center;
-    // }
-
-    // .drag {
-    //   margin: -52px 0 0 -52px;
-    //   width: 104px;
-    //   height: 104px;
-    //   background: #6856B5;
-    //   box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
-
-    //   [data-theme="light"] & {
-    //     background: #ED6B55;
-    //   }
-    // }
-
-    // .submit {
-    //   margin: -34px 0 0 -34px;
-    //   width: 68px;
-    //   height: 68px;
-    //   background-color: #6856B5;
-    //   background-image: url('/img/icons/attach-big-w.svg');
-    //   background-repeat: no-repeat;
-    //   background-position: center;
-
-    //   [data-theme="light"] & {
-    //     background-color: #ED6B55;
-    //   }
-    // }
   }
 
   .blendedMode {

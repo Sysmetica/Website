@@ -8,7 +8,6 @@ import s from '@/parts/career/single/single.module.scss';
 import { CareerProps, CareersProps } from '@/types/career';
 import MyImage from '@/components/image/image';
 import { Button } from '@/components/button/button';
-import Link from 'next/link';
 import { Editor } from '@/common/editor/editor';
 import dynamic from 'next/dynamic';
 import { useAtom } from 'jotai';

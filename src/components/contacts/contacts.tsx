@@ -1,8 +1,9 @@
 import { Button } from "@/components/button/button";
 import s from './contacts.module.scss';
 import { Row } from "@/common/row/row";
-import MyImage from "@/components/image/image";
 import { IBMPlexSans } from "@/pages/_app";
+import Lottie from "lottie-react";
+import contactsAnimation from "../../../public/animations/contacts.json";
 
 type ContactsProps = {
   title?: string
@@ -17,7 +18,12 @@ export const Contacts = ({
     <div className={s.root}>
       <Row>
         <div className={s.wrap}>
-          <MyImage src="/img/icons/loading.svg" alt="loading icon" width={100} height={100} data-fade />
+          <Lottie
+            animationData={contactsAnimation}
+            loop={true}
+            style={{ height: 190 }}
+            data-fade
+          />
           <h3 className={IBMPlexSans.className} data-fade>{title}</h3>
           <p data-fade>{text}</p>
           <div data-fade>

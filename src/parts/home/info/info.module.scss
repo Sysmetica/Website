@@ -1,7 +1,7 @@
 $transitionBack: .3s .1s ease;
 
 .root {
-  &.mobile {
+  @media (hover: none) {
 
     .tags,
     .team .photos {
