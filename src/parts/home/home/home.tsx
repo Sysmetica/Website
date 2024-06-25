@@ -10,9 +10,10 @@ import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from '@/state';
 import { makeSelectedString } from '@/utils';
 import HomeIcon from '../../../../public/img/icons/home.svg';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 import { useGSAP } from "@gsap/react";
-
 type HomeStepProps = {
   title: string
   subtitle: string
@@ -31,6 +32,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
   const intro = useRef<any>(null)
+  const parallaxRef = useRef<HTMLDivElement>(null)
 
   const shapeRef1 = useRef<any>();
   const shapeRef2 = useRef<any>();
@@ -54,7 +56,40 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
       y: mouseY,
       delay: 0,
     })
+    handleParallax(evt);
   }
+
+  function handleParallax(e: any) {
+    let fixer = -0.005;
+
+    const pageX = (e.pageX - window.innerWidth / 2) * fixer;
+    const pageY = (e.pageY - window.innerHeight / 2) * fixer;
+
+    const items = parallaxRef.current?.children as any
+
+    [...items].forEach((item: HTMLDivElement) => {
+      const speed = Number(item.dataset.coff);
+
+
+      gsap.to(item, {
+        x: pageX * speed,
+        y: pageY * speed,
+        duration: 1
+      });
+    });
+  }
+
+  useEffect(() => {
+
+
+
+
+
+    return () => {
+
+    }
+  }, [])
+
 
 
 
@@ -64,6 +99,10 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
       const initAnimaton = () => {
         const section = intro.current as HTMLDivElement;
         const fades = section.querySelectorAll("[data-split]") as NodeListOf<HTMLDivElement>;
+        const header = document.querySelector("header");
+
+        let initialBeta: any = null;
+        let initialGamma: any = null;
 
         const animSplit = (text: any) => {
 
@@ -114,9 +153,43 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
           );
         }
 
+        const handleOrientation = (event: any) => {
 
+          if (initialBeta == null || initialGamma == null) {
+            initialBeta = event.beta;
+            initialGamma = event.gamma;
+          }
+
+          const items = parallaxRef.current?.children as any
+
+          [...items].forEach((item: HTMLDivElement) => {
+            const speed = Number(item.dataset.coff) / 3;
+
+            gsap.to(item, {
+              x: (event.gamma - initialGamma) * speed,
+              y: (event.beta - initialBeta) * speed,
+              duration: 0.5
+            });
+          });
+        }
+
+
+        ScrollTrigger.create({
+          trigger: intro.current,
+          start: "top 10%",
+          end: `bottom top+=${header?.clientHeight}`,
+          onToggle: (e) => {
+            e.isActive ? header?.setAttribute("data-no-bg", "true") : header?.removeAttribute("data-no-bg")
+            if (isMobile || isMob) {
+              e.isActive
+                ? window.addEventListener('deviceorientation', handleOrientation)
+                : window.removeEventListener('deviceorientation', handleOrientation);
+            }
+          }
+        })
 
         fades.forEach(animSplit)
+
       }
       const st = setTimeout(initAnimaton, 200);
 
@@ -131,7 +204,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
     <div
       className={s.root}
       ref={intro}
-      {...isMob && {
+      {...!isMob && {
         onMouseMove: (e) => action(e),
         onMouseOver: () => setArea({ area: 'hidden' }),
         onMouseOut: () => setArea({ area: 'default' }),
@@ -166,6 +239,16 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
             </div>
           </Row>
         </div>
+      </div>
+
+      <div className={s.parallax} ref={parallaxRef} data-fade data-child>
+        <div className={clsx(s.par, s.par_1)} data-coff="3" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_2)} data-coff="1" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_3)} data-coff="1" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_4)} data-coff="3" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_5)} data-coff="1" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_6)} data-coff="3" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_7)} data-coff="1" ><div className={s.llax} /></div>
       </div>
     </div >
   )
