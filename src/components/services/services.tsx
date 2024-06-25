@@ -21,13 +21,13 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
           <MobileIcon />
         </div>
         <div className={s.text}>
-          <h3 className={clsx(s.title, IBMPlexSans.className)}>Mobile Development</h3>
+          <h3 className={clsx(s.title, IBMPlexSans.className)}>{`Mobile Development`}</h3>
           <div className={s.tags}>
-            <span className={s.tag}>Native Development</span>
-            <span className={s.tag}>Compliance</span>
-            <span className={s.tag}>Maintenance & Support</span>
-            <span className={s.tag}>Backend Integration</span>
-            <span className={s.tag}>Security</span>
+            <span className={s.tag}>{`Native Development`}</span>
+            <span className={s.tag}>{`Compliance`}</span>
+            <span className={s.tag}>{`Maintenance & Support`}</span>
+            <span className={s.tag}>{`Backend Integration`}</span>
+            <span className={s.tag}>{`Security`}</span>
           </div>
         </div>
       </div>
@@ -38,14 +38,14 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
           <BeIcon />
         </div>
         <div className={s.text}>
-          <h3 className={clsx(s.title, IBMPlexSans.className)}>Back-End</h3>
+          <h3 className={clsx(s.title, IBMPlexSans.className)}>{`Back-End`}</h3>
           <div className={s.tags}>
-            <span className={s.tag}>Database Management</span>
-            <span className={s.tag}>User Authentication</span>
-            <span className={s.tag}>API Development</span>
-            <span className={s.tag}>Data Processing</span>
-            <span className={s.tag}>Security & Compliance</span>
-            <span className={s.tag}>Testing & Maintenance</span>
+            <span className={s.tag}>{`Database Management`}</span>
+            <span className={s.tag}>{`User Authentication`}</span>
+            <span className={s.tag}>{`API Development`}</span>
+            <span className={s.tag}>{`Data Processing`}</span>
+            <span className={s.tag}>{`Security & Compliance`}</span>
+            <span className={s.tag}>{`Testing & Maintenance`}</span>
           </div>
         </div>
       </div>
@@ -56,14 +56,14 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
           <QaIcon />
         </div>
         <div className={s.text}>
-          <h3 className={clsx(s.title, IBMPlexSans.className)}>Manual QA</h3>
+          <h3 className={clsx(s.title, IBMPlexSans.className)}>{`Manual QA`}</h3>
           <div className={s.tags}>
-            <span className={s.tag}>Test Case Development</span>
-            <span className={s.tag}>Exploratory Testing</span>
-            <span className={s.tag}>Usability Testing</span>
-            <span className={s.tag}>Cross-Platform Testing</span>
-            <span className={s.tag}>Regression Testing</span>
-            <span className={s.tag}>Compliance & Performance Testing</span>
+            <span className={s.tag}>{`Test Case Development`}</span>
+            <span className={s.tag}>{`Exploratory Testing`}</span>
+            <span className={s.tag}>{`Usability Testing`}</span>
+            <span className={s.tag}>{`Cross-Platform Testing`}</span>
+            <span className={s.tag}>{`Regression Testing`}</span>
+            <span className={s.tag}>{`Compliance & Performance Testing`}</span>
           </div>
         </div>
       </div>
@@ -74,12 +74,12 @@ export const ServicesItems = ({ type = '' }: { type?: string }) => {
           <DesignIcon />
         </div>
         <div className={s.text}>
-          <h3 className={clsx(s.title, IBMPlexSans.className)}>Design</h3>
+          <h3 className={clsx(s.title, IBMPlexSans.className)}>{`Design`}</h3>
           <div className={s.tags}>
-            <span className={s.tag}>UI/UX Consulting & Setup</span>
-            <span className={s.tag}>Product Redesign & Refinement</span>
-            <span className={s.tag}>Mobile App Design</span>
-            <span className={s.tag}>Custom Web Design & Development</span>
+            <span className={s.tag}>{`UI/UX Consulting & Setup`}</span>
+            <span className={s.tag}>{`Product Redesign & Refinement`}</span>
+            <span className={s.tag}>{`Mobile App Design`}</span>
+            <span className={s.tag}>{`Custom Web Design & Development`}</span>
           </div>
         </div>
       </div>

@@ -126,6 +126,10 @@
         &.mob {
           .tags .tag {
             border-color: #28282A;
+
+            [data-theme="light"] & {
+              border-color: #b73d29;
+            }
           }
         }
       }
@@ -181,6 +185,10 @@
 
       .tags .tag {
         border-color: #584997;
+
+        [data-theme="light"] & {
+          border-color: #ED6B55;
+        }
       }
     }
 
@@ -252,6 +260,7 @@
 
         [data-theme="light"] & {
           background: #F4F3F1;
+          border-color: #fff;
           color: #1D1D1F;
         }
       }
