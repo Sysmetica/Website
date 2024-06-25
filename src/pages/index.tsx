@@ -55,7 +55,7 @@ const Home: FC<Props> = ({ pageData, options, globalMeta }) => {
     <Layout type="home" options={options}>
       <SeoContext globalMeta={globalMeta}>
         <HomeStep title={title} subtitle={subtitle} selectedString={subtitleSelected} />
-        <div className={gl.white}>
+        <div className={`${gl.white} ${gl.home}`}>
           <InfoStep team={teams} info={info} />
           <Progress />
           <Casestudies casestudies={casestudies} />

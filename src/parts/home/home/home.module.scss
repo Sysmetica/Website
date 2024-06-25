@@ -1,3 +1,8 @@
+@function px2vw($px, $def_screen: 1920) {
+  $vw: calc($def_screen * 0.01);
+  @return calc(($px/$vw) * 1vw);
+}
+
 .root {
   overflow: hidden;
   position: relative;
@@ -91,6 +96,7 @@
     min-height: 500px;
     margin: 0 auto;
     text-align: center;
+    z-index: 1;
 
     [data-theme="dark"] & {
       @media (hover: hover) {
@@ -201,6 +207,112 @@
           background: #f4f3f1;
           border-color: #ed6b55;
         }
+      }
+    }
+  }
+
+  .parallax {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1920px;
+    z-index: 1;
+    pointer-events: none;
+
+    @media (max-width: 800px) {
+      z-index: 0;
+    }
+
+    .par {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      will-change: transform;
+      &_1 {
+        left: clamp(-883px, px2vw(-883), -300px);
+        top: clamp(-368px, px2vw(-368), -100px);
+
+        @media (max-width: 800px) {
+          top: -5%;
+          left: -30%;
+        }
+      }
+      &_2 {
+        left: clamp(-622px, px2vw(-622), -250px);
+        top: clamp(-368px, px2vw(-368), -100px);
+
+        @media (max-width: 800px) {
+          top: 5%;
+          left: -40%;
+        }
+      }
+      &_3 {
+        left: clamp(400px, px2vw(1044), 1044px);
+        top: clamp(-910px, px2vw(-910), -300px);
+
+        @media (max-width: 800px) {
+          left: 65%;
+          top: -5%;
+        }
+      }
+      &_4 {
+        left: clamp(400px, px2vw(1172), 1172px);
+        top: clamp(-52px, px2vw(-52), -1px);
+
+        @media (max-width: 800px) {
+          left: 60%;
+          top: 10%;
+        }
+      }
+      &_5 {
+        left: clamp(500px, px2vw(1436), 1436px);
+        top: clamp(2px, px2vw(77), 77px);
+
+        @media (max-width: 800px) {
+          left: 75%;
+          top: 15%;
+        }
+      }
+      &_6 {
+        left: clamp(100px, px2vw(344), 344px);
+        top: clamp(300px, px2vw(1017), 1017px);
+
+        @media (max-width: 800px) {
+          top: 85%;
+          left: 20%;
+        }
+      }
+      &_7 {
+        left: clamp(200px, px2vw(743), 743px);
+        top: clamp(50px, px2vw(323), 323px);
+
+        @media (max-width: 800px) {
+          top: 50%;
+          left: calc(50% - 50px);
+        }
+
+        .llax {
+          width: clamp(150px, px2vw(602), 602px);
+        }
+      }
+    }
+    .llax {
+      background: linear-gradient(287deg, #8970ef -0.38%, rgba(137, 112, 239, 0) 121.08%);
+      aspect-ratio: 1;
+      display: flex;
+      border-radius: clamp(20px, px2vw(60), 60px);
+      transform: rotate(-45deg);
+      opacity: 0.1;
+      width: clamp(200px, px2vw(1226), 1226px);
+      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+
+      @media (max-width: 800px) {
+        max-width: 350px;
+        opacity: 0.25;
       }
     }
   }

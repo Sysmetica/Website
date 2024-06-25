@@ -3,6 +3,11 @@
   // negative margin fix
   padding-top: 1px;
 
+  &.home {
+    position: relative;
+    z-index: 2;
+  }
+
   [data-theme="light"] & {
     background: #fff;
   }

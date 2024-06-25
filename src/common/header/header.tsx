@@ -14,9 +14,11 @@ import { OptionsProps } from "@/types/options";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+
 import { useRef } from "react";
 import { MyButton } from "@/components/link/button";
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export const Header = ({ options }: { options: OptionsProps }) => {
   const [menu, setMenu] = useAtom(menuState);
@@ -52,6 +54,14 @@ export const Header = ({ options }: { options: OptionsProps }) => {
     { dependencies: [], revertOnUpdate: true, }
   );
 
+  const onLogoClick = (e: any) => {
+    if (pathname == "/") {
+      e.preventDefault()
+      gsap.to(window, { scrollTo: 0, duration: 0.5, ease: "none" });
+    }
+  }
+
+
   return (
     <header className={clsx(s.root, {
       [s.open]: menu,
@@ -59,7 +69,7 @@ export const Header = ({ options }: { options: OptionsProps }) => {
     })} ref={headerRef}>
       <Row>
         <div className={s.headerWrap}>
-          <MyButton className={s.logo} href={'/'} data-child>
+          <MyButton className={s.logo} href={'/'} data-child onClick={onLogoClick}>
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </MyButton>
           <ul className={s.menu}>

@@ -184,4 +184,9 @@
   [data-child] {
     opacity: 0;
   }
+
+  &[data-no-bg] {
+    background-color: transparent !important;
+    transition: 0.3s ease-in-out;
+  }
 }

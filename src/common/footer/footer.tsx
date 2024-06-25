@@ -5,17 +5,31 @@ import { SocialLinks } from '../socialLinks/socialLinks';
 import { MenuLink } from '../menuLink/menuLink';
 import { OptionsProps } from '@/types/options';
 import { MyButton } from '@/components/link/button';
+import { useRouter } from 'next/router';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export const Footer = ({ options }: { options: OptionsProps }) => {
   const logoType = options.attributes.theme === 'light' ? '-p' : '';
   const copyText = options.attributes.copy;
+  const { pathname } = useRouter();
+
+  const onLogoClick = (e: any) => {
+    if (pathname == "/") {
+      e.preventDefault()
+      gsap.to(window, { scrollTo: 0, duration: 0.5, ease: "none" });
+    }
+  }
 
   return (
     <footer className={s.root}>
       <Row>
 
         <div className={s.top}>
-          <MyButton href={'/'} className={s.logo} data-fade>
+          <MyButton href={'/'} className={s.logo} data-fade onClick={onLogoClick}>
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </MyButton>
           <div className={s.menu} data-fade data-child>

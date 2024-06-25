@@ -14,7 +14,7 @@ export const Progress = () => {
 
   useGSAP(
     (context, contextSafe: any) => {
-      let tls: any = [];
+      // let tls: any = [];
 
       const initAnimaton = () => {
         const section = wrapRef.current;
@@ -32,8 +32,7 @@ export const Progress = () => {
             },
           });
           tl.to(trigger, { snap: { textContent: 1 }, }, 0)
-          tls.push(tl);
-
+          tl.then(() => tl.kill())
         };
 
         counts.forEach(animateCount)
@@ -42,7 +41,6 @@ export const Progress = () => {
       const st = setTimeout(initAnimaton, 200);
 
       return () => {
-        tls.length && tls.forEach((tl: any) => tl.revert())
         clearTimeout(st);
       };
     },
