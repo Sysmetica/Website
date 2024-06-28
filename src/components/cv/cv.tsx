@@ -23,7 +23,7 @@ import { MyInput } from '../input/input';
 import { mouseActionArea } from '../action/action';
 import { OptionsProps } from '@/types/options';
 import { MAX_INPUT } from '@/const';
-import { usePreventDataLoss } from '@/hooks/usePreventDataLoss';
+import { closeModalPreventDataLoss, usePreventDataLoss } from '@/hooks/usePreventDataLoss';
 
 const defaultFormData = {
   name: '',
@@ -62,6 +62,15 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
 
   const closeModal = (e: any) => {
     e.preventDefault();
+
+    // formDataWithFile - is form data with not-uploaded-yet but added file
+    const formDataWithFile = { ...form, localFile: files ?? '' }
+
+    if (!closeModalPreventDataLoss(formDataWithFile)) {
+      return;
+    }
+
+    // console.log('sss ', closeModalPreventDataLoss(form))
 
     const { tls, open } = animationRef.current;
 
