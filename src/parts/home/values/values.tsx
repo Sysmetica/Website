@@ -19,7 +19,7 @@ export const Values = ({ values }: ValuesProps) => {
 
         <div className={s.textWrap}>
           <div className={s.text}>
-            <h2 className={IBMPlexSans.className} data-fade>{`The values behind our company`}</h2>
+            <h2 className={IBMPlexSans.className} data-fade>{`The Values Behind Our Company`}</h2>
           </div>
         </div>
 

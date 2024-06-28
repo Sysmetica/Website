@@ -23,6 +23,7 @@ import { MyInput } from '../input/input';
 import { mouseActionArea } from '../action/action';
 import { OptionsProps } from '@/types/options';
 import { MAX_INPUT } from '@/const';
+import { usePreventDataLoss } from '@/hooks/usePreventDataLoss';
 
 const defaultFormData = {
   name: '',
@@ -210,6 +211,8 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
 
   const isEmailNotValid = !form.email || !isValidEmail(form.email);
   const isNumberNotValid = !isValidNumber(form.number);
+
+  usePreventDataLoss(form);
 
   return (
     <div className={clsx(g.root, s.root)} ref={formRef}>

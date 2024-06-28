@@ -20,6 +20,7 @@ import { mouseActionArea } from '@/components/action/action'
 import { useSetAtom } from 'jotai/react'
 import { isValidEmail, maxLengthValidation } from '@/utils'
 import { MAX_INPUT, MAX_TEXT } from '@/const'
+import { usePreventDataLoss } from '@/hooks/usePreventDataLoss'
 
 interface Props {
   pageData: {
@@ -105,6 +106,8 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
   };
 
   const isEmailNotValid = !form.email || !isValidEmail(form.email);
+
+  usePreventDataLoss(form);
 
   return (
     <Layout options={options}>

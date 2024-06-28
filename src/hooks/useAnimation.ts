@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export function useAnimation(props: any, scope: any = null) {
-
   useGSAP(
     (context, contextSafe: any) => {
       let resize: any, tls: any = [];
@@ -15,7 +14,6 @@ export function useAnimation(props: any, scope: any = null) {
         const parallaxes = section.querySelectorAll("[data-parallax]") as NodeListOf<HTMLDivElement>;
         const paths = section.querySelectorAll("[data-paths]") as NodeListOf<SVGPathElement>;
         resize = new ResizeObserver(() => ScrollTrigger.refresh());
-
 
         // Fade svg stroke length
         const animateSVGPath = (path: SVGPathElement) => {
@@ -34,7 +32,6 @@ export function useAnimation(props: any, scope: any = null) {
           tl.to(path, { duration: 1.5, opacity: 1, strokeDashoffset: 0 })
 
         };
-
 
         // Fade elements
         const animateFades = (trigger: HTMLDivElement) => {
@@ -108,5 +105,4 @@ export function useAnimation(props: any, scope: any = null) {
     },
     { dependencies: [props], revertOnUpdate: true, scope }
   );
-
 }

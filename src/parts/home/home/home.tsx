@@ -22,11 +22,9 @@ type HomeStepProps = {
 
 const splittinSpan = (span: any) => {
   return `<span class='word'><span class="wc" data-wc><span class="c" data-c>${span}</span> </span> </span>`;
-
 };
 
 const splitText = (txt: any) => txt.split(" ").map(splittinSpan).join(" ");
-
 
 export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => {
   const setArea = useSetAtom(mouseActionArea);
@@ -78,20 +76,6 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
       });
     });
   }
-
-  useEffect(() => {
-
-
-
-
-
-    return () => {
-
-    }
-  }, [])
-
-
-
 
   useGSAP(
     (context, contextSafe: any) => {
