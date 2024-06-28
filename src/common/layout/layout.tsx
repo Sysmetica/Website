@@ -25,7 +25,7 @@ export const Layout = ({ children, type = '', options }: LayoutProps) => {
   const setArea = useSetAtom(mouseActionArea);
   const setMenuState = useSetAtom(menuState);
   const setModal = useSetAtom(csModal);
-  useAnimation(router)
+  useAnimation(router.pathname)
 
   useEffect(() => {
     setArea({ area: 'default' });

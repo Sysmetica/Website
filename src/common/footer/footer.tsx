@@ -17,10 +17,13 @@ export const Footer = ({ options }: { options: OptionsProps }) => {
   const copyText = options.attributes.copy;
   const { pathname } = useRouter();
 
-  const onLogoClick = (e: any) => {
-    if (pathname == "/") {
+  const scrollTop = (e: any, to: string) => {
+    if (pathname == to) {
       e.preventDefault()
-      gsap.to(window, { scrollTo: 0, duration: 0.5, ease: "none" });
+      const scroller = document.scrollingElement as HTMLDivElement;
+      const scrollType = (type = "smooth") => scroller && (scroller.style.scrollBehavior = type);
+      scrollType("auto")
+      gsap.to(window, { scrollTo: 0, duration: 0.3, ease: "ease" }).then(() => scrollType());
     }
   }
 
@@ -29,7 +32,7 @@ export const Footer = ({ options }: { options: OptionsProps }) => {
       <Row>
 
         <div className={s.top}>
-          <MyButton href={'/'} className={s.logo} data-fade onClick={onLogoClick}>
+          <MyButton href={'/'} className={s.logo} data-fade onClick={e => scrollTop(e, "/")}>
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </MyButton>
           <div className={s.menu} data-fade data-child>
@@ -37,7 +40,7 @@ export const Footer = ({ options }: { options: OptionsProps }) => {
               .filter((i) => i.name !== null)
               .map(({ name, slug }) => {
                 return (
-                  <MenuLink href={slug as string} key={slug}>{name as string}</MenuLink>
+                  <MenuLink href={slug as string} onClick={(e: any) => scrollTop(e, slug as string)} key={slug}>{name as string}</MenuLink>
                 )
               })}
           </div>

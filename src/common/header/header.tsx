@@ -54,10 +54,13 @@ export const Header = ({ options }: { options: OptionsProps }) => {
     { dependencies: [], revertOnUpdate: true, }
   );
 
-  const onLogoClick = (e: any) => {
-    if (pathname == "/") {
+  const scrollTop = (e: any, to: string) => {
+    if (pathname == to) {
       e.preventDefault()
-      gsap.to(window, { scrollTo: 0, duration: 0.5, ease: "none" });
+      const scroller = document.scrollingElement as HTMLDivElement;
+      const scrollType = (type = "smooth") => scroller && (scroller.style.scrollBehavior = type);
+      scrollType("auto")
+      gsap.to(window, { scrollTo: 0, duration: 0.3, ease: "ease" }).then(() => scrollType());
     }
   }
 
@@ -69,7 +72,7 @@ export const Header = ({ options }: { options: OptionsProps }) => {
     })} ref={headerRef}>
       <Row>
         <div className={s.headerWrap}>
-          <MyButton className={s.logo} href={'/'} data-child onClick={onLogoClick}>
+          <MyButton className={s.logo} href={'/'} data-child onClick={e => scrollTop(e, "/")}>
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </MyButton>
           <ul className={s.menu}>
@@ -77,7 +80,7 @@ export const Header = ({ options }: { options: OptionsProps }) => {
               .filter((i) => i.name !== null)
               .map(({ name, slug }) => {
                 return (
-                  <MenuLink href={slug as string} key={slug} data-child>{name as string}</MenuLink>
+                  <MenuLink href={slug as string} onClick={(e: any) => scrollTop(e, slug as string)} key={slug} data-child>{name as string}</MenuLink>
                 )
               })}
             <div className={s.mobileButtons}>
