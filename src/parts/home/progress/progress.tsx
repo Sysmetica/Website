@@ -32,7 +32,9 @@ export const Progress = () => {
             },
           });
           tl.to(trigger, { snap: { textContent: 1 }, }, 0)
-          tl.then(() => tl.kill())
+          // tl.then(() => {
+          //   tl.kill()
+          // })
         };
 
         counts.forEach(animateCount)
