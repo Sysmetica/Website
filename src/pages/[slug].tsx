@@ -5,12 +5,14 @@ import { GlobalProps } from "@/components/seo/types"
 import { OptionsProps } from "@/types/options"
 import { FC } from "react"
 import s from '@/parts/page/page.module.scss'
+import b from '@/parts/career/single/single.module.scss';
 import MyImage from "@/components/image/image"
 import { EditorParser } from "@/components/editor/editor"
 import { BlocksContent } from "@strapi/blocks-react-renderer"
 import { GetStaticPaths, GetStaticProps } from "next"
 import client from "@/graphql/client"
 import { META, OPTIONS, SP_ALL_SLUGS, SP_SINGLE } from "@/graphql/queries"
+import { useRouter } from "next/router"
 
 interface Props {
   pageData: {
@@ -33,6 +35,7 @@ const Lp: FC<Props> = ({ pageData, options, globalMeta }) => {
     }
   } = pageData
   // console.log('pageData ', pageData)
+  const router = useRouter();
 
   return (
     <Layout options={options}>
@@ -41,6 +44,7 @@ const Lp: FC<Props> = ({ pageData, options, globalMeta }) => {
           <div className={s.head}>
             <Row>
               <div className={s.wrap}>
+                <span className={b.back} data-fade onClick={() => router.back()}>{`back`}</span>
                 <div className={s.info} data-fade>
                   <div className={s.buttonWrap}>
                     <MyImage src="/img/icons/page.svg" alt="text" width={48} height={48} imgClass={s.ico} />

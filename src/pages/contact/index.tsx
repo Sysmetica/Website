@@ -179,14 +179,14 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
                     </div>
 
                     <div className={g.wrap}>
-                      <label htmlFor="message">{`Message`}</label>
+                      <label htmlFor="message">{`Message *`}</label>
                       <MyTextarea
                         id="message"
                         value={form.message}
                         onChange={handleInput}
                         placeholder='Brief description of your idea'
                         className={clsx({
-                          [g.disabled]: touch && maxLengthValidation(form.message, MAX_TEXT)
+                          [g.disabled]: (touch && !form.message) || maxLengthValidation(form.message, MAX_TEXT)
                         })}
                       />
                     </div>

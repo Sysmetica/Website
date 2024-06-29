@@ -44,11 +44,11 @@ const Career: FC<Props> = ({ pageData, list, options, globalMeta }) => {
           <div className={s.head}>
             <Row>
               <div className={s.wrap}>
-                <span className={s.back} data-fade  onClick={() => router.back()}>back</span>
+                <span className={s.back} data-fade onClick={() => router.back()}>{`back`}</span>
                 <div className={s.info} data-fade>
                   <div className={s.buttonWrap}>
                     <MyImage src="/img/icons/career1.svg" alt="text" width={48} height={48} imgClass={s.ico} />
-                    <Button type={['submit', 'black']} onClick={modalHandler}>Submit Your CV</Button>
+                    <Button type={['submit', 'black']} onClick={modalHandler}>{`Submit Your CV`}</Button>
                   </div>
                   <h1>{title}</h1>
                   <p>{level.replace('_', ' ')}</p>
@@ -71,7 +71,7 @@ const Career: FC<Props> = ({ pageData, list, options, globalMeta }) => {
               <div className={s.editorWrap}>
                 <div dangerouslySetInnerHTML={{ __html: description }} data-fade data-child />
                 <div className={s.button} data-fade>
-                  <Button type={['submit', 'fill']} onClick={modalHandler}>Submit Your CV</Button>
+                  <Button type={['submit', 'fill']} onClick={modalHandler}>{`Submit Your CV`}</Button>
                 </div>
               </div>
             </Row>
