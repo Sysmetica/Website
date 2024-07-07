@@ -25,36 +25,27 @@ export const Action = () => {
 
   useEffect(() => {
     const mouseAction = (evt: any) => {
+
       if (isMobile) {
         return
       }
 
-      const mouseX = evt.clientX;
-      const mouseY = evt.clientY;
+      const x = evt.clientX;
+      const y = evt.clientY;
 
-      gsap.to(circleRef.current, {
-        x: mouseX,
-        y: mouseY,
-        duration: 0.1,
-      })
+      gsap.to(circleRef.current, { x, y, duration: 0.1, })
 
-      gsap.to(pointRef.current, {
-        x: mouseX,
-        y: mouseY,
-        duration: 0.05,
-      })
+      gsap.to(pointRef.current, { x, y, duration: 0.05, })
 
-      gsap.to(dragRef.current, {
-        x: mouseX,
-        y: mouseY,
-        duration: 0.1,
-      })
+
+      gsap.to(dragRef.current, { x, y, duration: 0.1, })
+
     }
 
-    document.body.addEventListener('mousemove', mouseAction);
+    !isMobile && document.body.addEventListener('mousemove', mouseAction);
 
     return () => {
-      document.body.removeEventListener('mousemove', mouseAction);
+      !isMobile && document.body.removeEventListener('mousemove', mouseAction);
     }
   }, [])
 

@@ -1,7 +1,7 @@
 import { Row } from '@/common/row/row';
 import s from './home.module.scss';
 import { gsap } from "gsap";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { IBMPlexSans } from '@/pages/_app';
 import { useAtomValue, useSetAtom } from 'jotai';
@@ -27,6 +27,7 @@ const splittinSpan = (span: any) => {
 const splitText = (txt: any) => txt.split(" ").map(splittinSpan).join(" ");
 
 export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => {
+  const [isLoaded, setIsLoaded] = useState(false)
   const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
   const intro = useRef<any>(null)
@@ -54,7 +55,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
       y: mouseY,
       delay: 0,
     })
-    handleParallax(evt);
+    isLoaded && handleParallax(evt);
   }
 
   function handleParallax(e: any) {
@@ -173,12 +174,13 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
         })
 
         fades.forEach(animSplit)
-
+        setTimeout(() => setIsLoaded(true), 2000)
       }
       const st = setTimeout(initAnimaton, 200);
 
       return () => {
         clearTimeout(st);
+        setIsLoaded(false)
       };
     },
     { dependencies: [intro], revertOnUpdate: true, }
@@ -225,7 +227,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
         </div>
       </div>
 
-      <div className={s.parallax} ref={parallaxRef} data-fade data-child>
+      <div className={s.parallax} ref={parallaxRef} data-fade>
         <div className={clsx(s.par, s.par_1)} data-coff="3" ><div className={s.llax} /></div>
         <div className={clsx(s.par, s.par_2)} data-coff="1" ><div className={s.llax} /></div>
         <div className={clsx(s.par, s.par_3)} data-coff="1" ><div className={s.llax} /></div>
