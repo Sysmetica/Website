@@ -1,7 +1,7 @@
 import { Row } from '@/common/row/row';
 import s from './home.module.scss';
 import { gsap } from "gsap";
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { IBMPlexSans } from '@/pages/_app';
 import { useAtomValue, useSetAtom } from 'jotai';
