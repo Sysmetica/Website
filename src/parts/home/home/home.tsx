@@ -228,13 +228,13 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
       </div>
 
       <div className={s.parallax} ref={parallaxRef} data-fade>
-        <div className={clsx(s.par, s.par_1)} data-coff="3" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_2)} data-coff="1" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_3)} data-coff="1" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_4)} data-coff="3" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_5)} data-coff="1" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_6)} data-coff="3" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_7)} data-coff="1" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_1)} data-coff="9" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_2)} data-coff="3" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_3)} data-coff="3" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_4)} data-coff="9" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_5)} data-coff="3" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_6)} data-coff="9" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_7)} data-coff="3" ><div className={s.llax} /></div>
       </div>
     </div >
   )
