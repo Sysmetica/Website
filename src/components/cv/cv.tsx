@@ -20,7 +20,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { MyButton } from '../link/button';
 import { MyInput } from '../input/input';
-import { mouseActionArea } from '../action/action';
 import { OptionsProps } from '@/types/options';
 import { MAX_INPUT } from '@/const';
 import { closeModalPreventDataLoss, usePreventDataLoss } from '@/hooks/usePreventDataLoss';
@@ -46,7 +45,6 @@ type CvFormProps = {
 
 const CvForm = ({ svList, activeCv }: CvFormProps) => {
   const { data: optionsData } = useQuery<{ option: { data: OptionsProps } }>(OPTIONS);
-  const setArea = useSetAtom(mouseActionArea);
   const setModal = useSetAtom(csModal);
   const [sendStatus, setSendStatus] = useState(sendStatusDefault);
   const [myLoading, setMyLoading] = useState(false);
@@ -293,8 +291,6 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                 </div>
                 <div
                   className={g.wrap}
-                  onMouseOver={() => setArea({ area: 'input' })}
-                  onMouseOut={() => setArea({ area: 'default' })}
                 >
                   <label htmlFor="vacancy">{`Vacancy you're applying to`}</label>
                   <div
@@ -336,11 +332,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                 </div>
 
                 {/* file */}
-                <div
-                  className={g.wrap}
-                  onMouseOver={() => setArea({ area: 'link' })}
-                  onMouseOut={() => setArea({ area: 'default' })}
-                >
+                <div className={g.wrap}>
                   <div className={clsx(g.drop, {
                     [g.disabled]: touch && !files?.[0]?.name
                   })}>

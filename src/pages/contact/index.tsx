@@ -16,8 +16,6 @@ import { GlobalProps } from '@/components/seo/types'
 import { SeoContext } from '@/components/seo/seoContext'
 import { MyInput } from '@/components/input/input'
 import { MyTextarea } from '@/components/input/textarea'
-import { mouseActionArea } from '@/components/action/action'
-import { useSetAtom } from 'jotai/react'
 import { isValidEmail, maxLengthValidation } from '@/utils'
 import { usePreventDataLoss } from '@/hooks/usePreventDataLoss'
 import { MAX_INPUT, MAX_TEXT } from '@/const'
@@ -49,7 +47,6 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
   } = pageData
   // console.log('pageData ', pageData);
 
-  const setArea = useSetAtom(mouseActionArea);
   const [form, setForm] = useState(defaultData);
   const [touch, setTouch] = useState(false);
 
@@ -124,8 +121,6 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
                     href={`mailto:${options.attributes.email}`}
                     target='_blank'
                     className={g.email}
-                    onMouseOver={() => setArea({ area: 'button' })}
-                    onMouseOut={() => setArea({ area: 'default' })}
                   >
                     {options.attributes.email}
                   </a>

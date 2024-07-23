@@ -3,8 +3,7 @@ import s from './career.module.scss';
 import MyImage from '@/components/image/image';
 import { CareerPageFields } from '@/types/career';
 import clsx from 'clsx';
-import { mouseActionArea } from '../action/action';
-import { useAtom, useSetAtom } from 'jotai';
+import { useAtom } from 'jotai';
 import { csModal } from '@/state';
 import CvForm from '@/components/cv/cv';
 import { MyButton } from '../link/button';
@@ -15,7 +14,6 @@ type CareersListProps = {
 }
 
 export const CareersList = ({ careers, type }: CareersListProps) => {
-  const setArea = useSetAtom(mouseActionArea);
   const [modal, setModal] = useAtom(csModal);
 
   const modalHandler = (e: any) => {
@@ -54,8 +52,6 @@ export const CareersList = ({ careers, type }: CareersListProps) => {
             <div
               className={s.item}
               onClick={modalHandler}
-              onMouseOver={() => setArea({ area: 'button' })}
-              onMouseOut={() => setArea({ area: 'default' })}
             >
               <div className={clsx(s.content, s.button)}>
                 <div className={s.icon} />

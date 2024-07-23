@@ -4,8 +4,7 @@ import { gsap } from "gsap";
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { IBMPlexSans } from '@/pages/_app';
-import { useAtomValue, useSetAtom } from 'jotai';
-import { mouseActionArea } from '@/components/action/action';
+import { useAtomValue } from 'jotai';
 import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from '@/state';
 import { makeSelectedString } from '@/utils';
@@ -28,7 +27,6 @@ const splitText = (txt: any) => txt.split(" ").map(splittinSpan).join(" ");
 
 export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => {
   const [isLoaded, setIsLoaded] = useState(false)
-  const setArea = useSetAtom(mouseActionArea);
   const isMob = useAtomValue(isMobileDevice);
   const intro = useRef<any>(null)
   const parallaxRef = useRef<HTMLDivElement>(null)
@@ -174,7 +172,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
         })
 
         fades.forEach(animSplit)
-        setTimeout(() => setIsLoaded(true), 2000)
+        setIsLoaded(true)
       }
       const st = setTimeout(initAnimaton, 200);
 
@@ -192,8 +190,6 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
       ref={intro}
       {...!isMob && {
         onMouseMove: (e) => action(e),
-        onMouseOver: () => setArea({ area: 'hidden' }),
-        onMouseOut: () => setArea({ area: 'default' }),
       }}
     >
       <div className={s.shapes}>

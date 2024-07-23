@@ -1,26 +1,18 @@
 import s from './casestudies.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { useSetAtom } from 'jotai';
-import { mouseActionArea } from '@/components/action/action';
 import clsx from 'clsx';
 import { CaseStudiesProps } from '@/types/casestudies';
 import { CaseItem } from './caseItem';
 import { MyButton } from '@/components/link/button';
 
 export const Casestudies = ({ casestudies }: { casestudies: CaseStudiesProps }) => {
-  const setArea = useSetAtom(mouseActionArea);
-
   if (!casestudies.data.length) {
     return null;
   }
 
   return (
-    <div
-      className={s.root}
-      // onMouseOver={() => setArea({ area: 'drag' })}
-      // onMouseOut={() => setArea({ area: 'default' })}
-    >
+    <div className={s.root}>
       <Swiper
         slidesPerView={'auto'}
         navigation

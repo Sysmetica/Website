@@ -1,15 +1,15 @@
-import { Action, mouseActionArea } from '@/components/action/action';
 import { Footer } from '../footer/footer';
 import { Header } from '../header/header';
 import s from './layout.module.scss';
 import { useSetAtom } from 'jotai';
 import { isMobile } from 'react-device-detect';
 import { createContext, useEffect, useState } from 'react';
-import { csModal, isMobileDevice, menuState } from '@/state';
+import { isMobileDevice } from '@/state';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { OptionsProps } from '@/types/options';
 import { useAnimation } from '@/hooks/useAnimation';
+import { useClearStates } from '@/hooks/useClearStates';
 
 type LayoutProps = {
   children: any
@@ -22,16 +22,11 @@ export const OptionsContext = createContext<OptionsProps>(null!);
 export const Layout = ({ children, type = '', options }: LayoutProps) => {
   const router = useRouter();
   const setDevice = useSetAtom(isMobileDevice);
-  const setArea = useSetAtom(mouseActionArea);
-  const setMenuState = useSetAtom(menuState);
-  const setModal = useSetAtom(csModal);
-  useAnimation(router.pathname)
+  useAnimation(router.pathname);
+  const clearStates = useClearStates();
 
   useEffect(() => {
-    setArea({ area: 'default' });
-    setMenuState(false);
-    setModal(false);
-    document.body.style.overflow = '';
+    clearStates()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname])
 
@@ -51,7 +46,6 @@ export const Layout = ({ children, type = '', options }: LayoutProps) => {
           {children}
         </div>
         <Footer options={options} />
-        <Action />
       </div>
     </OptionsContext.Provider>
   )

@@ -10,12 +10,10 @@ import { SocialLinks } from "../socialLinks/socialLinks";
 import { EScrollDirection, useGetScrollPosition } from "@/hooks";
 import { MenuLink } from "../menuLink/menuLink";
 import { OptionsProps } from "@/types/options";
-
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
-
 import { useRef } from "react";
 import { MyButton } from "@/components/link/button";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -54,17 +52,6 @@ export const Header = ({ options }: { options: OptionsProps }) => {
     { dependencies: [], revertOnUpdate: true, }
   );
 
-  const scrollTop = (e: any, to: string) => {
-    if (pathname == to) {
-      e.preventDefault()
-      const scroller = document.scrollingElement as HTMLDivElement;
-      const scrollType = (type = "smooth") => scroller && (scroller.style.scrollBehavior = type);
-      scrollType("auto")
-      gsap.to(window, { scrollTo: 0, duration: 0.3, ease: "ease" }).then(() => scrollType());
-    }
-  }
-
-
   return (
     <header className={clsx(s.root, {
       [s.open]: menu,
@@ -72,7 +59,11 @@ export const Header = ({ options }: { options: OptionsProps }) => {
     })} ref={headerRef}>
       <Row>
         <div className={s.headerWrap}>
-          <MyButton className={s.logo} href={'/'} data-child onClick={e => scrollTop(e, "/")}>
+          <MyButton
+            className={s.logo}
+            href={'/'}
+            data-child
+          >
             <MyImage src={`/img/logo${logoType}.svg`} alt="Sysmetica logo" width={165} height={32} />
           </MyButton>
           <ul className={s.menu}>
@@ -80,18 +71,24 @@ export const Header = ({ options }: { options: OptionsProps }) => {
               .filter((i) => i.name !== null)
               .map(({ name, slug }) => {
                 return (
-                  <MenuLink href={slug as string} onClick={(e: any) => scrollTop(e, slug as string)} key={slug} data-child>{name as string}</MenuLink>
+                  <MenuLink
+                    key={slug}
+                    href={slug as string}
+                    data-child
+                  >
+                    {name as string}
+                  </MenuLink>
                 )
               })}
             <div className={s.mobileButtons}>
-              <Button type={['fill']} link={'/contact'}>Contact Us</Button>
+              <Button type={['fill']} link={'/contact'}>{`Contact Us`}</Button>
               <div className={s.social}>
                 <SocialLinks />
               </div>
             </div>
           </ul>
           <div className={s.buttonWrap} data-child>
-            <Button type={[!isContactPage ? 'fill' : '']} link={'/contact'}>Contact Us</Button>
+            <Button type={[!isContactPage ? 'fill' : '']} link={'/contact'}>{`Contact Us`}</Button>
           </div>
           <span className={s.menuIcon} data-child onClick={() => {
             setMenu(!menu);
