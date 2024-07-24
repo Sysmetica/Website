@@ -61,6 +61,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         `
         }</style>
 
+        <style jsx global>{
+          `
+          body {
+            background: ${pageProps.options.attributes.theme === 'dark' ? '#000' : '#fff'};
+          }
+        `
+        }</style>
+
       </main>
     </ApolloProvider>
   )
