@@ -8,7 +8,7 @@ export const MyButton: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ childre
   return (
     <Link
       onClick={(e) => {
-        onClick;
+        onClick && onClick(e);
         linkAction(e, rest.href);
       }}
       {...rest}

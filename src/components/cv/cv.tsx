@@ -62,7 +62,8 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
     e.preventDefault();
 
     // formDataWithFile - is form data with not-uploaded-yet but added file
-    const formDataWithFile = { ...form, localFile: files ?? '' }
+    // and don't check vacancy because it is filled automatically
+    const formDataWithFile = { ...form, localFile: files ?? '', vacancy: '' }
 
     if (!closeModalPreventDataLoss(formDataWithFile)) {
       return;
