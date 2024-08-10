@@ -10,7 +10,7 @@ $transitionBack: .3s .1s ease;
     }
   }
 
-  &:not(.mobile) {
+  @media (hover: hover) {
     .blocks .block {
       &:hover {
 
