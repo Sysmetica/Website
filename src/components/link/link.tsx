@@ -9,7 +9,7 @@ export const MyLink: FC<LinkProps & HTMLProps<HTMLAnchorElement>> = ({ children,
     <Link
       {...rest}
       onClick={(e) => {
-        // linkAction(e, rest.href);
+        linkAction(e, rest.href);
       }}
     >
       {children}
