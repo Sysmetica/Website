@@ -10,6 +10,14 @@
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 2vw, 24px);
+  text-decoration: none;
+  color: white;
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
 
   .image {
     position: relative;
@@ -17,12 +25,6 @@
     width: 100%;
     border-radius: 20px;
     overflow: hidden;
-
-    &:hover {
-      img {
-        transform: scale(1.1);
-      }
-    }
 
     img {
       width: 100%;
@@ -61,13 +63,33 @@
     }
   }
 
-  p {
-    margin-top: 12px;
-    max-width: 500px;
+  .textWrap {
+    position: relative;
+
+    &:has(.icon) {
+      @media (min-width: 800px) {
+        padding-right: 70px;
+        .icon {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 48px;
+          aspect-ratio: 1;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1) url("/img/icons/str-small-w.svg") center/24px no-repeat;
+        }
+      }
+    }
   }
 
-  a {
-    text-decoration: none;
-    color: white;
+  p {
+    margin-top: 12px;
+
+    &.md {
+      width: 100%;
+    }
+    &.sm {
+      max-width: 500px;
+    }
   }
 }

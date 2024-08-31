@@ -5,7 +5,7 @@ import { IBMPlexSans } from '@/pages/_app';
 import { CaseItemProps } from '@/types/casestudies';
 import Link from 'next/link';
 
-export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
+export const CaseItem = ({ caseItem, long = false }: { caseItem: CaseItemProps, long?: boolean }) => {
 
   const { title, description, slug, tags, } = caseItem;
 
@@ -18,19 +18,20 @@ export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
 
 
   return (
-    <div className={css.item}>
-
-      <Link className={css.image} href={`/case-studies/${slug}`} title={title} data-fade={true} >
+    <Link className={css.item} href={`/case-studies/${slug}`} title={title} data-fade={true} >
+      <div className={css.image} >
         <div className={css.tags} data-fade data-child>
           {tags.map(({ text }) => <span className={css.tag} key={text}>{text}</span>)}
         </div>
         <MyImage src={imgURL} alt={title} width={1140} height={560} />
-      </Link>
-      <Link className={css.textWrap} href={`/case-studies/${slug}`} data-fade>
+      </div>
+      <div className={css.textWrap}>
         <h2 className={IBMPlexSans.className}>{title}</h2>
-        <p >{description}</p>
-      </Link>
+        <p className={long ? css.md : css.sm} >{description}</p>
 
-    </div>
+        {long && <div className={css.icon}></div>}
+      </div>
+
+    </Link>
   )
 }
