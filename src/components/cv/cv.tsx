@@ -57,19 +57,18 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
   const formRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<any>(null)
   const logoType = theme === 'light' ? '-p' : '';
+  const fileRef = useRef<any>();
 
   const closeModal = (e: any) => {
     e.preventDefault();
 
     // formDataWithFile - is form data with not-uploaded-yet but added file
-    // and don't check vacancy because it is filled automatically
+    // and we don't care about Vacancy field because it is filled automatically
     const formDataWithFile = { ...form, localFile: files ?? '', vacancy: '' }
 
     if (!closeModalPreventDataLoss(formDataWithFile)) {
       return;
     }
-
-    // console.log('sss ', closeModalPreventDataLoss(form))
 
     const { tls, open } = animationRef.current;
 
@@ -194,9 +193,9 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
         };
         animationRef.current = { ...animationRef.current, tls }
 
-
         fades.forEach(animateFades)
       }
+
       const st = setTimeout(e => {
         const section = formRef.current as HTMLDivElement;
 
@@ -220,7 +219,11 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
   const isEmailNotValid = !form.email || !isValidEmail(form.email);
   const isNumberNotValid = !isValidNumber(form.number);
 
-  usePreventDataLoss(form);
+  // add LocalFile field to prevent Reload or Leave page in case the file is added
+  usePreventDataLoss({
+    ...form,
+    localFile: files ?? '',
+  });
 
   return (
     <div className={clsx(g.root, s.root)} ref={formRef}>
@@ -338,6 +341,7 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                     [g.disabled]: touch && !files?.[0]?.name
                   })}>
                     <input
+                      ref={fileRef}
                       id="file"
                       type="file"
                       onChange={(e) => setFiles(e.target.files)}
@@ -348,7 +352,18 @@ const CvForm = ({ svList, activeCv }: CvFormProps) => {
                       <span>{`Accepted formats: .pdf, .doc, .docx, .txt, .odt, .rtf, and .html (30 MB max)`}</span>
                     </div>
                   </div>
-                  {files?.[0]?.name && <div className={g.attach}>{files?.[0]?.name}<span className={g.remove} onClick={() => setFiles(null)}></span></div>}
+                  {files?.[0]?.name && (
+                    <div className={g.attach}>
+                      {files?.[0]?.name}
+                      <span
+                        className={g.remove}
+                        onClick={() => {
+                          setFiles(null);
+                          fileRef.current.value = '';
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className={clsx(g.buttonWrap, {
