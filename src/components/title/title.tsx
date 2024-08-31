@@ -24,6 +24,7 @@ export const Title = ({ title, subtitle, type = '' }: TitleProps) => {
           <p>{subtitle}</p>
         </div>
       </Row>
+      <div className={s.back}></div>
     </div>
   )
 }
