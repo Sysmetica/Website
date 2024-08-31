@@ -39,13 +39,13 @@ const defaultData = {
 }
 
 const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
-  console.log('pageData ', pageData);
   const {
     attributes: {
       title,
       text,
     }
   } = pageData
+  // console.log('pageData ', pageData);
 
   const [form, setForm] = useState(defaultData);
   const [touch, setTouch] = useState(false);
