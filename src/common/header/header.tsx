@@ -88,7 +88,8 @@ export const Header = ({ options }: { options: OptionsProps }) => {
             </div>
           </ul>
           <div className={s.buttonWrap} data-child>
-            <Button type={[!isContactPage ? 'fill' : '']} link={'/contact'}>{`Contact Us`}</Button>
+            {/* <Button type={[!isContactPage ? 'fill' : '']} link={'/contact'}>{`Contact Us`}</Button> */}
+            <Button link={'/contact'}>{`Contact Us`}</Button>
           </div>
           <span className={s.menuIcon} data-child onClick={() => {
             setMenu(!menu);

@@ -8,6 +8,7 @@ import { Modes } from './sections/modes/modes';
 import { Users } from './sections/users/users';
 import { CaseItemRelation } from '@/types/casestudies';
 import { CaseItem } from '@/parts/home/casestudies/caseItem';
+import { Row } from '@/common/row/row';
 
 export const BeatMetricTemplate = ({ relation }: { relation: CaseItemRelation }) => {
   return (
@@ -20,7 +21,7 @@ export const BeatMetricTemplate = ({ relation }: { relation: CaseItemRelation })
       <Wireframes />
       <UIKit />
       <Modes />
-      {relation.data && <CaseItem caseItem={relation.data.attributes} />}
+      {relation.data && <Row> <CaseItem caseItem={relation.data.attributes} long={true} /> </Row>}
     </>
   )
 }

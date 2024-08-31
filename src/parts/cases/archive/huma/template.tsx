@@ -4,6 +4,7 @@ import { Product } from './sections/product/Product';
 import { Tools } from './sections/tools/Tools';
 import { CaseItemRelation } from '@/types/casestudies';
 import { CaseItem } from '@/parts/home/casestudies/caseItem';
+import { Row } from '@/common/row/row';
 
 export const HumaTemplate = ({ relation }: { relation: CaseItemRelation }) => {
   return (
@@ -12,7 +13,7 @@ export const HumaTemplate = ({ relation }: { relation: CaseItemRelation }) => {
       <Role />
       <Product />
       <Tools />
-      {relation.data && <CaseItem caseItem={relation.data.attributes} />}
+      {relation.data && <Row> <CaseItem caseItem={relation.data.attributes} long={true} /> </Row>}
     </>
   )
 }

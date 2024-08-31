@@ -133,7 +133,8 @@
     width: 517px;
 
     @media (min-width: 800px) {
-      bottom: -50px;
+      // bottom: -50px;
+      bottom: 10px;
       right: -75px;
       width: 810px;
       left: auto;
