@@ -125,7 +125,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        padding: 34px 10px 15px 32px;
+        padding: 24px 10px 24px 24px;
         background: #584997;
         opacity: 0;
         transition: opacity 0.3s 0s ease;
@@ -135,7 +135,7 @@
         }
 
         .text {
-          height: calc(100% - 8% - 24px - 15px);
+          height: 100%;
           overflow: auto;
           padding: 0 22px 0 0;
 

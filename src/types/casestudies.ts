@@ -10,8 +10,8 @@ export type CaseItemProps = {
   tags: {
     text: string
   }[]
-  desktop: ImageProps
-  mobile: ImageProps
+  homeImage: ImageProps
+  archiveImage: ImageProps
 }
 
 export type CaseStudiesProps = {
