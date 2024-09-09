@@ -28,7 +28,7 @@ export const Role = () => {
         </div>
       </Row>
 
-      <div className={css.hand}>
+      <div className={css.hand} data-fade >
 
         <div className={css.icon}>
           <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
@@ -36,8 +36,8 @@ export const Role = () => {
           </svg>
         </div>
 
-        <div className={css.h} data-parallax>
-          <MyImage src={`/img/cases_hand.png`} alt="Phone" width={680} height={840} data-fade />
+        <div className={css.h} data-parallax data-per="15">
+          <MyImage src={`/img/iphone.png`} alt="Phone" width={381} height={772} />
         </div>
       </div>
     </div>

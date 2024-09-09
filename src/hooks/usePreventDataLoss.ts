@@ -6,13 +6,20 @@ const MRG_WARNING = 'The data entered in the form will be lost!';
 export const usePreventDataLoss = (form: any) => {
   const router = useRouter();
 
-  return useEffect(() => {
-    const exitingFunction = () => {
+  useEffect(() => {
+    const exitingFunction = (e: Event | string) => {
       const isFormFilled = Object.keys(form).filter((item) => {
         return !!form[item as keyof typeof form].length
       }).length;
 
       if (!!isFormFilled) {
+
+        // in case reload or leave page
+        if (e instanceof Event) {
+          e.preventDefault();
+        }
+
+        // in case Route changee
         if (confirm(MRG_WARNING) !== true) {
           router.events.emit('routeChangeError')
           throw `route change aborted`
@@ -21,9 +28,11 @@ export const usePreventDataLoss = (form: any) => {
     }
 
     router.events.on('routeChangeStart', exitingFunction);
+    window.addEventListener('beforeunload', exitingFunction);
 
     return () => {
       router.events.off('routeChangeStart', exitingFunction);
+      window.removeEventListener('beforeunload', exitingFunction);
     };
 
   }, [form, router.events]);

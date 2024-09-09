@@ -1,103 +1,124 @@
-@import '@/styles/variables.scss';
+@import "@/styles/variables.scss";
 
 .root {
   position: relative;
-  background: #ECECEE;
-  color: #1D1D1F;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 
-  [data-theme="light"] & {
-    background: #fff;
+  background: #000;
+  padding: 60px 0;
+  color: #fff;
+
+  @media (min-width: 800px) {
+    padding: 130px 0;
   }
 
-  .slide {
-    height: auto;
-    width: calc(100% - 10vw);
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
 
-    >div {
-      // max-width: calc(1170px - 10vw);
-      // margin: 0 auto;
+    @media (min-width: 800px) {
+      gap: 48px;
     }
 
-    &:nth-child(2n+1) {
-      >div {
-        background: #ECECEE;
+    &_title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
 
-        [data-theme="light"] & {
-          background: #fff;
-        }
-      }
-    }
+      @media (max-width: 800px) {
+        display: contents;
 
-    &:nth-child(2n+2) {
-      >div {
-        background: #E2E2E2;
-
-        [data-theme="light"] & {
-          background: #f5f5f5;
-        }
-      }
-    }
-
-    &.static {
-      max-width: 330px;
-      padding: 0;
-
-      .link {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        padding: 0 15px;
-        background: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        text-align: center;
-
-        &:before {
-          z-index: -1;
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100%;
-          background: #fff;
+        .link {
+          order: 2;
+          align-self: flex-start;
         }
       }
 
-      .text {
-        margin: 0 0 18px;
+      h2 {
         font-size: 28px;
         font-weight: 600;
-        line-height: 110%;
-        color: #1D1D1F;
+        line-height: 116%;
+        letter-spacing: -1px;
+
+        @media (min-width: 800px) {
+          font-size: 48px;
+          max-width: 590px;
+        }
       }
 
-      .more {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: #6856B5;
-        background-image: url('/img/icons/str.svg');
-        background-repeat: no-repeat;
-        background-position: center;
+      .navs {
+        display: none;
 
-        [data-theme="light"] & {
-          background-color: #ED6B55;
+        @media (min-width: 801px) {
+          display: flex;
+          gap: 24px;
+          flex: 1;
+
+          .nav {
+            all: unset;
+            width: 48px;
+            aspect-ratio: 1;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none'%3E%3Cpath d='M19.125 33.75L28.875 24L19.125 14.25' stroke='%23ECECEE' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+              center/cover no-repeat;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+
+            &[data-nav-prev] {
+              transform: rotate(-180deg);
+            }
+            &:active {
+              scale: 1.1;
+            }
+            &:disabled {
+              opacity: 0.4;
+              pointer-events: none;
+            }
+          }
         }
+      }
+    }
+
+    &_slider {
+      width: 100%;
+      margin: 0;
+      overflow: visible;
+    }
+    &_bar {
+      width: 100%;
+      height: 3px;
+      background-color: #28282a;
+      border-radius: 12px;
+      overflow: hidden;
+
+      &_pr {
+        height: 100%;
+        background-color: #a3a3ad;
+        transition: transform 0.3s;
+        cursor: pointer;
+        border-radius: 12px;
+      }
+    }
+
+    .slide {
+      width: 60%;
+      overflow: hidden;
+
+      @media (max-width: 800px) {
+        width: 90%;
       }
     }
   }
 
   [data-fade] {
     opacity: 1;
-  
+
     &[data-child] {
       opacity: 1;
-  
+
       & > * {
         opacity: 1;
       }

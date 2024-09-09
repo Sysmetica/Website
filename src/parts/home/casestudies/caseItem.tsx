@@ -1,67 +1,44 @@
-import s from './caseItem.module.scss';
+import css from './caseItem.module.scss';
 import MyImage from '@/components/image/image';
 import 'swiper/css';
 import { IBMPlexSans } from '@/pages/_app';
 import { CaseItemProps } from '@/types/casestudies';
-import { Button } from '@/components/button/button';
-import { MyLink } from '@/components/link/link';
+import Link from 'next/link';
 
-export const CaseItem = ({ caseItem }: { caseItem: CaseItemProps }) => {
+export const CaseItem = ({ caseItem, long = false }: { caseItem: CaseItemProps, long?: boolean }) => {
+  const { title, description, slug, tags, homeImage, archiveImage } = caseItem;
+
   return (
-    <div className={s.root}>
-      <div className={s.wrap}>
-        <div className={s.textHolder} data-textholder>
-          <div className={s.textWrap}>
-            <div className={s.tags} data-fade data-child>
-              {caseItem.tags.map(({ text }) => {
-                return (
-                  <span className={s.tag} key={text}>{text}</span>
-                )
-              })}
-            </div>
-            <h2 className={IBMPlexSans.className} data-fade>{caseItem.title}</h2>
-            <p data-fade>{caseItem.description}</p>
-            <div className={s.buttons} data-fade data-child>
-              <Button type={['fill']} link={`/case-studies/${caseItem.slug}`}>
-                <>
-                  {`View Case Study`}
-                  <div className={s.ico}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
-                      <path d="M3 13L13 3M13 3H3M13 3V13" stroke="white" strokeWidth="1.125" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                </>
-              </Button>
-              {caseItem.href && (
-                <MyLink href={caseItem.href} target='_blank' className={s.link}>
-                  {caseItem.site}
-                  <MyImage src="/img/icons/link.svg" alt="link icon" width={16} height={16} />
-                </MyLink>
-              )}
-            </div>
-          </div>
+    <Link className={css.item} href={`/case-studies/${slug}`} title={title} data-fade={true} >
+      <div className={css.image}>
+        <div className={css.tags} data-fade data-child>
+          {tags.map(({ text }) => <span className={css.tag} key={text}>{text}</span>)}
         </div>
-        <div className={s.imageWrap} data-fade data-child data-image>
+        {long ? (
           <MyImage
-            src={caseItem.desktop.data?.attributes.url}
-            alt={caseItem.title}
-            width={1920}
-            height={931}
-            retina={2}
-            imgClass={s.desktop}
+            src={archiveImage.data?.attributes.url}
+            alt={title}
+            width={1140}
+            height={560}
             upload={true}
+            imgClass={css.long}
           />
+        ) : (
           <MyImage
-            src={caseItem.mobile.data?.attributes.url}
-            alt={caseItem.title}
-            width={1920}
-            height={931}
-            retina={2}
-            imgClass={s.mobile}
+            src={homeImage.data?.attributes.url}
+            alt={title}
+            width={679}
+            height={443}
             upload={true}
+            imgClass={css.home}
           />
-        </div>
+        )}
       </div>
-    </div>
+      <div className={css.textWrap}>
+        <h2 className={IBMPlexSans.className}>{title}</h2>
+        <p className={long ? css.md : css.sm} >{description}</p>
+        {long && <div className={css.icon}></div>}
+      </div>
+    </Link>
   )
 }

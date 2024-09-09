@@ -49,7 +49,6 @@ const Home: FC<Props> = ({ pageData, options, globalMeta }) => {
       info,
     }
   } = pageData
-  // console.log('pageData ', pageData);
 
   return (
     <Layout type="home" options={options}>

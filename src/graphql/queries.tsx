@@ -28,10 +28,10 @@ data {
     tags {
       text
     }
-    desktop {
+    homeImage {
       ${IMAGE}
     }
-    mobile {
+    archiveImage {
       ${IMAGE}
     }
   }

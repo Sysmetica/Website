@@ -1,9 +1,10 @@
-@import '@/styles/variables.scss';
+@import "@/styles/variables.scss";
 
 .root {
   background: $bgWhite;
   padding: 60px 0;
-  color: #1D1D1F;
+  color: #1d1d1f;
+  position: relative;
 
   @media (min-width: 800px) {
     padding: 130px 0;

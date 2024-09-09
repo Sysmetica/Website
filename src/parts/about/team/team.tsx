@@ -23,9 +23,7 @@ export const Team = ({ teams }: TeamProps) => {
               <div className={s.item} key={name} data-fade data-child>
                 <div className={s.image}>
                   <MyImage src={photo.data?.attributes.url} alt={name} width={364} height={418} retina={2} upload={true} />
-                  <MyLink href={linkedin} className={s.linkedin} target="_blank">
-                    <MyImage src="/img/icons/linkedin.svg" alt="linkedin icon" width={24} height={32} />
-                  </MyLink>
+
                   {description && (
                     <div className={s.description}>
                       <div className={s.text}>
@@ -35,6 +33,9 @@ export const Team = ({ teams }: TeamProps) => {
                     </div>
                   )}
                 </div>
+                <MyLink href={linkedin} className={s.linkedin} target="_blank">
+                  <MyImage src="/img/icons/linkedin.svg" alt="linkedin icon" width={24} height={32} />
+                </MyLink>
                 <div className={s.name}>
                   <p className={IBMPlexSans.className}>{name}</p>
                   <span>{role}</span>

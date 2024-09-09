@@ -1,17 +1,16 @@
+import { Row } from "@/common/row/row";
 import css from "./cases.module.scss"
 import { CaseItem } from "@/parts/home/casestudies/caseItem";
 import { CaseStudiesProps } from "@/types/casestudies";
 
 export const Cases = ({ cases }: { cases: CaseStudiesProps }) => {
   return (
-    <div className={css.cases}>
-      {cases.data.map(({ attributes }) => {
-        return (
-          <div key={attributes.title} className={css.root}>
-            <CaseItem caseItem={attributes} />
-          </div>
-        )
-      })}
-    </div>
+    <Row>
+      <div className={css.cases}>
+        {cases.data.map(({ attributes }) =>
+          <CaseItem key={attributes.title} caseItem={attributes} long={true} />
+        )}
+      </div>
+    </Row>
   )
 }
