@@ -9,7 +9,12 @@ export const CaseItem = ({ caseItem, long = false }: { caseItem: CaseItemProps, 
   const { title, description, slug, tags, homeImage, archiveImage } = caseItem;
 
   return (
-    <Link className={css.item} href={`/case-studies/${slug}`} title={title} data-fade={true} >
+    <Link
+      className={css.item}
+      href={`/case-studies/${slug}`}
+      title={title}
+      data-fade={true}
+    >
       <div className={css.image}>
         <div className={css.tags} data-fade data-child>
           {tags.map(({ text }) => <span className={css.tag} key={text}>{text}</span>)}
