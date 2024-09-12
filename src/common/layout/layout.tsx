@@ -22,13 +22,13 @@ export const OptionsContext = createContext<OptionsProps>(null!);
 export const Layout = ({ children, type = '', options }: LayoutProps) => {
   const router = useRouter();
   const setDevice = useSetAtom(isMobileDevice);
-  useAnimation(router.pathname);
+  useAnimation(router.asPath);
   const clearStates = useClearStates();
 
   useEffect(() => {
     clearStates()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.pathname])
+  }, [router.asPath])
 
   const [theme] = useState(options);
 
