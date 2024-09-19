@@ -14,7 +14,7 @@
       color: #1d1d1f;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       padding: 165px 0;
     }
 
@@ -23,7 +23,7 @@
       margin-bottom: 15px;
       gap: 15px;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         gap: 30px;
         margin-bottom: 30px;
       }
@@ -34,7 +34,7 @@
         border-radius: 50%;
         display: flex;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           width: 84px;
         }
 
@@ -54,7 +54,7 @@
       align-items: center;
       text-align: center;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         max-width: 680px;
       }
 
@@ -65,7 +65,7 @@
         letter-spacing: -1px;
         margin: 0;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           font-size: 48px;
           width: 90%;
         }
@@ -98,7 +98,7 @@
   .back {
     position: absolute;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       aspect-ratio: 81/70;
       background: url("/img/cases_bg.svg") center/cover no-repeat;
       z-index: -1;

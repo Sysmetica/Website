@@ -13,12 +13,12 @@
     //   color: #1d1d1f;
     // }
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       padding: 200px 0 125px;
     }
 
     .title {
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
@@ -32,7 +32,7 @@
         letter-spacing: -1px;
         margin: 0;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           font-size: 48px;
         }
       }
@@ -42,7 +42,7 @@
         margin: 14px 0;
         max-width: 655px;
 
-        @media (min-width: 1440px) {
+        @media (min-width: 1441px) {
           font-size: 18px;
         }
       }
@@ -95,11 +95,11 @@
           background-color: rgba(#fff, 0.8);
         }
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           font-size: 12px;
         }
 
-        @media (min-width: 1440px) {
+        @media (min-width: 1441px) {
           font-size: 14px;
         }
 
@@ -107,9 +107,7 @@
           content: "";
           width: 16px;
           aspect-ratio: 1;
-          clip-path: path(
-            "M13.7833 4.19895C14.0722 4.46421 14.0722 4.89428 13.7833 5.15954L6.55046 11.8011C6.26158 12.0663 5.79321 12.0663 5.50433 11.8011L2.21666 8.78219C1.92778 8.51692 1.92778 8.08685 2.21666 7.82159C2.50554 7.55633 2.97391 7.55633 3.26279 7.82159L6.0274 10.3602L12.7372 4.19895C13.0261 3.93368 13.4945 3.93368 13.7833 4.19895Z"
-          );
+          clip-path: path("M13.7833 4.19895C14.0722 4.46421 14.0722 4.89428 13.7833 5.15954L6.55046 11.8011C6.26158 12.0663 5.79321 12.0663 5.50433 11.8011L2.21666 8.78219C1.92778 8.51692 1.92778 8.08685 2.21666 7.82159C2.50554 7.55633 2.97391 7.55633 3.26279 7.82159L6.0274 10.3602L12.7372 4.19895C13.0261 3.93368 13.4945 3.93368 13.7833 4.19895Z");
           background-color: #8970ef;
 
           [data-theme="light"] & {
@@ -132,7 +130,7 @@
     top: -155px;
     width: 517px;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       // bottom: -50px;
       bottom: 10px;
       right: -75px;

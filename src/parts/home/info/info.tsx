@@ -45,23 +45,13 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
 
           <div className={clsx(s.team, s.block)} data-fade>
             <MyButton href={info.sectionTwoLink} className={s.link} />
-            {theme === 'dark' ? (
-              <div className={s.photos}>
-                {team.data.map(({ attributes: { preview } }, index) => {
-                  return (
-                    <MyImage src={preview.data?.attributes.url} alt="" width={48} height={48} key={index} retina={2} upload={true} />
-                  )
-                })}
-                <div className={s.icon} />
-              </div>
-            ) : (
-              <div className={s.tags}>
-                <span className={s.tag}>
-                  {`We enhance business success`}
-                </span>
-                <div className={s.icon} />
-              </div>
-            )}
+            <div className={s.tags}>
+              <span className={s.tag}>
+                <MyImage src="/img/icons/hash.svg" alt="about" width={20} height={20} />
+                {`About`}
+              </span>
+              <div className={s.icon} />
+            </div>
 
             <div className={s.text}>
               <h3>{info.sectionTwoTitle}</h3>

@@ -6,7 +6,7 @@
   color: #1d1d1f;
   position: relative;
 
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     padding: 130px 0;
   }
 
@@ -18,7 +18,7 @@
     .text {
       max-width: 230px;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         max-width: 400px;
       }
     }
@@ -30,7 +30,7 @@
       line-height: 116%;
       letter-spacing: -1px;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 48px;
       }
     }
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     gap: 26px 40px;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       margin: 40px 0 0;
       gap: 58px;
     }
@@ -50,7 +50,7 @@
     .item {
       width: calc(50% - 20px);
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         width: calc(33.33334% - 39px);
       }
 
@@ -59,7 +59,7 @@
         max-height: 32px;
         object-fit: contain;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           max-width: 48px;
           max-height: 48px;
         }
@@ -70,7 +70,7 @@
         font-size: 20px;
         font-weight: 600;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           margin: 14px 0 7px;
           font-size: 24px;
         }

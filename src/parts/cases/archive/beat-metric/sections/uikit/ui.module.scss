@@ -6,7 +6,7 @@
   align-items: center;
   background-color: rgba(236, 236, 238, 1);
 
-  @media (max-width: 799px) {
+  @media (max-width: 800px) {
     padding: 40px 0 0;
   }
 
@@ -22,7 +22,7 @@
       letter-spacing: -1px;
       color: rgba(29, 29, 31, 1);
       width: 100%;
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 48px;
         width: auto;
       }
@@ -33,7 +33,7 @@
       font-size: 14px;
       color: rgba(97, 97, 98, 1);
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         max-width: 560px;
         text-align: center;
       }
@@ -63,7 +63,7 @@
       transform: translateX(-5%);
     }
 
-    @media (max-width: 799px) {
+    @media (max-width: 800px) {
       margin-top: 40px;
     }
 

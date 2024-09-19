@@ -2,8 +2,7 @@ $transitionBack: 0.3s 0.1s ease;
 
 .root {
   @media (hover: none) {
-    .tags,
-    .team .photos {
+    .tags {
       position: relative;
       padding: 0 60px 0 0;
     }
@@ -12,8 +11,7 @@ $transitionBack: 0.3s 0.1s ease;
   @media (hover: hover) {
     .blocks .block {
       &:hover {
-        .tags,
-        .photos {
+        .tags {
           transform: translateY(-10px);
           transition: transform 0.3s 0.05s ease;
         }
@@ -66,7 +64,7 @@ $transitionBack: 0.3s 0.1s ease;
         scroll-snap-align: start;
       }
 
-      > * {
+      >* {
         position: relative;
         z-index: 1;
       }
@@ -102,7 +100,7 @@ $transitionBack: 0.3s 0.1s ease;
       padding: 16px;
       color: #fff;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         padding: 40px;
       }
 
@@ -117,7 +115,6 @@ $transitionBack: 0.3s 0.1s ease;
 
     .tags {
       display: flex;
-      flex-wrap: wrap;
       gap: 6px 12px;
       margin: 0 0 22px;
       padding: 0 60px 0 0;
@@ -125,8 +122,8 @@ $transitionBack: 0.3s 0.1s ease;
 
       .tag {
         display: flex;
-        padding: 6px 12px;
         align-items: center;
+        padding: 8px 16px 7px;
         gap: 8px;
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.1);
@@ -138,13 +135,18 @@ $transitionBack: 0.3s 0.1s ease;
         letter-spacing: 0.12px;
         text-transform: uppercase;
 
-        @media (min-width: 800px) {
+        @media (max-width: 480px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        @media (min-width: 801px) {
           font-size: 12px;
         }
 
         img {
-          max-width: 20px;
-          max-height: 20px;
+          max-width: 18px;
+          max-height: 18px;
           object-fit: contain;
         }
       }
@@ -155,7 +157,7 @@ $transitionBack: 0.3s 0.1s ease;
       padding: 16px;
       color: #1d1d1f;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         padding: 40px;
       }
 
@@ -168,33 +170,8 @@ $transitionBack: 0.3s 0.1s ease;
       }
 
       .tags .tag {
-        background: #fff;
+        background: #1D1D1F1A;
         color: #1d1d1f;
-      }
-
-      .photos {
-        display: flex;
-        margin: 0 0 18px;
-        transition: transform $transitionBack;
-
-        @media (min-width: 800px) {
-          margin: -18px 0 20px;
-        }
-
-        img {
-          width: 32px;
-          height: 32px;
-          object-fit: cover;
-          border-radius: 50%;
-          margin: 0 -13px 0 0;
-          border: 2px solid #ececee;
-
-          @media (min-width: 800px) {
-            width: 48px;
-            height: 48px;
-            margin: 0 -18px 0 0;
-          }
-        }
       }
     }
 
@@ -206,8 +183,9 @@ $transitionBack: 0.3s 0.1s ease;
         transition: transform $transitionBack;
         font-size: 20px;
         font-weight: 600;
+        font-family: var(--font-IBMPlexSans);
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           margin: 0 0 8px;
           font-size: 24px;
         }
@@ -231,7 +209,7 @@ $transitionBack: 0.3s 0.1s ease;
       background-repeat: no-repeat;
       background-position: center;
 
-      @media (min-width: 1024px) {
+      @media (min-width: 1025px) {
         width: 48px;
       }
 

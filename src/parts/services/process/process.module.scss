@@ -5,7 +5,7 @@
   align-items: center;
   margin: 40px 0 60px;
 
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     margin: 80px 0 100px;
   }
 
@@ -24,7 +24,7 @@
       border-color: #ED6B55;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       left: calc(50% - 240px);
     }
 
@@ -44,7 +44,7 @@
         background: #ED6B55;
       }
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         left: 66px;
       }
     }
@@ -72,7 +72,7 @@
       background: #fff;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       max-width: 340px;
     }
 
@@ -132,7 +132,7 @@
         color: #1D1D1F;
       }
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 20px;
       }
     }
@@ -156,7 +156,7 @@
     flex-direction: column;
     gap: 50px;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       padding: 120px 15px;
       gap: 60px;
     }
@@ -184,7 +184,7 @@
       width: 100%;
       height: 100%;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         top: 0;
         left: 50%;
         transform: translateX(-50%);
@@ -201,7 +201,7 @@
     flex-direction: column;
     max-width: 345px;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       max-width: 840px;
       flex-direction: row;
     }
@@ -226,7 +226,7 @@
 
     .text {
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         width: 50%;
         padding: 0 55px 0 0;
       }
@@ -254,7 +254,7 @@
           color: #ED6B55;
         }
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           font-size: 16px;
         }
       }
@@ -265,7 +265,7 @@
         font-size: 20px;
         font-weight: 600;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           margin: 2px 0 8px;
           font-size: 24px;
         }
@@ -285,7 +285,7 @@
       align-items: center;
       gap: 25px;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         margin: 0;
         padding: 2px 0;
         width: 50%;
@@ -296,7 +296,7 @@
       div {
         position: relative;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           padding: 0 0 0 55px;
         }
 
@@ -314,7 +314,7 @@
             background: #ED6B55;
           }
 
-          @media (min-width: 800px) {
+          @media (min-width: 801px) {
             top: calc(50% - 2.5px);
             left: -2px;
           }
@@ -336,7 +336,7 @@
             border-color: #ED6B55;
           }
 
-          @media (min-width: 800px) {
+          @media (min-width: 801px) {
             display: block;
           }
         }
@@ -367,7 +367,7 @@
       width: 74px;
       height: auto;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         width: 124px;
       }
     }

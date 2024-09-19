@@ -14,12 +14,12 @@
     flex-direction: column;
     gap: 40px;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       gap: 60px 80px;
       flex-direction: row;
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1001px) {
       gap: 60px 120px;
     }
   }
@@ -29,11 +29,11 @@
       max-width: 360px;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       width: calc(50% - 40px);
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1001px) {
       width: calc(50% - 60px);
     }
 
@@ -44,11 +44,11 @@
       letter-spacing: -1px;
       text-transform: capitalize;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 54px;
       }
 
-      @media (min-width: 1000px) {
+      @media (min-width: 1001px) {
         font-size: 64px;
       }
     }
@@ -59,11 +59,11 @@
       font-weight: 500;
       line-height: 182%;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 18px;
       }
 
-      @media (min-width: 1000px) {
+      @media (min-width: 1001px) {
         font-size: 20px;
       }
     }
@@ -85,18 +85,18 @@
         border-color: #ED6B55;
       }
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 20px;
       }
     }
   }
 
   .form {
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       width: calc(50% - 40px);
     }
 
-    @media (min-width: 1000px) {
+    @media (min-width: 1001px) {
       width: calc(50% - 60px);
     }
 

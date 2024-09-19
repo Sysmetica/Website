@@ -14,7 +14,7 @@
       overflow: hidden;
       width: 100%;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         margin-top: -95px;
         border-radius: 0 20px 20px 0;
         width: 85%;
@@ -36,7 +36,7 @@
           pointer-events: none;
         }
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           height: clamp(500px, 45vw, 722px);
           max-width: 959px;
 
@@ -55,7 +55,7 @@
 
     .logo {
       display: none;
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         display: flex;
         background: url("/img/beat-metric-logo.svg") center/cover no-repeat;
         width: clamp(20px, 2vw, 35px);

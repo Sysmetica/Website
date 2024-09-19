@@ -8,12 +8,12 @@
     color: #1D1D1F;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     padding: 130px 0;
   }
 
   .rootWrap {
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       display: grid;
       grid-template-areas:
         "text text button"
@@ -34,7 +34,7 @@
     grid-area: text;
     max-width: 460px;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       max-width: 660px;
     }
 
@@ -45,7 +45,7 @@
       line-height: 116%;
       letter-spacing: -1px;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         margin: 0 0 16px;
         font-size: 48px;
       }
@@ -56,7 +56,7 @@
       font-weight: 400;
       line-height: normal;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 18px;
       }
     }
@@ -65,7 +65,7 @@
   .buttonWrap {
     grid-area: button;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       display: flex;
       align-items: flex-start;
       justify-content: flex-end;

@@ -10,7 +10,7 @@
   padding: 60px 0;
   color: #fff;
 
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     padding: 130px 0;
   }
 
@@ -19,7 +19,7 @@
     flex-direction: column;
     gap: 28px;
 
-    @media (min-width: 800px) {
+    @media (min-width: 801px) {
       gap: 48px;
     }
 
@@ -44,7 +44,7 @@
         line-height: 116%;
         letter-spacing: -1px;
 
-        @media (min-width: 800px) {
+        @media (min-width: 801px) {
           font-size: 48px;
           max-width: 590px;
         }

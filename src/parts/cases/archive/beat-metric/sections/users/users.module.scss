@@ -5,7 +5,7 @@
   flex-direction: column;
   background-color: rgba(236, 236, 238, 1);
 
-  @media (max-width: 799px) {
+  @media (max-width: 800px) {
     padding: 40px 0;
   }
 
@@ -30,7 +30,7 @@
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='13' viewBox='0 0 15 13' fill='none'%3E%3Cpath d='M7.5 13C7.69269 13 7.97431 12.8613 8.20405 12.7225C12.3468 10.2252 15 7.29776 15 4.33565C15 1.77588 13.1102 0 10.746 0C9.27124 0 8.167 0.763074 7.5 1.90075C6.84783 0.763074 5.73617 0 4.26136 0C1.88982 0 0 1.77588 0 4.33565C0 7.29776 2.66057 10.2252 6.79595 12.7225C7.02569 12.8613 7.30731 13 7.5 13Z' fill='%23EB4B62'/%3E%3C/svg%3E");
       }
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 48px;
       }
     }
@@ -166,7 +166,7 @@
     //     font-size: 20px;
     //     width: 327px;
 
-    //     @media (min-width: 800px) {
+    //     @media (min-width: 801px) {
     //       font-size: 24px;
     //       line-height: 20px;
     //     }
@@ -188,7 +188,7 @@
   .discription {
     color: var(--color_th_dark);
 
-    @media (max-width: 1025px) {
+    @media (max-width: 1024px) {
       display: flex;
       gap: 20px;
     }
@@ -240,7 +240,7 @@
       font-size: 20px;
       line-height: 18px;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 24px;
         line-height: 20px;
       }
@@ -288,7 +288,7 @@
     );
     position: absolute;
 
-    @media (max-width: 799px) {
+    @media (max-width: 800px) {
       transform: scale(0.8);
     }
 

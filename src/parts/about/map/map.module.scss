@@ -6,7 +6,7 @@
     color: #1D1D1F;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 801px) {
     padding: 120px 0;
   }
 
@@ -22,7 +22,7 @@
       width: 100%;
       max-width: 500px;
       
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         width: 55%;
         max-width: none;
       }
@@ -37,7 +37,7 @@
       width: 100%;
       max-width: 375px;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         width: 45%;
         max-width: none;
         padding: 8% 0 0;
@@ -50,7 +50,7 @@
         line-height: 116%;
         letter-spacing: -1px;
 
-        @media (min-width: 1000px) {
+        @media (min-width: 1001px) {
           font-size: 64px;
         }
       }
@@ -61,7 +61,7 @@
         font-weight: 500;
         line-height: 182%;
 
-        @media (min-width: 1000px) {
+        @media (min-width: 1001px) {
           font-size: 20px;
         }
       }

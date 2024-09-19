@@ -68,7 +68,7 @@
       text-transform: uppercase;
       color: #1d1d1f;
 
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         font-size: 12px;
       }
     }
@@ -78,7 +78,7 @@
     position: relative;
 
     &:has(.icon) {
-      @media (min-width: 800px) {
+      @media (min-width: 801px) {
         padding-right: 70px;
         .icon {
           position: absolute;
