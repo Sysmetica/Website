@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  trailingSlash: true,
   webpack: (cfg) => {
     cfg.module.rules.push(
       {
@@ -29,7 +30,7 @@ module.exports = {
   },
   experimental: {
     appDir: true,
-    // scrollRestoration: true,
+    scrollRestoration: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
