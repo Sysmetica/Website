@@ -41,7 +41,7 @@ export const Intro = ({ title, subtitle, tags }: IntroProps) => {
           )}
         </div>
       </Row>
-      <div className={css.back}></div>
+      <div className={css.back} data-fade></div>
 
     </div>
 

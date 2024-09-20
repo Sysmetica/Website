@@ -28,7 +28,7 @@ export const Intro = () => {
           </div>
         </div>
       </Row>
-      <div className={css.back} data-parallax></div>
+      <div className={css.back} data-fade></div>
 
     </div>
 

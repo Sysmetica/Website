@@ -203,8 +203,12 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
         <div className={s.container}>
           <Row>
             <div className={s.textWrap}>
-              <HomeIcon />
-              <h1 className={IBMPlexSans.className} data-split>{title}</h1>
+              {/* <HomeIcon /> */}
+              <div className={s.title}>
+                <h1 className={IBMPlexSans.className} data-split>{title}</h1>
+                <div className={s.icon_1} data-fade></div>
+                <div className={s.icon_2} data-fade></div>
+              </div>
               <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} data-split />
             </div>
           </Row>
@@ -215,8 +219,11 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
         <div className={s.container}>
           <Row>
             <div className={s.textWrap}>
-              <HomeIcon />
-              <h1 className={IBMPlexSans.className} data-split>{title}</h1>
+              {/* <HomeIcon /> */}
+              <div className={s.title}>
+                <div className={s.icon_3} data-fade></div>
+                <h1 className={IBMPlexSans.className} data-split>{title}</h1>
+              </div>
               <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} data-split />
             </div>
           </Row>
