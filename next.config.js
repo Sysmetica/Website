@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  trailingSlash: true,
+  // trailingSlash: true,
   webpack: (cfg) => {
     cfg.module.rules.push(
       {
