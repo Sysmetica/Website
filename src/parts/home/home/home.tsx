@@ -137,7 +137,6 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
         }
 
         const handleOrientation = (event: any) => {
-
           if (initialBeta == null || initialGamma == null) {
             initialBeta = event.beta;
             initialGamma = event.gamma;
@@ -155,7 +154,6 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
             });
           });
         }
-
 
         ScrollTrigger.create({
           trigger: intro.current,
