@@ -38,11 +38,11 @@ export function useAnimation(props: any, scope: any = null) {
           const { y, x, child, fade } = trigger.dataset;
           let tl = gsap.timeline({
             defaults: { ease: "power2.out", },
-            scrollTrigger: {
-              trigger,
-              start: () => fade == "in" ? "top 98%" : "top 95%",
-              toggleActions: "play none none reverse",
-            },
+            // scrollTrigger: {
+            //   trigger,
+            //   start: () => fade == "in" ? "top 98%" : "top 95%",
+            //   toggleActions: "play none none reverse",
+            // },
           });
 
           switch (fade) {
