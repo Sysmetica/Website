@@ -1,4 +1,3 @@
-import { useAnimation } from "@/hooks/useAnimation";
 import { Cases } from "./cases/Cases"
 import { Intro } from "./intro/Intro"
 import { CaseStudiesProps } from "@/types/casestudies";

@@ -1,4 +1,3 @@
-import { useAnimation } from '@/hooks/useAnimation';
 import { CaseItemRelation } from '@/types/casestudies';
 import { BeatMetricTemplate } from './beat-metric/template';
 import { HumaTemplate } from './huma/template';
@@ -17,8 +16,6 @@ export type ArchiveCaseProps = {
 }
 
 export const ArchiveCase = ({ slug, template, caseStudie }: ArchiveCaseProps) => {
-
-
   switch (slug) {
     case 'huma':
       return <HumaTemplate relation={caseStudie} />
@@ -26,4 +23,4 @@ export const ArchiveCase = ({ slug, template, caseStudie }: ArchiveCaseProps) =>
     case 'beat-metric':
       return <BeatMetricTemplate relation={caseStudie} />
   }
-}
+};

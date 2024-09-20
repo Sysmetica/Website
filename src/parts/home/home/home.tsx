@@ -77,7 +77,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
   }
 
   useGSAP(
-    (context, contextSafe: any) => {
+    () => {
 
       const initAnimaton = () => {
         const section = intro.current as HTMLDivElement;

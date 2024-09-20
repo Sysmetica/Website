@@ -40,7 +40,6 @@ export const Layout = ({ children, type = '', options }: LayoutProps) => {
   return (
     <OptionsContext.Provider value={options}>
       <div className={clsx(s.root, s[type])} data-theme={theme.attributes.theme}>
-        {/* <MyImage src="/img/bg.svg" alt="" width={881} height={600} imgClass={s.bg} /> */}
         <Header options={options} />
         <div className={s.content}>
           {children}

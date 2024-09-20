@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function useAnimation(props: any, scope: any = null) {
   useGSAP(
-    (context, contextSafe: any) => {
+    () => {
       let resize: any, tls: any = [];
 
       const initAnimaton = () => {

@@ -27,7 +27,7 @@ export const Header = ({ options }: { options: OptionsProps }) => {
   const headerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
-    (context, contextSafe: any) => {
+    () => {
       const initAnimaton = () => {
         const section = headerRef.current as HTMLDivElement;
         const fades = section.querySelectorAll("[data-child]") as NodeListOf<HTMLDivElement>;
