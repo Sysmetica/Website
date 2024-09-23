@@ -13,18 +13,18 @@ export function useAnimation(props: any, scope: any = null) {
         const fades = section.querySelectorAll("[data-fade]") as NodeListOf<HTMLDivElement>;
         const parallaxes = section.querySelectorAll("[data-parallax]") as NodeListOf<HTMLDivElement>;
         const paths = section.querySelectorAll("[data-paths]") as NodeListOf<SVGPathElement>;
-        resize = new ResizeObserver(() => ScrollTrigger.refresh());
+        // resize = new ResizeObserver(() => ScrollTrigger.refresh());
 
         // Fade svg stroke length
         const animateSVGPath = (path: SVGPathElement) => {
           // const { length } = path.dataset;
 
           let tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: path,
-              start: () => "top 90%",
-              toggleActions: "play none none reverse",
-            },
+            // scrollTrigger: {
+            //   trigger: path,
+            //   start: () => "top 90%",
+            //   toggleActions: "play none none reverse",
+            // },
 
           }
           );
@@ -91,7 +91,7 @@ export function useAnimation(props: any, scope: any = null) {
         parallaxes.forEach(animateParallaxes)
         fades.forEach(animateFades)
         paths.forEach(animateSVGPath);
-        resize.observe(section);
+        // resize.observe(section);
 
       }
       const st = setTimeout(initAnimaton, 200);
@@ -99,8 +99,8 @@ export function useAnimation(props: any, scope: any = null) {
       return () => {
         tls.length && tls.forEach((tl: any) => tl.revert())
         clearTimeout(st);
-        resize?.disconnect()
-        ScrollTrigger.killAll();
+        // resize?.disconnect()
+        // ScrollTrigger.killAll();
       };
     },
     { dependencies: [props], revertOnUpdate: true, scope }
