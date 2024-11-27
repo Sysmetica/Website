@@ -14,6 +14,7 @@ export const poppinsFont = Poppins({
   subsets: ['latin'],
   display: 'swap',
 })
+
 export const cavetFont = Caveat({
   weight: ['400'],
   style: ['normal'],
@@ -39,7 +40,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <title>{`Sysmetica – Mobile Development and Design Agency`}</title>
       </Head>
 
-      <main className={poppinsFont.className}>
+      <main>
 
         {/* <GoogleReCaptchaProvider
           reCaptchaKey="your_site_key"
@@ -65,6 +66,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           `
           body {
             background: ${pageProps.options?.attributes?.theme === 'dark' ? '#000' : '#fff'};
+            font-family: ${poppinsFont.style.fontFamily};
           }
         `
         }</style>
