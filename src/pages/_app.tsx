@@ -56,10 +56,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
         <style jsx global>{
           `
-          :root {
-            --font-IBMPlexSans: ${IBMPlexSans.style.fontFamily};
-          }
-        `
+            :root {
+              --font-IBMPlexSans: ${IBMPlexSans.style.fontFamily};
+            }
+          `
         }</style>
 
         <style jsx global>{
