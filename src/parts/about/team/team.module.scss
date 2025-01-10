@@ -4,6 +4,7 @@
   padding: 80px 0;
   color: #fff;
   position: relative;
+
   @media (min-width: 801px) {
     padding: 130px 0;
   }
@@ -60,6 +61,7 @@
           opacity: 1;
 
           .text {
+
             img,
             p {
               opacity: 1;
@@ -108,7 +110,7 @@
           }
         }
 
-        > img {
+        >img {
           width: 100%;
           height: auto;
           aspect-ratio: 1 / 1.15;
