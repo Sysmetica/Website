@@ -1,11 +1,17 @@
+@function px2vw($px, $def_screen: 1920) {
+  $vw: calc($def_screen * 0.01);
+  @return calc(($px/$vw) * 1vw);
+}
+
 .root {
   background: #000;
   padding: 20px 0 60px;
-  color: #FFF;
+  color: #fff;
+
 
   [data-theme="light"] & {
-    background: #EFEDEA;
-    color: #1D1D1F;
+    background: #efedea;
+    color: #1d1d1f;
   }
 
   .rootWrap {
@@ -13,6 +19,8 @@
     flex-wrap: wrap;
     flex-direction: column;
     gap: 40px;
+    position: relative;
+    z-index: 1;
 
     @media (min-width: 801px) {
       gap: 60px 80px;
@@ -76,13 +84,13 @@
       border-color: #584997;
       border-style: solid;
       border-width: 0 0 3px 3px;
-      color: #1D1D1F;
+      color: #1d1d1f;
       font-size: 16px;
       font-weight: 500;
       text-decoration: none;
 
       [data-theme="light"] & {
-        border-color: #ED6B55;
+        border-color: #ed6b55;
       }
 
       @media (min-width: 801px) {
@@ -117,7 +125,7 @@
       width: 100%;
 
       &::placeholder {
-        color: #7E7E7E;
+        color: #7e7e7e;
         font-size: 16px;
         font-weight: 400;
       }
@@ -126,18 +134,18 @@
     .vacancyWrap {
       cursor: pointer;
       width: 100%;
-      background-image: url('/img/icons/select-down.svg');
+      background-image: url("/img/icons/select-down.svg");
       background-repeat: no-repeat;
       background-position: calc(100% - 15px) center;
 
       [data-theme="light"] & {
-        background-image: url('/img/icons/select-down-p.svg');
+        background-image: url("/img/icons/select-down-p.svg");
       }
 
       &.active {
-        background-image: url('/img/icons/select-up.svg');
+        background-image: url("/img/icons/select-up.svg");
 
-        &+.list {
+        & + .list {
           display: flex;
         }
       }
@@ -150,7 +158,7 @@
           color: #fff;
 
           [data-theme="light"] & {
-            color: #7E7E7E;
+            color: #7e7e7e;
           }
         }
       }
@@ -173,7 +181,7 @@
         padding: 14px 16px 14px 46px;
 
         &.active {
-          background-image: url('/img/icons/check.svg');
+          background-image: url("/img/icons/check.svg");
           background-repeat: no-repeat;
           background-position: 15px center;
         }
@@ -182,27 +190,27 @@
           background-color: #18181a;
 
           [data-theme="light"] & {
-            background: #EFEDEA;
+            background: #efedea;
           }
         }
       }
     }
 
-    input[type=text],
+    input[type="text"],
     textarea {
       border-radius: 12px;
-      border: 1px solid #4D4D5D;
+      border: 1px solid #4d4d5d;
       padding: 14px 16px;
       background: transparent;
       color: #fff;
 
       [data-theme="light"] & {
-        color: #1D1D1F;
+        color: #1d1d1f;
       }
 
       &.disabled {
-        background: url('/img/icons/important.svg') no-repeat calc(100% - 15px) center;
-        border-color: #EB4B62;
+        background: url("/img/icons/important.svg") no-repeat calc(100% - 15px) center;
+        border-color: #eb4b62;
       }
     }
 
@@ -219,12 +227,12 @@
     .drop {
       position: relative;
       border-radius: 12px;
-      border: 1px dashed #6856B5;
+      border: 1px dashed #6856b5;
       padding: 24px 16px 32px 16px;
       text-align: center;
 
       &.disabled {
-        border-color: #EB4B62;
+        border-color: #eb4b62;
       }
 
       input {
@@ -253,7 +261,7 @@
         stroke: #fff;
 
         [data-theme="light"] & {
-          stroke: #EB4B62;
+          stroke: #eb4b62;
         }
       }
     }
@@ -264,7 +272,7 @@
       padding: 15px 54px 13px 51px;
       border-radius: 12px;
       overflow: hidden;
-      background: #1D1D1F url('/img/icons/pdf.svg') no-repeat 16px 12px;
+      background: #1d1d1f url("/img/icons/pdf.svg") no-repeat 16px 12px;
       font-size: 14px;
       font-weight: 400;
       line-height: 150%;
@@ -278,7 +286,7 @@
         right: 16px;
         width: 24px;
         height: 24px;
-        background: url('/img/icons/trash.svg') no-repeat center;
+        background: url("/img/icons/trash.svg") no-repeat center;
       }
     }
 
@@ -313,15 +321,15 @@
 
       &.error {
         .success {
-          border-color: #EB4B62;
+          border-color: #eb4b62;
         }
       }
 
       .success {
-        border-left: 4px solid #1D1D1F;
+        border-left: 4px solid #1d1d1f;
         padding: 13px 24px 12px;
         border-radius: 12px;
-        background: #1D1D1F;
+        background: #1d1d1f;
         width: calc(100% - 130px);
         font-size: 14px;
         font-weight: 400;
@@ -343,22 +351,86 @@
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        background-color: #6856B5;
+        background-color: #6856b5;
         background-repeat: no-repeat;
         background-position: center;
 
         [data-theme="light"] & {
-          background-color: #ED6B55;
+          background-color: #ed6b55;
         }
       }
 
       .done {
-        background-image: url('/img/icons/done.svg');
+        background-image: url("/img/icons/done.svg");
       }
 
       .loading {
-        background-image: url('/img/icons/loading-btn.svg');
+        background-image: url("/img/icons/loading-btn.svg");
       }
+    }
+  }
+
+  .book_call {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: clamp(16px, px2vw(24), 24px) clamp(20px, px2vw(32), 32px);
+    border-radius: 20px;
+    background: #584997;
+    align-self: flex-start;
+    justify-content: space-between;
+    gap: clamp(24px, px2vw(60), 60px);
+    transition: background-color 0.3s ease-in-out;
+    margin-top: clamp(20px, px2vw(32), 32px);
+
+    .txt {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      span {
+        &:nth-child(1) {
+          font-size: clamp(18px, px2vw(24), 24px);
+        }
+        &:nth-child(2) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .icon {
+      width: clamp(42px, px2vw(48), 48px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgb(105 92 162) url("/img/icons/str-small-w.svg") center/24px no-repeat;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    &:hover {
+      .icon {
+        background-color: #584997;
+      }
+    }
+  }
+
+  .back {
+    position: absolute;
+    aspect-ratio: 81/70;
+    background: url("/img/cases_bg.svg") center/cover no-repeat;
+    pointer-events: none;
+    width: clamp(450px, px2vw(900), 900px);
+    bottom: -20%;
+    left: -1%;
+    transform: rotate(180deg);
+
+    @media (max-width: 800px) {
+      left: 50px;
+      top: -155px;
+      width: 517px;
+      bottom: auto;
+      left: auto;
+      transform: none;
     }
   }
 }

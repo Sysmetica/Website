@@ -125,6 +125,13 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
                     {options.attributes.email}
                   </a>
                 )}
+                <a href="/" className={g.book_call} target='_blank' >
+                  <div className={g.txt}>
+                    <span className={IBMPlexSans.className}>Book a Call With Our CEO</span>
+                    <span>Let’s scale your business together!</span>
+                  </div>
+                  <div className={g.icon}></div>
+                </a>
               </div>
 
               <div className={g.form}>
@@ -208,6 +215,8 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
 
             </div>
           </Row>
+          <div className={g.back} data-fade></div>
+
         </div>
       </SeoContext>
     </Layout>

@@ -28,11 +28,11 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
             <MyButton href={info.sectionOneLink} target='_black' className={s.link} />
             <div className={s.tags}>
               <span className={s.tag}>
-                <MyImage src="/img/icons/tag1.svg" alt="100% Job Success" width={20} height={20} />
+                <MyImage src="/img/icons/tag1.svg" alt="100% Job Success" width={24} height={24} />
                 {`100% Job Success`}
               </span>
               <span className={s.tag}>
-                <MyImage src="/img/icons/tag2.svg" alt="Top rated plus" width={20} height={20} />
+                <MyImage src="/img/icons/tag2.svg" alt="Top rated plus" width={24} height={24} />
                 {`Top rated plus`}
               </span>
               <div className={s.icon} />
@@ -47,7 +47,7 @@ export const InfoStep = ({ team, info }: InfoStepProps) => {
             <MyButton href={info.sectionTwoLink} className={s.link} />
             <div className={s.tags}>
               <span className={s.tag}>
-                <MyImage src="/img/icons/hash.svg" alt="about" width={20} height={20} />
+                <MyImage src="/img/icons/hash.svg" alt="about" width={24} height={24} />
                 {`About`}
               </span>
               <div className={s.icon} />

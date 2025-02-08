@@ -8,10 +8,11 @@ type ButtonProps = {
   refVal?: any
   type?: string[]
   onClick?: (a: any) => void
-  stat?: boolean
+  stat?: boolean,
+  target?: string
 }
 
-export const Button = ({ children, link = "#", refVal, type = [], onClick, stat }: ButtonProps) => {
+export const Button = ({ children, link = "#", refVal, type = [], onClick, stat, target = undefined }: ButtonProps) => {
   if (stat) {
     return (
       <button
@@ -26,6 +27,7 @@ export const Button = ({ children, link = "#", refVal, type = [], onClick, stat 
 
   return (
     <MyButton
+      target={target}
       href={link}
       ref={refVal}
       className={clsx(s.root, type.map((k) => s[k]))}

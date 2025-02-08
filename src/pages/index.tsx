@@ -18,6 +18,7 @@ import { CaseStudiesProps } from '@/types/casestudies'
 import { SeoContext } from '@/components/seo/seoContext'
 import { GlobalProps } from '@/components/seo/types'
 import gl from '@/styles/global.module.scss'
+import { ClientReviews } from '@/parts/home/reviews/reviews'
 
 interface Props {
   pageData: {
@@ -54,11 +55,12 @@ const Home: FC<Props> = ({ pageData, options, globalMeta }) => {
     <Layout type="home" options={options}>
       <SeoContext globalMeta={globalMeta}>
         <HomeStep title={title} subtitle={subtitle} selectedString={subtitleSelected} />
-        <div className={`${gl.white} ${gl.home}`}>
+        {/* <div className={`${gl.white} ${gl.home}`}>
           <InfoStep team={teams} info={info} />
           <Progress />
-          <Casestudies casestudies={casestudies} />
-        </div>
+          </div> */}
+        <ClientReviews />
+        <Casestudies casestudies={casestudies} />
         <Services />
         <Values values={values} />
         <Career careers={careers} />

@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import { useGSAP } from "@gsap/react";
+import { Button } from '@/components/button/button';
 type HomeStepProps = {
   title: string
   subtitle: string
@@ -24,6 +25,24 @@ const splittinSpan = (span: any) => {
 };
 
 const splitText = (txt: any) => txt.split(" ").map(splittinSpan).join(" ");
+
+
+const ScheduleData = {
+  title: "Schedule a Meeting",
+  link: "/sdfsfsdf"
+}
+
+const ScheduleButton = () => {
+
+
+  return <>
+    <div className={s.link}>
+      <div data-fade>
+        <Button link={ScheduleData.link} target="_blank">{ScheduleData.title}</Button>
+      </div>
+    </div>
+  </>
+}
 
 export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -208,6 +227,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
                 <div className={s.icon_2} data-fade></div>
               </div>
               <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} data-split />
+              <ScheduleButton />
             </div>
           </Row>
         </div>
@@ -223,6 +243,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
                 <h1 className={IBMPlexSans.className} data-split>{title}</h1>
               </div>
               <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} data-split />
+              <ScheduleButton />
             </div>
           </Row>
         </div>

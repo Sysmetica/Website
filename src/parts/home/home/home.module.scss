@@ -245,6 +245,13 @@
     }
   }
 
+  .link {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: clamp(16px, px2vw(24), 24px);
+  }
+
   .parallax {
     position: absolute;
     top: 0;
