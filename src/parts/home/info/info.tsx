@@ -12,6 +12,10 @@ type InfoStepProps = {
   info: InfoProps
 }
 
+/**
+ * @deprecated The Component is not used on the site, but API exists and we can return it back
+ */
+
 export const InfoStep = ({ team, info }: InfoStepProps) => {
   const { attributes: { theme } } = useContext(OptionsContext);
 

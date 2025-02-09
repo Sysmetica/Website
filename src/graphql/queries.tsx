@@ -56,6 +56,20 @@ const CAREERS = `
   }
 `
 
+const REVIEWS = `
+  reviews {
+    data {
+      attributes {
+        company
+        position
+        review
+        rating
+        link
+      }
+    }
+  }
+`
+
 export const HOME_PAGE = gql`
   query {
     homePage {
@@ -74,6 +88,7 @@ export const HOME_PAGE = gql`
           }
           ${VALUES}
           ${CAREERS}
+          ${REVIEWS}
           casestudies {
             ${CASES}
           }

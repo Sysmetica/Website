@@ -9,6 +9,10 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useRef } from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * @deprecated The Component is not used on the site, but API exists and we can return it back
+ */
+
 export const Progress = () => {
   const wrapRef = useRef<any>(null)
 
@@ -49,13 +53,11 @@ export const Progress = () => {
   //   { dependencies: [], revertOnUpdate: true }
   // );
 
-
   const items = [
     { titel: "Client Satisfaction", count: 100, mark: "%" },
     { titel: "Total Jobs", count: 52, mark: "+" },
     { titel: "Clients Worldwide", count: 10, mark: "+" },
   ]
-
 
   return (
     <div className={s.root}>

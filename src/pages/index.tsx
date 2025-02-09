@@ -4,8 +4,8 @@ import { GetStaticProps } from 'next/types'
 import client from '@/graphql/client'
 import { HomeStep } from '@/parts/home/home/home'
 import { Contacts } from '@/components/contacts/contacts'
-import { InfoStep } from '@/parts/home/info/info'
-import { Progress } from '@/parts/home/progress/progress'
+// import { InfoStep } from '@/parts/home/info/info'
+// import { Progress } from '@/parts/home/progress/progress'
 import { Casestudies } from '@/parts/home/casestudies/casestudies'
 import { Values } from '@/parts/home/values/values'
 import { Career } from '@/parts/home/career/career'
@@ -17,8 +17,9 @@ import { CareersProps } from '@/types/career'
 import { CaseStudiesProps } from '@/types/casestudies'
 import { SeoContext } from '@/components/seo/seoContext'
 import { GlobalProps } from '@/components/seo/types'
-import gl from '@/styles/global.module.scss'
+// import gl from '@/styles/global.module.scss'
 import { ClientReviews } from '@/parts/home/reviews/reviews'
+import { ReviewsProps } from '@/types/review'
 
 interface Props {
   pageData: {
@@ -29,6 +30,7 @@ interface Props {
       info: InfoProps
       values: HomeValues[]
       careers: CareersProps
+      reviews: ReviewsProps
       casestudies: CaseStudiesProps
       teams: InfoTeam
     }
@@ -43,13 +45,15 @@ const Home: FC<Props> = ({ pageData, options, globalMeta }) => {
       values,
       careers,
       casestudies,
-      teams,
+      // teams,
       title,
       subtitle,
       subtitleSelected,
-      info,
+      reviews,
+      // info,
     }
   } = pageData
+  console.log('----- pageData ', pageData)
 
   return (
     <Layout type="home" options={options}>
@@ -58,8 +62,8 @@ const Home: FC<Props> = ({ pageData, options, globalMeta }) => {
         {/* <div className={`${gl.white} ${gl.home}`}>
           <InfoStep team={teams} info={info} />
           <Progress />
-          </div> */}
-        <ClientReviews />
+        </div> */}
+        <ClientReviews reviews={reviews} />
         <Casestudies casestudies={casestudies} />
         <Services />
         <Values values={values} />
