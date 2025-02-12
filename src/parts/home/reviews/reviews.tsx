@@ -6,7 +6,7 @@ import MyImage from '@/components/image/image';
 import { ReviewsProps } from '@/types/review';
 
 const data = {
-  title: 'What Our <br /> Clients Say',
+  title: 'What Our<br />Clients Say',
   top_info: [
     {
       title: '44+ projects',
