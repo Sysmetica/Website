@@ -34,7 +34,10 @@ const data = {
   ]
 }
 
-const Stars = ({ className, stars }: {
+const Stars = ({
+  className,
+  stars
+}: {
   className?: string,
   stars: number
 }) => {
