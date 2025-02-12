@@ -26,15 +26,12 @@ const splittinSpan = (span: any) => {
 
 const splitText = (txt: any) => txt.split(" ").map(splittinSpan).join(" ");
 
-
 const ScheduleData = {
   title: "Schedule a Meeting",
-  link: "/sdfsfsdf"
+  link: "https://calendly.com/nestor-popko/30min"
 }
 
 const ScheduleButton = () => {
-
-
   return <>
     <div className={s.link}>
       <div data-fade>
