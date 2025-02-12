@@ -8,12 +8,12 @@ import { useAtomValue } from 'jotai';
 import { isMobile } from 'react-device-detect';
 import { isMobileDevice } from '@/state';
 import { makeSelectedString } from '@/utils';
-import HomeIcon from '../../../../public/img/icons/home.svg';
+// import HomeIcon from '../../../../public/img/icons/home.svg';
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-
 import { useGSAP } from "@gsap/react";
 import { Button } from '@/components/button/button';
+
 type HomeStepProps = {
   title: string
   subtitle: string
@@ -32,13 +32,13 @@ const ScheduleData = {
 }
 
 const ScheduleButton = () => {
-  return <>
+  return (
     <div className={s.link}>
       <div data-fade>
         <Button link={ScheduleData.link} target="_blank">{ScheduleData.title}</Button>
       </div>
     </div>
-  </>
+  )
 }
 
 export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => {
@@ -94,7 +94,6 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
 
   useGSAP(
     () => {
-
       const initAnimaton = () => {
         const section = intro.current as HTMLDivElement;
         const fades = section.querySelectorAll("[data-split]") as NodeListOf<HTMLDivElement>;
