@@ -125,7 +125,7 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
                     {options.attributes.email}
                   </a>
                 )}
-                <a href="/" className={g.book_call} target='_blank' >
+                <a href="https://calendly.com/nestor-popko/30min" className={g.book_call} target='_blank'>
                   <div className={g.txt}>
                     <span className={IBMPlexSans.className}>Book a Call With Our CEO</span>
                     <span>Let’s scale your business together!</span>
