@@ -37,22 +37,21 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudiesProps }) 
     }
   }
 
-
   return (
     <div className={css.root}>
       <Row>
         <div className={css.content}>
-          <div className={css.content_title} >
+          <div className={css.content_title}>
             <h2 className={IBMPlexSans.className} data-fade>Turning ideas into reality</h2>
             <div className={css.navs} data-fade>
               <button className={css.nav} data-nav-prev></button>
               <button className={css.nav} data-nav-next></button>
             </div>
             <div className={css.link} data-fade={true}>
-              <Button type={['fill']} link={'/case-studies'} >{`Case Studies`}</Button>
+              <Button type={['fill']} link={'/case-studies'}>{`Case Studies`}</Button>
             </div>
           </div>
-          <Swiper {...config} slidesPerView={"auto"}  >
+          <Swiper {...config} slidesPerView={"auto"}>
             {casestudies.data.map(({ attributes }) =>
               <SwiperSlide className={css.slide} key={attributes.title}>
                 <CaseItem caseItem={attributes} />
@@ -61,8 +60,7 @@ export const Casestudies = ({ casestudies }: { casestudies: CaseStudiesProps }) 
           </Swiper>
           <div className={css.content_bar} data-propgress={true}></div>
         </div>
-      </Row >
-
-    </div >
+      </Row>
+    </div>
   )
 }

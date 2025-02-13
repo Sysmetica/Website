@@ -4,43 +4,10 @@ import { IBMPlexSans } from '@/pages/_app';
 import clsx from 'clsx';
 import MyImage from '@/components/image/image';
 import { ReviewsProps } from '@/types/review';
+import { useContext } from 'react';
+import { OptionsContext } from '@/common/layout/layout';
 
-const data = {
-  title: 'What Our<br />Clients Say',
-  top_info: [
-    {
-      title: '44+ projects',
-      tags: [
-        {
-          icon: '/img/icons/tag1.svg',
-          text: '100% Job Success'
-        },
-        {
-          icon: '/img/icons/tag2.svg',
-          text: 'Top rated plus'
-        }
-      ],
-      description: 'completed on',
-      logo: '/img/logo-upwork.svg',
-      link: 'https://www.upwork.com/agencies/sysmetica'
-    },
-    {
-      title: 'More',
-      stars: 5.0,
-      description: 'reviews on',
-      logo: '/img/logo-clutch.svg',
-      link: 'https://clutch.co/profile/sysmetica'
-    }
-  ]
-}
-
-const Stars = ({
-  className,
-  stars
-}: {
-  className?: string,
-  stars: number
-}) => {
+const Stars = ({ className, stars }: { className?: string, stars: number }) => {
   return (
     <div className={clsx(css.data_stars, className)}>
       <div
@@ -55,10 +22,41 @@ const Stars = ({
 }
 
 export const ClientReviews = ({ reviews }: { reviews: ReviewsProps }) => {
+  const options = useContext(OptionsContext);
+
+  const data = {
+    title: 'What Our<br />Clients Say',
+    top_info: [
+      {
+        title: '44+ projects',
+        tags: [
+          {
+            icon: '/img/icons/tag1.svg',
+            text: '100% Job Success'
+          },
+          {
+            icon: '/img/icons/tag2.svg',
+            text: 'Top rated plus'
+          }
+        ],
+        description: 'completed on',
+        logo: '/img/icons/upwork.svg',
+        link: options.attributes.upwork || ''
+      },
+      {
+        title: 'More',
+        stars: 5.0,
+        description: 'reviews on',
+        logo: '/img/icons/clutch.svg',
+        link: options.attributes.clutch || ''
+      }
+    ]
+  }
+
   return (
     <div className={css.root}>
       <Row>
-        <div className={css.wrapper} >
+        <div className={css.wrapper}>
           <div className={css.wrapper_title} data-fade>
             <h2 className={IBMPlexSans.className} dangerouslySetInnerHTML={{ __html: data.title }}></h2>
             <div className={css.wrapper_info}>

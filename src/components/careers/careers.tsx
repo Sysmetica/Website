@@ -38,7 +38,7 @@ export const CareersList = ({ careers, type }: CareersListProps) => {
                   <h3 className={IBMPlexSans.className}>{title}</h3>
                   <p>{level.replace('_', ' ')}</p>
                   <div className={s.tags}>
-                    <div className={s.tag} >
+                    <div className={s.tag}>
                       <MyImage src={`/img/icons/${firstTag.icon}.svg`} alt="text" width={24} height={24} />
                       <span>{firstTag.text}</span>
                     </div>

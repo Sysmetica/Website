@@ -16,7 +16,7 @@ export const Process = () => {
 
       <div className={clsx(s.step, s.step1)} data-fade="in">
         <MyImage src={`/img/icons/services/${imgPath}eye.svg`} alt="" width={48} height={48} />
-        <h3 >{`Initializing the Problem Vision`}</h3>
+        <h3>{`Initializing the Problem Vision`}</h3>
       </div>
 
       <div className={s.items}>
@@ -55,7 +55,7 @@ export const Process = () => {
 
       </div>
 
-      <div className={clsx(s.step, s.step2)} data-fade="in" >
+      <div className={clsx(s.step, s.step2)} data-fade="in">
         <MyImage src={`/img/icons/services/${imgPath}lightbulb.svg`} alt="" width={48} height={48} />
         <h3>{`Problem Definition & Planning`}</h3>
         <p>{`Roadmap & Map of Product Evolution`}</p>
@@ -98,7 +98,7 @@ export const Process = () => {
 
       </div>
 
-      <div className={clsx(s.step, s.step3)} data-fade="in" >
+      <div className={clsx(s.step, s.step3)} data-fade="in">
         <MyImage src={`/img/icons/services/${imgPath}rocket.svg`} alt="" width={48} height={48} />
         <h3>{`Launching the Solution`}</h3>
       </div>
@@ -108,7 +108,7 @@ export const Process = () => {
         <MyImage src={`/img/icons/services/${imgPath}diamond.png`} alt="" width={124} height={160} data-fade="in" />
       </div>
 
-      <div className={clsx(s.step, s.step4)} data-fade="in" >
+      <div className={clsx(s.step, s.step4)} data-fade="in">
         <MyImage src={`/img/icons/services/${imgPath}refresh-cw.svg`} alt="" width={48} height={48} />
         <h3>{`Iteration & Support`}</h3>
         <p>{`We continuously refine the products to meet the evolving demands of users and businesses`}</p>

@@ -79,16 +79,6 @@
 
       a {
         line-height: 0;
-
-        svg {
-          path {
-            fill: #fff;
-
-            [data-theme="light"] & {
-              fill: #1D1D1F;
-            }
-          }
-        }
       }
     }
   }

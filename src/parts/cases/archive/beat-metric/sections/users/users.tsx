@@ -15,7 +15,7 @@ export const Users = () => {
         <div className={css.title}>
           <h2 className={IBMPlexSans.className} data-fade>
             Users
-            <span className={css.c} ></span>
+            <span className={css.c} />
           </h2>
           <p data-fade>
             Beat Metric serves a wide range of users, from fitness enthusiasts and athletes to individuals with health conditions that necessitate regular heartbeat monitoring. By combining a clear summary of heart rate data with an easy-to-navigate interface, it supports anyone looking to enhance their health monitoring practices.          </p>
@@ -24,7 +24,7 @@ export const Users = () => {
       <Row>
         <div className={css.wrapper}>
           <div className={css.discription}>
-            <div className={css.col}  >
+            <div className={css.col}>
               <div className={css.icon_left} data-fade>
                 <Line1 viewBox="0 0 188 179" />
               </div>
@@ -52,8 +52,8 @@ export const Users = () => {
             </div>
             <div>
               {sliderIcons.map(icon => (
-                <div className={css.item} key={icon} data-fade >
-                  <div className={css.icon} >
+                <div className={css.item} key={icon} data-fade>
+                  <div className={css.icon}>
                     <div className={css.photo}>
                       <MyImage src={`${icon}`} alt="User Flow & Wireframes" width={153} height={208} />
                     </div>

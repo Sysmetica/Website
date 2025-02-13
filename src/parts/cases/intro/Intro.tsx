@@ -17,11 +17,9 @@ export const Intro = ({ title, subtitle, tags }: IntroProps) => {
         <div className={css.wrapp}>
           <div className={css.title}>
             <div data-fade data-child>
-              <h1 className={IBMPlexSans.className} >{title}</h1>
-              <p className={css.subtitle} >{subtitle}</p>
+              <h1 className={IBMPlexSans.className}>{title}</h1>
+              <p className={css.subtitle}>{subtitle}</p>
             </div>
-
-
             {!!tags.length && (
               <div className={css.description}>
                 <div className={css.icon}>
@@ -33,7 +31,6 @@ export const Intro = ({ title, subtitle, tags }: IntroProps) => {
               </div>
             )}
           </div>
-
           {!!tags.length && (
             <div className={css.tags} data-fade data-child>
               {tags.map(t => <p key={t.tag}>{t.tag}</p>)}
@@ -41,9 +38,7 @@ export const Intro = ({ title, subtitle, tags }: IntroProps) => {
           )}
         </div>
       </Row>
-      <div className={css.back} data-fade></div>
-
+      <div className={css.back} data-fade />
     </div>
-
   )
 }

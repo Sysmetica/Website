@@ -343,6 +343,8 @@ query {
         linkedin
         upwork
         instagram
+        clutch
+        calendly
         menu {
           slug
           name

@@ -1,7 +1,7 @@
 import { Row } from '@/common/row/row';
 import s from './home.module.scss';
 import { gsap } from "gsap";
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { IBMPlexSans } from '@/pages/_app';
 import { useAtomValue } from 'jotai';
@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import { useGSAP } from "@gsap/react";
 import { Button } from '@/components/button/button';
+import { OptionsContext } from '@/common/layout/layout';
 
 type HomeStepProps = {
   title: string
@@ -26,29 +27,30 @@ const splittinSpan = (span: any) => {
 
 const splitText = (txt: any) => txt.split(" ").map(splittinSpan).join(" ");
 
-const ScheduleData = {
-  title: "Schedule a Meeting",
-  link: "https://calendly.com/nestor-popko/30min"
-}
+const ScheduleButton = ({ link }: { link: string | null }) => {
+  if (!link) {
+    return null;
+  }
 
-const ScheduleButton = () => {
   return (
     <div className={s.link}>
       <div data-fade>
-        <Button link={ScheduleData.link} target="_blank">{ScheduleData.title}</Button>
+        <Button link={link} target="_blank">{`Schedule a Meeting`}</Button>
       </div>
     </div>
   )
 }
 
 export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => {
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
   const isMob = useAtomValue(isMobileDevice);
-  const intro = useRef<any>(null)
-  const parallaxRef = useRef<HTMLDivElement>(null)
+  const intro = useRef<any>(null);
+  const parallaxRef = useRef<HTMLDivElement>(null);
 
   const shapeRef1 = useRef<any>();
   const shapeRef2 = useRef<any>();
+
+  const options = useContext(OptionsContext);
 
   const action = (evt: any) => {
     if (isMobile) {
@@ -107,8 +109,8 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
           const child: any = text.childNodes || text.children;
 
           const isSplited = text.dataset.splited;
-          if (!isSplited) {
 
+          if (!isSplited) {
             const innerText = [...child].map((el: any) => {
               switch (el.nodeName) {
                 case "BR":
@@ -121,10 +123,10 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
                   break;
               }
             });
-
             text.setAttribute("data-splited", "true");
             text.innerHTML = innerText.join("");
           }
+
           const chars = text.querySelectorAll(".c");
 
           let tl = gsap.timeline({
@@ -223,7 +225,7 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
                 <div className={s.icon_2} data-fade></div>
               </div>
               <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} data-split />
-              <ScheduleButton />
+              <ScheduleButton link={options.attributes.calendly} />
             </div>
           </Row>
         </div>
@@ -239,21 +241,21 @@ export const HomeStep = ({ title, subtitle, selectedString }: HomeStepProps) => 
                 <h1 className={IBMPlexSans.className} data-split>{title}</h1>
               </div>
               <h2 dangerouslySetInnerHTML={{ __html: makeSelectedString(subtitle, selectedString) }} data-split />
-              <ScheduleButton />
+              <ScheduleButton link={options.attributes.calendly} />
             </div>
           </Row>
         </div>
       </div>
 
       <div className={s.parallax} ref={parallaxRef} data-fade>
-        <div className={clsx(s.par, s.par_1)} data-coff="9" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_2)} data-coff="3" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_3)} data-coff="3" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_4)} data-coff="9" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_5)} data-coff="3" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_6)} data-coff="9" ><div className={s.llax} /></div>
-        <div className={clsx(s.par, s.par_7)} data-coff="3" ><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_1)} data-coff="9"><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_2)} data-coff="3"><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_3)} data-coff="3"><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_4)} data-coff="9"><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_5)} data-coff="3"><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_6)} data-coff="9"><div className={s.llax} /></div>
+        <div className={clsx(s.par, s.par_7)} data-coff="3"><div className={s.llax} /></div>
       </div>
-    </div >
+    </div>
   )
 }

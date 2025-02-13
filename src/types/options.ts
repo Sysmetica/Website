@@ -5,6 +5,8 @@ export type OptionsProps = {
     linkedin: string
     upwork: string
     instagram: string
+    clutch: string
+    calendly: string
     menu: {
       slug: string | null
       name: string | null

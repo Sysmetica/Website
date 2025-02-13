@@ -114,7 +114,7 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
             <div className={g.rootWrap}>
 
               <div className={g.text} data-fade data-child>
-                {title && <h3 className={IBMPlexSans.className} >{title}</h3>}
+                {title && <h3 className={IBMPlexSans.className}>{title}</h3>}
                 {text && <p>{text}</p>}
                 {options.attributes.email && (
                   <a
@@ -125,18 +125,20 @@ const Contacts: FC<Props> = ({ pageData, options, globalMeta }) => {
                     {options.attributes.email}
                   </a>
                 )}
-                <a href="https://calendly.com/nestor-popko/30min" className={g.book_call} target='_blank'>
-                  <div className={g.txt}>
-                    <span className={IBMPlexSans.className}>Book a Call With Our CEO</span>
-                    <span>Let’s scale your business together!</span>
-                  </div>
-                  <div className={g.icon}></div>
-                </a>
+                {options.attributes.calendly && (
+                  <a href={options.attributes.calendly} className={g.book_call} target='_blank'>
+                    <div className={g.txt}>
+                      <span className={IBMPlexSans.className}>{`Book a Call With Our CEO`}</span>
+                      <span>{`Let’s scale your business together!`}</span>
+                    </div>
+                    <div className={g.icon}></div>
+                  </a>
+                )}
               </div>
 
               <div className={g.form}>
                 <form onSubmit={handleSubmit}>
-                  <div className={g.fields} data-fade data-child >
+                  <div className={g.fields} data-fade data-child>
 
                     <div className={g.wrap}>
                       <label htmlFor="name">{`Full Name *`}</label>

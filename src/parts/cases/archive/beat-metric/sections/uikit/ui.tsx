@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
-
 export const UIKit = () => {
   const wrapRef = useRef<HTMLDivElement>(null)
 
@@ -27,28 +26,17 @@ export const UIKit = () => {
     }
   }, [])
 
-
-
   return (
-
-    <div className={css.ui} ref={wrapRef} >
+    <div className={css.ui} ref={wrapRef}>
       <div className={css.title}>
-        <h2 className={IBMPlexSans.className} data-fade>
-          UI Kit & Designs
-        </h2>
-        <p data-fade>
-          Our designers created a UI kit to streamline design and development, ensure a consistent user experience, and improve collaboration among teams.
-        </p>
+        <h2 className={IBMPlexSans.className} data-fade>{`UI Kit & Designs`}</h2>
+        <p data-fade>{`Our designers created a UI kit to streamline design and development, ensure a consistent user experience, and improve collaboration among teams.`}</p>
       </div>
-
-      <div className={css.image} data-img-wrapp >
+      <div className={css.image} data-img-wrapp>
         <div className={css.aukit}>
           <MyImage src={`/img/aukit.png`} alt="UI Kit & Designs" width={2710} height={2077} />
         </div>
       </div>
-
-    </div >
-
-
+    </div>
   )
 }

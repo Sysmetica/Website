@@ -3,30 +3,27 @@ import { Row } from '@/common/row/row';
 import MyImage from '@/components/image/image';
 import { IBMPlexSans } from "@/pages/_app";
 
+const process = [
+  {
+    day: "14 days",
+    title: "Discovery",
+    tags: ["Research", "Product Strategy", "Client Empathy",]
+  },
+  {
+    day: "14 days",
+    title: "DESIGN",
+    tags: ["Information Architecture Mapping", "Client Empathy", "Usability Testing"]
+  },
+  {
+    day: "30 days",
+    title: "Development",
+    tags: ["Development", "Testing & Analytics", "Refinement & Delivery"]
+  },
+]
 
 export const DesignProcess = () => {
-
-  const process = [
-    {
-      day: "14 days",
-      title: "Discovery",
-      tags: ["Research", "Product Strategy", "Client Empathy",]
-    },
-    {
-      day: "14 days",
-      title: "DESIGN",
-      tags: ["Information Architecture Mapping", "Client Empathy", "Usability Testing"]
-    },
-    {
-      day: "30 days",
-      title: "Development",
-      tags: ["Development", "Testing & Analytics", "Refinement & Delivery"]
-    },
-  ]
-
   return (
-
-    <div className={css.design} >
+    <div className={css.design}>
       <div className={css.back}></div>
       <Row>
         <div className={css.wrapp}>
@@ -37,7 +34,6 @@ export const DesignProcess = () => {
           </div>
         </div>
       </Row>
-
 
       <div className={css.column}>
         <div className={css.grid} data-fade data-child>
@@ -52,13 +48,10 @@ export const DesignProcess = () => {
           ))}
         </div>
 
-        <div className={css.image}  >
-          <MyImage src={`/img/pesign-process.jpg`} alt="Design Process" width={1440} height={1080}/>
+        <div className={css.image}>
+          <MyImage src={`/img/pesign-process.jpg`} alt="Design Process" width={1440} height={1080} />
         </div>
-
       </div>
-    </div >
-
-
+    </div>
   )
 }

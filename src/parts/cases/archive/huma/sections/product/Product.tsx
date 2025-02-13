@@ -3,22 +3,15 @@ import css from "./product.module.scss"
 import { Row } from '@/common/row/row';
 import MyImage from '@/components/image/image';
 
-
 export const Product = () => {
-
-
   return (
-
     <div className={css.product}>
       <Row>
         <div className={css.wrapp}>
-
           <div className={css.title}>
             <h2 className={IBMPlexSans.className} data-fade>Product Summary</h2>
-            <p data-fade >Revolutionizing healthcare, this app bridges the gap between patients and clinicians. It provides personalized care plans, tailored to meet individual needs, with a broad range of features. Through real-time monitoring and data visualization, the platform ensures continuous observation and immediate care for patients. It also delivers targeted educational content, empowering patients to manage their health proactively.</p>
+            <p data-fade>Revolutionizing healthcare, this app bridges the gap between patients and clinicians. It provides personalized care plans, tailored to meet individual needs, with a broad range of features. Through real-time monitoring and data visualization, the platform ensures continuous observation and immediate care for patients. It also delivers targeted educational content, empowering patients to manage their health proactively.</p>
           </div>
-
-
 
           <div className={css.column}>
             <div className={css.row} data-fade>
@@ -52,7 +45,5 @@ export const Product = () => {
         </div>
       </Row>
     </div>
-
-
   )
 }

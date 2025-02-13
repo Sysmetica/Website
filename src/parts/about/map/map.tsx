@@ -21,7 +21,7 @@ export const Map = ({ data }: { data: MapProps }) => {
           <div className={s.action}>
             <MyImage src={`/img/map${imgPath}.svg`} alt="map image" width={555} height={337} data-fade="in"/>
           </div>
-          <div className={s.text} >
+          <div className={s.text}>
             <h2 className={IBMPlexSans.className} data-fade>{data.title}</h2>
             <p data-fade>{data.text}</p>
           </div>

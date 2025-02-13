@@ -41,7 +41,7 @@ export const CaseItem = ({ caseItem, long = false }: { caseItem: CaseItemProps, 
       </div>
       <div className={css.textWrap}>
         <h2 className={IBMPlexSans.className}>{title}</h2>
-        <p className={long ? css.md : css.sm} >{description}</p>
+        <p className={long ? css.md : css.sm}>{description}</p>
         {long && <div className={css.icon}></div>}
       </div>
     </Link>
