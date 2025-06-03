@@ -6,21 +6,21 @@ import localFont from 'next/font/local';
 import { ApolloProvider } from "@apollo/client";
 import client from '@/graphql/client';
 import Head from 'next/head';
-// import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import Script from 'next/script';
 
 export const poppinsFont = Poppins({
   weight: ['400', '500', '600'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
-})
+});
 
 export const cavetFont = Caveat({
   weight: ['400'],
   style: ['normal'],
   subsets: ['latin'],
   display: 'swap',
-})
+});
 
 export const IBMPlexSans = localFont({
   src: [
@@ -30,29 +30,35 @@ export const IBMPlexSans = localFont({
       style: 'normal',
     },
   ],
-})
+});
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
+
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-1Q7W45Y5Q3"
+      />
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1Q7W45Y5Q3');
+          `,
+        }}
+      />
 
       <Head>
         <title>{`Sysmetica – Mobile Development and Design Agency`}</title>
       </Head>
 
       <main>
-
-        {/* <GoogleReCaptchaProvider
-          reCaptchaKey="your_site_key"
-          scriptProps={{
-            async: false,
-            defer: false,
-            appendTo: "head",
-            nonce: undefined,
-          }}
-        > */}
         <Component {...pageProps} />
-        {/* </GoogleReCaptchaProvider> */}
 
         <style jsx global>{
           `
@@ -73,5 +79,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
       </main>
     </ApolloProvider>
-  )
+  );
 }
