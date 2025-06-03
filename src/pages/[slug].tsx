@@ -34,7 +34,6 @@ const Lp: FC<Props> = ({ pageData, options, globalMeta }) => {
       content,
     }
   } = pageData
-  // console.log('pageData ', pageData)
   const router = useRouter();
 
   return (
