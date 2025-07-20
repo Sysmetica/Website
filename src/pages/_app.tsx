@@ -38,7 +38,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
       <Script
         strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-1Q7W45Y5Q3"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG}`}
       />
       <Script
         id="gtag-init"
@@ -48,7 +48,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-1Q7W45Y5Q3');
+            gtag('config', '${process.env.NEXT_PUBLIC_GTAG}');
           `,
         }}
       />
